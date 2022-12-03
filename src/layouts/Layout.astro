@@ -5,8 +5,6 @@ export interface Props {
 
 const { title, ogtitle, oggradient } = Astro.props;
 
-console.info(Astro.props)
-
 ---
 
 <!DOCTYPE html>
@@ -19,6 +17,7 @@ console.info(Astro.props)
 		<meta name="description" content="I'm a developer that makes awesome things for awesome people!">
 		<meta property="og:site_name" content="I'm Jhey Tompkins!">
 		<meta property="og:title" content="I'm Jhey Tompkins!">
+		<meta name="author" content="Jhey Tompkins">
 		<meta name="image" content={`https://jhey.netlify.app/og?title=${ogtitle || 'Howdy'}&gradient=${oggradient || 8}`}>
 		<meta name="image" property="og:image" content={`https://jhey.netlify.app/og?title=${ogtitle || 'Howdy'}&gradient=${oggradient || 8}`}>
 		<meta name="og:image" content={`https://jhey.netlify.app/og?title=${ogtitle || 'Howdy'}&gradient=${oggradient || 8}`}>
