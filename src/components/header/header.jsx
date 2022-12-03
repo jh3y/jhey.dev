@@ -1,8 +1,5 @@
 import React from "react";
 const LayoutHeader = ({ children }) => {
-  React.useEffect(() => {
-    console.info("hello world!");
-  });
   return (
     <header>
       <h1>Jhey Tompkins</h1>
