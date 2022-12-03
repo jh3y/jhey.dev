@@ -1,52 +1,66 @@
 ---
 export interface Props {
-	title: string;
+  title: string;
 }
 
-const { title, ogtitle, oggradient } = Astro.props;
+import '../styles/main.css';
 
+const { title, ogtitle, oggradient } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content="I'm a developer that makes awesome things for awesome people!">
-		<meta property="og:site_name" content="I'm Jhey Tompkins!">
-		<meta property="og:title" content="I'm Jhey Tompkins!">
-		<meta name="author" content="Jhey Tompkins">
-		<meta name="image" content={`https://jhey.netlify.app/og?title=${ogtitle || 'Howdy'}&gradient=${oggradient || 8}`}>
-		<meta name="image" property="og:image" content={`https://jhey.netlify.app/og?title=${ogtitle || 'Howdy'}&gradient=${oggradient || 8}`}>
-		<meta name="og:image" content={`https://jhey.netlify.app/og?title=${ogtitle || 'Howdy'}&gradient=${oggradient || 8}`}>
-		<meta property="og:image:width" content="1200" />
-		<meta property="og:image:height" content="630" />
-		<meta property="og:type" content="website">
-		<meta property="og:url" content="https://jhey.dev/">
-		<meta name="twitter:title" content="I'm Jhey Tompkins!">
-		<meta name="twitter:description" content="I'm a developer that makes awesome things for awesome people!">
-		<meta name="twitter:image" content={`https://jhey.netlify.app/og?title=${ogtitle || 'Howdy'}&gradient=${oggradient || 8}`}>
-		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:creator" content="@jh3yy">
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="I'm a developer that makes awesome things for awesome people!"
+    />
+    <meta property="og:site_name" content="I'm Jhey Tompkins!" />
+    <meta property="og:title" content="I'm Jhey Tompkins!" />
+    <meta name="author" content="Jhey Tompkins" />
+    <meta
+      name="image"
+      content={`https://jhey.netlify.app/og?title=${
+        ogtitle || "Howdy"
+      }&gradient=${oggradient || 8}`}
+    />
+    <meta
+      name="image"
+      property="og:image"
+      content={`https://jhey.netlify.app/og?title=${
+        ogtitle || "Howdy"
+      }&gradient=${oggradient || 8}`}
+    />
+    <meta
+      name="og:image"
+      content={`https://jhey.netlify.app/og?title=${
+        ogtitle || "Howdy"
+      }&gradient=${oggradient || 8}`}
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jhey.dev/" />
+    <meta name="twitter:title" content="I'm Jhey Tompkins!" />
+    <meta
+      name="twitter:description"
+      content="I'm a developer that makes awesome things for awesome people!"
+    />
+    <meta
+      name="twitter:image"
+      content={`https://jhey.netlify.app/og?title=${
+        ogtitle || "Howdy"
+      }&gradient=${oggradient || 8}`}
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@jh3yy" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
-<style is:global>
-	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
-</style>

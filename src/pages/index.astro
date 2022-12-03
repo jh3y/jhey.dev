@@ -1,12 +1,16 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import LayoutHeader from '../components/header/header.jsx';
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import LayoutHeader from "../components/header/header.jsx";
 ---
 
-<Layout title="Jhey Tompkins" ogtitle="The home of Jhey Tompkins" oggradient="8">
-	<main>
-		<h1 class="text-lime-500 text-6xl">Hello World! 👋</h1>
-		<LayoutHeader client:load>The feed of Jhey Tompkins</LayoutHeader>
-	</main>
+<Layout
+  title="Jhey Tompkins"
+  ogtitle="The home of Jhey Tompkins"
+  oggradient="8"
+>
+  <main>
+    <h1>Hello World! 👋</h1>
+    <LayoutHeader client:load>The feed of Jhey Tompkins</LayoutHeader>
+  </main>
 </Layout>

@@ -1,14 +1,18 @@
-import React from 'react'
+import React from "react";
 const LayoutHeader = ({ children }) => {
   React.useEffect(() => {
-    console.info('hello world!')
-  })
+    console.info("hello world!");
+  });
   return (
     <header>
-      <h1 className="text-red-800 text-xxl">{children}</h1>
-      <span>Hello? Is this thing on?!!!!</span>
+      <h1>Jhey Tompkins</h1>
+      <h2>Brings ideas to life with code.</h2>
+      <p>
+        Web Developer. Google DevRel. Content Creator. Whimsical Specialist.
+        International Speaker.
+      </p>
     </header>
-  )
-}
+  );
+};
 
-export default LayoutHeader
+export default LayoutHeader;
