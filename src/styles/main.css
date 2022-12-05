@@ -1,4 +1,5 @@
-@import "../../node_modules/open-props/open-props.min.css";
+@import "../../node_modules/open-props/colors.min.css";
+@import "../../node_modules/open-props/gradients.min.css";
 
 @tailwind base;
 @tailwind components;
@@ -63,7 +64,6 @@
     --surface-2: var(--gray-2);
     --surface-3: var(--gray-3);
     --surface-4: var(--gray-4);
-    -webkit-text-size-adjust: none;
     accent-color: var(--brand, var(--link));
     background-color: var(--surface-1);
     caret-color: var(--brand, var(--link));
@@ -91,16 +91,10 @@
   h5,
   h6 {
     color: var(--text-1);
-    font-variation-settings: 'wght' 1200;
+    font-variation-settings: 'wght' 900;
   }
 
   /* TODO: Link styles: :visited, :hover, :active, etc. */
-
-  *,
-  :after,
-  :before {
-    box-sizing: border-box;
-  }
 
   h1 {
     font-size: var(--step-6);
@@ -121,6 +115,19 @@
   }
   h6 {
     font-size: var(--step-1);
+  }
+
+  /* Set core root defaults */
+  html:focus-within {
+    scroll-behavior: smooth;
+  }
+
+  /* Inherit fonts for inputs and buttons */
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
   }
 
   @media (prefers-reduced-motion: no-preference) {

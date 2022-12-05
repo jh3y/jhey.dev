@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-const plugin = require('tailwindcss/plugin');
-const defaultTheme = require('tailwindcss/defaultTheme');
+const plugin = require("tailwindcss/plugin");
+const defaultTheme = require("tailwindcss/defaultTheme");
 // Set up spacing extension from Utopia variables.
 const sizes = ["3xs", "2xs", "xs", "s", "m", "l", "xl", "2xl", "3xl", "4xl"];
 const spacing = {};
@@ -13,9 +13,9 @@ sizes.forEach((size, index) => {
 });
 
 // Set up typography scales
-const fontSize = {}
+const fontSize = {};
 for (let i = -2; i < 9; i++) {
-	fontSize[i] = `var(--step-${i})`
+	fontSize[i] = `var(--step-${i})`;
 }
 
 module.exports = {
@@ -25,24 +25,17 @@ module.exports = {
 			spacing,
 			fontSize,
 			fontFamily: {
-        'sans': ['Inter', ...defaultTheme.fontFamily.sans],
-        'mono': ['JetBrains Mono', ...defaultTheme.fontFamily.mono],
-      },
-      colors: {
-      	'surface-1': 'var(--surface-1)',
-      	'surface-2': 'var(--surface-2)',
-      	'surface-3': 'var(--surface-3)',
-      	'surface-4': 'var(--surface-4)',
-      	'text-1': 'var(--text-1)',
-      	'text-2': 'var(--text-2)',
-      }
+				sans: ["Inter", ...defaultTheme.fontFamily.sans],
+				mono: ["JetBrains Mono", ...defaultTheme.fontFamily.mono],
+			},
+			colors: {
+				"surface-1": "var(--surface-1)",
+				"surface-2": "var(--surface-2)",
+				"surface-3": "var(--surface-3)",
+				"surface-4": "var(--surface-4)",
+				"text-1": "var(--text-1)",
+				"text-2": "var(--text-2)",
+			},
 		},
 	},
-	// plugins: [
-	// 	plugin(function({ addBase, theme }) {
-	// 		addBase({
-	// 			'h1': { fontSize: theme('fontSize.6')}
-	// 		})
-	// 	})
-	// ],
 };
