@@ -35,8 +35,11 @@
     "@storybook/testing-library": "^0.0.13",
     "autoprefixer": "^10.4.13",
     "babel-loader": "^8.3.0",
+    "cssnano": "^5.1.14",
     "open-props": "^1.5.1",
     "postcss": "^8.4.19",
+    "postcss-combine-duplicated-selectors": "^10.0.3",
+    "postcss-preset-env": "^7.8.3",
     "prettier": "2.8.0"
   }
 }

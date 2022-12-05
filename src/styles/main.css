@@ -1,5 +1,4 @@
-@import "open-props/style";
-@import "open-props/normalize";
+@import "../../node_modules/open-props/open-props.min.css";
 
 @tailwind base;
 @tailwind components;
@@ -9,42 +8,124 @@
   :root {
     /* Space scale from Utopia */
     --space-3xs: clamp(0.25rem, calc(0.23rem + 0.11vw), 0.31rem);
-    --space-2xs: clamp(0.50rem, calc(0.46rem + 0.22vw), 0.63rem);
+    --space-2xs: clamp(0.5rem, calc(0.46rem + 0.22vw), 0.63rem);
     --space-xs: clamp(0.75rem, calc(0.68rem + 0.33vw), 0.94rem);
-    --space-s: clamp(1.00rem, calc(0.91rem + 0.43vw), 1.25rem);
-    --space-m: clamp(1.50rem, calc(1.37rem + 0.65vw), 1.88rem);
-    --space-l: clamp(2.00rem, calc(1.83rem + 0.87vw), 2.50rem);
-    --space-xl: clamp(3.00rem, calc(2.74rem + 1.30vw), 3.75rem);
-    --space-2xl: clamp(4.00rem, calc(3.65rem + 1.74vw), 5.00rem);
-    --space-3xl: clamp(6.00rem, calc(5.48rem + 2.61vw), 7.50rem);
-    --space-4xl: clamp(6.00rem, calc(5.48rem + 2.61vw), 7.50rem);
+    --space-s: clamp(1rem, calc(0.91rem + 0.43vw), 1.25rem);
+    --space-m: clamp(1.5rem, calc(1.37rem + 0.65vw), 1.88rem);
+    --space-l: clamp(2rem, calc(1.83rem + 0.87vw), 2.5rem);
+    --space-xl: clamp(3rem, calc(2.74rem + 1.3vw), 3.75rem);
+    --space-2xl: clamp(4rem, calc(3.65rem + 1.74vw), 5rem);
+    --space-3xl: clamp(6rem, calc(5.48rem + 2.61vw), 7.5rem);
+    --space-4xl: clamp(6rem, calc(5.48rem + 2.61vw), 7.5rem);
 
     /* One-up pairs */
     --space-3xs-2xs: clamp(0.25rem, calc(0.12rem + 0.65vw), 0.63rem);
-    --space-2xs-xs: clamp(0.50rem, calc(0.35rem + 0.76vw), 0.94rem);
+    --space-2xs-xs: clamp(0.5rem, calc(0.35rem + 0.76vw), 0.94rem);
     --space-xs-s: clamp(0.75rem, calc(0.58rem + 0.87vw), 1.25rem);
-    --space-s-m: clamp(1.00rem, calc(0.70rem + 1.52vw), 1.88rem);
-    --space-m-l: clamp(1.50rem, calc(1.15rem + 1.74vw), 2.50rem);
-    --space-l-xl: clamp(2.00rem, calc(1.39rem + 3.04vw), 3.75rem);
-    --space-xl-2xl: clamp(3.00rem, calc(2.30rem + 3.48vw), 5.00rem);
-    --space-2xl-3xl: clamp(4.00rem, calc(2.78rem + 6.09vw), 7.50rem);
-    --space-3xl-4xl: clamp(6.00rem, calc(5.48rem + 2.61vw), 7.50rem);
+    --space-s-m: clamp(1rem, calc(0.7rem + 1.52vw), 1.88rem);
+    --space-m-l: clamp(1.5rem, calc(1.15rem + 1.74vw), 2.5rem);
+    --space-l-xl: clamp(2rem, calc(1.39rem + 3.04vw), 3.75rem);
+    --space-xl-2xl: clamp(3rem, calc(2.3rem + 3.48vw), 5rem);
+    --space-2xl-3xl: clamp(4rem, calc(2.78rem + 6.09vw), 7.5rem);
+    --space-3xl-4xl: clamp(6rem, calc(5.48rem + 2.61vw), 7.5rem);
     /* Typography steps */
-    --step--2: clamp(0.70rem, calc(0.82rem + -0.15vw), 0.79rem);
+    --step--2: clamp(0.7rem, calc(0.82rem + -0.15vw), 0.79rem);
     --step--1: clamp(0.89rem, calc(0.87rem + 0.08vw), 0.94rem);
-    --step-0: clamp(1.00rem, calc(0.91rem + 0.43vw), 1.25rem);
+    --step-0: clamp(1rem, calc(0.91rem + 0.43vw), 1.25rem);
     --step-1: clamp(1.13rem, calc(0.94rem + 0.94vw), 1.67rem);
     --step-2: clamp(1.27rem, calc(0.93rem + 1.66vw), 2.22rem);
     --step-3: clamp(1.42rem, calc(0.89rem + 2.67vw), 2.96rem);
-    --step-4: clamp(1.60rem, calc(0.79rem + 4.08vw), 3.95rem);
-    --step-5: clamp(1.80rem, calc(0.60rem + 6.02vw), 5.26rem);
+    --step-4: clamp(1.6rem, calc(0.79rem + 4.08vw), 3.95rem);
+    --step-5: clamp(1.8rem, calc(0.6rem + 6.02vw), 5.26rem);
     --step-6: clamp(2.03rem, calc(0.29rem + 8.67vw), 7.01rem);
     --step-7: clamp(2.28rem, calc(-0.18rem + 12.29vw), 9.35rem);
     --step-8: clamp(2.57rem, calc(-0.88rem + 17.21vw), 12.46rem);
   }
 
-  :where(h1, h2, h3, h4, h5, h6) {
-    font-size: var(--step-8);
-    font-weight: 900;
+  @font-face {
+    font-family: "Inter";
+    src: url("/fonts/Inter/Inter-VariableFont_slnt,wght.ttf") format("truetype");
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "JetBrains Mono";
+    src: url("/fonts/JetBrainsMono/fonts/variable/JetBrainsMono[wght].ttf")
+      format("truetype");
+    font-display: swap;
+  }
+
+  /* Reset stuff */
+  html {
+    --text-1: var(--gray-9);
+    --text-2: var(--gray-7);
+    --surface-1: var(--gray-0);
+    --surface-2: var(--gray-2);
+    --surface-3: var(--gray-3);
+    --surface-4: var(--gray-4);
+    -webkit-text-size-adjust: none;
+    accent-color: var(--brand, var(--link));
+    background-color: var(--surface-1);
+    caret-color: var(--brand, var(--link));
+    color: var(--text-2);
+    font-size: var(--step-0);
+    color-scheme: light;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html {
+      --text-1: var(--gray-1);
+      --text-2: var(--gray-4);
+      --surface-1: var(--gray-9);
+      --surface-2: var(--gray-8);
+      --surface-3: var(--gray-7);
+      --surface-4: var(--gray-6);
+      color-scheme: dark;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--text-1);
+    font-variation-settings: 'wght' 1200;
+  }
+
+  /* TODO: Link styles: :visited, :hover, :active, etc. */
+
+  *,
+  :after,
+  :before {
+    box-sizing: border-box;
+  }
+
+  h1 {
+    font-size: var(--step-6);
+    line-height: 1;
+  }
+  h2 {
+    font-size: var(--step-5);
+    line-height: 1;
+  }
+  h3 {
+    font-size: var(--step-4);
+  }
+  h4 {
+    font-size: var(--step-3);
+  }
+  h5 {
+    font-size: var(--step-2);
+  }
+  h6 {
+    font-size: var(--step-1);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    :where(html) {
+      scroll-behavior: smooth;
+    }
   }
 }
