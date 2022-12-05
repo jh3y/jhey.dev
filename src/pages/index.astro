@@ -10,10 +10,23 @@ import LayoutHeader from "../components/header/header.jsx";
   oggradient="8"
 >
   <LayoutHeader>The feed of Jhey Tompkins</LayoutHeader>
-  <main class="max-w-[65ch] mv-0 mx-auto">
-    <pre>
-      <code>console.info('hello world');</code>
-    </pre>
+  <main class="w-main-content max-w-full mv-0 mx-auto">
+
+    <div class="card grid-cols-[auto_1fr] gap-fluid-space-2 grid">
+      <img class="rounded-full" src="https://picsum.photos/50/50?random=54" alt="" class="card__author">
+      <div class="card__content">
+        <p>Lorem ipsum dolor, sit amet, consectetur adipisicing elit. Quis eius, numquam doloremque, autem, nihil nesciunt nemo, accusamus suscipit dolor laborum quae animi consectetur ullam deleniti nobis vero doloribus saepe rerum.</p>
+        <img src="https://picsum.photos/1280/720?random=12" alt="">
+      </div>
+    </div>
+
+    <div class="card grid-cols-[auto_1fr] gap-fluid-space-2 grid">
+      <img class="rounded-full" src="https://picsum.photos/50/50?random=54" alt="" class="card__author">
+      <div class="card__content">
+        <h2>Check this out!</h2>
+        <img src="https://picsum.photos/1280/720?random=24" alt="">
+      </div>
+    </div>
   </main>
   <footer>Jhey Tompkins &copy; 2022</footer>
 </Layout>
