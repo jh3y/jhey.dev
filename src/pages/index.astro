@@ -1,7 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
+import Card from "../components/card/card.jsx";
 import LayoutHeader from "../components/header/header.jsx";
+
+const { SANITY_PROJECT_ID, SANITY_PROJECT_DATASET } = import.meta.env
+
+// Grab all posts and expand author objects
+const QUERY = encodeURIComponent('*[_type == "post"]{..., author->{"avatar": image.asset->url, ...}}');
+
+// Compose the URL for your project's endpoint and add the query
+const URL = `https://${SANITY_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_PROJECT_DATASET}?query=${QUERY}`;
+
+const POSTS = await (await fetch(URL)).json()
+
+console.info({ POSTS })
+
 ---
 
 <Layout
@@ -9,24 +22,11 @@ import LayoutHeader from "../components/header/header.jsx";
   ogtitle="The home of Jhey Tompkins"
   oggradient="8"
 >
-  <LayoutHeader>The feed of Jhey Tompkins</LayoutHeader>
+  <!-- <LayoutHeader>The feed of Jhey Tompkins</LayoutHeader> -->
   <main class="w-main-content max-w-full mv-0 mx-auto">
-
-    <div class="card grid-cols-[auto_1fr] gap-fluid-space-2 grid">
-      <img class="rounded-full" src="https://picsum.photos/50/50?random=54" alt="" class="card__author">
-      <div class="card__content">
-        <p>Lorem ipsum dolor, sit amet, consectetur adipisicing elit. Quis eius, numquam doloremque, autem, nihil nesciunt nemo, accusamus suscipit dolor laborum quae animi consectetur ullam deleniti nobis vero doloribus saepe rerum.</p>
-        <img src="https://picsum.photos/1280/720?random=12" alt="">
-      </div>
-    </div>
-
-    <div class="card grid-cols-[auto_1fr] gap-fluid-space-2 grid">
-      <img class="rounded-full" src="https://picsum.photos/50/50?random=54" alt="" class="card__author">
-      <div class="card__content">
-        <h2>Check this out!</h2>
-        <img src="https://picsum.photos/1280/720?random=24" alt="">
-      </div>
-    </div>
+    {POSTS.result.map(POST => {
+      return <Card {...POST} client:load />
+    })}
   </main>
   <footer>Jhey Tompkins &copy; 2022</footer>
 </Layout>
