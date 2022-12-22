@@ -11,4 +11,4 @@ export default {
   component: ContentBlock,
 };
 
-export const Default = () => <ContentBlock>;
+export const Default = () => <ContentBlock />;

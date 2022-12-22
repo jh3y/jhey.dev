@@ -3,6 +3,5 @@
   "singleQuote": true,
   "printWidth": 80,
   "semi": false,
-  "parser": "flow",
-  "jsxBracketSameLine": true
+  "parser": "flow"
 }

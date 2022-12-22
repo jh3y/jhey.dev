@@ -1,0 +1,5 @@
+#root {
+  background: var(--surface-2);
+  min-height: 100vh;
+  padding: var(--space-s);
+}

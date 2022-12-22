@@ -1,5 +1,5 @@
-@import "../../node_modules/open-props/colors.min.css";
-@import "../../node_modules/open-props/gradients.min.css";
+@import url("../../node_modules/open-props/colors.min.css");
+@import url("../../node_modules/open-props/gradients.min.css");
 
 @tailwind base;
 @tailwind components;
@@ -48,6 +48,9 @@
     --space-4xl-5xl: clamp(6.00rem, calc(5.48rem + 2.61vw), 7.50rem);
     --space-5xl-6xl: clamp(6.00rem, calc(5.48rem + 2.61vw), 7.50rem);
 
+
+    /* Branding */
+    --brand: hsl(280 80% 50%);
   }
 
   @font-face {
@@ -143,6 +146,14 @@
 
   main {
     background: var(--blue-3);
+  }
+
+  a {
+    color: var(--brand);
+  }
+
+  a:hover {
+    text-decoration: underline 4px;
   }
 
   @media (min-width: 120ch) {

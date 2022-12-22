@@ -11,4 +11,4 @@ export default {
   component: Card,
 };
 
-export const Default = () => <Card>;
+export const Default = () => <Card/>;

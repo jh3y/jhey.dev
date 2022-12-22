@@ -17,3 +17,11 @@
 ## Setting up Astro && Storybook
 - Straight forward. Need JSX/React to use Storybook though :sad:.
 - Gotta set up slug pages that make a request based on the slug or ID of the sanity post? Should be slug. But that feels a little brittle for some reason...
+
+## TODO::
+- Sort out the pinned posts sorting
+- Social footer icons [ Mastodon, Twitter, Instagram, etc. from current ]
+- Create links page
+- Testimonial tabs
+- Post pagination via URL
+- Use Hero Icons

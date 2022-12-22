@@ -6,6 +6,7 @@ export default defineType({
   title: 'Post',
   type: 'document',
   initialValue: () => ({
+    pinned: false,
     slug: {
       _type: 'slug',
       current: uuidv4(),
@@ -50,6 +51,12 @@ export default defineType({
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
+    }),
+    defineField({
+      name: 'pinned',
+      title: 'Pinned',
+      description: "Whether the post is pinned in the feed",
+      type: 'boolean',
     }),
     defineField({
       name: 'post',

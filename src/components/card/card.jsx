@@ -10,12 +10,16 @@ const Card = (props) => {
         className="card__author rounded-full"
       />
       <div className="card__content">
-        <Markdown>
-          {props.post}
-        </Markdown>
+        <Markdown>{props.post}</Markdown>
         <img src="https://picsum.photos/1280/720?random=12" alt="" />
       </div>
-      <a href={`/${props.slug.current}`} target="_blank" rel="noopener noreferrer">Read more.</a>
+      <a
+        href={`/${props.slug.current}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Read more.
+      </a>
     </div>
   )
 }
