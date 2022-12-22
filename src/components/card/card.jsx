@@ -2,7 +2,6 @@ import React from 'react'
 import Markdown from 'react-markdown'
 
 const Card = (props) => {
-  console.info(props)
   return (
     <div className="card grid-cols-[auto_1fr] gap-fluid-space-2 grid">
       <img

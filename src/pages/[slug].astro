@@ -11,17 +11,15 @@ export async function getStaticPaths() {
   const { SANITY_PROJECT_ID, SANITY_PROJECT_DATASET } = import.meta.env
   // Grab all posts and expand author objects
   const QUERY = encodeURIComponent('*[_type == "post"]{..., author->{"avatar": image.asset->url, ...}}');
-
   // Compose the URL for your project's endpoint and add the query
   const REQUEST_URL = `https://${SANITY_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_PROJECT_DATASET}?query=${QUERY}`;
-
+  // Grab the posts
   const posts = await (await fetch(REQUEST_URL)).json()
-  console.info({posts})
-
-  return posts.result.map(({ slug, title, post }) => {
+  // Loop over them and get the content
+  return posts.result.map(({ slug, ...props }) => {
     return {
       params: { slug: slug.current },
-      props: { title, post },
+      props,
     };
   });
 }
@@ -29,7 +27,6 @@ export async function getStaticPaths() {
 const { slug } = Astro.params
 const { title, post } = Astro.props
 
-console.info({ title, post, slug })
 ---
 
 <Layout
@@ -42,5 +39,4 @@ console.info({ title, post, slug })
     <h1>{title}</h1>
     <ContentBlock children={post}></ContentBlock>
   </main>
-  <footer>Jhey Tompkins &copy; 2022</footer>
 </Layout>

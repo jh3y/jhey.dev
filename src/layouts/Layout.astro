@@ -1,7 +1,5 @@
 ---
-export interface Props {
-  title: string;
-}
+import Footer from '../components/footer/footer.jsx'
 
 import '../styles/main.css';
 
@@ -62,5 +60,6 @@ const { title, ogtitle, oggradient } = Astro.props;
   </head>
   <body>
     <slot />
+    <Footer/>
   </body>
 </html>
