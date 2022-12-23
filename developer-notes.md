@@ -25,3 +25,6 @@
 - Testimonial tabs
 - Post pagination via URL
 - Use Hero Icons
+- Set up RSS
+- Set up 404
+- Set up SEO for each page inside Sanity

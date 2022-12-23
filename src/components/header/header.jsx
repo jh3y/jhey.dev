@@ -1,4 +1,5 @@
 import React from 'react'
+import Banner from '../banner/banner.jsx'
 
 const DEETS = {
   work: {
@@ -68,14 +69,25 @@ const DEETS = {
 
 const LayoutHeader = ({ children }) => {
   return (
-    <header className="w-main-content max-w-full mv-0 mx-auto grid gap-fluid-space-0">
-      <div className="grid grid-cols-[auto_1fr] gap-fluid-space-0 justify-start items-center">
-        <img
-          className="rounded-full aspect-square w-fluid-size-9 border-4 border-text-1"
-          src="https://cdn.sanity.io/images/qhpo1n9q/development/b25947c64c1c9e59976010ab0e94b9f1b4d71c79-1045x1045.jpg?h=300"
-          alt="Jhey presenting at All Day Hey! 2022"
-        />
+    <header className="w-main-content max-w-full mv-0 mx-auto grid gap-fluid-space-0 px-fluid-space-0">
+      <div className="">
+        <Banner/>
+        <div className="relative flex justify-end items-center min-h-half-avatar py-fluid-space--1">
+          <img
+            className="absolute top-0 transform -translate-y-1/2 left-0 rounded-full aspect-square w-avatar border-4 border-text-1"
+            src="https://cdn.sanity.io/images/qhpo1n9q/development/b25947c64c1c9e59976010ab0e94b9f1b4d71c79-1045x1045.jpg?h=300"
+            alt="Jhey presenting at All Day Hey! 2022"
+          />
+          <a href="/rss" target="_blank" rel="noopener noreferrer" className="rounded-full text-fluid--1 flex gap-x-fluid-space--2 items-center text-white bg-brand px-fluid-space--1 py-fluid-space--2">
+            <span>Follow</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+              <path d="M3.75 3a.75.75 0 00-.75.75v.5c0 .414.336.75.75.75H4c6.075 0 11 4.925 11 11v.25c0 .414.336.75.75.75h.5a.75.75 0 00.75-.75V16C17 8.82 11.18 3 4 3h-.25z" />
+              <path d="M3 8.75A.75.75 0 013.75 8H4a8 8 0 018 8v.25a.75.75 0 01-.75.75h-.5a.75.75 0 01-.75-.75V16a6 6 0 00-6-6h-.25A.75.75 0 013 9.25v-.5zM7 15a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </a>
+        </div>
       </div>
+      {/* Actions Row [ Avatar + Follow RSS Button] */}
       <h1 className="text-fluid-3">
         Jhey Tompkins
       </h1>
@@ -85,7 +97,7 @@ const LayoutHeader = ({ children }) => {
         Web Developer. Googler. Content Creator. Whimsical Specialist. International Speaker.
       </p>
       {/* Details */}
-      <span className="flex gap-x-fluid-space-1 items-center text-fluid--1 flex-wrap">
+      <span className="flex gap-x-fluid-space-1 items-center text-fluid--1 flex-wrap text-text-3">
         {Object.keys(DEETS).map((key) => {
           const Deet = DEETS[key]
           return (

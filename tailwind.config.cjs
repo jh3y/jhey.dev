@@ -17,7 +17,13 @@ const sizes = [
   '6xl',
 ]
 const spacing = {}
+const minHeight = {}
+const avatarIndex = 11
 sizes.forEach((size, index) => {
+  if (index === avatarIndex) {
+    spacing.avatar = `var(--step-${index - 2})`
+    minHeight['half-avatar'] = `calc(var(--step-${index - 2}) * 0.5)`
+  }
   spacing[`fluid-size-${index - 2}`] = `var(--step-${index - 2})`
   spacing[`fluid-space-${index - 2}`] = `var(--space-${size})`
   if (size !== sizes.at(sizes.length - 1))
@@ -37,8 +43,9 @@ module.exports = {
   theme: {
     extend: {
       width: {
-        'main-content': '60ch',
+        'main-content': '66ch',
       },
+      minHeight,
       spacing,
       fontSize,
       fontFamily: {
@@ -46,12 +53,15 @@ module.exports = {
         mono: ['JetBrains Mono', ...defaultTheme.fontFamily.mono],
       },
       colors: {
+        'brand': 'var(--brand, var(--link))',
         'surface-1': 'var(--surface-1)',
         'surface-2': 'var(--surface-2)',
         'surface-3': 'var(--surface-3)',
         'surface-4': 'var(--surface-4)',
         'text-1': 'var(--text-1)',
         'text-2': 'var(--text-2)',
+        'text-3': 'var(--text-3)',
+        'text-4': 'var(--text-4)',
       },
     },
   },

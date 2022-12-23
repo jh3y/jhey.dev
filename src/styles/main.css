@@ -50,7 +50,7 @@
 
 
     /* Branding */
-    --brand: hsl(280 80% 50%);
+    --brand: hsl(320 100% 50%);
   }
 
   @font-face {
@@ -68,16 +68,18 @@
 
   /* Reset stuff */
   html {
-    --text-1: var(--gray-9);
-    --text-2: var(--gray-7);
+    --text-1: var(--gray-10);
+    --text-2: var(--gray-8);
+    --text-3: var(--gray-6);
+    --text-4: var(--gray-4);
     --surface-1: var(--gray-0);
-    --surface-2: var(--gray-2);
-    --surface-3: var(--gray-3);
-    --surface-4: var(--gray-4);
+    --surface-2: var(--gray-1);
+    --surface-3: var(--gray-2);
+    --surface-4: var(--gray-3);
     accent-color: var(--brand, var(--link));
     background-color: var(--surface-1);
     caret-color: var(--brand, var(--link));
-    color: var(--text-2);
+    color: var(--text-1);
     font-size: var(--step-0);
     color-scheme: light;
   }
@@ -85,17 +87,15 @@
   @media (prefers-color-scheme: dark) {
     html {
       --text-1: var(--gray-1);
-      --text-2: var(--gray-4);
-      --surface-1: var(--gray-9);
-      --surface-2: var(--gray-8);
-      --surface-3: var(--gray-7);
-      --surface-4: var(--gray-6);
+      --text-2: var(--gray-3);
+      --text-3: var(--gray-5);
+      --text-4: var(--gray-7);
+      --surface-1: var(--gray-12);
+      --surface-2: var(--gray-11);
+      --surface-3: var(--gray-10);
+      --surface-4: var(--gray-9);
       color-scheme: dark;
     }
-  }
-
-  body {
-    padding: var(--space-s);
   }
 
   h1,
@@ -144,16 +144,12 @@
     font: inherit;
   }
 
-  main {
-    background: var(--blue-3);
-  }
-
   a {
-    color: var(--brand);
+    color: var(--brand, var(--link));
   }
 
   a:hover {
-    text-decoration: underline 4px;
+    text-decoration: overline 4px;
   }
 
   @media (min-width: 120ch) {
@@ -166,5 +162,12 @@
     :where(html) {
       scroll-behavior: smooth;
     }
+  }
+}
+
+@layer components {
+  .banner {
+    max-width: 100vw;
+    width: calc(100% + (2 * var(--space-s)));
   }
 }
