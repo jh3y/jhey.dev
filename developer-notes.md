@@ -28,3 +28,4 @@
 - Set up RSS
 - Set up 404
 - Set up SEO for each page inside Sanity
+- Fix sizing scales for fonts etc. Need step-0 to be around 14px not --1. Could we use prose plugin for blog posts?
