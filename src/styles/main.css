@@ -157,8 +157,16 @@
     color: var(--gray-0);
   }
 
-  code {
+  code:not([class]) {
     background: var(--surface-3);
+  }
+
+  code[class] {
+    font-size: var(--step--1);
+  }
+
+  pre {
+    font-size: var(--step--1);
   }
 
   a {

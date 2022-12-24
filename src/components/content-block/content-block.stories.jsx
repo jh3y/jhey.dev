@@ -49,8 +49,52 @@ const BlockOfCustom = `
 
   Well. Here it is.
 
-  <h1>Hello World!</h1>
-
-  <codepen></codepen>
+  <CodePen/>
 `
 export const CustomBlocks = () => <ContentBlock>{BlockOfCustom}</ContentBlock>
+
+
+const BlockOfSyntax = `
+  # Syntax Highlighting!
+
+  ---
+
+  Did you ever wonder what happens when you put some \`code\` in your MarkDown?
+
+  Here we gooooo!
+
+  ## HTML
+
+  \`\`\`html
+  <div class="cool">
+    Hello World!
+  </div>
+  \`\`\`
+
+  ## Shell
+
+  \`\`\`shell
+  yarn add rehype-raw
+  echo Cooooool
+  \`\`\`
+
+  ## CSS
+
+  \`\`\`css
+  .box {
+    --custom-property: red;
+    background: linear-gradient(red, blue) 0 0 / 100% 100% no-repeat;
+  }
+  \`\`\`
+
+  ## JavaScript
+
+  \`\`\`javascript
+  const hello = 'world'
+  console.info({ hello })
+
+  const func = () => console.info(\`Hello \$\{hello\}!\`)
+  func() // Hello world!
+  \`\`\`
+`
+export const SyntaxBlocks = () => <ContentBlock>{BlockOfSyntax}</ContentBlock>

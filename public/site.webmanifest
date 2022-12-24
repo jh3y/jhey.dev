@@ -1,0 +1,25 @@
+{
+  "short_name": "jhey.dev",
+  "name": "jhey.dev",
+  "icons": [
+    {
+      "src": "/icons/favicon.ico",
+      "type": "image/x-icon",
+      "sizes": "32x32"
+    },
+    {
+      "src": "/icons/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#141a1c",
+  "background_color": "#141a1c"
+}

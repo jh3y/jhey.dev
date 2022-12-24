@@ -1,28 +1,53 @@
 import React from 'react'
 import Markdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import rehypeRaw from 'rehype-raw'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'
+
+const remarkPlugins = [[remarkGfm, { singleTilde: false }]]
+const rehypePlugins = [rehypeRaw]
 
 const components = {
-  codepen({ node, children }) {
-    return (
-      <h1>Hello World!</h1>
+  code({ node, inline, className, children, ...props }) {
+    const match = /language-(\w+)/.exec(className || '')
+    return !inline && match ? (
+      <SyntaxHighlighter
+        children={String(children).replace(/\n$/, '')}
+        style={nightOwl}
+        language={match[1]}
+        PreTag="div"
+        {...props}
+      />
+    ) : (
+      <code className={className} {...props}>
+        {children}
+      </code>
     )
   },
+  codepen({ node, children }) {
+    return <h1>Hello World!</h1>
+  },
   a({ node, children, ...props }) {
-
     if (props.href.startsWith('http')) {
-      props.target = "_blank"
-      props.rel = "noopener noreferrer"
+      props.target = '_blank'
+      props.rel = 'noopener noreferrer'
     }
 
-    return (
-      <a {...props}>{children}</a>
-    )
-  }
+    return <a {...props}>{children}</a>
+  },
 }
 
-
 const ContentBlock = ({ children }) => {
-  return <Markdown components={components}>{children}</Markdown>
+  return (
+    <Markdown
+      remarkPlugins={remarkPlugins}
+      rehypePlugins={rehypePlugins}
+      components={components}
+    >
+      {children}
+    </Markdown>
+  )
 }
 
 export default ContentBlock
