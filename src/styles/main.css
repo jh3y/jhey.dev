@@ -86,6 +86,10 @@
     min-height: 100vh;
   }
 
+  hr {
+    border-width: 2px;
+  }
+
   @media (prefers-color-scheme: dark) {
     html {
       --brand-fill: hsl(320 100% 40%);
@@ -153,18 +157,21 @@
     color: var(--gray-0);
   }
 
-  a {
-    color: var(--brand-stroke);
-    /* text-decoration: var(--brand-fill) underline 4px;
-    text-underline-offset: 4px;
-    background: linear-gradient(transparent 50%, var(--brand-fill) 50%) 0 calc(var(--hover, 0) * 100%) / 100% 200% no-repeat; */
-/*     transition: background-position 0.1s, color 0.1s; */
+  code {
+    background: var(--surface-3);
   }
 
-  /* a:hover {
-    color: var(--gray-0);
-    --hover: 1;
-  } */
+  a {
+    color: var(--brand-stroke);
+    text-decoration-thickness: 4px;
+    text-underline-offset: 4px;
+    font-weight: bold;
+    font-variation-settings: 'wght' 700;
+  }
+
+  a:hover {
+    text-decoration-line: underline;
+  }
 
   @media (prefers-reduced-motion: no-preference) {
     :where(html) {
