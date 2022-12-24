@@ -53,7 +53,8 @@ module.exports = {
         mono: ['JetBrains Mono', ...defaultTheme.fontFamily.mono],
       },
       colors: {
-        'brand': 'var(--brand, var(--link))',
+        'brand-fill': 'var(--brand-fill)',
+        'brand-stroke': 'var(--brand-stroke)',
         'surface-1': 'var(--surface-1)',
         'surface-2': 'var(--surface-2)',
         'surface-3': 'var(--surface-3)',

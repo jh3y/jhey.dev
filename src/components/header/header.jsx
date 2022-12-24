@@ -32,7 +32,7 @@ const DEETS = {
         <path d="M11.603 7.963a.75.75 0 00-.977 1.138 2.5 2.5 0 01.142 3.667l-3 3a2.5 2.5 0 01-3.536-3.536l1.225-1.224a.75.75 0 00-1.061-1.06l-1.224 1.224a4 4 0 105.656 5.656l3-3a4 4 0 00-.225-5.865z" />
       </svg>
     ),
-    text: () => <a href="/links">/links</a>,
+    text: () => <a className="hover:underline decoration-4 underline-offset-4 bold" href="/links">/links</a>,
   },
   birthday: {
     icon: () => (
@@ -78,9 +78,9 @@ const LayoutHeader = ({ children }) => {
             src="https://cdn.sanity.io/images/qhpo1n9q/development/b25947c64c1c9e59976010ab0e94b9f1b4d71c79-1045x1045.jpg?h=300"
             alt="Jhey presenting at All Day Hey! 2022"
           />
-          <a href="/rss" target="_blank" rel="noopener noreferrer" className="rounded-full text-fluid--1 flex gap-x-fluid-space--2 items-center text-white bg-brand px-fluid-space--1 py-fluid-space--2">
-            <span>Follow</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+          <a href="/rss" target="_blank" rel="noopener noreferrer" className="hover:no-underline border-transparent hover:border-text-1 border-4 rounded-full text-fluid--1 flex gap-x-1 items-center text-white bg-brand-fill px-3 py-1">
+            <span className="bold">Follow</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
               <path d="M3.75 3a.75.75 0 00-.75.75v.5c0 .414.336.75.75.75H4c6.075 0 11 4.925 11 11v.25c0 .414.336.75.75.75h.5a.75.75 0 00.75-.75V16C17 8.82 11.18 3 4 3h-.25z" />
               <path d="M3 8.75A.75.75 0 013.75 8H4a8 8 0 018 8v.25a.75.75 0 01-.75.75h-.5a.75.75 0 01-.75-.75V16a6 6 0 00-6-6h-.25A.75.75 0 013 9.25v-.5zM7 15a2 2 0 11-4 0 2 2 0 014 0z" />
             </svg>
@@ -97,7 +97,7 @@ const LayoutHeader = ({ children }) => {
         Web Developer. Googler. Content Creator. Whimsical Specialist. International Speaker.
       </p>
       {/* Details */}
-      <span className="flex gap-x-fluid-space-1 items-center text-fluid--1 flex-wrap text-text-3">
+      <span className="flex gap-x-fluid-space-1 items-center text-fluid--1 flex-wrap text-text-4">
         {Object.keys(DEETS).map((key) => {
           const Deet = DEETS[key]
           return (

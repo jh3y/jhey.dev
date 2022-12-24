@@ -47,10 +47,6 @@
     --space-3xl-4xl: clamp(6.00rem, calc(5.48rem + 2.61vw), 7.50rem);
     --space-4xl-5xl: clamp(6.00rem, calc(5.48rem + 2.61vw), 7.50rem);
     --space-5xl-6xl: clamp(6.00rem, calc(5.48rem + 2.61vw), 7.50rem);
-
-
-    /* Branding */
-    --brand: hsl(320 100% 50%);
   }
 
   @font-face {
@@ -68,14 +64,16 @@
 
   /* Reset stuff */
   html {
-    --text-1: var(--gray-10);
-    --text-2: var(--gray-8);
-    --text-3: var(--gray-6);
-    --text-4: var(--gray-4);
+    --text-1: var(--gray-12);
+    --text-2: var(--gray-10);
+    --text-3: var(--gray-8);
+    --text-4: var(--gray-7);
     --surface-1: var(--gray-0);
     --surface-2: var(--gray-1);
     --surface-3: var(--gray-2);
     --surface-4: var(--gray-3);
+    --brand-fill: hsl(320 100% 40%);
+    --brand-stroke: hsl(320 100% 40%);
     accent-color: var(--brand, var(--link));
     background-color: var(--surface-1);
     caret-color: var(--brand, var(--link));
@@ -84,12 +82,18 @@
     color-scheme: light;
   }
 
+  body {
+    min-height: 100vh;
+  }
+
   @media (prefers-color-scheme: dark) {
     html {
+      --brand-fill: hsl(320 100% 40%);
+      --brand-stroke: hsl(320 100% 60%);
       --text-1: var(--gray-1);
       --text-2: var(--gray-3);
       --text-3: var(--gray-5);
-      --text-4: var(--gray-7);
+      --text-4: var(--gray-6);
       --surface-1: var(--gray-12);
       --surface-2: var(--gray-11);
       --surface-3: var(--gray-10);
@@ -144,19 +148,23 @@
     font: inherit;
   }
 
+  ::selection {
+    background: var(--brand-fill);
+    color: var(--gray-0);
+  }
+
   a {
-    color: var(--brand, var(--link));
+    color: var(--brand-stroke);
+    /* text-decoration: var(--brand-fill) underline 4px;
+    text-underline-offset: 4px;
+    background: linear-gradient(transparent 50%, var(--brand-fill) 50%) 0 calc(var(--hover, 0) * 100%) / 100% 200% no-repeat; */
+/*     transition: background-position 0.1s, color 0.1s; */
   }
 
-  a:hover {
-    text-decoration: overline 4px;
-  }
-
-  @media (min-width: 120ch) {
-    footer {
-      background:  red;
-    }
-  }
+  /* a:hover {
+    color: var(--gray-0);
+    --hover: 1;
+  } */
 
   @media (prefers-reduced-motion: no-preference) {
     :where(html) {
@@ -169,5 +177,14 @@
   .banner {
     max-width: 100vw;
     width: calc(100% + (2 * var(--space-s)));
+  }
+}
+
+@layer utilities {
+  .bold {
+    font-variation-settings: 'wght' 700;
+  }
+  .thin {
+    font-variation-settings: 'wght' 300;
   }
 }
