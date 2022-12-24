@@ -3,7 +3,7 @@ import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import nightOwl from 'react-syntax-highlighter/dist/esm/styles/prism/night-owl'
+import nightOwl from 'react-syntax-highlighter/dist/cjs/styles/prism/night-owl'
 
 const remarkPlugins = [[remarkGfm, { singleTilde: false }]]
 const rehypePlugins = [rehypeRaw]
