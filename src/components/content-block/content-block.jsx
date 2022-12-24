@@ -3,7 +3,7 @@ import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import nightOwl from 'react-syntax-highlighter/dist/esm/styles/prism/night-owl'
 
 const remarkPlugins = [[remarkGfm, { singleTilde: false }]]
 const rehypePlugins = [rehypeRaw]
@@ -23,6 +23,21 @@ const components = {
       <code className={className} {...props}>
         {children}
       </code>
+    )
+  },
+  img({ node, ...props }) {
+    if (props.src.endsWith('.mp4')) {
+      return (
+        <video {...props} controls loop muted></video>
+      )
+    }
+    if (props.src.endsWith('.mp3')) {
+      return (
+        <audio {...props} controls loop></audio>
+      )
+    }
+    return (
+      <img {...props}/>
     )
   },
   codepen({ node, children }) {

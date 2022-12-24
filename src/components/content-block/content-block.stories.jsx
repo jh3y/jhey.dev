@@ -98,3 +98,16 @@ const BlockOfSyntax = `
   \`\`\`
 `
 export const SyntaxBlocks = () => <ContentBlock>{BlockOfSyntax}</ContentBlock>
+
+const BlockOfMedia = `
+  ## Media Blocks!
+  ---
+  Wondering how \`video\` and \'audio\' might look? Here you go.
+
+  ## Video
+  ![Test Video](/media/video/test-video.mp4)
+
+  ## Audio
+  ![Test Audio](/media/audio/test-audio.mp3)
+`
+export const MediaBlocks = () => <ContentBlock>{BlockOfMedia}</ContentBlock>
