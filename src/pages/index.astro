@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/card/card.jsx";
 import LayoutHeader from "../components/header/header.jsx";
+import ThemeToggle from "../components/theme-toggle/theme-toggle.jsx";
 
 const { SANITY_PROJECT_ID, SANITY_PROJECT_DATASET } = import.meta.env
 
@@ -22,6 +23,28 @@ const POSTS = await (await fetch(URL)).json()
 >
   <LayoutHeader />
   <main class="w-main-content max-w-full mv-0 mx-auto grid justify-center pt-8">
-    <p class="border-2 border-current text-center text-text-2 p-4 grid items-center rounded-md">No posts to show currently.</p>
+    <p
+      class="border-2 border-current text-center text-text-2 p-4 grid items-center rounded-md"
+    >
+      No posts to show currently.
+    </p>
+    <ThemeToggle/>
   </main>
 </Layout>
+<script>
+  const TOGGLE_FORM = document.querySelector('#theme-toggle')
+  const TOGGLE_LABEL = document.querySelector('#theme-toggle-label')
+  const makeRequest = async () => {
+    const res = await (await fetch(`/theme-toggle?${new URLSearchParams({
+      client: true
+    })}`)).json()
+    console.info(res)
+    document.documentElement.dataset.theme = res.theme
+    TOGGLE_LABEL.innerHTML = `Set theme to ${res.nextTheme}`
+  }
+  const onSubmit = (e) => {
+    e.preventDefault()
+    makeRequest()
+  }
+  TOGGLE_FORM.addEventListener('submit', onSubmit)
+</script>

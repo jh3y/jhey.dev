@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ThemeToggle from './themetoggle.jsx'
+import ThemeToggle from './theme-toggle.jsx'
 
 export default {
   /* 👇 The title prop is optional.
@@ -11,4 +11,4 @@ export default {
   component: ThemeToggle,
 }
 
-export const Default = () => <ThemeToggle/>
+export const Default = () => <ThemeToggle />
