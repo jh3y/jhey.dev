@@ -73,7 +73,7 @@
     --surface-2: var(--gray-1);
     --surface-3: var(--gray-2);
     --surface-4: var(--gray-3);
-    --surface-alpha: hsl(var(--gray-0-hsl) / 50%);
+    --surface-alpha: hsl(var(--gray-0-hsl) / 65%);
     --brand-fill: hsl(320 100% 40%);
     --brand-stroke: hsl(320 100% 40%);
     color-scheme: light;
@@ -93,7 +93,7 @@
     --surface-2: var(--gray-1);
     --surface-3: var(--gray-2);
     --surface-4: var(--gray-3);
-    --surface-alpha: hsl(var(--gray-0-hsl) / 50%);
+    --surface-alpha: hsl(var(--gray-0-hsl) / 65%);
     --brand-fill: hsl(320 100% 40%);
     --brand-stroke: hsl(320 100% 40%);
     color-scheme: light;
@@ -110,7 +110,7 @@
     --surface-2: var(--gray-11);
     --surface-3: var(--gray-10);
     --surface-4: var(--gray-9);
-    --surface-alpha: hsl(var(--gray-12-hsl) / 50%);
+    --surface-alpha: hsl(var(--gray-12-hsl) / 65%);
     color-scheme: dark;
   }
 
@@ -134,7 +134,7 @@
       --surface-2: var(--gray-11);
       --surface-3: var(--gray-10);
       --surface-4: var(--gray-9);
-      --surface-alpha: hsl(var(--gray-12-hsl) / 50%);
+      --surface-alpha: hsl(var(--gray-12-hsl) / 65%);
       color-scheme: dark;
     }
   }

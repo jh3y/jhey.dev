@@ -23,16 +23,16 @@ const { title, ogtitle, oggradient } = Astro.props;
     <meta name="author" content="Jhey Tompkins" />
     <meta
       name="image"
-      content={`https://jhey.netlify.app/og?title=The%20feed%20of%20Jhey%20Tompkins&gradient=8`}
+      content={`https://jhey.netlify.app/og?title=${ogtitle}&gradient=${oggradient}`}
     />
     <meta
       name="image"
       property="og:image"
-      content={`https://jhey.netlify.app/og?title=The%20feed%20of%20Jhey%20Tompkins&gradient=8`}
+      content={`https://jhey.netlify.app/og?title=${ogtitle}&gradient=${oggradient}`}
     />
     <meta
       name="og:image"
-      content={`https://jhey.netlify.app/og?title=The%20feed%20of%20Jhey%20Tompkins&gradient=8`}
+      content={`https://jhey.netlify.app/og?title=${ogtitle}&gradient=${oggradient}`}
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -45,7 +45,7 @@ const { title, ogtitle, oggradient } = Astro.props;
     />
     <meta
       name="twitter:image"
-      content={`https://jhey.netlify.app/og?title=The%20feed%20of%20Jhey%20Tompkins&gradient=8`}
+      content={`https://jhey.netlify.app/og?title=${ogtitle}&gradient=${oggradient}`}
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@jh3yy" />
@@ -54,7 +54,7 @@ const { title, ogtitle, oggradient } = Astro.props;
   <Nav/>
   <body>
     <slot />
-    <!-- <Footer/> -->
+    <Footer/>
   </body>
 </html>
 <script>
