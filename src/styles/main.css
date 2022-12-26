@@ -1,4 +1,5 @@
 @import url("../../node_modules/open-props/colors.min.css");
+@import url("../../node_modules/open-props/colors-hsl.min.css");
 @import url("../../node_modules/open-props/gradients.min.css");
 
 @tailwind base;
@@ -72,6 +73,7 @@
     --surface-2: var(--gray-1);
     --surface-3: var(--gray-2);
     --surface-4: var(--gray-3);
+    --surface-alpha: hsl(var(--gray-0-hsl) / 50%);
     --brand-fill: hsl(320 100% 40%);
     --brand-stroke: hsl(320 100% 40%);
     color-scheme: light;
@@ -91,6 +93,7 @@
     --surface-2: var(--gray-1);
     --surface-3: var(--gray-2);
     --surface-4: var(--gray-3);
+    --surface-alpha: hsl(var(--gray-0-hsl) / 50%);
     --brand-fill: hsl(320 100% 40%);
     --brand-stroke: hsl(320 100% 40%);
     color-scheme: light;
@@ -107,6 +110,7 @@
     --surface-2: var(--gray-11);
     --surface-3: var(--gray-10);
     --surface-4: var(--gray-9);
+    --surface-alpha: hsl(var(--gray-12-hsl) / 50%);
     color-scheme: dark;
   }
 
@@ -130,6 +134,7 @@
       --surface-2: var(--gray-11);
       --surface-3: var(--gray-10);
       --surface-4: var(--gray-9);
+      --surface-alpha: hsl(var(--gray-12-hsl) / 50%);
       color-scheme: dark;
     }
   }
@@ -231,5 +236,8 @@
   }
   .thin {
     font-variation-settings: 'wght' 300;
+  }
+  .transform-box-fill {
+    transform-box: fill-box;
   }
 }

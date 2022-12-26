@@ -1,0 +1,33 @@
+:is(.theme-toggle__monitor, .theme-toggle__status) {
+  display: none;
+}
+
+[data-theme=system] .theme-toggle__monitor {
+  display: block;
+}
+
+[data-theme] {
+  --icon-scale: 1;
+  --icon-translate: 0;
+}
+
+[data-theme=system] {
+  --icon-scale: 0.45;
+  --icon-translate: -15%;
+}
+
+@media(prefers-color-scheme: light) {
+  [data-theme=system] .theme-toggle__sun {
+    display: block;
+  }
+}
+
+@media(prefers-color-scheme: dark) {
+  [data-theme=system] .theme-toggle__moon {
+    display: block;
+  }
+}
+[data-theme=dark] .theme-toggle__moon,
+[data-theme=light] .theme-toggle__sun {
+  display: block;
+}

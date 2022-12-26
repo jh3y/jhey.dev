@@ -18,8 +18,6 @@ export default async (request, context) => {
   const nextTheme = THEMES.at(currentIndex + 1) || THEMES[0]
   const futureTheme = THEMES[THEMES.indexOf(nextTheme) + 1] || THEMES[0]
 
-  console.info({ nextTheme, futureTheme }) 
-
   // If it's a fetch request, return a response instead
   // Only toggle if you're coming via the theme-toggle action
   if (request.url.indexOf('theme-toggle') !== -1) {
@@ -71,6 +69,7 @@ export default async (request, context) => {
     }
   }
 
+  const label = `Set theme to ${nextTheme}`
   return new HTMLRewriter()
     .on('html', {
       element(element) {
@@ -79,7 +78,12 @@ export default async (request, context) => {
     })
     .on('span[id=theme-toggle-label]', {
       element(element) {
-        element.setInnerContent(`Set theme to ${nextTheme}`)
+        element.setInnerContent(label)
+      }
+    })
+    .on('.theme-toggle', {
+      element(element) {
+        element.setAttribute('title', label)
       }
     })
     .transform(res)
