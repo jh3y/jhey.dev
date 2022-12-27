@@ -14,7 +14,7 @@ const Card = (props) => {
         <img src="https://picsum.photos/1280/720?random=12" alt="" />
       </div>
       <a
-        href={`/${props.slug.current}`}
+        href={`/post/${props.slug.current}`}
         target="_blank"
         rel="noopener noreferrer"
       >

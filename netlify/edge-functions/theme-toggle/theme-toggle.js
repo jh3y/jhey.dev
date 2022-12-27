@@ -29,11 +29,14 @@ export default async (request, context) => {
 
     // Setting the cookie
 
+    // Redirect to where you came from
+    const path = request.headers.get('referer')
+
     // Set the cookie for storage
     context.cookies.set({
       name: COOKIE_KEY,
       value: nextTheme,
-      path: '/',
+      path: "/",
       secure: true,
       httpOnly: true,
       sameSite: 'Strict',
@@ -62,7 +65,7 @@ export default async (request, context) => {
       return new Response('Redirecting...', {
         status: 301,
         headers: {
-          Location: "/",
+          Location: path,
           'Cache-Control': 'no-cache',
         },
       })

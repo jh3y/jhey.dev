@@ -3,7 +3,7 @@ import './theme-toggle.css'
 
 const ThemeToggle = () => {
   return (
-    <form id="theme-toggle" action="/theme-toggle">
+    <form id="theme-toggle" action="theme-toggle">
       <button className="theme-toggle w-11 h-11 relative hover:bg-surface-4 rounded-md">
         <span className="theme-toggle__icon absolute inset-0 w-full h-full grid place-items-center">
           <svg

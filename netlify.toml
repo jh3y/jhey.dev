@@ -8,4 +8,8 @@
 
 [[edge_functions]]
   function = "theme-toggle"
+  path = "/*/theme-toggle"
+
+[[edge_functions]]
+  function = "theme-toggle"
   path = "/*"
