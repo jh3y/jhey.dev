@@ -23,11 +23,19 @@
 - Social footer icons [ Mastodon, Twitter, Instagram, etc. from current ]
 - Create links page
 - Testimonial tabs
-- Post pagination via URL
 - Use Hero Icons
 - Set up RSS
 - Set up 404
 - Set up SEO for each page inside Sanity
 - Fix sizing scales for fonts etc. Need step-0 to be around 14px not --1. Could we use prose plugin for blog posts?
 - Cards
-- Dark Mode Toggle via Edge functions
+- Post pagination via URL
+  - posts/[page]
+  - posts/[topic]/[page]
+  - / === posts/
+  - post/[slug]
+  - about
+  - 404
+  - RSS
+  - Testimonials
+  - Links

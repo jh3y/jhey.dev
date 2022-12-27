@@ -4,15 +4,15 @@ import Card from "../components/card/card.jsx";
 import LayoutHeader from "../components/header/header.jsx";
 import ThemeToggle from "../components/theme-toggle/theme-toggle.jsx";
 
-const { SANITY_PROJECT_ID, SANITY_PROJECT_DATASET } = import.meta.env
+const { SANITY_STUDIO_PROJECT_ID, SANITY_STUDIO_PROJECT_DATASET } = import.meta.env
 
 // Grab all posts and expand author objects
-const QUERY = encodeURIComponent('*[_type == "post"]{..., author->{"avatar": image.asset->url, ...}}');
+const QUERY = encodeURIComponent('*[_type == "cheep"]{..., author->{"avatar": image.asset->url, ...}}');
 
 // Compose the URL for your project's endpoint and add the query
-const URL = `https://${SANITY_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_PROJECT_DATASET}?query=${QUERY}`;
+const URL = `https://${SANITY_STUDIO_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_STUDIO_PROJECT_DATASET}?query=${QUERY}`;
 
-const POSTS = await (await (await fetch(URL)).json()).result
+const CHEEPS = await (await (await fetch(URL)).json()).result
 
 ---
 
@@ -23,10 +23,17 @@ const POSTS = await (await (await fetch(URL)).json()).result
 >
   <LayoutHeader />
   <main class="w-main-content max-w-full mv-0 mx-auto grid justify-center pt-8">
+    <!-- If there aren't any posts show it! -->
+    {CHEEPS.length === 0 && (
     <p
       class="border-2 border-current text-center text-text-2 p-4 grid items-center rounded-md"
     >
-      No posts to show currently.
+      No cheeps to show currently.
     </p>
+    )}
+    <!-- If there are cheeps, show 'em! -->
+    {CHEEPS.length && CHEEPS.map(CHEEP => (
+      <Card {...CHEEP} />
+    ))}
   </main>
 </Layout>

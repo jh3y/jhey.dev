@@ -10,8 +10,7 @@ const Card = (props) => {
         className="card__author rounded-full"
       />
       <div className="card__content">
-        <Markdown>{props.post}</Markdown>
-        <img src="https://picsum.photos/1280/720?random=12" alt="" />
+        <Markdown>{props.cheep}</Markdown>
       </div>
       <a
         href={`/post/${props.slug.current}`}

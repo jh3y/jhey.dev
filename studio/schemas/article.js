@@ -1,22 +1,15 @@
 import {defineField, defineType} from 'sanity'
-import {v4 as uuidv4} from 'uuid'
 
 export default defineType({
-  name: 'post',
-  title: 'Post',
+  name: 'article',
+  title: 'Article',
   type: 'document',
-  initialValue: () => ({
-    pinned: false,
-    slug: {
-      _type: 'slug',
-      current: uuidv4(),
-    },
-  }),
   fields: [
     defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: 'slug',
@@ -32,6 +25,7 @@ export default defineType({
       title: 'Author',
       type: 'reference',
       to: {type: 'author'},
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: 'mainImage',
@@ -42,33 +36,23 @@ export default defineType({
       },
     }),
     defineField({
-      name: 'categories',
-      title: 'Categories',
+      name: 'tags',
+      title: 'Tags',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'category'}}],
+      of: [{type: 'reference', to: {type: 'tag'}}],
     }),
     defineField({
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
-    }),
-    defineField({
-      name: 'pinned',
-      title: 'Pinned',
-      description: "Whether the post is pinned in the feed",
-      type: 'boolean',
-    }),
-    defineField({
-      name: 'post',
-      title: 'Post',
-      description: 'This is the feed post',
-      type: 'markdown',
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: 'body',
       title: 'Body',
-      description: 'This is the main article if applicable',
+      description: 'This is body of the article',
       type: 'markdown',
+      validation: Rule => Rule.required(),
     }),
   ],
 

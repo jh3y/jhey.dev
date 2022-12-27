@@ -6,10 +6,10 @@ import {schemaTypes} from './schemas'
 
 export default defineConfig({
   name: 'default',
-  title: 'jhey.dev',
+  title: import.meta.env.SANITY_STUDIO_PROJECT_NAME,
 
-  projectId: 'qhpo1n9q',
-  dataset: 'development',
+  projectId: import.meta.env.SANITY_STUDIO_PROJECT_ID,
+  dataset: import.meta.env.SANITY_STUDIO_PROJECT_DATASET,
 
   plugins: [deskTool(), visionTool(), markdownSchema()],
 

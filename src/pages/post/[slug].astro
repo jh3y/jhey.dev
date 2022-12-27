@@ -7,11 +7,11 @@ import ContentBlock from "../../components/content-block/content-block.jsx";
 import LayoutHeader from "../../components/header/header.jsx";
 
 export async function getStaticPaths() {
-  const { SANITY_PROJECT_ID, SANITY_PROJECT_DATASET } = import.meta.env
+  const { SANITY_STUDIO_PROJECT_ID, SANITY_STUDIO_PROJECT_DATASET } = import.meta.env
   // Grab all posts and expand author objects
-  const QUERY = encodeURIComponent('*[_type == "post"]{..., author->{"avatar": image.asset->url, ...}}');
+  const QUERY = encodeURIComponent('*[_type == "cheep"]{..., author->{"avatar": image.asset->url, ...}}');
   // Compose the URL for your project's endpoint and add the query
-  const REQUEST_URL = `https://${SANITY_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_PROJECT_DATASET}?query=${QUERY}`;
+  const REQUEST_URL = `https://${SANITY_STUDIO_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_STUDIO_PROJECT_DATASET}?query=${QUERY}`;
   // Grab the posts
   const posts = await (await fetch(REQUEST_URL)).json()
   // Loop over them and get the content
@@ -36,6 +36,6 @@ const { title, post, body } = Astro.props
   <!-- <LayoutHeader>The feed of Jhey Tompkins</LayoutHeader> -->
   <main class="w-main-content max-w-full mv-0 mx-auto">
     <h1>{title}</h1>
-    <ContentBlock children={body}></ContentBlock>
+    <ContentBlock children="{body}"></ContentBlock>
   </main>
 </Layout>
