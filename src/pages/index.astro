@@ -23,14 +23,10 @@ const POSTS = await (await (await fetch(URL)).json()).result
 >
   <LayoutHeader />
   <main class="w-main-content max-w-full mv-0 mx-auto grid justify-center pt-8">
-    {POSTS.length === 0 && (
     <p
       class="border-2 border-current text-center text-text-2 p-4 grid items-center rounded-md"
     >
       No posts to show currently.
     </p>
-    )} {POSTS.length && POSTS.map(POST => (
-    <Card {...POST} />
-    ))}
   </main>
 </Layout>
