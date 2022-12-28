@@ -1,5 +1,5 @@
 #root {
   background: var(--surface-1);
   min-height: 100vh;
-  padding: var(--space-s) 0;
+  padding: 0;
 }

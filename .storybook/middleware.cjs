@@ -5,10 +5,11 @@ const expressMiddleWare = router => {
     router.use(bodyParser.urlencoded({ extended: false }));
     router.use(bodyParser.json());
 
-    router.get('/', (request, response) => {
-      console.info(request.headers, response.headers)
-      response.send({ data: { text: 'hello world' } })
-    })
+    // Should technically do a redirect
+    // router.get('/theme-toggle', (request, response) => {
+    //   console.info(request.headers, response.headers)
+    //   response.send({ data: { text: 'hello world' } })
+    // })
 };
 
 module.exports = expressMiddleWare;

@@ -18,16 +18,18 @@
 - Straight forward. Need JSX/React to use Storybook though :sad:.
 - Gotta set up slug pages that make a request based on the slug or ID of the sanity post? Should be slug. But that feels a little brittle for some reason...
 
+## DONE::
+- ~~Social footer icons [ Mastodon, Twitter, Instagram, etc. from current ]~~
+- Use Hero Icons
+- Fix sizing scales for fonts etc. Need step-0 to be around 14px not --1. Could we use prose plugin for blog posts?
+
 ## TODO::
 - Sort out the pinned posts sorting
-- Social footer icons [ Mastodon, Twitter, Instagram, etc. from current ]
 - Create links page
 - Testimonial tabs
-- Use Hero Icons
 - Set up RSS
 - Set up 404
 - Set up SEO for each page inside Sanity
-- Fix sizing scales for fonts etc. Need step-0 to be around 14px not --1. Could we use prose plugin for blog posts?
 - Cards
 - Post pagination via URL
   - posts/[page]
@@ -39,3 +41,11 @@
   - RSS
   - Testimonials
   - Links
+- Export/Import dataset data with Sanity CLI... Why don't ENV variables work with the CLI config???
+- Drop your signature onto your bio/about me tab.
+- Somehow integrate a snapshot of your demos
+- Timeline items [ Article, Newsletter feature, YouTube appearance, Life thing, Random Misc, Smashing person of week, Did a thing, etc. Drop an icon type if needed that can be mapped? ]
+- Timeline tab? Filtered by type??? Could that literally be a form action?
+- Card designs shouldn't be tricky. [Like, Share, Boost]
+- Way to differentiate between ContentBlock in post/article?
+- Web Mentions?

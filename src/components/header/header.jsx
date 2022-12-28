@@ -70,12 +70,12 @@ const DEETS = {
 const LayoutHeader = ({ children }) => {
   return (
     <header className="w-main-content max-w-full mv-0 mx-auto grid gap-fluid-space-0 px-fluid-space-0">
-      <div className="">
+      <div>
         <Banner/>
         <div className="relative flex justify-end items-center min-h-half-avatar py-fluid-space--1">
           <img
             className="absolute top-0 transform -translate-y-1/2 left-0 rounded-full aspect-square w-avatar border-4 border-text-1"
-            src="https://cdn.sanity.io/images/qhpo1n9q/development/b25947c64c1c9e59976010ab0e94b9f1b4d71c79-1045x1045.jpg?h=300"
+            src="/media/image/headshot--small.jpeg"
             alt="Jhey presenting at All Day Hey! 2022"
           />
           <a href="/rss" target="_blank" rel="noopener noreferrer" className="hover:no-underline border-transparent hover:border-text-1 border-4 rounded-full text-fluid--1 flex gap-x-1 items-center text-white bg-brand-fill px-3 py-1">

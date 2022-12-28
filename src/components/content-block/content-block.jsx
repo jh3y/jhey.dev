@@ -17,6 +17,7 @@ const components = {
         style={nightOwl}
         language={match[1]}
         PreTag="div"
+        className="rounded-lg"
         {...props}
       />
     ) : (
@@ -53,7 +54,7 @@ const components = {
   },
 }
 
-const ContentBlock = ({ children }) => {
+const ContentBlock = ({ type = 'card', children }) => {
   return (
     <Markdown
       remarkPlugins={remarkPlugins}
