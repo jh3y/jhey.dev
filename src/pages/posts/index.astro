@@ -1,6 +1,6 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import FeedLayout from "../components/feed-layout/feed-layout.jsx";
+import Layout from "../../layouts/Layout.astro";
+import FeedLayout from "../../components/feed-layout/feed-layout.jsx";
 
 const { SANITY_STUDIO_PROJECT_ID, SANITY_STUDIO_PROJECT_DATASET, PAGINATION_SIZE } = import.meta.env
 const pageSize = parseInt(PAGINATION_SIZE, 10)
@@ -14,11 +14,10 @@ const page = {
   lastPage: Math.ceil(allCheeps.length / pageSize),
 }
 ---
-
 <Layout
   title="Jhey Tompkins"
-  ogtitle="The feed of Jhey Tompkins"
-  oggradient="8"
+  ogtitle="Posts from Jhey Tompkins"
+  oggradient="2"
 >
   <FeedLayout
     posts={page.data}

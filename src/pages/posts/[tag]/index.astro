@@ -1,0 +1,60 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import FeedLayout from "../../../components/feed-layout/feed-layout.jsx";
+
+export async function getStaticPaths({ paginate }) {
+  const { SANITY_STUDIO_PROJECT_ID, SANITY_STUDIO_PROJECT_DATASET, PAGINATION_SIZE } = import.meta.env
+  const pageSize = parseInt(PAGINATION_SIZE, 10)
+
+  const TAG_QUERY = encodeURIComponent('*[_type == "tag"]')
+  const TAG_URL = `https://${SANITY_STUDIO_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_STUDIO_PROJECT_DATASET}?query=${TAG_QUERY}`;
+  const CHEEP_QUERY = encodeURIComponent('*[_type == "cheep"]{..., tags[]->{...},author->{"avatar": image.asset->url, ...}}');
+  const CHEEP_URL = `https://${SANITY_STUDIO_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_STUDIO_PROJECT_DATASET}?query=${CHEEP_QUERY}`;
+
+  const allTags = await (await (await fetch(TAG_URL)).json()).result
+  const allCheeps = await (await (await fetch(CHEEP_URL)).json()).result
+
+  return allTags.map((tag) => {
+    const tagName = tag.title
+
+    const filteredCheeps = allCheeps.filter(
+      (cheep) => {
+        if (!cheep.tags) return false
+        if (cheep.tags.length) {
+          if (cheep.tags.find(tag => tag.title === tagName)) return true
+        }
+      }
+    )
+    
+    // Cut this by pagination size and set up the links for the next ones...
+    return {
+      params: {
+        tag: tagName.toLowerCase(),
+      },
+      props: {
+        tagLabel: tagName,
+        page: {
+          data: filteredCheeps.slice(0, pageSize),
+          currentPage: 1,
+          lastPage: Math.ceil(filteredCheeps.length / pageSize)
+        }
+      },
+    }
+  });
+}
+
+const params = Astro.params
+const { page, tagLabel } = Astro.props
+---
+<Layout
+  title="Jhey Tompkins"
+  ogtitle="The feed of Jhey Tompkins"
+  oggradient="8"
+>
+  <FeedLayout
+    posts={page.data}
+    category={tagLabel}
+    currentPage={page.currentPage}
+    totalPages={page.lastPage}
+  />
+</Layout>

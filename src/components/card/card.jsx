@@ -4,7 +4,7 @@ import ContentBlock from '../content-block/content-block'
 
 const Card = (props) => {
   return (
-    <article className="card grid-cols-[auto_1fr] gap-x-2 grid p-4 bg-surface-3 rounded-lg">
+    <article className="card grid-cols-[auto_1fr] gap-x-2 grid p-4 bg-surface-3 rounded-lg w-full">
       <img
         src={`${props.author.avatar}?h=96`}
         alt=""
