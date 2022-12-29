@@ -1,36 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 const plugin = require('tailwindcss/plugin')
 const defaultTheme = require('tailwindcss/defaultTheme')
-// Set up spacing extension from Utopia variables.
-const sizes = [
-  '3xs',
-  '2xs',
-  'xs',
-  's',
-  'm',
-  'l',
-  'xl',
-  '2xl',
-  '3xl',
-  '4xl',
-  '5xl',
-  '6xl',
-]
+
 const spacing = {}
 const minHeight = {}
-const avatarIndex = 11
-sizes.forEach((size, index) => {
-  if (index === avatarIndex) {
-    spacing.avatar = `var(--step-${index - 2})`
-    minHeight['half-avatar'] = `calc(var(--step-${index - 2}) * 0.5)`
-  }
-  spacing[`fluid-size-${index - 2}`] = `var(--step-${index - 2})`
-  spacing[`fluid-space-${index - 2}`] = `var(--space-${size})`
-  if (size !== sizes.at(sizes.length - 1))
-    spacing[
-      `fluid-space-${index - 2}-${index - 1}`
-    ] = `var(--space-${size}-${sizes.at(index + 1)})`
-})
+const avatarIndex = 9
+
+spacing.avatar = `var(--step-${avatarIndex})`
+minHeight['half-avatar'] = `calc(var(--step-${avatarIndex}) * 0.5)`
 
 // Set up typography scales
 const fontSize = {}
@@ -43,7 +20,7 @@ module.exports = {
   theme: {
     extend: {
       width: {
-        'main-content': '66ch',
+        'main-content': '56ch',
       },
       minHeight,
       spacing,

@@ -69,10 +69,10 @@ const DEETS = {
 
 const LayoutHeader = ({ children }) => {
   return (
-    <header className="w-main-content max-w-full mv-0 mx-auto grid gap-fluid-space-0 px-fluid-space-0">
+    <header className="w-main-content max-w-full mv-0 mx-auto grid gap-2 px-2">
       <div>
         <Banner/>
-        <div className="relative flex justify-end items-center min-h-half-avatar py-fluid-space--1">
+        <div className="relative flex justify-end items-center min-h-half-avatar py-2">
           <img
             className="absolute top-0 transform -translate-y-1/2 left-0 rounded-full aspect-square w-avatar border-4 border-text-1"
             src="/media/image/headshot--small.jpeg"
@@ -97,11 +97,11 @@ const LayoutHeader = ({ children }) => {
         Web Developer. Googler. Content Creator. Whimsical Specialist. International Speaker.
       </p>
       {/* Details */}
-      <span className="flex gap-x-fluid-space-1 items-center text-fluid--1 flex-wrap text-text-4">
+      <span className="flex gap-x-4 items-center text-fluid--1 flex-wrap text-text-4">
         {Object.keys(DEETS).map((key) => {
           const Deet = DEETS[key]
           return (
-            <span key={key} className="flex items-center gap-fluid-space--2">
+            <span key={key} className="flex items-center gap-1">
               <Deet.icon />
               <span className="whitespace-nowrap">
                 <Deet.text />

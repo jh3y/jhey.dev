@@ -21,33 +21,6 @@
     --step-7: clamp(3.58rem, calc(2.76rem + 4.13vw), 5.96rem);
     --step-8: clamp(4.30rem, calc(3.20rem + 5.48vw), 7.45rem);
     --step-9: clamp(5.16rem, calc(3.72rem + 7.22vw), 9.31rem);
-
-    /* @link https://utopia.fyi/space/calculator?c=320,16,1.125,1240,20,1.333,9,2,&s=0.75|0.5|0.25,1.5|2|3|4|6|6|6,&g=s,l,xl,12 */
-    --space-3xs: clamp(0.25rem, calc(0.23rem + 0.11vw), 0.31rem);
-    --space-2xs: clamp(0.50rem, calc(0.46rem + 0.22vw), 0.63rem);
-    --space-xs: clamp(0.75rem, calc(0.68rem + 0.33vw), 0.94rem);
-    --space-s: clamp(1.00rem, calc(0.91rem + 0.43vw), 1.25rem);
-    --space-m: clamp(1.50rem, calc(1.37rem + 0.65vw), 1.88rem);
-    --space-l: clamp(2.00rem, calc(1.83rem + 0.87vw), 2.50rem);
-    --space-xl: clamp(3.00rem, calc(2.74rem + 1.30vw), 3.75rem);
-    --space-2xl: clamp(4.00rem, calc(3.65rem + 1.74vw), 5.00rem);
-    --space-3xl: clamp(6.00rem, calc(5.48rem + 2.61vw), 7.50rem);
-    --space-4xl: clamp(6.00rem, calc(5.48rem + 2.61vw), 7.50rem);
-    --space-5xl: clamp(6.00rem, calc(5.48rem + 2.61vw), 7.50rem);
-    --space-6xl: clamp(6.00rem, calc(5.48rem + 2.61vw), 7.50rem);
-
-    /* One-up pairs */
-    --space-3xs-2xs: clamp(0.25rem, calc(0.12rem + 0.65vw), 0.63rem);
-    --space-2xs-xs: clamp(0.50rem, calc(0.35rem + 0.76vw), 0.94rem);
-    --space-xs-s: clamp(0.75rem, calc(0.58rem + 0.87vw), 1.25rem);
-    --space-s-m: clamp(1.00rem, calc(0.70rem + 1.52vw), 1.88rem);
-    --space-m-l: clamp(1.50rem, calc(1.15rem + 1.74vw), 2.50rem);
-    --space-l-xl: clamp(2.00rem, calc(1.39rem + 3.04vw), 3.75rem);
-    --space-xl-2xl: clamp(3.00rem, calc(2.30rem + 3.48vw), 5.00rem);
-    --space-2xl-3xl: clamp(4.00rem, calc(2.78rem + 6.09vw), 7.50rem);
-    --space-3xl-4xl: clamp(6.00rem, calc(5.48rem + 2.61vw), 7.50rem);
-    --space-4xl-5xl: clamp(6.00rem, calc(5.48rem + 2.61vw), 7.50rem);
-    --space-5xl-6xl: clamp(6.00rem, calc(5.48rem + 2.61vw), 7.50rem);
   }
 
   @font-face {
@@ -162,15 +135,6 @@
   h3 {
     font-size: var(--step-2);
   }
-  h4 {
-    font-size: var(--step-1);
-  }
-  h5 {
-    font-size: var(--step-1);
-  }
-  h6 {
-    font-size: var(--step-0);
-  }
 
   /* Set core root defaults */
   html:focus-within {
@@ -226,7 +190,7 @@
 @layer components {
   .banner {
     max-width: 100vw;
-    width: calc(100% + (2 * var(--space-s)));
+    width: calc(100% + (4 * var(--step-1)));
   }
 }
 
