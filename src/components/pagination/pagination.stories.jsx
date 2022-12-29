@@ -12,3 +12,7 @@ export default {
 };
 
 export const Default = () => <Pagination />;
+
+export const OneOfTenPages = () => <Pagination current={1} total={10} prefix="/css" />;
+export const TenOfTenPages = () => <Pagination current={10} total={10} prefix="/html" />;
+export const FiveOfTenPages = () => <Pagination current={5} total={10} prefix="/html" />;

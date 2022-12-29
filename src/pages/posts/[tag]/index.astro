@@ -56,5 +56,6 @@ const { page, tagLabel } = Astro.props
     category={tagLabel}
     currentPage={page.currentPage}
     totalPages={page.lastPage}
+    route={`/${params.tag}`}
   />
 </Layout>

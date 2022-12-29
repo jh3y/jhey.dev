@@ -4,7 +4,7 @@ import LayoutHeader from '../header/header.jsx'
 import Card from '../card/card.jsx'
 import Pagination from '../pagination/pagination.jsx'
 
-const FeedLayout = ({ posts, category = '', currentPage, totalPages }) => {
+const FeedLayout = ({ posts, category = '', currentPage, totalPages, route = "/posts" }) => {
   return (
     <>
       <LayoutHeader />
@@ -19,8 +19,8 @@ const FeedLayout = ({ posts, category = '', currentPage, totalPages }) => {
         {posts.length > 0 && posts.map(CHEEP => (
           <Card {...CHEEP} />
         ))}
+        <Pagination current={currentPage} total={totalPages} prefix={route} />
       </main>
-      <Pagination current={currentPage} total={totalPages} />
     </>
   )
 }
