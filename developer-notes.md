@@ -27,6 +27,8 @@
 - / === posts/
 - post/[slug]
 - Pagination Component
+- Lazy load a banner demo iframe...
+- Fix up and remove spacing properties from Tailwind..
 
 ## TODO::
 - Sort out the pinned posts sorting
@@ -49,7 +51,5 @@
 - Filter details/view
 - Card designs shouldn't be tricky. [Like, Share, Boost]
 - Way to differentiate between ContentBlock in post/article?
-- Fix up and remove spacing properties from Tailwind..
 - Web Mentions?
 - Serverless likes with Xata
-- Lazy load a banner demo iframe...
