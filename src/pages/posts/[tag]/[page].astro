@@ -49,5 +49,6 @@ const params = Astro.params
     category={tagLabel}
     currentPage={page.currentPage}
     totalPages={page.lastPage}
+    route={`/posts/${params.tag}`}
   />
 </Layout>
