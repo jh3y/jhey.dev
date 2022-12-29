@@ -22,6 +22,10 @@
 - ~~Social footer icons [ Mastodon, Twitter, Instagram, etc. from current ]~~
 - Use Hero Icons
 - Fix sizing scales for fonts etc. Need step-0 to be around 14px not --1. Could we use prose plugin for blog posts?
+- posts/[page]
+- posts/[topic]/[page]
+- / === posts/
+- post/[slug]
 
 ## TODO::
 - Sort out the pinned posts sorting
@@ -31,16 +35,13 @@
 - Set up 404
 - Set up SEO for each page inside Sanity
 - Cards
-- Post pagination via URL
-  - posts/[page]
-  - posts/[topic]/[page]
-  - / === posts/
-  - post/[slug]
+- Pages
   - about
   - 404
   - RSS
   - Testimonials
   - Links
+- Pagination Component
 - Export/Import dataset data with Sanity CLI... Why don't ENV variables work with the CLI config???
 - Drop your signature onto your bio/about me tab.
 - Somehow integrate a snapshot of your demos
@@ -49,3 +50,4 @@
 - Card designs shouldn't be tricky. [Like, Share, Boost]
 - Way to differentiate between ContentBlock in post/article?
 - Web Mentions?
+- Serverless likes with Xata

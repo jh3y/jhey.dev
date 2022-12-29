@@ -9,7 +9,7 @@ import LayoutHeader from "../../components/header/header.jsx";
 export async function getStaticPaths() {
   const { SANITY_STUDIO_PROJECT_ID, SANITY_STUDIO_PROJECT_DATASET } = import.meta.env
   // Grab all posts and expand author objects
-  const QUERY = encodeURIComponent('*[_type == "cheep"]{..., author->{"avatar": image.asset->url, ...}}');
+  const QUERY = encodeURIComponent('*[_type == "cheep"||_type == "article"]{..., author->{"avatar": image.asset->url, ...}}');
   // Compose the URL for your project's endpoint and add the query
   const REQUEST_URL = `https://${SANITY_STUDIO_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_STUDIO_PROJECT_DATASET}?query=${QUERY}`;
   // Grab the posts
