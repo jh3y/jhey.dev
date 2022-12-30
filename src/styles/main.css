@@ -60,11 +60,11 @@
     --text-2: var(--gray-3);
     --text-3: var(--gray-5);
     --text-4: var(--gray-6);
-    --surface-1: var(--gray-12);
-    --surface-2: var(--gray-11);
-    --surface-3: var(--gray-10);
-    --surface-4: var(--gray-9);
-    --surface-alpha: hsl(var(--gray-12-hsl) / 65%);
+    --surface-1: var(--gray-10);
+    --surface-2: var(--gray-9);
+    --surface-3: var(--gray-8);
+    --surface-4: var(--gray-7);
+    --surface-alpha: hsl(var(--gray-10-hsl) / 65%);
     color-scheme: dark;
   }
 
@@ -88,7 +88,7 @@
       --surface-2: var(--gray-9);
       --surface-3: var(--gray-8);
       --surface-4: var(--gray-7);
-      --surface-alpha: hsl(var(--gray-12-hsl) / 65%);
+      --surface-alpha: hsl(var(--gray-10-hsl) / 65%);
       color-scheme: dark;
     }
   }
@@ -142,6 +142,10 @@
 
   pre {
     font-size: var(--step--2);
+  }
+
+  *:focus-visible {
+    outline-color: var(--brand-stroke);
   }
 
   a {

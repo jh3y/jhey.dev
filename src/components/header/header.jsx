@@ -90,7 +90,7 @@ const LayoutHeader = ({ character }) => {
             href="/rss"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:no-underline border-transparent hover:border-text-1 border-4 rounded-full text-fluid--1 flex gap-x-1 items-center text-white bg-brand-fill px-3 py-1"
+            className="hover:no-underline border-transparent focus:border-text-1 outline-transparent focus-visible:border-text-1 hover:border-text-1 border-4 rounded-full text-fluid--1 flex gap-x-1 items-center text-white bg-brand-fill px-3 py-1"
           >
             <span className="bold">Follow</span>
             <svg

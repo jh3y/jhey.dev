@@ -48,6 +48,8 @@
   - Links
 - Timeline items [ Article, Newsletter feature, YouTube appearance, Life thing, Random Misc, Smashing person of week, Did a thing, etc. Drop an icon type if needed that can be mapped? ]
 - Filter details/view by categories...
+- Hover to copy code block
+- Skewed gradient stinger from Auto Alex
 
 - Web Mentions?
 - Serverless likes with Xata
