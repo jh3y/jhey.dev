@@ -4,13 +4,34 @@
 
 Naming things is hard, right? "Flippy Snaps" was the best thing I could come up with 😂  I saw an effect like this on TV one evening and made a note to myself to make something similar. Although this isn't something I'd look to drop on a website any time soon, it's a neat little challenge to make. It fits in with my whole stance on "[Playfulness in Code](https://www.smashingmagazine.com/2020/11/playfulness-code-supercharge-fun-learning/)" to learn. Anyway, a few days later, I sat down at the keyboard, and a couple of hours later I had this.
 
-{% tweet "1457830342413455369" %}
+<Tweet id="1457830342413455369"></Tweet>
 
 My final demo is a React app, but we don't need to dig into using React to explain the mechanics of making this work. We will create the React app once we’ve established how to make things work.
+
+Oh. And here's an unordered list:
+
+- Cool
+- Beans
+- For
+
+And how about numbered lists:
+
+1. Cool thing
+2. Awesome thing
+3. Nice thing
+4. Ended things
+
+Check lists?
+
+- [ ] Cool
+- [ ] Cool
+- [x] Cool
+- [ ] Cool
 
 {% aside %}
 Before we get started. It’s worth noting that performance of this demo is affected by the grid size and  the demos are best viewed in Chromium based browsers.
 {% endaside %}
+
 Let's start by creating a grid. Let's say we want a 10 by 10 grid. That's 100 cells (This is why React is handy for something like this). Each cell is going to consist of an element that contains the front and back for a flippable card.
 
 ```html
@@ -101,7 +122,7 @@ Then we need some styles.
 
 The rear of the card gets its position using a combination of rotations via `transform`. But, the interesting part is how we show the image part for each card. In this demo, we are using a custom property to define the URLs for two images. And then we set those as the `background-image` for each card face. But the trick is how we define the `background-size` and `background-position`. Using the custom properties `--x` and `--y` we multiply the value by `-100%`. And then we set the `background-size` to `--grid-size` multiplied by `100%`. This gives displays the correct part of the image for a given card.
 
-{% codepen "jOLQadE" %}
+<CodePen id="YzxBKLP" title="Some pen"></CodePen>
 
 You may have noticed that we had `--current-image` and `--next-image`. But, currently, there is no way to see the next image. For that, we need a way to flip our cards. We can use another custom property for this. Let's introduce a `--count` property and set a `transform` for our cards.
 
@@ -122,8 +143,9 @@ We can set the `--count` property on the containing element. Scoping means all t
 This demo lets you update the `--count` property value so you can see the effect it has.
 
 
-{% codepen "YzxdpEX" %}
+<CodePen id="YzxBKLP" title="Some pen"></CodePen>
 
+## What next?
 
 At this point, you could wrap it up there and set a simple click handler that increments `--count` by one on each click.
 
@@ -137,13 +159,13 @@ SNAP.addEventListener('click', UPDATE)
 Remove the `grid-gap` and you'd get this. Click the snap to flip it.
 
 
-{% codepen "YzxdpOq" %}
+<CodePen id="YzxBKLP" title="Some pen"></CodePen>
 
 ----------
 
 Now we have the basic mechanics worked out, it's time to turn this into a React app. There's a bit to break down here.
 
-```javascript
+```jsx
 const App = () => {
   const [snaps, setSnaps] = useState([])
   const [disabled, setDisabled] = useState(true)
@@ -211,6 +233,8 @@ useEffect(() => {
   setup()
 }, [])
 ```
+
+## Cool Beans
 
 If there aren't two snaps to show, then we show a "Loading..." message.
 
@@ -296,7 +320,7 @@ const FlippySnap = ({ disabled, gridSize, onFlip, snaps }) => {
 The component handles rendering all the cards and setting the inline custom properties. The `onClick` handler for the container increments the `count`. It also triggers the `onFlip` callback. If the state is currently `disabled`, it does nothing. That flip of the `disabled` state and grabbing a new snap triggers the flip when the component re-renders.
 
 
-{% codepen "oNeJYKx" %}
+<CodePen id="YzxBKLP" title="Some pen"></CodePen>
 
 ----------
 
@@ -379,7 +403,7 @@ As for the rest of the animation, we are using a flip duration of `0.2` seconds.
 
 Putting it all together gives us this:
 
-{% codepen "BadvpVq" %}
+<CodePen id="YzxBKLP" title="Some pen"></CodePen>
 
 Those that like to push things a bit might have noticed that we can still "spam" click the snap. And that's because we don't disable `FlippySnap` until GreenSock has completed. To fix this, we can use an internal ref that we toggle at the start and end of using GreenSock.
 
@@ -415,7 +439,7 @@ const flip = e => {
 
 And now we can no longer spam click our `FlippySnap`!
 
-{% codepen "JjywEqJ" %}
+<CodePen id="YzxBKLP" title="Some pen"></CodePen>
 
 ----------
 
@@ -497,7 +521,7 @@ And we can apply this with the `onPointerLeave` prop.
 
 Put that all together and we get something like this. Try moving your pointer over it.
 
-{% codepen "ZEJVgxL" %}
+<CodePen id="YzxBKLP" title="Some pen"></CodePen>
 
 What next? How about a loading indicator so we know when we our `App` is grabbing the next image? We can render a loading spinner when our `FlippySnap` is `disabled`.
 
@@ -530,7 +554,7 @@ The styles for which could make a rotating circle.
 
 And this gives us a loading indicator when grabbing a new image.
 
-{% codepen "YzxBKLP" %}
+<CodePen id="YzxBKLP" title="Some pen"></CodePen>
 
 ## That's it!
 
@@ -538,6 +562,6 @@ That's how we can create a `FlippySnap` with React and GreenSock. It's fun to ma
 
 I took it a little further and added a slight parallax effect along with some audio. You can also configure the grid size! Big grids affect performance though. It’s also worth noting that this demo works best in Chromium based browsers. Where would you take it next? I'd like to see if I can recreate it with ThreeJS next. That’ll address the performance 😅
 
-{% codepen "JjyxjMX" %}
+<CodePen id="JjyxjMX" title="Some pen"></CodePen>
 
 __Stay Awesome! ʕ •ᴥ•ʔ__

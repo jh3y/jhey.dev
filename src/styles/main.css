@@ -68,6 +68,11 @@
     color-scheme: dark;
   }
 
+  html {
+    accent-color: var(--brand-fill);
+    background: var(--surface-1);
+  }
+
   body {
     min-height: 100vh;
   }
