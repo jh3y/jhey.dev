@@ -6,6 +6,9 @@ import FeedLayout from '../../../components/feed-layout/feed-layout.jsx'
 export async function getStaticPaths({ paginate }) {
   const { SANITY_STUDIO_PROJECT_ID, SANITY_STUDIO_PROJECT_DATASET, PAGINATION_SIZE } = import.meta.env
   const pageSize = parseInt(PAGINATION_SIZE, 10)
+  
+  const CONFIG_QUERY = encodeURIComponent('*[_type == "config"]{...,character->{"avatar": image.asset->url, ...}}');
+  const CONFIG_URL = `https://${SANITY_STUDIO_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_STUDIO_PROJECT_DATASET}?query=${CONFIG_QUERY}`;
   const TAG_QUERY = encodeURIComponent('*[_type == "tag"]')
   const TAG_URL = `https://${SANITY_STUDIO_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_STUDIO_PROJECT_DATASET}?query=${TAG_QUERY}`;
   const CHEEP_QUERY = encodeURIComponent('*[_type == "cheep"]{..., tags[]->{...},author->{"avatar": image.asset->url, ...}}');
@@ -13,6 +16,7 @@ export async function getStaticPaths({ paginate }) {
 
   const allTags = await (await (await fetch(TAG_URL)).json()).result
   const allCheeps = await (await (await fetch(CHEEP_URL)).json()).result
+  const siteConfig = await (await (await fetch(CONFIG_URL)).json()).result
 
   return allTags.map((tag) => {
     const tagName = tag.title
@@ -27,6 +31,7 @@ export async function getStaticPaths({ paginate }) {
     return paginate(filteredCheeps, {
       params: { tag: tag.title.toLowerCase() },
       props: {
+        character: siteConfig[0].character,
         tagLabel: tag.title,
       },
       pageSize
@@ -35,7 +40,7 @@ export async function getStaticPaths({ paginate }) {
 }
 
 // Return the first set of cheeps via paginate...
-const { page, tagLabel } = Astro.props
+const { character, page, tagLabel } = Astro.props
 const params = Astro.params
 
 ---
@@ -45,6 +50,7 @@ const params = Astro.params
   oggradient="4"
 >
   <FeedLayout
+    character={character}
     posts={page.data}
     category={tagLabel}
     currentPage={page.currentPage}

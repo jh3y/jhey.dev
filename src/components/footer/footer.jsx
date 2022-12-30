@@ -48,7 +48,7 @@ const Footer = () => {
             href="https://instagram.com/jh3yyyy"
             rel="noopener noreferrer"
             target="_blank"
-            title="Come follow me on Mastodon!"
+            title="Come follow me on Instagram!"
           >
             <svg fill="currentColor" role="img" className="w-5 aspect-square" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <title>Instagram icon</title>

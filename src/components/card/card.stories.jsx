@@ -44,10 +44,13 @@ const cheep = `
 const DEFAULT_CARD = {
   author: {
     avatar: '/media/image/headshot--small.jpeg',
+    displayName: "Jhey ✨",
+    handle: "jh3yy",
   },
   slug: {
     current: '#'
   },
+  publishedAt: '2022-12-29T02:05:04.583Z',
   cheep,
 }
 

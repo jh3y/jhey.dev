@@ -7,10 +7,11 @@ const Pagination = ({ current, total, prefix = '/posts', splice = 5 }) => {
       <h2 className="sr-only" id="pagination-header">
         Pagination links
       </h2>
-      <ul className="flex items-center justify-center">
+      <ul className="flex items-center justify-center gap-x-2">
         <li>
           {current > 1 && (
             <a
+              title="Previous page"
               href={`${prefix}/${current - 1}`}
               className="w-10 h-10 grid place-items-center rounded-md hover:bg-surface-4"
             >
@@ -71,6 +72,7 @@ const Pagination = ({ current, total, prefix = '/posts', splice = 5 }) => {
         <li>
           {current < total && (
             <a
+              title="Next page"
               href={`${prefix}/${current + 1}`}
               className="w-10 h-10 grid place-items-center rounded-md hover:bg-surface-4"
             >
