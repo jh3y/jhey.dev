@@ -29,6 +29,7 @@
 - Pagination Component
 - Lazy load a banner demo iframe...
 - Fix up and remove spacing properties from Tailwind..
+- Way to differentiate between ContentBlock in post/article? Pass a "type" prop into the Card and use exception objects for the components map
 
 ## TODO::
 - Sort out the pinned posts sorting
@@ -45,7 +46,6 @@
 - Export/Import dataset data with Sanity CLI... Why don't ENV variables work with the CLI config???
 - Timeline items [ Article, Newsletter feature, YouTube appearance, Life thing, Random Misc, Smashing person of week, Did a thing, etc. Drop an icon type if needed that can be mapped? ]
 - Filter details/view by categories...
-- Way to differentiate between ContentBlock in post/article?
 
 - Web Mentions?
 - Serverless likes with Xata

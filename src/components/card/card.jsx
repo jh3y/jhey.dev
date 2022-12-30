@@ -4,13 +4,13 @@ import ContentBlock from '../content-block/content-block'
 
 const Card = (props) => {
   return (
-    <article data-cheep-id={props._id} className="card grid-cols-[auto_1fr] gap-x-2 grid p-2 rounded-lg w-full">
+    <article data-cheep-id={props._id} className="card grid-cols-[auto_1fr] gap-x-2 grid p-2 rounded-lg w-full hover:bg-surface-2">
       <img
         src={`${props.author.avatar}?h=96`}
         alt=""
         className="card__author rounded-full w-10 h-10"
       />
-      <div className="card__content grid gap-y-1">
+      <div className="card__content grid gap-y-1 leading-tight">
         <div className="flex gap-x-2 text-fluid--1 items-center text-text-4">
           <span className="bold text-text-1">{props.author.displayName}</span>
           <span>•</span>
@@ -20,7 +20,7 @@ const Card = (props) => {
             month: 'short',
           }).format(new Date(props.publishedAt))}`}</time>
         </div>
-        <ContentBlock>{props.cheep}</ContentBlock>
+        <ContentBlock type="card">{props.cheep}</ContentBlock>
         <div className="card__actions flex justify-end items-center">
           <a
             title="Permalink"

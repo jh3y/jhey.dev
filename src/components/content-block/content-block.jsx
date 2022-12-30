@@ -8,7 +8,7 @@ import nightOwl from 'react-syntax-highlighter/dist/cjs/styles/prism/night-owl'
 const remarkPlugins = [[remarkGfm, { singleTilde: false }]]
 const rehypePlugins = [rehypeRaw]
 
-const components = {
+const defaultComponents = {
   code({ node, inline, className, children, ...props }) {
     const match = /language-(\w+)/.exec(className || '')
     return !inline && match ? (
@@ -54,7 +54,27 @@ const components = {
   },
 }
 
-const ContentBlock = ({ type = 'card', children }) => {
+const cardComponents = {
+  img({ node, ...props }) {
+    if (props.src.endsWith('.mp4')) {
+      return (
+        <video className="rounded-lg" {...props} controls loop muted></video>
+      )
+    }
+    if (props.src.endsWith('.mp3')) {
+      return (
+        <audio className="rounded-lg" {...props} controls loop></audio>
+      )
+    }
+    return (
+      <img className="rounded-lg" {...props}/>
+    )
+  }
+}
+
+const ContentBlock = ({ type, children }) => {
+  const components = {...defaultComponents}
+  if (type === 'card') components.img = cardComponents.img
   return (
     <Markdown
       remarkPlugins={remarkPlugins}

@@ -126,7 +126,9 @@ const LayoutHeader = ({ character }) => {
         )}
       </h1>
       {/* Blurb */}
-      <ContentBlock>{character.bio}</ContentBlock>
+      <div className="leading-tight">
+        <ContentBlock>{character.bio}</ContentBlock>
+      </div>
       {/* Details */}
       <span className="flex gap-x-4 items-center text-fluid--1 flex-wrap text-text-4">
         {Object.keys(DEETS).map((key) => {
