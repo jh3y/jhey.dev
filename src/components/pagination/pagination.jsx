@@ -3,7 +3,7 @@ import React from 'react'
 const Pagination = ({ current, total, prefix = '/posts', splice = 5 }) => {
   if (total <= 1 || !current || !total) return null
   return (
-    <nav aria-labelledby="pagination-header" className="py-8">
+    <nav aria-labelledby="pagination-header" className="mt-8">
       <h2 className="sr-only" id="pagination-header">
         Pagination links
       </h2>
@@ -20,7 +20,7 @@ const Pagination = ({ current, total, prefix = '/posts', splice = 5 }) => {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                class="w-6 h-6"
+                className="w-6 h-6"
               >
                 <path
                   fillRule="evenodd"
@@ -37,7 +37,7 @@ const Pagination = ({ current, total, prefix = '/posts', splice = 5 }) => {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                class="w-6 h-6"
+                className="w-6 h-6"
               >
                 <path
                   fillRule="evenodd"
@@ -81,7 +81,7 @@ const Pagination = ({ current, total, prefix = '/posts', splice = 5 }) => {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                class="w-6 h-6"
+                className="w-6 h-6"
               >
                 <path
                   fillRule="evenodd"
@@ -98,7 +98,7 @@ const Pagination = ({ current, total, prefix = '/posts', splice = 5 }) => {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                class="w-6 h-6"
+                className="w-6 h-6"
               >
                 <path
                   fillRule="evenodd"

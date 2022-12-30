@@ -4,7 +4,7 @@ import ContentBlock from '../content-block/content-block'
 
 const Card = (props) => {
   return (
-    <article className="card grid-cols-[auto_1fr] gap-x-2 grid p-2 rounded-lg w-full">
+    <article data-cheep-id={props._id} className="card grid-cols-[auto_1fr] gap-x-2 grid p-2 rounded-lg w-full">
       <img
         src={`${props.author.avatar}?h=96`}
         alt=""
@@ -14,11 +14,11 @@ const Card = (props) => {
         <div className="flex gap-x-2 text-fluid--1 items-center text-text-4">
           <span className="bold text-text-1">{props.author.displayName}</span>
           <span>•</span>
-          <span className="text-fluid--2">{`${new Intl.DateTimeFormat('en-GB', {
+          <time className="text-fluid--2">{`${new Intl.DateTimeFormat('en-GB', {
             year: 'numeric',
             day: 'numeric',
             month: 'short',
-          }).format(new Date(props.publishedAt))}`}</span>
+          }).format(new Date(props.publishedAt))}`}</time>
         </div>
         <ContentBlock>{props.cheep}</ContentBlock>
         <div className="card__actions flex justify-end items-center">

@@ -18,7 +18,7 @@ const FeedLayout = ({ character, posts, category = '', currentPage, totalPages, 
         )}
         {posts.length > 0 && posts.map(CHEEP => {
           return (
-            <Card {...CHEEP} />
+            <Card key={CHEEP._id} {...CHEEP} />
           )
         })}
         <Pagination current={currentPage} total={totalPages} prefix={route} />

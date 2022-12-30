@@ -32,24 +32,20 @@
 
 ## TODO::
 - Sort out the pinned posts sorting
-- Create links page
-- Testimonial tabs
-- Set up RSS
-- Set up 404
+- Tabs
 - Set up SEO for each page inside Sanity
 - Cards
 - Pages
-  - about
+  - RSS
+  - about - Include sig and some way to show demos?
   - 404
   - RSS
   - Testimonials
   - Links
 - Export/Import dataset data with Sanity CLI... Why don't ENV variables work with the CLI config???
-- Drop your signature onto your bio/about me tab.
-- Somehow integrate a snapshot of your demos
 - Timeline items [ Article, Newsletter feature, YouTube appearance, Life thing, Random Misc, Smashing person of week, Did a thing, etc. Drop an icon type if needed that can be mapped? ]
-- Filter details/view
-- Card designs shouldn't be tricky. [Like, Share, Boost]
+- Filter details/view by categories...
 - Way to differentiate between ContentBlock in post/article?
+
 - Web Mentions?
 - Serverless likes with Xata
