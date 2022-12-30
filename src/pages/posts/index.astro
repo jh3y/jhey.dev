@@ -13,7 +13,7 @@ const CONFIG_URL = `https://${SANITY_STUDIO_PROJECT_ID}.api.sanity.io/v2021-10-2
 const siteConfig = await (await (await fetch(CONFIG_URL)).json()).result
 
 const page = {
-  character: siteConfig[0].character
+  character: siteConfig[0].character,
   data: allCheeps.slice(0, pageSize),
   currentPage: 1,
   lastPage: Math.ceil(allCheeps.length / pageSize),
