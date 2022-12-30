@@ -1,5 +1,5 @@
 import React from 'react'
-
+import TestMarkdown from './test-markdown.md'
 import ContentBlock from './content-block.jsx'
 
 export default {
@@ -11,7 +11,7 @@ export default {
   component: ContentBlock,
   decorators: [
     (Story) => (
-      <div className="w-main-content max-w-full mv-0 mx-auto grid gap-fluid-space-0 px-fluid-space-0">
+      <div className="w-main-content max-w-full mv-0 mx-auto px-2">
         <Story />
       </div>
     ),
@@ -22,8 +22,6 @@ export const Default = () => <ContentBlock />
 
 const BlockOfText = `
   # Hello World!
-
-  ---
 
   Did you ever wonder what happens when you put a [link](#) in your text?
 `
@@ -49,7 +47,7 @@ const BlockOfCustom = `
 
   Well. Here it is.
 
-  <CodePen/>
+  <CodePen id="bGoNOvN" title="Generative Christmas trees!"/>
 `
 export const CustomBlocks = () => <ContentBlock>{BlockOfCustom}</ContentBlock>
 
@@ -102,7 +100,7 @@ export const SyntaxBlocks = () => <ContentBlock>{BlockOfSyntax}</ContentBlock>
 const BlockOfMedia = `
   ## Media Blocks!
   ---
-  Wondering how \`video\` and \'audio\' might look? Here you go.
+  Wondering how \`video\` and \`audio\` might look? Here you go.
 
   ## Video
   ![Test Video](/media/video/test-video.mp4)
@@ -111,3 +109,5 @@ const BlockOfMedia = `
   ![Test Audio](/media/audio/test-audio.mp3)
 `
 export const MediaBlocks = () => <ContentBlock>{BlockOfMedia}</ContentBlock>
+
+export const BlogPost = () => <ContentBlock type="article">{TestMarkdown}</ContentBlock>

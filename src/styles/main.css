@@ -37,26 +37,7 @@
   }
 
   /* Reset stuff */
-  html {
-    --brand-fill: hsl(320 100% 40%);
-    --brand-stroke: hsl(320 100% 40%);
-    --text-1: var(--gray-12);
-    --text-2: var(--gray-10);
-    --text-3: var(--gray-8);
-    --text-4: var(--gray-7);
-    --surface-1: var(--gray-0);
-    --surface-2: var(--gray-1);
-    --surface-3: var(--gray-2);
-    --surface-4: var(--gray-3);
-    --surface-alpha: hsl(var(--gray-0-hsl) / 65%);
-    color-scheme: light;
-    accent-color: var(--brand, var(--link));
-    background-color: var(--surface-1);
-    caret-color: var(--brand, var(--link));
-    color: var(--text-1);
-    font-size: var(--step-0);
-  }
-
+  html,
   [data-theme=light] {
     --brand-fill: hsl(320 100% 40%);
     --brand-stroke: hsl(320 100% 40%);
@@ -103,10 +84,10 @@
       --text-2: var(--gray-3);
       --text-3: var(--gray-5);
       --text-4: var(--gray-6);
-      --surface-1: var(--gray-12);
-      --surface-2: var(--gray-11);
-      --surface-3: var(--gray-10);
-      --surface-4: var(--gray-9);
+      --surface-1: var(--gray-10);
+      --surface-2: var(--gray-9);
+      --surface-3: var(--gray-8);
+      --surface-4: var(--gray-7);
       --surface-alpha: hsl(var(--gray-12-hsl) / 65%);
       color-scheme: dark;
     }
@@ -122,7 +103,7 @@
   /* TODO: Link styles: :visited, :hover, :active, etc. */
 
   h1 {
-    font-size: var(--step-4);
+    font-size: var(--step-5);
     line-height: 1;
   }
   h2 {
@@ -161,14 +142,12 @@
 
   pre {
     font-size: var(--step--2);
-    max-width: 100%;
-    overflow: auto;
   }
 
   a {
     color: var(--brand-stroke);
     text-decoration-thickness: 4px;
-    text-underline-offset: 4px;
+    text-underline-offset: 2px;
     font-weight: bold;
     font-variation-settings: 'wght' 700;
   }
@@ -186,9 +165,13 @@
 
 @layer components {
   .banner {
-    max-width: 100vw;
     width: calc(100% + (4 * var(--step-1)));
   }
+
+  .bleed {
+    width: calc(100% + (2 * var(--step-1)));
+  }
+
   .google {
     background: linear-gradient(90deg, #ea4335 0 25%, #4285f4 25% 50%, #34a853 50% 75%, #fbbc05 75% 100%);
   }
@@ -197,9 +180,6 @@
 @layer utilities {
   .bold {
     font-variation-settings: 'wght' 700;
-  }
-  .thin {
-    font-variation-settings: 'wght' 300;
   }
   .transform-box-fill {
     transform-box: fill-box;

@@ -22,7 +22,7 @@ export default {
 const cheep = `
   # Hello World
 
-  Lorem ipsum dolar amet. Jus' sitting in [Phoenix]() airport waiting for the captain...
+  Lorem ipsum dolar amet. Jus' sitting in [Phoenix]() airport waiting for the captain... Hope he gets here soon. I'm getting kinda hungry.
 
   <img className="rounded-lg aspect-video object-cover" alt="Jhey time" src="/media/image/stage-walk.jpeg"/>
 

@@ -17,13 +17,10 @@ for (let i = -2; i < 10; i++) {
 
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
   theme: {
     extend: {
       width: {
-        'main-content': '56ch',
+        'main-content': '58ch',
       },
       minHeight,
       spacing,
