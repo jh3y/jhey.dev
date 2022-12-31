@@ -23,7 +23,7 @@
     --step-9: clamp(5.16rem, calc(3.72rem + 7.22vw), 9.31rem);
   }
 
-  @font-face {
+  /* @font-face {
     font-family: "Inter";
     src: url("/fonts/Inter/static/Inter-Regular.ttf") format("truetype");
     font-display: swap;
@@ -41,7 +41,7 @@
     src: url("/fonts/JetBrainsMono/fonts/ttf/JetBrainsMono-Bold.ttf")
       format("truetype");
     font-display: swap;
-  }
+  } */
 
   /* Reset stuff */
   html,

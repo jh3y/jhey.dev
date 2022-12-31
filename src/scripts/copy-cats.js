@@ -1,8 +1,6 @@
 const setUpCopyCats = () => {
   const COPY_CATS = document.querySelectorAll('[data-code-copy="true"]')
 
-  console.info({ COPY_CATS })
-
   const COPY = e => {
     const el = document.createElement('textarea')
     // Grab the contents
@@ -21,4 +19,4 @@ const setUpCopyCats = () => {
   })
 }
 
-document.addEventListener('DOMContentLoaded', setUpCopyCats)
+setUpCopyCats()

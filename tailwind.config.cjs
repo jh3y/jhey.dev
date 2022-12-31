@@ -25,10 +25,10 @@ module.exports = {
       minHeight,
       spacing,
       fontSize,
-      fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
-        mono: ['JetBrains Mono', ...defaultTheme.fontFamily.mono],
-      },
+      // fontFamily: {
+      //   sans: ['Inter', ...defaultTheme.fontFamily.sans],
+      //   mono: ['JetBrains Mono', ...defaultTheme.fontFamily.mono],
+      // },
       colors: {
         'brand-fill': 'var(--brand-fill)',
         'brand-stroke': 'var(--brand-stroke)',

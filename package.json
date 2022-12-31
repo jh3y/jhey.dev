@@ -11,6 +11,7 @@
     "astro": "astro",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
+    "deploy:prod": "yarn build && ntl deploy --prod",
     "fix-up-look-sharp": "eslint --resolve-plugins-relative-to src/**/*.jsx && prettier src/**/*.{astro,css,jsx}"
   },
   "dependencies": {
