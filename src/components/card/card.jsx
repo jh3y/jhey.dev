@@ -4,7 +4,7 @@ import ContentBlock from '../content-block/content-block'
 
 const Card = (props) => {
   return (
-    <article data-cheep-id={props._id} className="card grid-cols-[auto_1fr] gap-x-2 grid p-4 rounded-lg w-full hover:bg-surface-2">
+    <article data-cheep-id={props._id} className={`card grid-cols-[auto_1fr] gap-x-2 grid p-4 rounded-lg w-full ${props.permacard ? 'bg-surface-2 shadow-lg border border-surface-3' : 'hover:bg-surface-2'}`}>
       <img
         src={`${props.author.avatar}?h=96`}
         alt=""
@@ -22,7 +22,7 @@ const Card = (props) => {
         </div>
         <ContentBlock type="card">{props.cheep}</ContentBlock>
         <div className="card__actions flex justify-end items-center">
-          <a
+          {props.slug.current && <a
             title="Permalink"
             className="w-10 h-10 grid place-items-center hover:bg-surface-4 rounded-md text-text-2 hover:text-brand-stroke"
             href={`/post/${props.slug.current}`}
@@ -42,7 +42,7 @@ const Card = (props) => {
                 clipRule="evenodd"
               />
             </svg>
-          </a>
+          </a>}
           <button title="Like post" disabled className="w-10 h-10 grid place-items-center hover:bg-surface-4 rounded-md text-text-2 hover:text-brand-stroke">
             <span className="sr-only">Like</span>
             <svg

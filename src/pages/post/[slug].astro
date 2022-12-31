@@ -28,11 +28,11 @@ const { slug } = Astro.params
 const { title, post, body } = Astro.props
 
 ---
-
 <Layout
-  title="Jhey Tompkins"
-  ogtitle="The home of Jhey Tompkins"
-  oggradient="8"
+  title={`${title} – jhey.dev`}
+  ogtitle={title}
+  flexLayout={Astro.props._type === 'cheep'}
+  oggradient={Math.floor(Math.random() * 12) + 1}
 >
-  <PostLayout {...Astro.props}/>
+  <PostLayout {...Astro.props} {...Astro.params} />
 </Layout>

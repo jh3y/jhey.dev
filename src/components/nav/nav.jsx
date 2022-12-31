@@ -4,7 +4,7 @@ import ThemeToggle from '../theme-toggle/theme-toggle'
 const Nav = () => (
   <nav className="flex justify-between bg-surface-alpha sticky top-0 left-0 z-10 backdrop-blur p-2">
     <a className="w-11 h-11 text-text-1 grid place-items-center hover:bg-surface-4 rounded-md" href="/">
-      <svg className="w-3/4" viewBox="0 0 969 955" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg className="w-9" viewBox="0 0 969 955" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="161.191" cy="320.191" r="133.191" stroke="currentColor" strokeWidth="20"/>
         <circle cx="806.809" cy="320.191" r="133.191" stroke="currentColor" strokeWidth="20"/>
         <circle cx="695.019" cy="587.733" r="31.4016" fill="currentColor"/>

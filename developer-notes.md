@@ -45,12 +45,12 @@
 - Pages
   - about - Include sig and some way to show demos?
   - 404
+  - Guestbook
   - RSS
   - Testimonials
   - Links
 - Timeline items [ Article, Newsletter feature, YouTube appearance, Life thing, Random Misc, Smashing person of week, Did a thing, etc. Drop an icon type if needed that can be mapped? ]
 - Skewed gradient stinger from Auto Alex
-- Hover to copy code block
 
 - Roll your own image optimisation with Sharp like you did on jhey.dev
 

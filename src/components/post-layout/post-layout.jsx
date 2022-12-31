@@ -1,18 +1,21 @@
 import React from "react"
 import ContentBlock from '../content-block/content-block.jsx'
+import Card from '../card/card.jsx'
 
-const PostLayout = (props) => {
-  if (props._type === 'article') {
-    return (
-      <main className="w-[66ch] max-w-full mv-0 mx-auto px-4 leading-[1.5]">
+const PostLayout = ({ _type: type, title, body, cheep, ...props}) => {
+  return (
+    <main className={`w-${type === 'article' ? '[66ch] px-4' : 'main-content flex items-center grow'} max-w-full mv-0 mx-auto leading-[1.5]`}>
+      {type === 'article' && <h1 className="font-bold">{title}</h1>}
+      {type === 'article' && (
         <div className="text-fluid-0">
-          <h1 className="font-bold">{props.title}</h1>
-          <ContentBlock type="article">{props.body}</ContentBlock>
+          <ContentBlock type={type}>{body}</ContentBlock>
         </div>
-      </main>
-    )
-  }
-  return <h1>Render a Post instead</h1>
+      )}
+      {type === 'cheep' && (
+        <Card {...props} cheep={cheep} permacard={true} />
+      )}
+    </main>
+  )
 }
 
 export default PostLayout

@@ -10,7 +10,7 @@ const ThemeToggle = () => {
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
-            className="w-1/2 aspect-square"
+            className="w-6 aspect-square"
           >
             {/* Monitor */}
             <g className="theme-toggle__monitor">

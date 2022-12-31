@@ -4,7 +4,7 @@ import Footer from '../components/footer/footer.jsx'
 
 import '../styles/main.css';
 
-const { title, ogtitle, oggradient } = Astro.props;
+const { title, ogtitle, oggradient, flexLayout } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -45,10 +45,21 @@ const { title, ogtitle, oggradient } = Astro.props;
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@jh3yy" />
   </head>
-  <Nav />
   <body>
-    <slot />
-    <Footer />
+    {flexLayout === true && (
+      <div class="flex flex-col min-h-screen">
+        <Nav />
+        <slot />
+        <Footer />
+      </div>
+    )}
+    {!flexLayout && (
+      <Fragment>
+        <Nav />
+        <slot />
+        <Footer />
+      </Fragment>
+    )}
   </body>
 </html>
 <script>

@@ -71,20 +71,20 @@ const defaultComponents = {
   li({ node, className, children, ...props }) {
     if (className === 'task-list-item') {
       return (
-        <li className="flex gap-x-2" {...props}>
+        <li className="flex gap-x-2">
           {children}
         </li>
       )
     }
     return (
-      <li className={className ? className : 'pl-1'} {...props}>
+      <li className={className ? className : 'pl-1'}>
         {children}
       </li>
     )
   },
   ol({ node, children, ...props }) {
     return (
-      <ol className="list-decimal pl-8 mb-6" {...props}>
+      <ol className="list-decimal pl-8 mb-6">
         {children}
       </ol>
     )
@@ -111,7 +111,6 @@ const defaultComponents = {
     if (className === 'contains-task-list') {
       return (
         <ul
-          {...props}
           className="pl-3 mb-6"
         >
         {children}
@@ -120,7 +119,6 @@ const defaultComponents = {
     }
     return (
       <ul
-        {...props}
         className={`${className ? className : 'list-disc pl-8 mb-6'}`}
       >
         {children}
@@ -333,7 +331,7 @@ const bioComponents = {
 
 const ContentBlock = ({ type, children }) => {
   let components = { ...defaultComponents }
-  if (type === 'card') components = { ...defaultComponents, ...cardComponents }
+  if (type === 'card' || type === 'cheep') components = { ...defaultComponents, ...cardComponents }
   if (type === 'bio') components = { ...defaultComponents, ...bioComponents }
   if (type === 'article')
     components = { ...defaultComponents, ...articleComponents }
