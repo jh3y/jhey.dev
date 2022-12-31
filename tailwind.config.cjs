@@ -20,7 +20,7 @@ module.exports = {
   theme: {
     extend: {
       width: {
-        'main-content': '58ch',
+        'main-content': '60ch',
       },
       minHeight,
       spacing,

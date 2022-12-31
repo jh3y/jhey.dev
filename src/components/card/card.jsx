@@ -4,7 +4,7 @@ import ContentBlock from '../content-block/content-block'
 
 const Card = (props) => {
   return (
-    <article data-cheep-id={props._id} className="card grid-cols-[auto_1fr] gap-x-2 grid p-2 rounded-lg w-full hover:bg-surface-2">
+    <article data-cheep-id={props._id} className="card grid-cols-[auto_1fr] gap-x-2 grid p-4 rounded-lg w-full hover:bg-surface-2">
       <img
         src={`${props.author.avatar}?h=96`}
         alt=""
@@ -12,7 +12,7 @@ const Card = (props) => {
       />
       <div className="card__content grid gap-y-1 leading-tight">
         <div className="flex gap-x-2 text-fluid--1 items-center text-text-4">
-          <span className="bold text-text-1">{props.author.displayName}</span>
+          <span className="font-bold text-text-1">{props.author.displayName}</span>
           <span>•</span>
           <time className="text-fluid--2">{`${new Intl.DateTimeFormat('en-GB', {
             year: 'numeric',
@@ -34,7 +34,7 @@ const Card = (props) => {
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              className="w-4 h-4"
+              className="w-5 h-5"
             >
               <path
                 fillRule="evenodd"
@@ -51,7 +51,7 @@ const Card = (props) => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-4 h-4"
+              className="w-5 h-5"
             >
               <path
                 strokeLinecap="round"

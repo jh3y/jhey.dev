@@ -11,7 +11,7 @@ export default {
   component: ContentBlock,
   decorators: [
     (Story) => (
-      <div className="w-main-content max-w-full mv-0 mx-auto px-2 leading-[1.5]">
+      <div className="w-[66ch] max-w-full mv-0 mx-auto px-4 leading-[1.5]">
         <div className="text-fluid-0">
           <Story />
         </div>

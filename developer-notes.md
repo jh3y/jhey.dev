@@ -32,6 +32,9 @@
 - Way to differentiate between ContentBlock in post/article? Pass a "type" prop into the Card and use exception objects for the components map
 - Dropping an embed iframe into CodePen and then styling that as a private pen and linking it via the theme. Grab the theme ID from the embed generator
 - Export/Import dataset data with Sanity CLI... Why don't ENV variables work with the CLI config???
+- Filter details/view by categories... [Backburner... Think about where this could even fit in?]
+- Fix the horizontal padding...
+- Fix the font weights being pulled
 
 ## TODO::
 - Sort out the pinned posts sorting
@@ -40,16 +43,14 @@
 - Deploy CMS
 - Cards
 - Pages
-  - RSS
   - about - Include sig and some way to show demos?
   - 404
   - RSS
   - Testimonials
   - Links
 - Timeline items [ Article, Newsletter feature, YouTube appearance, Life thing, Random Misc, Smashing person of week, Did a thing, etc. Drop an icon type if needed that can be mapped? ]
-- Filter details/view by categories...
-- Hover to copy code block
 - Skewed gradient stinger from Auto Alex
+- Hover to copy code block
 
 - Web Mentions?
 - Serverless likes with Xata

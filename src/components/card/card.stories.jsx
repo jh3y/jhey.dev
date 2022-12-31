@@ -11,7 +11,7 @@ export default {
   component: Card,
   decorators: [
     (Story) => (
-      <div className="w-main-content max-w-full mv-0 mx-auto grid gap-fluid-space-0 px-fluid-space-0">
+      <div className="w-main-content max-w-full mv-0 mx-auto grid gap-fluid-space-0 px-4">
         <Story />
       </div>
     ),
@@ -20,8 +20,6 @@ export default {
 
 
 const cheep = `
-  # Hello World
-
   Lorem ipsum dolar amet. Jus' sitting in [Phoenix]() airport waiting for the captain... Hope he gets here soon. I'm getting kinda hungry.
 
   <img className="rounded-lg aspect-video object-cover" alt="Jhey time" src="/media/image/stage-walk.jpeg"/>

@@ -22,7 +22,7 @@ const DEETS = {
     text: () => (
       <span>
         DevRel @{' '}
-        <span className="google text-transparent bg-clip-text bold">
+        <span className="google text-transparent bg-clip-text font-bold">
           Google
         </span>
       </span>
@@ -40,7 +40,7 @@ const DEETS = {
         <path d="M11.603 7.963a.75.75 0 00-.977 1.138 2.5 2.5 0 01.142 3.667l-3 3a2.5 2.5 0 01-3.536-3.536l1.225-1.224a.75.75 0 00-1.061-1.06l-1.224 1.224a4 4 0 105.656 5.656l3-3a4 4 0 00-.225-5.865z" />
       </svg>
     ),
-    text: () => <a href="/links">/links</a>,
+    text: () => <a className="font-bold" href="/links">/links</a>,
   },
   birthday: {
     icon: () => (
@@ -77,7 +77,7 @@ const DEETS = {
 
 const LayoutHeader = ({ character }) => {
   return (
-    <header className="w-main-content max-w-full mv-0 mx-auto grid gap-2 px-2">
+    <header className="w-main-content max-w-full mv-0 mx-auto grid gap-2 px-4">
       <div>
         <Banner />
         <div className="relative flex justify-end items-center min-h-half-avatar py-2">
@@ -92,7 +92,7 @@ const LayoutHeader = ({ character }) => {
             rel="noopener noreferrer"
             className="hover:no-underline border-transparent focus:border-text-1 outline-transparent focus-visible:border-text-1 hover:border-text-1 border-4 rounded-full text-fluid--1 flex gap-x-1 items-center text-white bg-brand-fill px-3 py-1"
           >
-            <span className="bold">Follow</span>
+            <span className="font-bold">Follow</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
@@ -106,7 +106,7 @@ const LayoutHeader = ({ character }) => {
         </div>
       </div>
       {/* Actions Row [ Avatar + Follow RSS Button] */}
-      <h1 className="text-fluid-3 flex gap-x-2 items-center">
+      <h1 className="text-fluid-3 flex gap-x-2 items-center font-bold">
         {character.name}
         {character.verified && (
           <span className="w-6 aspect-square inline-block">
@@ -127,7 +127,7 @@ const LayoutHeader = ({ character }) => {
       </h1>
       {/* Blurb */}
       <div className="leading-tight">
-        <ContentBlock>{character.bio}</ContentBlock>
+        <ContentBlock type="bio">{character.bio}</ContentBlock>
       </div>
       {/* Details */}
       <span className="flex gap-x-4 items-center text-fluid--1 flex-wrap text-text-4">

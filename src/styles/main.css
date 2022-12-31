@@ -25,13 +25,20 @@
 
   @font-face {
     font-family: "Inter";
-    src: url("/fonts/Inter/Inter-VariableFont_slnt,wght.ttf") format("truetype");
+    src: url("/fonts/Inter/static/Inter-Regular.ttf") format("truetype");
     font-display: swap;
   }
 
   @font-face {
+    font-family: "Inter";
+    src: url("/fonts/Inter/static/Inter-ExtraBold.ttf") format("truetype");
+    font-display: swap;
+    font-weight: bold;
+  }
+
+  @font-face {
     font-family: "JetBrains Mono";
-    src: url("/fonts/JetBrainsMono/fonts/variable/JetBrainsMono[wght].ttf")
+    src: url("/fonts/JetBrainsMono/fonts/ttf/JetBrainsMono-Bold.ttf")
       format("truetype");
     font-display: swap;
   }
@@ -98,13 +105,6 @@
     }
   }
 
-  h1,
-  h2,
-  h3 {
-    color: var(--text-1);
-    font-variation-settings: 'wght' 900;
-  }
-
   /* TODO: Link styles: :visited, :hover, :active, etc. */
 
   h1 {
@@ -157,12 +157,14 @@
     color: var(--brand-stroke);
     text-decoration-thickness: 4px;
     text-underline-offset: 2px;
-    font-weight: bold;
-    font-variation-settings: 'wght' 700;
   }
 
   a:hover {
     text-decoration-line: underline;
+  }
+
+  ul ::marker {
+    color: var(--brand-fill);
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -187,9 +189,6 @@
 }
 
 @layer utilities {
-  .bold {
-    font-variation-settings: 'wght' 700;
-  }
   .transform-box-fill {
     transform-box: fill-box;
   }

@@ -11,9 +11,15 @@ export default {
   component: Header,
 }
 
+const bio = `
+  Brings ideas to life with code ✨
+
+  Web Developer. Googler. Content Creator. Whimsical Specialist. International Speaker.
+`
+
 const character = {
   _id: "d70ecc62-bdae-42fc-af88-f078456ac669",
-  bio: "Brings ideas to life with code ✨ Web Developer. Googler. Content Creator. Whimsical Specialist. International Speaker.",
+  bio,
   displayName: "Jhey ✨",
   handle: "jh3yy",
   avatar: "/media/image/headshot--small.jpeg",

@@ -4,7 +4,7 @@ import FeedLayout from "../../components/feed-layout/feed-layout.jsx";
 
 const { SANITY_STUDIO_PROJECT_ID, SANITY_STUDIO_PROJECT_DATASET, PAGINATION_SIZE } = import.meta.env
 const pageSize = parseInt(PAGINATION_SIZE, 10)
-const CHEEP_QUERY = encodeURIComponent('*[_type == "cheep"]{..., author->{"avatar": image.asset->url, ...}}');
+const CHEEP_QUERY = encodeURIComponent('*[_type == "cheep"]{..., author->{"avatar": image.asset->url, ...}} | order(publishedAt desc)');
 const CHEEP_URL = `https://${SANITY_STUDIO_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_STUDIO_PROJECT_DATASET}?query=${CHEEP_QUERY}`;
 const allCheeps = await (await (await fetch(CHEEP_URL)).json()).result
 

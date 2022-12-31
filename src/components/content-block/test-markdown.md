@@ -1,12 +1,32 @@
 # Test Post
 
-> One of Jhey’s main mantras is to make learning fun. In this article, he shows you ways to level up your skills by bringing your ideas to life, and not forgetting that [you can be playful with code](https://www.smashingmagazine.com/2020/11/playfulness-code-supercharge-fun-learning/). With that mindset, every idea is bound to become an opportunity to try something new.
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+> "One of Jhey’s main mantras is to make learning fun. In this article, he shows you ways to level up your skills by bringing your ideas to life, and not forgetting that [you can be playful with code](https://www.smashingmagazine.com/2020/11/playfulness-code-supercharge-fun-learning/). With that mindset, every idea is bound to become an opportunity to try something new." – Vitaly Friedman
+
+<TableOfContents></TableOfContents>
 
 Naming things is hard, right? "Flippy Snaps" was the best thing I could come up with 😂  I saw an effect like this on TV one evening and made a note to myself to make something similar. Although this isn't something I'd look to drop on a website any time soon, it's a neat little challenge to make. It fits in with my whole stance on "[Playfulness in Code](https://www.smashingmagazine.com/2020/11/playfulness-code-supercharge-fun-learning/)" to learn. Anyway, a few days later, I sat down at the keyboard, and a couple of hours later I had this.
 
 <Tweet id="1457830342413455369"></Tweet>
 
 My final demo is a React app, but we don't need to dig into using React to explain the mechanics of making this work. We will create the React app once we’ve established how to make things work.
+
+## Audio
+
+![Test Audio](/media/audio/test-audio.mp3)
 
 Oh. And here's an unordered list:
 
@@ -28,9 +48,9 @@ Check lists?
 - [x] Cool
 - [ ] Cool
 
-{% aside %}
-Before we get started. It’s worth noting that performance of this demo is affected by the grid size and  the demos are best viewed in Chromium based browsers.
-{% endaside %}
+<aside>
+  Before we get started. It’s worth noting that performance of this demo is affected by the grid size and the demos are best viewed in Chromium based browsers.
+</aside>
 
 Let's start by creating a grid. Let's say we want a 10 by 10 grid. That's 100 cells (This is why React is handy for something like this). Each cell is going to consist of an element that contains the front and back for a flippable card.
 
@@ -49,6 +69,15 @@ The styles for our grid are quite straightforward. We can use `display: grid` an
 ```javascript
 console.info(true === true)
 ```
+
+<aside data-type="note">
+  Before we get started. It’s worth noting that performance of this demo is affected by the grid size and the demos are best viewed in Chromium based browsers.
+</aside>
+
+<aside data-type="warning">
+  Before we get started. It’s worth noting that performance of this demo is affected by the grid size and the demos are best viewed in Chromium based browsers.
+</aside>
+
 
 ```css
 .flippy-snap {
@@ -269,6 +298,8 @@ const onFlip = async count => {
   setNewImage(count) // Grab a new snap to display
 }
 ```
+
+### Beanies
 
 How might `FlippySnap` look? There isn’t much to it at all!
 
