@@ -52,6 +52,8 @@
 - Skewed gradient stinger from Auto Alex
 - Hover to copy code block
 
+- Roll your own image optimisation with Sharp like you did on jhey.dev
+
 - Web Mentions?
 - Serverless likes with Xata
 - Serverless hit counter?

@@ -5,6 +5,7 @@ import Layout from "../../layouts/Layout.astro";
 import Card from "../../components/card/card.jsx";
 import ContentBlock from "../../components/content-block/content-block.jsx";
 import LayoutHeader from "../../components/header/header.jsx";
+import PostLayout from "../../components/post-layout/post-layout.jsx";
 
 export async function getStaticPaths() {
   const { SANITY_STUDIO_PROJECT_ID, SANITY_STUDIO_PROJECT_DATASET } = import.meta.env
@@ -33,9 +34,5 @@ const { title, post, body } = Astro.props
   ogtitle="The home of Jhey Tompkins"
   oggradient="8"
 >
-  <!-- <LayoutHeader>The feed of Jhey Tompkins</LayoutHeader> -->
-  <main class="w-main-content max-w-full mv-0 mx-auto">
-    <h1>{title}</h1>
-    <ContentBlock children="{body}"></ContentBlock>
-  </main>
+  <PostLayout {...Astro.props}/>
 </Layout>

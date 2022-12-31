@@ -1,22 +1,26 @@
 const setUpCopyCats = () => {
-  const COPY_CATS = document.querySelectorAll('[data-code-copy="true"]')
-
+  const COPY_CATS = document.querySelectorAll('[data-copy-code="true"]')
   const COPY = e => {
-    const el = document.createElement('textarea')
-    // Grab the contents
-    el.value = e.target.parentNode.parentNode.lastChild.textContent
-    el.height = el.width = 0
+    const BUTTON = e.currentTarget
+    const el = Object.assign(document.createElement('textarea'), {
+      value: BUTTON.nextElementSibling.textContent,
+      className: 'sr-only',
+    })
     document.body.appendChild(el)
     el.select()
     document.execCommand('copy')
     document.body.removeChild(el)
-    // Swotch out the stuff
-    e.target.textContent = 'Copied!'
-    setTimeout(() => e.target.textContent = 'Copy', 500)
+    const LABEL = BUTTON.querySelector('.sr-only')
+    BUTTON.dataset.copied = true
+    LABEL.textContent = 'Copied!'
+    setTimeout(() => {
+      LABEL.textContent = 'Copy to clipboard'
+      BUTTON.dataset.copied = false
+    }, 500)
   }
   COPY_CATS.forEach(b => {
     b.addEventListener('click', COPY)
   })
 }
 
-setUpCopyCats()
+document.addEventListener('DOMContentLoaded', setUpCopyCats)

@@ -1,6 +1,7 @@
 @import url("../../node_modules/open-props/colors.min.css");
 @import url("../../node_modules/open-props/colors-hsl.min.css");
 @import url("../../node_modules/open-props/gradients.min.css");
+@import url("./night-owl.css");
 
 @tailwind base;
 @tailwind components;
@@ -8,7 +9,6 @@
 
 @layer base {
   :root {
-    /* @link https://utopia.fyi/type/calculator?c=320,16,1.125,1240,20,1.333,9,2,&s=0.75|0.5|0.25,1.5|2|3|4|6|6|6,&g=s,l,xl,12 */
     --step--2: clamp(0.69rem, calc(0.66rem + 0.18vw), 0.80rem);
     --step--1: clamp(0.83rem, calc(0.78rem + 0.29vw), 1.00rem);
     --step-0: clamp(1.00rem, calc(0.91rem + 0.43vw), 1.25rem);
@@ -22,26 +22,6 @@
     --step-8: clamp(4.30rem, calc(3.20rem + 5.48vw), 7.45rem);
     --step-9: clamp(5.16rem, calc(3.72rem + 7.22vw), 9.31rem);
   }
-
-  /* @font-face {
-    font-family: "Inter";
-    src: url("/fonts/Inter/static/Inter-Regular.ttf") format("truetype");
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: "Inter";
-    src: url("/fonts/Inter/static/Inter-ExtraBold.ttf") format("truetype");
-    font-display: swap;
-    font-weight: bold;
-  }
-
-  @font-face {
-    font-family: "JetBrains Mono";
-    src: url("/fonts/JetBrainsMono/fonts/ttf/JetBrainsMono-Bold.ttf")
-      format("truetype");
-    font-display: swap;
-  } */
 
   /* Reset stuff */
   html,
@@ -185,6 +165,14 @@
 
   .google {
     background: linear-gradient(90deg, #ea4335 0 25%, #4285f4 25% 50%, #34a853 50% 75%, #fbbc05 75% 100%);
+  }
+
+  [data-copied=true] :is(path:nth-of-type(1), path:nth-of-type(2)),
+  [data-copy-code] :is(path:nth-of-type(3), path:nth-of-type(4)) {
+    display: none;
+  }
+  [data-copied=true] :is(path:nth-of-type(3), path:nth-of-type(4)) {
+    display: block;
   }
 }
 

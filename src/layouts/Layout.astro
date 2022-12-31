@@ -10,6 +10,7 @@ const { title, ogtitle, oggradient } = Astro.props;
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>{title}</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
@@ -43,12 +44,11 @@ const { title, ogtitle, oggradient } = Astro.props;
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@jh3yy" />
-    <title>{title}</title>
   </head>
   <Nav />
   <body>
     <slot />
-    <footer />
+    <Footer />
   </body>
 </html>
 <script>
