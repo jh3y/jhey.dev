@@ -12,6 +12,28 @@ export default defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
+      name: 'og',
+      title: 'Open Graph',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'title',
+          title: 'Title',
+          type: 'string',
+        }),
+        defineField({
+          name: 'hue',
+          title: 'Hue',
+          type: 'string',
+        }),
+        defineField({
+          name: 'gradient',
+          title: 'Gradient',
+          type: 'string',
+        })
+      ]
+    }),
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -28,12 +50,52 @@ export default defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
-      name: 'mainImage',
-      title: 'Main image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
+      name: 'hero',
+      title: 'Hero',
+      description: "Use a 3:1 aspect ratio for banner images and point to a URL for a demo",
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'sanityImage',
+          title: 'Sanity image',
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+        }),
+        defineField({
+          name: 'heroDemo',
+          title: 'Hero embedded demo',
+          description: 'Point at a demo to embed',
+          type: 'string',
+        }),
+        defineField({
+          name: 'heroDemoImage',
+          title: 'Hero demo image',
+          description: 'Backup image in case demo has motion',
+          type: 'string',
+        }),
+        defineField({
+          name: 'localImage',
+          title: 'Local image',
+          type: 'string',
+        }),
+        defineField({
+          name: 'cloudinaryImage',
+          title: 'Cloudinary image',
+          type: 'string',
+        }),
+        defineField({
+          name: 'heroAlt',
+          title: 'Image alt',
+          type: 'string',
+        }),
+        defineField({
+          name: 'heroAttribution',
+          title: 'Image attribution',
+          type: 'markdown',
+        }),
+      ]
     }),
     defineField({
       name: 'tags',

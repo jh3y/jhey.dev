@@ -10,7 +10,7 @@ import PostLayout from "../../components/post-layout/post-layout.jsx";
 export async function getStaticPaths() {
   const { SANITY_STUDIO_PROJECT_ID, SANITY_STUDIO_PROJECT_DATASET } = import.meta.env
   // Grab all posts and expand author objects
-  const QUERY = encodeURIComponent('*[_type == "cheep"||_type == "article"]{..., author->{"avatar": image.asset->url, ...}}');
+  const QUERY = encodeURIComponent('*[_type == "cheep"||_type == "article"]{..., author->{"avatar": image.asset->url, ...}, tags[]->{...}}')
   // Compose the URL for your project's endpoint and add the query
   const REQUEST_URL = `https://${SANITY_STUDIO_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_STUDIO_PROJECT_DATASET}?query=${QUERY}`;
   // Grab the posts
@@ -27,12 +27,17 @@ export async function getStaticPaths() {
 const { slug } = Astro.params
 const { title, post, body } = Astro.props
 
+console.info({ props: Astro.props })
+
+const shareLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`"${title}" via @jh3yy\n`)}https://jhey.dev/post/${slug}/`
+
 ---
 <Layout
   title={`${title} – jhey.dev`}
-  ogtitle={title}
+  ogtitle={Astro.props?.og?.title || 'Cool'}
+  oghue={Astro.props?.og?.hue}
+  oggradient={Astro.props?.og?.gradient}
   flexLayout={Astro.props._type === 'cheep'}
-  oggradient={Math.floor(Math.random() * 12) + 1}
 >
-  <PostLayout {...Astro.props} {...Astro.params} />
+  <PostLayout {...Astro.props} {...Astro.params} shareLink={shareLink} />
 </Layout>

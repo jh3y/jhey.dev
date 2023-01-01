@@ -11,10 +11,12 @@ export async function getStaticPaths({ paginate }) {
 
   const TAG_QUERY = encodeURIComponent('*[_type == "tag"]')
   const TAG_URL = `https://${SANITY_STUDIO_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_STUDIO_PROJECT_DATASET}?query=${TAG_QUERY}`;
-  const CHEEP_QUERY = encodeURIComponent('*[_type == "cheep"]{..., tags[]->{...},author->{"avatar": image.asset->url, ...}} | order(publishedAt desc)');
+  const CHEEP_QUERY = encodeURIComponent('*[_type == "cheep"]{...,article[]->{tags[]->{...}}, tags[]->{...},author->{"avatar": image.asset->url, ...}} | order(publishedAt desc)');
   const CHEEP_URL = `https://${SANITY_STUDIO_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_STUDIO_PROJECT_DATASET}?query=${CHEEP_QUERY}`;
 
   const allTags = await (await (await fetch(TAG_URL)).json()).result
+
+  // Cheeps have tags by association of related articles??
   const allCheeps = await (await (await fetch(CHEEP_URL)).json()).result
   const siteConfig = await (await (await fetch(CONFIG_URL)).json()).result
 
@@ -25,7 +27,18 @@ export async function getStaticPaths({ paginate }) {
       (cheep) => {
         if (!cheep.tags) return false
         if (cheep.tags.length) {
-          if (cheep.tags.find(tag => tag.title === tagName)) return true
+          let tags = [...cheep.tags]
+          if (cheep.article) {
+            for (const article of cheep.article) {
+              // Add related tags from an article
+              if (article.tags) {
+                for (const tag of article.tags) {
+                  if(!tags.find(t => t._id === tag._id)) tags.push(tag)
+                }
+              }
+            }
+          }
+          if (tags.find(tag => tag.title === tagName)) return true
         }
       }
     )

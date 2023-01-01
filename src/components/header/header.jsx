@@ -77,7 +77,7 @@ const DEETS = {
 
 const LayoutHeader = ({ character }) => {
   return (
-    <header className="w-main-content max-w-full mv-0 mx-auto grid gap-2 px-4">
+    <header className="w-main-content max-w-full mv-0 mx-auto grid gap-2 px-4 snap-center">
       <div>
         <Banner />
         <div className="relative flex justify-end items-center min-h-half-avatar py-2">

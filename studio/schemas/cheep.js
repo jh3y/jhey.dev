@@ -59,6 +59,28 @@ export default defineType({
       of:[{type: 'reference', to: { type: 'tag' }}],
     }),
     defineField({
+      name: 'og',
+      title: 'Open Graph',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'title',
+          title: 'Title',
+          type: 'string',
+        }),
+        defineField({
+          name: 'hue',
+          title: 'Hue',
+          type: 'string',
+        }),
+        defineField({
+          name: 'gradient',
+          title: 'Gradient',
+          type: 'string',
+        })
+      ]
+    }),
+    defineField({
       name: 'cheep',
       title: 'Cheep',
       description: 'This is the "cheep"!',
