@@ -17,6 +17,7 @@ const siteConfig = await (await (await fetch(CONFIG_URL)).json()).result
 
 const page = {
   character: siteConfig[0].character,
+  banner: siteConfig[0].banner,
   data: allCheeps.slice(0, pageSize),
   currentPage: 1,
   lastPage: Math.ceil(allCheeps.length / pageSize),
@@ -29,6 +30,7 @@ const page = {
   oggradient="8"
 >
   <FeedLayout
+    banner={page.banner}
     character={page.character}
     posts={page.data}
     currentPage={page.currentPage}

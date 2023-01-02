@@ -11,7 +11,26 @@ export default defineType({
       title: 'Main Character',
       type: 'reference',
       to: {type: 'author'},
-    })
+    }),
+    defineField({
+      name: 'banner',
+      title: 'Banner',
+      description: "Use a 3:1 aspect ratio for banner demos and remember to reduce motion",
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'bannerDemo',
+          title: 'Banner embedded demo',
+          description: 'Point at a demo to embed',
+          type: 'string',
+        }),
+        defineField({
+          name: 'bannerAlt',
+          title: 'Image alt',
+          type: 'string',
+        }),
+      ]
+    }),
   ],
 
   preview: {

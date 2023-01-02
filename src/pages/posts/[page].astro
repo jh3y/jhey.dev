@@ -14,16 +14,18 @@ export async function getStaticPaths({ paginate }) {
   const siteConfig = await (await (await fetch(CONFIG_URL)).json()).result
   
   return paginate(allCheeps, { pageSize, props: {
-    character: siteConfig[0].character
+    character: siteConfig[0].character,
+    banner: siteConfig[0].banner,
   } })
 }
 
-const { character, page } = Astro.props
+const { banner, character, page } = Astro.props
 ---
 
 <Layout title="Jhey Tompkins" ogtitle="Posts from Jhey Tompkins" oggradient="6">
   <FeedLayout
     character={character}
+    banner={banner}
     posts={page.data}
     currentPage={page.currentPage}
     totalPages={page.lastPage}

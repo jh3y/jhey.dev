@@ -38,6 +38,12 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'specialty',
+      title: 'Specialty',
+      type: 'reference',
+      to: {type: 'tag'},
+    }),
+    defineField({
       name: 'verified',
       title: 'Verified',
       type: 'boolean',

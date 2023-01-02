@@ -50,6 +50,7 @@ export async function getStaticPaths({ paginate }) {
       },
       props: {
         character: siteConfig[0].character,
+        banner: siteConfig[0].banner,
         tagLabel: tagName,
         page: {
           data: filteredCheeps.slice(0, pageSize),
@@ -62,15 +63,16 @@ export async function getStaticPaths({ paginate }) {
 }
 
 const params = Astro.params
-const { character, page, tagLabel } = Astro.props
+const { banner, character, page, tagLabel } = Astro.props
 ---
 <Layout
   title="Jhey Tompkins"
-  ogtitle="The feed of Jhey Tompkins"
+  ogtitle={`${tagLabel} posts from Jhey Tompkins`}
   oggradient="8"
 >
   <FeedLayout
     character={character}
+    banner={banner}
     posts={page.data}
     category={tagLabel}
     currentPage={page.currentPage}

@@ -4,10 +4,10 @@ import LayoutHeader from '../header/header.jsx'
 import Card from '../card/card.jsx'
 import Pagination from '../pagination/pagination.jsx'
 
-const FeedLayout = ({ character, posts, category = '', currentPage, totalPages, route = "/posts" }) => {
+const FeedLayout = ({ banner, character, posts, category = '', currentPage, totalPages, route = "/posts" }) => {
   return (
     <>
-      <LayoutHeader character={character} />
+      <LayoutHeader character={character} banner={banner} />
       <main className="w-main-content max-w-full mv-0 mx-auto grid justify-center pt-8 gap-8">
         {posts.length === 0 && (
           <p

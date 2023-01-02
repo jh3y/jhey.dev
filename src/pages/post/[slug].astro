@@ -27,8 +27,6 @@ export async function getStaticPaths() {
 const { slug } = Astro.params
 const { title, post, body } = Astro.props
 
-console.info({ props: Astro.props })
-
 const shareLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`"${title}" via @jh3yy\n`)}https://jhey.dev/post/${slug}/`
 
 ---

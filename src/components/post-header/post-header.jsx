@@ -13,7 +13,6 @@ const getReadingTime = content => {
 
 const LayoutHeader = ({ character, ...props }) => {
   const readingTime = getReadingTime(props.body)
-  console.info({ character, props, readingTime })
   const heroSrc = props.hero.localImage || props.hero.cloudinaryImage || props.hero.sanityImage
   return (
     <header className="w-article max-w-full mx-auto grid gap-2 px-4 mb-12">

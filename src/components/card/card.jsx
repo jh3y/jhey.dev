@@ -43,7 +43,10 @@ const Card = (props) => {
               />
             </svg>
           </a>}
-          <button title="Like post" disabled className="w-10 h-10 grid place-items-center hover:bg-surface-4 rounded-md text-text-2 hover:text-brand-stroke">
+          {/*
+            <button title="Like post" disabled className="w-10 h-10 grid place-items-center hover:bg-surface-4 rounded-md text-text-2 hover:text-brand-stroke">
+          */}
+          <button title="Like post" disabled className="w-10 h-10 grid place-items-center rounded-md text-text-2 opacity-20">
             <span className="sr-only">Like</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"

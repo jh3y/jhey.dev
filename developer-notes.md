@@ -36,11 +36,12 @@
 - Fix the horizontal padding...
 - Fix the font weights being pulled
 - Cards
+- Tags by relation
+- Banner backup image for motion...
 
 ## TODO::
-- Sort out the pinned posts sorting
 - Tabs
-- Set up SEO for each page inside Sanity
+- Set up SEO for each page inside Sanity - Meta Descriptions in schema and fix title inside Layout
 - Deploy CMS
 - Pages
   - about - Include sig and some way to show demos?
@@ -50,13 +51,14 @@
   - Testimonials
   - Links
 - Timeline items [ Article, Newsletter feature, YouTube appearance, Life thing, Random Misc, Smashing person of week, Did a thing, etc. Drop an icon type if needed that can be mapped? ]
-- Skewed gradient stinger from Auto Alex
+- Sort out the pinned posts sorting
 - Card Status/Pinned
-- Tags by relation
-- Banner backup image for motion...
+- Persona authors for the different tag pages...
+- Post footers...
 
-- Roll your own image optimisation with Sharp like you did on jhey.dev
 
+- Skewed gradient stinger from Auto Alex
 - Web Mentions?
 - Serverless likes with Xata
 - Serverless hit counter?
+- Roll your own image optimisation with Sharp like you did on jhey.dev

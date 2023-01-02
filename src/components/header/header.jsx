@@ -75,11 +75,11 @@ const DEETS = {
   },
 }
 
-const LayoutHeader = ({ character }) => {
+const LayoutHeader = ({ banner, character }) => {
   return (
     <header className="w-main-content max-w-full mv-0 mx-auto grid gap-2 px-4 snap-center">
       <div>
-        <Banner />
+        <Banner {...banner} />
         <div className="relative flex justify-end items-center min-h-half-avatar py-2">
           <img
             className="absolute top-0 transform -translate-y-1/2 left-0 rounded-full aspect-square w-avatar border-4 border-text-1"
