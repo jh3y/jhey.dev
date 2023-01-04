@@ -23,18 +23,10 @@ const page = {
   lastPage: Math.ceil(allCheeps.length / pageSize),
 }
 ---
-
 <Layout
-  title="The feed"
-  ogtitle="The feed of Jhey Tompkins"
-  description="Thoughts and creations from the mind of Jhey Tompkins"
-  oggradient="8"
->
-  <FeedLayout
-    banner={page.banner}
-    character={page.character}
-    posts={page.data}
-    currentPage={page.currentPage}
-    totalPages={page.lastPage}
-  />
+  title="Uh Oh"
+  ogtitle="Uh Oh!"
+  description="The page for when pages can't be found"
+  oghue="112">
+  <h1>404</h1>
 </Layout>

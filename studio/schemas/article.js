@@ -12,6 +12,13 @@ export default defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
+      name: 'description',
+      title: 'Description',
+      description: 'Used for the page description/OG images',
+      type: 'string',
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
       name: 'og',
       title: 'Open Graph',
       type: 'object',

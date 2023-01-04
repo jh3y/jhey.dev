@@ -73,9 +73,27 @@ const defaultComponents = {
     }
     return (
       <aside
-        className="my-12 rounded-lg bg-surface-3 text-text-2 p-8"
+        className="relative my-12 rounded-lg bg-surface-3 text-text-2 p-8"
         {...props}
       >
+        {node?.properties?.dataType && (
+          <span className="absolute top-0 left-0 p-2 bg-surface-4 rounded-md -translate-x-1/4 border-2 border-surface-1 -translate-y-1/4">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+              {node?.properties?.dataType === 'warning' && (
+                <>
+                  <path fillRule="evenodd" d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z" clipRule="evenodd" />
+                </>
+              )}
+              {node?.properties?.dataType === 'note' && (
+                <>
+                  <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
+                  <path d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z" />
+                </>
+              )}
+            </svg>
+          </span>
+        )}
+                  <path fillRule="evenodd" d="M3.75 4.5a.75.75 0 01.75-.75h.75c8.284 0 15 6.716 15 15v.75a.75.75 0 01-.75.75h-.75a.75.75 0 01-.75-.75v-.75C18 11.708 12.292 6 5.25 6H4.5a.75.75 0 01-.75-.75V4.5zm0 6.75a.75.75 0 01.75-.75h.75a8.25 8.25 0 018.25 8.25v.75a.75.75 0 01-.75.75H12a.75.75 0 01-.75-.75v-.75a6 6 0 00-6-6H4.5a.75.75 0 01-.75-.75v-.75zm0 7.5a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z" clipRule="evenodd" />
         {props.children}
       </aside>
     )
@@ -94,8 +112,8 @@ const defaultComponents = {
       })
       return (
         <li className="flex gap-x-2">
-          <input id={id} type="checkbox" disabled={!children[0].props.checked} checked={children[0].props.checked} />
-          <label for={id}>{children[1]}</label>
+          <input id={id} type="checkbox" disabled={!children[0].props.checked} defaultChecked={children[0].props.checked} />
+          <label htmlFor={id}>{children[1]}</label>
         </li>
       )
     }
@@ -211,7 +229,7 @@ const defaultComponents = {
         allowFullScreen={true}
       >
         See the Pen by Jhey (<a href="https://codepen.io/jh3y">@jh3y</a>) on{' '}
-        <a href="https://codepen.io">CodePen</a>.
+        <a href={`https://codepen.io/jh3y/${props.id}`}>CodePen</a>.
       </iframe>
     )
   },
@@ -382,6 +400,44 @@ const bioComponents = {
     return <p {...props} className="mb-2"></p>
   },
 }
+const footerComponents = {
+  p({ node, ...props }) {
+    const interactive = node.children.find(
+      (child) => child.tagName === 'tweet' || child.tagName === 'codepen'
+    )
+    if (interactive) return <>{props.children}</>
+    return <p {...props} className="mb-2"></p>
+  },
+}
+
+const rssComponents = {
+  tweet({ node, account = 'jh3yy', id, ...props }) {
+    return (
+      <p>
+        <a href={`https://twitter.com/${account}/status/${id}`}>
+          Check out this related tweet!
+        </a>
+      </p>
+    )
+  },
+  codepen({ node, ...props }) {
+    return (
+      <p>
+        See the Pen by Jhey (<a href="https://codepen.io/jh3y">@jh3y</a>) on{' '}
+        <a href={`https://codepen.io/jh3y/${props.id}`}>CodePen</a>.
+      </p>
+    )
+  },
+  p({ node, ...props }) {
+    const interactive = node.children.find(
+      (child) => child.tagName === 'tweet' || child.tagName === 'codepen'
+    )
+    const toc = node.children.find(child => child.tagName === 'tableofcontents')
+    if (toc) return null
+    if (interactive) return <>{props.children}</>
+    return <p>{props.children}</p>
+  },
+}
 
 const ContentBlock = ({ type, children }) => {
   let components = { ...defaultComponents }
@@ -390,6 +446,10 @@ const ContentBlock = ({ type, children }) => {
   if (type === 'bio') components = { ...defaultComponents, ...bioComponents }
   if (type === 'article')
     components = { ...defaultComponents, ...articleComponents }
+  if (type === 'footer')
+    components = { ...defaultComponents, ...footerComponents }
+  if (type === 'rss')
+    components = rssComponents
   return (
     <Markdown
       remarkPlugins={

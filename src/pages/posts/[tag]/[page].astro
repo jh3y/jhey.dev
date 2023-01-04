@@ -23,20 +23,19 @@ export async function getStaticPaths({ paginate }) {
     const filteredCheeps = allCheeps.filter(
       (cheep) => {
         if (!cheep.tags) return false
-        if (cheep.tags.length) {
-          let tags = [...cheep.tags]
-          // Add related tags from an article
-          if (cheep.article) {
-            for (const article of cheep.article) {
-              if (article.tags) {
-                for (const tag of article.tags) {
-                  if(!tags.find(t => t._id === tag._id)) tags.push(tag)
-                }
+        let tags = [...cheep.tags]
+        if (cheep.article) {
+          for (const article of cheep.article) {
+            // Add related tags from an article
+            if (article.tags) {
+              for (const tag of article.tags) {
+                if(!tags.find(t => t._id === tag._id)) tags.push(tag)
               }
             }
           }
-          if (tags.find(tag => tag.title === tagName)) return true
         }
+        if (tags.find(tag => tag.title === tagName)) return true
+        return false
       }
     )
     return paginate(filteredCheeps, {
@@ -57,8 +56,9 @@ const params = Astro.params
 
 ---
 <Layout
-  title="Jhey Tompkins"
-  ogtitle={`${tagLabel} Posts from Jhey Tompkins`}
+  title={`${tagLabel} posts from Jhey Tompkins`}
+  ogtitle={`${tagLabel} posts from Jhey Tompkins`}
+  description={`A collection of posts from Jhey all about ${tagLabel}`}
   oggradient="4"
 >
   <FeedLayout

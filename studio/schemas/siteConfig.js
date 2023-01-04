@@ -31,6 +31,43 @@ export default defineType({
         }),
       ]
     }),
+    defineField({
+      name: 'rss',
+      title: 'RSS',
+      description: 'RSS related config',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'url',
+          title: 'Base URL',
+          type: 'string',
+        }),
+        defineField({
+          name: 'title',
+          title: 'Title',
+          type: 'string',
+        }),
+        defineField({
+          name: 'subtitle',
+          title: 'Subtitle',
+          type: 'string',
+        })
+      ]
+    }),
+    defineField({
+      name: 'posts',
+      title: 'Posts',
+      description: 'Post related site content',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'postFooter',
+          title: 'Post footer',
+          description: 'Sign off for article posts',
+          type: 'markdown',
+        })
+      ]
+    })
   ],
 
   preview: {

@@ -18,6 +18,10 @@
 - Straight forward. Need JSX/React to use Storybook though :sad:.
 - Gotta set up slug pages that make a request based on the slug or ID of the sanity post? Should be slug. But that feels a little brittle for some reason...
 
+## Astro and RSS is a PitA if you have Markdown on a CMS...
+- Do it with Node???
+- Trick is to use something like posts.xml.js but use ReactDom and React.createElement to reuse your other Markdown processing techniques...
+
 ## DONE::
 - ~~Social footer icons [ Mastodon, Twitter, Instagram, etc. from current ]~~
 - Use Hero Icons
@@ -38,10 +42,11 @@
 - Cards
 - Tags by relation
 - Banner backup image for motion...
+- Set up SEO for each page inside Sanity - Meta Descriptions in schema and fix title inside Layout
+- Post footers...
 
 ## TODO::
 - Tabs
-- Set up SEO for each page inside Sanity - Meta Descriptions in schema and fix title inside Layout
 - Deploy CMS
 - Pages
   - about - Include sig and some way to show demos?
@@ -54,8 +59,6 @@
 - Sort out the pinned posts sorting
 - Card Status/Pinned
 - Persona authors for the different tag pages...
-- Post footers...
-
 
 - Skewed gradient stinger from Auto Alex
 - Web Mentions?

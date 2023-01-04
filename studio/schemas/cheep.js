@@ -29,6 +29,12 @@ export default defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
+      name: 'description',
+      title: 'Description',
+      description: 'Use for OG/meta. If there is not one, falls back to the title',
+      type: 'string',
+    }),
+    defineField({
       name: 'author',
       title: 'Author',
       type: 'reference',

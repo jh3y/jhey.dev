@@ -22,7 +22,12 @@ export async function getStaticPaths({ paginate }) {
 const { banner, character, page } = Astro.props
 ---
 
-<Layout title="Jhey Tompkins" ogtitle="Posts from Jhey Tompkins" oggradient="6">
+<Layout
+  title="Jhey Tompkins"
+  ogtitle="Posts from Jhey Tompkins"
+  description="Thoughts and creations from the mind of Jhey Tompkins"
+  oggradient="2"
+>
   <FeedLayout
     character={character}
     banner={banner}

@@ -96,7 +96,7 @@ const LayoutHeader = ({ character, ...props }) => {
         </span>
 
         <span className="flex items-center gap-1">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-5 h-5">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <span>{`${readingTime.readingTime} min`}</span>
@@ -109,10 +109,10 @@ const LayoutHeader = ({ character, ...props }) => {
           <span className="flex items-center gap-1">
             {props.tags.map((tag, index) => {
               return (
-                <>
-                  <a key={tag._id} className="font-bold" href={`/posts/${tag.title.toLowerCase()}`}>{tag.title}</a>
+                <React.Fragment key={tag._id}>
+                  <a className="font-bold" href={`/posts/${tag.title.toLowerCase()}`}>{tag.title}</a>
                   {index !== props.tags.length - 1 ? ',' : ''}
-                </>)
+                </React.Fragment>)
             })}
           </span>
         </span>

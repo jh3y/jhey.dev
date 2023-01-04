@@ -59,7 +59,6 @@
     accent-color: var(--brand-fill);
     background: var(--surface-1);
     color: var(--text-1);
-    scroll-snap-type: y proximity;
   }
 
   body {
