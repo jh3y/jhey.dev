@@ -437,6 +437,23 @@ const rssComponents = {
     if (interactive) return <>{props.children}</>
     return <p>{props.children}</p>
   },
+  img({ node, ...props }) {
+    if (props.src.endsWith('.mp4')) {
+      props.src = `https://jhey.dev${props.src}`
+      return <video {...props} controls loop muted></video>
+    }
+    if (props.src.endsWith('.mp3')) {
+      props.src = `https://jhey.dev${props.src}`
+      return <audio {...props} controls loop></audio>
+    }
+    return <img {...props} />
+  },
+  a({ node, children, ...props }) {
+    if (props.href.startsWith('/')) {
+      props.href = `https://jhey.dev${props.href}`
+    }
+    return <a {...props}>{children}</a>
+  },
 }
 
 const ContentBlock = ({ type, children }) => {

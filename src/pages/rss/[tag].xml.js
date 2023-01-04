@@ -3,16 +3,23 @@ import ReactDom from 'react-dom/server'
 import ContentBlock from '../../components/content-block/content-block.jsx'
 
 const { SANITY_STUDIO_PROJECT_ID, SANITY_STUDIO_PROJECT_DATASET } = import.meta.env
-
 const CONFIG_QUERY = encodeURIComponent('*[_type == "config"]{...,character->{"avatar": image.asset->url, ...}}');
 const CONFIG_URL = `https://${SANITY_STUDIO_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_STUDIO_PROJECT_DATASET}?query=${CONFIG_QUERY}`;
-
 const POSTS_QUERY = encodeURIComponent('*[_type == "cheep"||_type == "article"]{...,article[]->{tags[]->{...}}, author->{"avatar": image.asset->url, ...}, tags[]->{...}} | order(publishedAt desc)')
 const POSTS_URL = `https://${SANITY_STUDIO_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_STUDIO_PROJECT_DATASET}?query=${POSTS_QUERY}`;
-
+const TAG_QUERY = encodeURIComponent('*[_type == "tag"]')
+const TAG_URL = `https://${SANITY_STUDIO_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_STUDIO_PROJECT_DATASET}?query=${TAG_QUERY}`;
 // Grab the posts && config
 const posts = await (await (await fetch(POSTS_URL)).json()).result
 const siteConfig = await (await (await fetch(CONFIG_URL)).json()).result[0]
+const allTags = await (await (await fetch(TAG_URL)).json()).result
+
+export function getStaticPaths() {
+  const tagPaths = allTags.map(tag => {
+    return { params: { tag: tag.title.toLowerCase() } }
+  })
+  return tagPaths
+}
 
 const genContent = children => {
   const content = ReactDom.renderToStaticMarkup(
@@ -33,7 +40,7 @@ const metadata = {
   email: 'rss@jhey.dev',
 }
 
-export const get = () => new Promise((resolve, reject) => {
+export const get = ({ params, request }) => new Promise((resolve, reject) => {
   resolve({ body: `<?xml version="1.0" encoding="utf-8"?>
     <rss version="2.0"
       xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -48,8 +55,8 @@ export const get = () => new Promise((resolve, reject) => {
       <channel>
         <title>${metadata.title}</title>
         <link>${metadata.url}</link>
-        <atom:link href="${metadata.url}rss/rss.xml" rel="self" type="application/rss+xml" />
-        <description>${metadata.description}</description>
+        <atom:link href="${metadata.url}rss/${params.tag}.xml" rel="self" type="application/rss+xml" />
+        <description>The RSS feed for ${params.tag} posts from Jhey Tompkins</description>
         <language>en-us</language>
         <copyright>Jhey Tompkins ${new Date().getFullYear()}</copyright>
         <docs>https://www.rssboard.org/rss-specification</docs>
@@ -73,6 +80,7 @@ export const get = () => new Promise((resolve, reject) => {
               }
             }
           }
+          if (!tags.find(tag => tag.title.toLowerCase() === params.tag.toLowerCase())) return null
           return (`
             <item>
               <title>${post.title}</title>

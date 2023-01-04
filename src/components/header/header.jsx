@@ -87,7 +87,7 @@ const LayoutHeader = ({ banner, character }) => {
             alt="Jhey presenting at All Day Hey! 2022"
           />
           <a
-            href="/rss"
+            href="/rss/rss.xml"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:no-underline border-transparent focus:border-text-1 outline-transparent focus-visible:border-text-1 hover:border-text-1 border-4 rounded-full text-fluid--1 flex gap-x-1 items-center text-white bg-brand-fill px-3 py-1"
