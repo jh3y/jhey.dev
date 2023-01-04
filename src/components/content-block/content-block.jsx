@@ -204,7 +204,7 @@ const defaultComponents = {
       <div className="mb-6 rounded-lg grid place-items-center">
         <blockquote className="twitter-tweet" data-theme="dark">
           <a href={`https://twitter.com/${account}/status/${id}`}>
-            Check out this tweet!
+            Check out this related tweet!
           </a>
         </blockquote>
         <script
@@ -228,7 +228,7 @@ const defaultComponents = {
         allowtransparency="true"
         allowFullScreen={true}
       >
-        See the Pen by Jhey (<a href="https://codepen.io/jh3y">@jh3y</a>) on{' '}
+        Check out the <a href={`https://codepen.io/jh3y/${props.id}`}>demo pen</a> by Jhey (<a href="https://codepen.io/jh3y">@jh3y</a>) over on{' '}
         <a href={`https://codepen.io/jh3y/${props.id}`}>CodePen</a>.
       </iframe>
     )
@@ -415,7 +415,7 @@ const rssComponents = {
     return (
       <p>
         <a href={`https://twitter.com/${account}/status/${id}`}>
-          Check out this related tweet!
+          Check out the related tweet!
         </a>
       </p>
     )
@@ -423,7 +423,7 @@ const rssComponents = {
   codepen({ node, ...props }) {
     return (
       <p>
-        See the Pen by Jhey (<a href="https://codepen.io/jh3y">@jh3y</a>) on{' '}
+        Check out the <a href={`https://codepen.io/jh3y/${props.id}`}>demo pen</a> by Jhey (<a href="https://codepen.io/jh3y">@jh3y</a>) over on{' '}
         <a href={`https://codepen.io/jh3y/${props.id}`}>CodePen</a>.
       </p>
     )
