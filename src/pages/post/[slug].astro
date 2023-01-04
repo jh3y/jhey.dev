@@ -1,6 +1,6 @@
 ---
 import Markdown from 'react-markdown'
-
+import { getAllPosts, getSiteConfig } from "../../constants/queries.js"
 import Layout from "../../layouts/Layout.astro";
 import Card from "../../components/card/card.jsx";
 import ContentBlock from "../../components/content-block/content-block.jsx";
@@ -8,18 +8,10 @@ import LayoutHeader from "../../components/header/header.jsx";
 import PostLayout from "../../components/post-layout/post-layout.jsx";
 
 export async function getStaticPaths() {
-  const { SANITY_STUDIO_PROJECT_ID, SANITY_STUDIO_PROJECT_DATASET } = import.meta.env
-  // Grab all posts and expand author objects
-  const CONFIG_QUERY = encodeURIComponent('*[_type == "config"]{...,character->{"avatar": image.asset->url, ...}}');
-  const CONFIG_URL = `https://${SANITY_STUDIO_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_STUDIO_PROJECT_DATASET}?query=${CONFIG_QUERY}`;
-  const QUERY = encodeURIComponent('*[_type == "cheep"||_type == "article"]{..., author->{"avatar": image.asset->url, ...}, tags[]->{...}}')
-  // Compose the URL for your project's endpoint and add the query
-  const REQUEST_URL = `https://${SANITY_STUDIO_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_STUDIO_PROJECT_DATASET}?query=${QUERY}`;
-  // Grab the posts
-  const posts = await (await fetch(REQUEST_URL)).json()
-  const siteConfig = await (await (await fetch(CONFIG_URL)).json()).result
+  const posts = await getAllPosts()
+  const siteConfig = await getSiteConfig()
   // Loop over them and get the content
-  return posts.result.map(({ slug, ...props }) => {
+  return posts.map(({ slug, ...props }) => {
     return {
       params: { slug: slug.current },
       props: {

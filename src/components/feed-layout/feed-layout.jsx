@@ -8,7 +8,7 @@ const FeedLayout = ({ banner, character, posts, category = '', currentPage, tota
   return (
     <>
       <LayoutHeader character={character} banner={banner} />
-      <main className="w-main-content max-w-full mv-0 mx-auto grid justify-center pt-8 gap-8">
+      <main className="w-main-content max-w-full mv-0 mx-auto flex flex-col justify-center pt-8 gap-8">
         {posts.length === 0 && (
           <p
             className="border-2 border-current text-center text-text-2 p-4 grid items-center rounded-md"

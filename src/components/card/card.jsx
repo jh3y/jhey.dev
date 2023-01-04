@@ -4,13 +4,30 @@ import ContentBlock from '../content-block/content-block'
 
 const Card = (props) => {
   return (
-    <article data-cheep-id={props._id} className={`card grid-cols-[auto_1fr] gap-x-2 grid p-4 rounded-lg w-full ${props.permacard ? 'bg-surface-2 shadow-lg border border-surface-3' : 'hover:bg-surface-2'}`}>
+    <article data-cheep-id={props._id} className={`card grid-cols-[auto_1fr] gap-2 grid p-4 rounded-lg w-full ${props.permacard ? 'bg-surface-2 shadow-lg border border-surface-3' : 'hover:bg-surface-2'}`}>
+      {props.pinned && !props.permacard && (
+        <>
+          <div className="w-10 grid justify-end text-text-4">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-4 h-4"
+              >
+              <path fill="currentColor" d="M16,12V4H17V2H7V4H8V12L6,14V16H11.2V22H12.8V16H18V14L16,12Z" />
+            </svg>
+          </div>
+          <div className="items-center text-fluid--2 text-text-4">Pinned Cheep</div>    
+        </>
+      )}
       <img
         src={`${props.author.avatar}?h=96`}
         alt=""
         className="card__author rounded-full w-10 h-10"
       />
-      <div className="card__content grid gap-y-1 leading-tight">
+      <div className="card__content flex flex-col gap-y-1 leading-tight">
         <div className="flex gap-x-2 text-fluid--1 items-center text-text-4">
           <span className="font-bold text-text-1">{props.author.displayName}</span>
           <span>•</span>
@@ -20,6 +37,14 @@ const Card = (props) => {
             month: 'short',
           }).format(new Date(props.publishedAt))}`}</time>
         </div>
+        {props.status && (
+          <div>
+            <div className="py-1 px-3 inline-flex items-center gap-1 bg-surface-4 inline rounded-full">
+              <span role="img">{props.status.icon}</span>
+              <span className="text-fluid--2 font-bold">{props.status.title}</span>
+            </div>
+          </div>
+        )}
         <ContentBlock type="card">{props.cheep}</ContentBlock>
         <div className="card__actions flex justify-end items-center">
           {props.slug.current && <a

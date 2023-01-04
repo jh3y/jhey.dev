@@ -11,9 +11,26 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'icon',
+      title: 'Icon',
+      type: 'string',
+    }),
+    defineField({
       name: 'description',
       title: 'Description',
-      type: 'text',
+      type: 'string',
     }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      icon: 'icon',
+    },
+    prepare(value) {
+      const {title, icon} = value
+      return {
+        title: `${icon} ${title}`,
+      }
+    },
+  },
 })

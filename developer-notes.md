@@ -21,6 +21,10 @@
 ## Astro and RSS is a PitA if you have Markdown on a CMS...
 - Do it with Node???
 - Trick is to use something like posts.xml.js but use ReactDom and React.createElement to reuse your other Markdown processing techniques...
+- Use the sanitizer to make things happy
+- Go through the spec
+- Check against a validator
+- Remove all the garbage people don't need – We can't assume everyone uses Feedly
 
 ## DONE::
 - ~~Social footer icons [ Mastodon, Twitter, Instagram, etc. from current ]~~
@@ -44,6 +48,9 @@
 - Banner backup image for motion...
 - Set up SEO for each page inside Sanity - Meta Descriptions in schema and fix title inside Layout
 - Post footers...
+- RSS 
+- Card Status/Pinned
+- Sort out the pinned posts sorting
 
 ## TODO::
 - Tabs
@@ -52,12 +59,9 @@
   - about - Include sig and some way to show demos?
   - 404
   - Guestbook
-  - RSS
   - Testimonials
   - Links
 - Timeline items [ Article, Newsletter feature, YouTube appearance, Life thing, Random Misc, Smashing person of week, Did a thing, etc. Drop an icon type if needed that can be mapped? ]
-- Sort out the pinned posts sorting
-- Card Status/Pinned
 - Persona authors for the different tag pages...
 
 - Skewed gradient stinger from Auto Alex

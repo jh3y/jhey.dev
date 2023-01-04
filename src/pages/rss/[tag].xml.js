@@ -1,16 +1,10 @@
 import genHtml from './_htmlGenerator.js'
+import { getAllCheeps, getAllTags, getSiteConfig } from '../../constants/queries.js'
 
-const { SANITY_STUDIO_PROJECT_ID, SANITY_STUDIO_PROJECT_DATASET } = import.meta.env
-const CONFIG_QUERY = encodeURIComponent('*[_type == "config"]{...,character->{"avatar": image.asset->url, ...}}');
-const CONFIG_URL = `https://${SANITY_STUDIO_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_STUDIO_PROJECT_DATASET}?query=${CONFIG_QUERY}`;
-const POSTS_QUERY = encodeURIComponent('*[_type == "cheep"||_type == "article"]{...,article[]->{tags[]->{...}}, author->{"avatar": image.asset->url, ...}, tags[]->{...}} | order(publishedAt desc)')
-const POSTS_URL = `https://${SANITY_STUDIO_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_STUDIO_PROJECT_DATASET}?query=${POSTS_QUERY}`;
-const TAG_QUERY = encodeURIComponent('*[_type == "tag"]')
-const TAG_URL = `https://${SANITY_STUDIO_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_STUDIO_PROJECT_DATASET}?query=${TAG_QUERY}`;
 // Grab the posts && config
-const posts = await (await (await fetch(POSTS_URL)).json()).result
-const siteConfig = await (await (await fetch(CONFIG_URL)).json()).result[0]
-const allTags = await (await (await fetch(TAG_URL)).json()).result
+const posts = await getAllCheeps()
+const siteConfig = await (await getSiteConfig())[0]
+const allTags = await getAllTags()
 
 export function getStaticPaths() {
   const tagPaths = allTags.map(tag => {
