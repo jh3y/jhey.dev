@@ -1,6 +1,4 @@
-import React from 'react'
-import ReactDom from 'react-dom/server'
-import ContentBlock from '../../components/content-block/content-block.jsx'
+import genHtml from './_htmlGenerator.js'
 
 const { SANITY_STUDIO_PROJECT_ID, SANITY_STUDIO_PROJECT_DATASET } = import.meta.env
 const CONFIG_QUERY = encodeURIComponent('*[_type == "config"]{...,character->{"avatar": image.asset->url, ...}}');
@@ -19,16 +17,6 @@ export function getStaticPaths() {
     return { params: { tag: tag.title.toLowerCase() } }
   })
   return tagPaths
-}
-
-const genContent = children => {
-  const content = ReactDom.renderToStaticMarkup(
-    React.createElement(ContentBlock, {
-      children,
-      type: 'rss'
-    })
-  )
-  return content
 }
 
 const metadata = {
@@ -86,7 +74,7 @@ export const get = ({ params, request }) => new Promise((resolve, reject) => {
               <title>${post.title}</title>
               <link>${metadata.url}post/${post.slug.current}</link>
               <author>${metadata.email} (${post.author.name})</author>
-              <description><![CDATA[${genContent(post.body || post.cheep)}]]></description>
+              <description><![CDATA[${genHtml(post.body || post.cheep)}]]></description>
               <pubDate>${new Date(post.publishedAt).toUTCString()}</pubDate>
               <guid isPermaLink="true">${metadata.url}post/${post.slug.current}</guid>
               <source url="${metadata.url}rss/rss.xml">jhey.dev RSS feed</source>

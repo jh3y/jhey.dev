@@ -1,6 +1,4 @@
-import React from 'react'
-import ReactDom from 'react-dom/server'
-import ContentBlock from '../../components/content-block/content-block.jsx'
+import genHtml from './_htmlGenerator.js'
 
 const { SANITY_STUDIO_PROJECT_ID, SANITY_STUDIO_PROJECT_DATASET } = import.meta.env
 
@@ -13,16 +11,6 @@ const POSTS_URL = `https://${SANITY_STUDIO_PROJECT_ID}.api.sanity.io/v2021-10-21
 // Grab the posts && config
 const posts = await (await (await fetch(POSTS_URL)).json()).result
 const siteConfig = await (await (await fetch(CONFIG_URL)).json()).result[0]
-
-const genContent = children => {
-  const content = ReactDom.renderToStaticMarkup(
-    React.createElement(ContentBlock, {
-      children,
-      type: 'rss'
-    })
-  )
-  return content
-}
 
 const metadata = {
   url: siteConfig?.rss?.url || 'https://jhey.dev/',
@@ -78,7 +66,7 @@ export const get = () => new Promise((resolve, reject) => {
               <title>${post.title}</title>
               <link>${metadata.url}post/${post.slug.current}</link>
               <author>${metadata.email} (${post.author.name})</author>
-              <description><![CDATA[${genContent(post.body || post.cheep)}]]></description>
+              <description><![CDATA[${genHtml(post.body || post.cheep)}]]></description>
               <pubDate>${new Date(post.publishedAt).toUTCString()}</pubDate>
               <guid isPermaLink="true">${metadata.url}post/${post.slug.current}</guid>
               <source url="${metadata.url}rss/rss.xml">jhey.dev RSS feed</source>
