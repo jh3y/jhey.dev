@@ -22,8 +22,9 @@ export async function getStaticPaths({ paginate }) {
     const tagName = tag.title
     const filteredCheeps = allCheeps.filter(
       (cheep) => {
-        if (!cheep.tags) return false
-        let tags = [...cheep.tags]
+        const cheepTags = cheep.tags.filter(t => t !== null)
+        // if (!cheepTags.length) return false
+        let tags = [...cheepTags]
         if (cheep.article) {
           for (const article of cheep.article) {
             // Add related tags from an article

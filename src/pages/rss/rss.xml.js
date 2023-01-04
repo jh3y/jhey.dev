@@ -51,7 +51,7 @@ export const get = () => new Promise((resolve, reject) => {
           <link>${metadata.url}</link>
         </image>
         ${posts.map(post => {
-          let tags = [...post.tags]
+          let tags = [...post.tags.filter(t => t !== null)]
           if (post._type === 'cheep' && post.article) {
             for (const article of post.article) {
               if (article.tags) {
