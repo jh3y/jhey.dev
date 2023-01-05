@@ -54,6 +54,7 @@
 - Refactor and keep all your queries in one place to make your life easier
 - Links
 - Using the multi-purpose <ContentBlock/>
+- Had issues after a machine upgrade with `storybook`. But, this gave me the opp to try the Vite builder `npx sb@next upgrade --prerelease`
 
 ## TODO::
 - Tabs

@@ -1,14 +1,14 @@
 import React from 'react'
 
-import Header from './header.jsx'
+import PostHeader from './post-header.jsx'
 
 export default {
   /* 👇 The title prop is optional.
    * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
    * to learn how to generate automatic titles
    */
-  title: 'Header',
-  component: Header,
+  title: 'Post Header',
+  component: PostHeader,
 }
 
 const bio = `
@@ -27,4 +27,4 @@ const character = {
   verified: true
 }
 
-export const Default = () => <Header character={character} />
+export const Default = () => <PostHeader character={character} />

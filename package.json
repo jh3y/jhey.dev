@@ -9,8 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
     "deploy:prod": "yarn build && ntl deploy --prod",
     "fix-up-look-sharp": "eslint --resolve-plugins-relative-to src/**/*.jsx && prettier src/**/*.{astro,css,jsx}"
   },
@@ -33,15 +33,14 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",
-    "@storybook/addon-actions": "^6.5.14",
-    "@storybook/addon-essentials": "^6.5.14",
-    "@storybook/addon-interactions": "^6.5.14",
-    "@storybook/addon-links": "^6.5.14",
+    "@storybook/addon-actions": "^7.0.0-beta.19",
+    "@storybook/addon-essentials": "^7.0.0-beta.19",
+    "@storybook/addon-interactions": "^7.0.0-beta.19",
+    "@storybook/addon-links": "^7.0.0-beta.19",
     "@storybook/addon-postcss": "^2.0.0",
-    "@storybook/builder-webpack4": "^6.5.14",
-    "@storybook/manager-webpack4": "^6.5.14",
-    "@storybook/react": "^6.5.14",
-    "@storybook/testing-library": "^0.0.13",
+    "@storybook/react": "^7.0.0-beta.19",
+    "@storybook/react-webpack5": "^7.0.0-beta.19",
+    "@storybook/testing-library": "^0.0.14-next.1",
     "@tailwindcss/typography": "^0.5.8",
     "autoprefixer": "^10.4.13",
     "babel-loader": "^8.3.0",
@@ -54,6 +53,7 @@
     "postcss-combine-duplicated-selectors": "^10.0.3",
     "postcss-preset-env": "^7.8.3",
     "prettier": "2.8.0",
-    "slugify": "^1.6.5"
+    "slugify": "^1.6.5",
+    "storybook": "^7.0.0-beta.19"
   }
 }
