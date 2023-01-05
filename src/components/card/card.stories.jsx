@@ -24,7 +24,7 @@ const cheep = `
 
   <img className="rounded-lg aspect-video object-cover" alt="Jhey time" src="/media/image/stage-walk.jpeg"/>
 
-  <div className="rounded-lg overflow-auto gap-x-2 flex">
+  <div className="rounded-lg overflow-auto gap-x-2 flex mb-2">
     <img className="h-36 rounded-lg aspect-[4/3] object-cover" alt="Jhey time" src="/media/image/stage-walk.jpeg"/>
     <img className="h-36 rounded-lg aspect-[4/3] object-cover" alt="Jhey time" src="/media/image/stage-walk.jpeg"/>
     <img className="h-36 rounded-lg aspect-[4/3] object-cover" alt="Jhey time" src="/media/image/stage-walk.jpeg"/>

@@ -27,4 +27,18 @@ const character = {
   verified: true
 }
 
-export const Default = () => <PostHeader character={character} />
+const props = {
+  character,
+  body: '# Cool!',
+  hero: undefined,
+  publishedAt: new Date().toUTCString(),
+  title: 'Some awesome post',
+  shareLink: `https://twitter.com/intent/tweet?text=${encodeURIComponent(`"Some awesome post" via @jh3yy\n`)}https://jhey.dev/post/some-awesome-post/`,
+  tags: [
+    {
+      title: 'CSS',
+    }
+  ]
+}
+
+export const Default = () => <PostHeader {...props} />

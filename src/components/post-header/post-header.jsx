@@ -13,13 +13,13 @@ const getReadingTime = content => {
 
 const LayoutHeader = ({ character, ...props }) => {
   const readingTime = getReadingTime(props.body)
-  const heroSrc = props.hero.localImage || props.hero.cloudinaryImage || props.hero.sanityImage
+  const heroSrc = props?.hero?.localImage || props?.hero?.cloudinaryImage || props?.hero?.sanityImage
   return (
     <header className="w-article max-w-full mx-auto grid gap-2 px-4 mb-12">
       <div className="">
         <div className="banner max-w-[100vw] transform relative left-1/2 -translate-x-1/2 aspect-[3/1] bg-surface-4">
           {/* Gets funky here... If there's a demo, do that. Else do an image */}
-          {props.hero.heroDemo && (
+          {props?.hero?.heroDemo && (
             <>
               {props.hero.heroDemoImage && <img width="3" height="1" className="motion-safe:hidden absolute inset-0 w-full h-full" src={props.hero.heroDemoImage} alt="Result demo for this post" />}
               <iframe title="Result demo for this post" className="hidden motion-safe:block absolute inset-0 w-full h-full" loading="lazy" src={props.hero.heroDemo}></iframe>
@@ -107,7 +107,7 @@ const LayoutHeader = ({ character, ...props }) => {
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 6h.008v.008H6V6z" />
           </svg>
           <span className="flex items-center gap-1">
-            {props.tags.map((tag, index) => {
+            {props.tags && props.tags.map((tag, index) => {
               return (
                 <React.Fragment key={tag._id}>
                   <a className="font-bold" href={`/posts/${tag.title.toLowerCase()}`}>{tag.title}</a>
