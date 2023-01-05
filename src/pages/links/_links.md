@@ -1,4 +1,6 @@
-# Links
+# Link me!
+
+Need a link to find me somewhere? Odds are, it's here.
 
 - [Website](https://jhey.dev)
 - [Resumé](https://jhey.dev/resume)
@@ -23,13 +25,13 @@
 
 ## Publications
 - [web.dev](https://web.dev/authors/jheyy/)
-- [Google Chrome Developer](https://developer.chrome.com/authors/jheyy/)
+- [Google Chrome Developers](https://developer.chrome.com/authors/jheyy/)
 - [CSS Tricks](https://css-tricks.com/author/jheytompkins)
 - [Smashing Magazine](https://www.smashingmagazine.com/author/jhey-tompkins/)
 - [SitePoint](https://www.sitepoint.com/author/jtompkins/)
 - [Dev.to](https://dev.to/jh3y)
 - [CSS Animation Ebook](https://gumroad.com/l/move-things-with-css/)
-- [Screencast Teaching](https://egghead.io/instructors/jhey-tompkins)
+- [Teaching Screencasts](https://egghead.io/instructors/jhey-tompkins)
 
 ## Code
 - [CodePen](https://codepen.io/jh3y)

@@ -7,6 +7,7 @@ export default defineType({
   type: 'document',
   initialValue: () => ({
     pinned: false,
+    excludeFromRss: false,
     slug: {
       _type: 'slug',
       current: uuidv4(),
@@ -50,6 +51,12 @@ export default defineType({
       name: 'pinned',
       title: 'Pinned',
       description: 'Whether the post is pinned in the feed',
+      type: 'boolean',
+    }),
+    defineField({
+      name: 'excludeFromRss',
+      title: 'Exclude from RSS',
+      description: 'Whether Cheep should be excluded from RSS feeds',
       type: 'boolean',
     }),
     defineField({

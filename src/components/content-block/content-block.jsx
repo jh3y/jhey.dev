@@ -456,6 +456,28 @@ const rssComponents = {
   },
 }
 
+const linksComponents = {
+  h1({ node, ...props }) {
+    return <h1 {...props} className="mb-0 font-bold"></h1>
+  },
+  h2({ node, ...props }) {
+    return <h2 {...props} className="mb-0 mt-4 font-bold"></h2>
+  },
+  a({ node, children, ...props }) {
+    if (props.href.startsWith('http')) {
+      props.target = '_blank'
+      props.rel = 'noopener noreferrer'
+    }
+    return <a {...props} className="w-full h-full p-3 bg-surface-3 rounded-lg text-text-2 hover:no-underline hover:bg-surface-2 border hover:border-brand-stroke hover:text-brand-stroke">{children}</a>
+  },
+  ul({ node, ...props }) {
+    return <ul {...props} className="flex flex-wrap gap-2"></ul>
+  },
+  li({ node, ...props }) {
+    return <li {...props} className="grid"></li>
+  }
+}
+
 const ContentBlock = ({ type, children }) => {
   let components = { ...defaultComponents }
   if (type === 'card' || type === 'cheep')
@@ -467,6 +489,8 @@ const ContentBlock = ({ type, children }) => {
     components = { ...defaultComponents, ...footerComponents }
   if (type === 'rss')
     components = rssComponents
+  if (type === 'links')
+    components = { ...defaultComponents, ...linksComponents }
   return (
     <Markdown
       remarkPlugins={

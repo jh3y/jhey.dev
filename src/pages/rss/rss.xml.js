@@ -1,9 +1,9 @@
 import genHtml from './_htmlGenerator.js'
 
-import { getAllCheeps, getSiteConfig } from '../../constants/queries.js'
+import { getRssCheeps, getSiteConfig } from '../../constants/queries.js'
 
 // Grab the posts && config
-const posts = await getAllCheeps()
+const posts = await getRssCheeps()
 const siteConfig = await (await getSiteConfig())[0]
 
 const metadata = {
@@ -45,6 +45,7 @@ export const get = () => new Promise((resolve, reject) => {
           <link>${metadata.url}</link>
         </image>
         ${posts.map(post => {
+          if (post.excludeFromRss) return null
           let tags = [...post.tags.filter(t => t !== null)]
           if (post._type === 'cheep' && post.article) {
             for (const article of post.article) {
