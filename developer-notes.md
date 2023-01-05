@@ -51,6 +51,7 @@
 - RSS 
 - Card Status/Pinned
 - Sort out the pinned posts sorting
+- Refactor and keep all your queries in one place to make your life easier
 
 ## TODO::
 - Tabs

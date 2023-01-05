@@ -1,0 +1,16 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ContentBlock from "../../components/content-block/content-block.jsx"
+import Links from './_links.md?raw'
+
+---
+<Layout
+  title="Links!"
+  ogtitle="Jhey's Links"
+  description="A list of various links to things Jhey Tompkins related"
+  oggradient="4"
+>
+  <main class="w-main-content max-w-full mv-0 mx-auto flex flex-col justify-center pt-8 gap-8">
+    <ContentBlock type="links" children={Links}></ContentBlock>
+  </main>
+</Layout>
