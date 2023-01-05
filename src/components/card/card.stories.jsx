@@ -11,7 +11,7 @@ export default {
   component: Card,
   decorators: [
     (Story) => (
-      <div className="w-main-content max-w-full mv-0 mx-auto grid gap-fluid-space-0 px-4">
+      <div className="w-main-content max-w-full mv-0 mx-auto flex flex-col gap-x-0">
         <Story />
       </div>
     ),
@@ -52,4 +52,25 @@ const DEFAULT_CARD = {
   cheep,
 }
 
+const PINNED_CARD = {
+  ...DEFAULT_CARD,
+  pinned: true,
+}
+
+const STATUS_CARD = {
+  ...DEFAULT_CARD,
+  status: {
+    title: 'Feelin fresh',
+    icon: '🌴',
+  }
+}
+
+const SHORT_CARD = {
+  ...DEFAULT_CARD,
+  cheep: 'Hey'
+}
+
 export const Default = () => <Card {...DEFAULT_CARD} />;
+export const Pinned = () => <Card {...PINNED_CARD} />;
+export const Status = () => <Card {...STATUS_CARD} />;
+export const Short = () => <Card {...SHORT_CARD} />;

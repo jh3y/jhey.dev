@@ -4,7 +4,7 @@ import ContentBlock from '../content-block/content-block'
 
 const Card = (props) => {
   return (
-    <article data-cheep-id={props._id} className={`card grid-cols-[auto_1fr] gap-2 grid p-4 rounded-lg w-full ${props.permacard ? 'bg-surface-2 shadow-lg border border-surface-3' : 'hover:bg-surface-2'}`}>
+    <article data-cheep-id={props._id} className={`card grid grid-cols-[auto_1fr] p-4 gap-2 rounded-lg max-w-full w-full ${props.permacard ? 'bg-surface-2 shadow-lg border border-surface-3' : 'hover:bg-surface-2'}`}>
       {props.pinned && !props.permacard && (
         <>
           <div className="w-10 grid justify-end text-text-4">
@@ -27,7 +27,7 @@ const Card = (props) => {
         alt=""
         className="card__author rounded-full w-10 h-10"
       />
-      <div className="card__content flex flex-col gap-y-1 leading-tight">
+      <div className="card__content grid gap-y-1 leading-tight">
         <div className="flex gap-x-2 text-fluid--1 items-center text-text-4">
           <span className="font-bold text-text-1">{props.author.displayName}</span>
           <span>•</span>
