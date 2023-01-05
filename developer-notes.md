@@ -52,6 +52,8 @@
 - Card Status/Pinned
 - Sort out the pinned posts sorting
 - Refactor and keep all your queries in one place to make your life easier
+- Links
+- Using the multi-purpose <ContentBlock/>
 
 ## TODO::
 - Tabs
@@ -61,10 +63,10 @@
   - 404
   - Guestbook
   - Testimonials
-  - Links
 - Timeline items [ Article, Newsletter feature, YouTube appearance, Life thing, Random Misc, Smashing person of week, Did a thing, etc. Drop an icon type if needed that can be mapped? ]
 - Persona authors for the different tag pages...
 
+- Edge functions for "New items in feed?"
 - Skewed gradient stinger from Auto Alex
 - Web Mentions?
 - Serverless likes with Xata
