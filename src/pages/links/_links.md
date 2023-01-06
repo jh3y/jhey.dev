@@ -30,6 +30,7 @@ Need a link to find me somewhere? Odds are, it's here.
 - [Smashing Magazine](https://www.smashingmagazine.com/author/jhey-tompkins/)
 - [SitePoint](https://www.sitepoint.com/author/jtompkins/)
 - [Dev.to](https://dev.to/jh3y)
+- [Medium](https://jh3y.medium.com/)
 - [CSS Animation Ebook](https://gumroad.com/l/move-things-with-css/)
 - [Teaching Screencasts](https://egghead.io/instructors/jhey-tompkins)
 

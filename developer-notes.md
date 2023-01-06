@@ -60,11 +60,12 @@
 
 ## TODO::
 - Deploy CMS
+- Blockquote author citeation?
+- Inline stylesheets and make CSS only pull in where it's needed.
 - Pages
   - about - Include sig and some way to show demos?
   - 404
-  - Guestbook
-  - Testimonials
+  - Guestbook && Testimonials (Tie these together somehow)
 - Timeline items [ Article, Newsletter feature, YouTube appearance, Life thing, Random Misc, Smashing person of week, Did a thing, etc. Drop an icon type if needed that can be mapped? ]
 
 - Edge functions for "New items in feed?"

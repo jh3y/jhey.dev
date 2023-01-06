@@ -63,6 +63,23 @@ const remarkPlugins = [[remarkGfm, { singleTilde: false }]]
 const rehypePlugins = [rehypeRaw]
 
 const defaultComponents = {
+  details({ node, ...props }) {
+    return (
+      <details className="bg-surface-2 p-4">
+        {props.children}
+      </details>
+    )
+  },
+  summary({ node, ...props }) {
+    return (
+      <summary className="flex justify-between cursor-pointer">
+        <span className="uppercase text-fluid--1 font-bold">{props.children}</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-brand-stroke">
+          <path fillRule="evenodd" d="M12.53 16.28a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 011.06-1.06L12 14.69l6.97-6.97a.75.75 0 111.06 1.06l-7.5 7.5z" clipRule="evenodd" />
+        </svg>
+      </summary>
+    )
+  },
   aside({ node, dataType, ...props }) {
     if (node?.properties?.dataType === 'tableofcontents') {
       return (
@@ -195,7 +212,7 @@ const defaultComponents = {
       return <video {...props} controls loop muted></video>
     }
     if (props.src.endsWith('.mp3')) {
-      return <audio {...props} controls loop></audio>
+      return <audio {...props} controls></audio>
     }
     return <img {...props} />
   },
@@ -374,7 +391,7 @@ const cardComponents = {
       )
     }
     if (props.src.endsWith('.mp3')) {
-      return <audio className="rounded-lg" {...props} controls loop></audio>
+      return <audio className="rounded-lg" {...props} controls></audio>
     }
     return <img className="rounded-lg" {...props} />
   },
@@ -413,19 +430,23 @@ const footerComponents = {
 const rssComponents = {
   tweet({ node, account = 'jh3yy', id, ...props }) {
     return (
-      <p>
-        <a href={`https://twitter.com/${account}/status/${id}`}>
-          Check out the related tweet!
-        </a>
-      </p>
+      <blockquote>
+        <p>
+          <a href={`https://twitter.com/${account}/status/${id}`}>
+            Check out the related tweet!
+          </a>
+        </p>
+      </blockquote>
     )
   },
   codepen({ node, ...props }) {
     return (
-      <p>
-        Check out the <a href={`https://codepen.io/jh3y/${props.id}`}>demo pen</a> by Jhey (<a href="https://codepen.io/jh3y">@jh3y</a>) over on{' '}
-        <a href={`https://codepen.io/jh3y/${props.id}`}>CodePen</a>.
-      </p>
+      <blockquote>
+        <p>
+          Check out the <a href={`https://codepen.io/jh3y/${props.id}`}>demo pen</a> by Jhey (<a href="https://codepen.io/jh3y">@jh3y</a>) over on{' '}
+          <a href={`https://codepen.io/jh3y/${props.id}`}>CodePen</a>.
+        </p>
+      </blockquote>
     )
   },
   p({ node, ...props }) {
@@ -444,7 +465,7 @@ const rssComponents = {
     }
     if (props.src.endsWith('.mp3')) {
       props.src = `https://jhey.dev${props.src}`
-      return <audio {...props} controls loop></audio>
+      return <audio {...props} controls></audio>
     }
     return <img {...props} />
   },
