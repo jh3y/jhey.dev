@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import FeedLayout from "../../components/feed-layout/feed-layout.jsx";
 import { getSiteConfig, getAllCheeps } from '../../constants/queries.js'
+import { getRoutes } from '../../constants/routes.js'
 
 export async function getStaticPaths({ paginate }) {
   const { PAGINATION_SIZE } = import.meta.env
@@ -32,5 +33,6 @@ const { banner, character, page } = Astro.props
     currentPage={page.currentPage}
     totalPages={page.lastPage}
     route="/posts"
+    navItems={getRoutes()}
   />
 </Layout>

@@ -4,6 +4,7 @@ import {v4 as uuidv4} from 'uuid'
 export default defineType({
   name: 'siteConfig',
   title: 'Site Config',
+  description: 'General site configuration',
   type: 'document',
   fields: [
     defineField({
@@ -63,6 +64,12 @@ export default defineType({
           type: 'string',
         }),
       ]
+    }),
+    defineField({
+      name: 'about',
+      title: 'About',
+      description: 'Content for your about page',
+      type: 'markdown',
     }),
     defineField({
       name: 'posts',

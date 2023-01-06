@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import FeedLayout from "../components/feed-layout/feed-layout.jsx";
 import { getAllCheeps, getSiteConfig } from '../constants/queries.js'
+import { getRoutes, POSTS } from '../constants/routes.js'
 
 const { PAGINATION_SIZE } = import.meta.env
 const pageSize = parseInt(PAGINATION_SIZE, 10)
@@ -30,5 +31,6 @@ const page = {
     posts={page.data}
     currentPage={page.currentPage}
     totalPages={page.lastPage}
+    navItems={getRoutes()}
   />
 </Layout>
