@@ -4,7 +4,7 @@ import { getRssCheeps, getSiteConfig } from '../../constants/queries.js'
 
 // Grab the posts && config
 const posts = await getRssCheeps()
-const siteConfig = await (await getSiteConfig())[0]
+const siteConfig = await getSiteConfig()
 
 const metadata = {
   url: siteConfig?.rss?.url || 'https://jhey.dev/',

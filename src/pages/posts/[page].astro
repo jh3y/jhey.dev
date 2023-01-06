@@ -11,8 +11,8 @@ export async function getStaticPaths({ paginate }) {
   const siteConfig = await getSiteConfig()
   
   return paginate(allCheeps, { pageSize, props: {
-    character: siteConfig[0].character,
-    banner: siteConfig[0].banner,
+    character: siteConfig.character,
+    banner: siteConfig.banner,
   } })
 }
 

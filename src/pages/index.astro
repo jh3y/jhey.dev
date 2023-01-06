@@ -10,8 +10,8 @@ const allCheeps = await getAllCheeps()
 const siteConfig = await getSiteConfig()
 
 const page = {
-  character: siteConfig[0].character,
-  banner: siteConfig[0].banner,
+  character: siteConfig.character,
+  banner: siteConfig.banner,
   data: allCheeps.slice(0, pageSize),
   currentPage: 1,
   lastPage: Math.ceil(allCheeps.length / pageSize),

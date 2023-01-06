@@ -36,7 +36,7 @@ export async function getStaticPaths({ paginate }) {
     )
     
     // If there's a specialty character, show them
-    let character = siteConfig[0].character
+    let character = siteConfig.character
     const specialtyIndex = allAuthors.findIndex(author => author?.specialty?.title === tagName )
     if (specialtyIndex !== -1)
       character = allAuthors[specialtyIndex]
@@ -47,7 +47,7 @@ export async function getStaticPaths({ paginate }) {
       },
       props: {
         character,
-        banner: siteConfig[0].banner,
+        banner: siteConfig.banner,
         tagLabel: tagName,
         page: {
           data: filteredCheeps.slice(0, pageSize),

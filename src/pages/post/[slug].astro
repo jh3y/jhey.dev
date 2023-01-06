@@ -16,7 +16,7 @@ export async function getStaticPaths() {
       params: { slug: slug.current },
       props: {
         ...props,
-        siteConfig: siteConfig[0],
+        siteConfig,
       },
     };
   });

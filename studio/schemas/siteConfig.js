@@ -2,7 +2,7 @@ import {defineField, defineType} from 'sanity'
 import {v4 as uuidv4} from 'uuid'
 
 export default defineType({
-  name: 'config',
+  name: 'siteConfig',
   title: 'Site Config',
   type: 'document',
   fields: [
@@ -51,7 +51,17 @@ export default defineType({
           name: 'subtitle',
           title: 'Subtitle',
           type: 'string',
-        })
+        }),
+        defineField({
+          name: 'description',
+          title: 'Description',
+          type: 'string',
+        }),
+        defineField({
+          name: 'image',
+          title: 'Image',
+          type: 'string',
+        }),
       ]
     }),
     defineField({
@@ -73,7 +83,7 @@ export default defineType({
   preview: {
     prepare(selection) {
       return {
-        title: 'Site config [Dev]',
+        title: 'Site Configuration',
         media: undefined,
       }
     },

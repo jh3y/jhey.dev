@@ -3,7 +3,7 @@ import { getRssCheeps, getAllTags, getSiteConfig } from '../../constants/queries
 
 // Grab the posts && config
 const posts = await getRssCheeps()
-const siteConfig = await (await getSiteConfig())[0]
+const siteConfig = await getSiteConfig()
 const allTags = await getAllTags()
 
 export function getStaticPaths() {

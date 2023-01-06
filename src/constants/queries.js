@@ -31,7 +31,7 @@ export const RSS_CHEEPS = `
   } | order(publishedAt desc)
 `
 export const SITE_CONFIG = `
-  *[_type == "config"]{
+  *[_type == "siteConfig"][0]{
     ...,
     character->{
       "avatar": image.asset->url,
