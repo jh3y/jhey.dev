@@ -56,9 +56,9 @@
 - Using the multi-purpose <ContentBlock/>
 - Had issues after a machine upgrade with `storybook`. But, this gave me the opp to try the Vite builder `npx sb@next upgrade --prerelease`
 - Persona authors for the different tag pages... Define a specialty. Make those topic pages discoverable.
+- Tabs
 
 ## TODO::
-- Tabs
 - Deploy CMS
 - Pages
   - about - Include sig and some way to show demos?

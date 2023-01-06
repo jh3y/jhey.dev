@@ -40,6 +40,7 @@ const Card = (props) => {
         </>
       )}
       <a href={authorLink} className="w-10 h-10">
+        <span className="sr-only">{`${props.author.name}'s feed`}</span>
         <img
           src={`${props.author.avatar}?h=96`}
           alt=""
