@@ -1,7 +1,7 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
 import FeedLayout from "../../../components/feed-layout/feed-layout.jsx";
-import { getAllCheeps, getAllTags, getSiteConfig } from "../../../constants/queries.js";
+import { getAllAuthors, getAllCheeps, getAllTags, getSiteConfig } from "../../../constants/queries.js";
 
 export async function getStaticPaths({ paginate }) {
   const { PAGINATION_SIZE } = import.meta.env
@@ -10,6 +10,7 @@ export async function getStaticPaths({ paginate }) {
   const allCheeps = await getAllCheeps()
   const allTags = await getAllTags()
   const siteConfig = await getSiteConfig()
+  const allAuthors = await getAllAuthors()
 
   return allTags.map((tag) => {
     const tagName = tag.title
@@ -34,13 +35,18 @@ export async function getStaticPaths({ paginate }) {
       }
     )
     
-    // Cut this by pagination size and set up the links for the next ones...
+    // If there's a specialty character, show them
+    let character = siteConfig[0].character
+    const specialtyIndex = allAuthors.findIndex(author => author?.specialty?.title === tagName )
+    if (specialtyIndex !== -1)
+      character = allAuthors[specialtyIndex]
+
     return {
       params: {
         tag: tagName.toLowerCase(),
       },
       props: {
-        character: siteConfig[0].character,
+        character,
         banner: siteConfig[0].banner,
         tagLabel: tagName,
         page: {

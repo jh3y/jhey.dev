@@ -55,6 +55,7 @@
 - Links
 - Using the multi-purpose <ContentBlock/>
 - Had issues after a machine upgrade with `storybook`. But, this gave me the opp to try the Vite builder `npx sb@next upgrade --prerelease`
+- Persona authors for the different tag pages... Define a specialty. Make those topic pages discoverable.
 
 ## TODO::
 - Tabs
@@ -65,7 +66,6 @@
   - Guestbook
   - Testimonials
 - Timeline items [ Article, Newsletter feature, YouTube appearance, Life thing, Random Misc, Smashing person of week, Did a thing, etc. Drop an icon type if needed that can be mapped? ]
-- Persona authors for the different tag pages...
 
 - Edge functions for "New items in feed?"
 - Skewed gradient stinger from Auto Alex

@@ -471,7 +471,7 @@ const linksComponents = {
     return <a {...props} className="w-full h-full p-3 bg-surface-3 rounded-lg text-text-2 hover:no-underline hover:bg-surface-2 border hover:border-brand-stroke hover:text-brand-stroke">{children}</a>
   },
   ul({ node, ...props }) {
-    return <ul {...props} className="flex flex-wrap gap-2"></ul>
+    return <ul children={props.children} className="flex flex-wrap gap-2"></ul>
   },
   li({ node, ...props }) {
     return <li {...props} className="grid"></li>

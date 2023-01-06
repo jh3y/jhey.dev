@@ -1,12 +1,13 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
 import FeedLayout from '../../../components/feed-layout/feed-layout.jsx'
-import { getAllCheeps, getAllTags, getSiteConfig } from '../../../constants/queries.js'
+import { getAllAuthors, getAllCheeps, getAllTags, getSiteConfig } from '../../../constants/queries.js'
  
 export async function getStaticPaths({ paginate }) {
   const { PAGINATION_SIZE } = import.meta.env
   const pageSize = parseInt(PAGINATION_SIZE, 10)
   
+  const allAuthors = await getAllAuthors()
   const allTags = await getAllTags()
   const allCheeps = await getAllCheeps()
   const siteConfig = await getSiteConfig()
@@ -31,10 +32,17 @@ export async function getStaticPaths({ paginate }) {
         return false
       }
     )
+
+    // If there's a specialty character, show them
+    let character = siteConfig[0].character
+    const specialtyIndex = allAuthors.findIndex(author => author?.specialty?.title === tagName )
+    if (specialtyIndex !== -1)
+      character = allAuthors[specialtyIndex]
+
     return paginate(filteredCheeps, {
-      params: { tag: tag.title.toLowerCase() },
+      params: { tag: tagName.toLowerCase() },
       props: {
-        character: siteConfig[0].character,
+        character,
         banner: siteConfig[0].banner,
         tagLabel: tag.title,
       },
