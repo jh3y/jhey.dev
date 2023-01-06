@@ -82,8 +82,8 @@ const LayoutHeader = ({ banner, character }) => {
         <Banner {...banner} />
         <div className="relative flex justify-end items-center min-h-half-avatar py-2">
           <img
-            className="absolute top-0 transform -translate-y-1/2 left-0 rounded-full aspect-square w-avatar border-4 border-text-1"
-            src={`${character.avatar}?h=200`}
+            className="absolute top-0 transform bg-surface-2 -translate-y-1/2 left-0 rounded-full aspect-square w-avatar border-4 border-text-1"
+            src={`${character?.avatar || '/media/image/headshot--small.jpeg'}?h=200`}
             alt="Jhey presenting at All Day Hey! 2022"
           />
           <a
@@ -107,14 +107,15 @@ const LayoutHeader = ({ banner, character }) => {
       </div>
       {/* Actions Row [ Avatar + Follow RSS Button] */}
       <h1 className="text-fluid-3 flex gap-x-2 items-center font-bold">
-        {character.name}
-        {character.verified && (
+        {character?.name || 'Jhey'}
+        {character?.verified && (
           <span className="w-6 aspect-square inline-block">
             <svg
               viewBox="0 0 750 750"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
+              <circle cx="375" cy="375" r="310" fill="white" />
               <path
                 fillRule="evenodd"
                 clipRule="evenodd"
@@ -127,7 +128,7 @@ const LayoutHeader = ({ banner, character }) => {
       </h1>
       {/* Blurb */}
       <div className="leading-tight">
-        <ContentBlock type="bio">{character.bio}</ContentBlock>
+        <ContentBlock type="bio">{character?.bio || 'Where in the world is Jhey Tompkins?'}</ContentBlock>
       </div>
       {/* Details */}
       <span className="flex gap-x-4 items-center text-fluid--1 flex-wrap text-text-4">
