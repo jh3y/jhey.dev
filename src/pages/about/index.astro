@@ -1,28 +1,24 @@
 ---
-import Markdown from 'react-markdown'
-import FeedLayout from "../../components/feed-layout/feed-layout.jsx";
-import { getSiteConfig } from "../../constants/queries.js"
-import { ABOUT, getRoutes } from "../../constants/routes.js"
-import Layout from "../../layouts/Layout.astro";
-import Card from "../../components/card/card.jsx";
-import TabNav from "../../components/tab-nav/tab-nav.jsx";
-import ContentBlock from "../../components/content-block/content-block.jsx";
-import LayoutHeader from "../../components/header/header.jsx";
-import PostLayout from "../../components/post-layout/post-layout.jsx";
+import FeedLayout from "../../layouts/Feed.astro";
+import { getAllCheeps } from '../../constants/queries.js'
+import { ROUTES } from '../../constants/routes.js'
 
-const siteConfig = await getSiteConfig()
+const { PAGINATION_SIZE } = import.meta.env
+const pageSize = parseInt(PAGINATION_SIZE, 10)
+
+const allCheeps = await getAllCheeps()
+
+const page = {
+  posts: allCheeps.slice(0, pageSize),
+  currentPage: 1,
+  totalPages: Math.ceil(allCheeps.length / pageSize),
+  route: ROUTES.about.href,
+}
 ---
-<Layout
+<FeedLayout
   title="About Jhey"
   description="Some things about Jhey Tompkins"
   ogtitle="About Jhey"
   oggradient="7"
->
-  <LayoutHeader character={siteConfig.character} banner={siteConfig.banner} />
-  <main class="w-main-content max-w-full mv-0 mx-auto flex flex-col justify-center pt-4 gap-8">
-    <TabNav items={getRoutes(ABOUT)} />
-    <div class="px-4">
-      <ContentBlock type="card" children={siteConfig.about || '# Cool'}></ContentBlock>
-    </div>
-  </main>
-</Layout>
+  page={page}
+/>

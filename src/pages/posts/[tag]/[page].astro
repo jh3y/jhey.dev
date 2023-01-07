@@ -1,8 +1,7 @@
 ---
-import Layout from "../../../layouts/Layout.astro";
-import FeedLayout from '../../../components/feed-layout/feed-layout.jsx'
+import FeedLayout from "../../../layouts/Feed.astro";
 import { getAllAuthors, getAllCheeps, getAllTags, getSiteConfig } from '../../../constants/queries.js'
-import { getRoutes } from '../../../constants/routes.js'
+import { ROUTES } from '../../../constants/routes.js'
  
 export async function getStaticPaths({ paginate }) {
   const { PAGINATION_SIZE } = import.meta.env
@@ -43,34 +42,29 @@ export async function getStaticPaths({ paginate }) {
     return paginate(filteredCheeps, {
       params: { tag: tagName.toLowerCase() },
       props: {
+        tagLabel: tagName,
         character,
-        banner: siteConfig.banner,
-        tagLabel: tag.title,
       },
       pageSize
     });
   });
 }
 
-// Return the first set of cheeps via paginate...
-const { banner, character, page, tagLabel } = Astro.props
-const params = Astro.params
+const { character, tagLabel } = Astro.props
 
+const page = {
+  ...Astro.props.page,
+  totalPages: Astro.props.page.lastPage,
+  posts: Astro.props.page.data,
+  route: `${ROUTES.posts.href}/${Astro.params.tag}`,
+  tagLabel,
+  character,
+}
 ---
-<Layout
+<FeedLayout
   title={`${tagLabel} posts from Jhey Tompkins`}
   ogtitle={`${tagLabel} posts from Jhey Tompkins`}
   description={`A collection of posts from Jhey all about ${tagLabel}`}
   oggradient="4"
->
-  <FeedLayout
-    character={character}
-    banner={banner}
-    posts={page.data}
-    category={tagLabel}
-    currentPage={page.currentPage}
-    totalPages={page.lastPage}
-    route={`/posts/${params.tag}`}
-    navItems={getRoutes()}
-  />
-</Layout>
+  page={page}
+/>

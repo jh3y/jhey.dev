@@ -1,0 +1,64 @@
+---
+import Layout from './Layout.astro'
+
+import { getSiteConfig } from '../constants/queries.js'
+import {getRoutes, ROUTES } from '../constants/routes.js'
+
+import LayoutHeader from '../components/header/header.jsx'
+import TabNav from '../components/tab-nav/tab-nav.jsx'
+
+const siteConfig = await getSiteConfig()
+
+const {
+  title,
+  ogtitle,
+  description,
+  oggradient,
+  page: {
+    banner,
+    character,
+    posts,
+    category,
+    currentPage,
+    totalPages,
+    route,
+  },
+} = Astro.props
+
+// Set the enabled tab list item via the "route" prop
+const navItems = getRoutes(route.slice(1, route.lastIndexOf('/')))
+
+const contentProps = {
+  posts,
+  category,
+  currentPage,
+  totalPages,
+  route,
+  body: siteConfig.about
+}
+
+---
+<Layout
+  title={title}
+  ogtitle={ogtitle}
+  description={description}
+  oggradient={oggradient}
+>
+  <LayoutHeader character={character || siteConfig.character} banner={banner || siteConfig.banner} />
+  <main class="w-main-content max-w-full mv-0 mx-auto flex flex-col justify-center pt-4 gap-8">
+    {navItems && <TabNav items={navItems} />}
+    {Object.keys(ROUTES).map(ROUTE => {
+      const routeSection = ROUTES[ROUTE]
+      if (!routeSection.enabled) return null
+      const Body = routeSection.renderer
+      return (
+        <section data-tab-panel="true" id={routeSection.href} class={route.startsWith(routeSection.href) ? 'block' : 'hidden' }>
+          {Body && <Body {...contentProps} />}
+        </section>
+      )
+    })}
+  </main>
+</Layout>
+<script>
+  import '../scripts/tabs.js'
+</script>

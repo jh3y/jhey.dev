@@ -1,36 +1,24 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import FeedLayout from "../../components/feed-layout/feed-layout.jsx";
-import { getAllCheeps, getSiteConfig } from '../../constants/queries.js'
-import { getRoutes } from '../../constants/routes.js'
+import FeedLayout from "../../layouts/Feed.astro";
+import { getAllCheeps } from '../../constants/queries.js'
+import { ROUTES } from '../../constants/routes.js'
 
 const { PAGINATION_SIZE } = import.meta.env
 const pageSize = parseInt(PAGINATION_SIZE, 10)
 
 const allCheeps = await getAllCheeps()
-const siteConfig = await getSiteConfig()
 
 const page = {
-  banner: siteConfig.banner,
-  character: siteConfig.character,
-  data: allCheeps.slice(0, pageSize),
+  posts: allCheeps.slice(0, pageSize),
   currentPage: 1,
-  lastPage: Math.ceil(allCheeps.length / pageSize),
+  totalPages: Math.ceil(allCheeps.length / pageSize),
+  route: ROUTES.posts.href
 }
 ---
-<Layout
-  title="Jhey Tompkins"
-  ogtitle="Posts from Jhey Tompkins"
+<FeedLayout
+  title="The Feed"
   description="Thoughts and creations from the mind of Jhey Tompkins"
+  ogtitle="Posts from Jhey Tompkins"
   oggradient="2"
->
-  <FeedLayout
-    character={page.character}
-    banner={page.banner}
-    posts={page.data}
-    currentPage={page.currentPage}
-    totalPages={page.lastPage}
-    route="/posts"
-    navItems={getRoutes()}
-  />
-</Layout>
+  page={page}
+/>

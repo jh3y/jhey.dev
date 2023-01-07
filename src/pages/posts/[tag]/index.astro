@@ -1,8 +1,7 @@
 ---
-import Layout from "../../../layouts/Layout.astro";
-import FeedLayout from "../../../components/feed-layout/feed-layout.jsx";
+import FeedLayout from "../../../layouts/Feed.astro";
 import { getAllAuthors, getAllCheeps, getAllTags, getSiteConfig } from "../../../constants/queries.js";
-import { getRoutes } from '../../../constants/routes.js'
+import { ROUTES } from '../../../constants/routes.js'
 
 export async function getStaticPaths({ paginate }) {
   const { PAGINATION_SIZE } = import.meta.env
@@ -47,36 +46,25 @@ export async function getStaticPaths({ paginate }) {
         tag: tagName.toLowerCase(),
       },
       props: {
-        character,
-        banner: siteConfig.banner,
-        tagLabel: tagName,
         page: {
-          data: filteredCheeps.slice(0, pageSize),
+          character,
+          tagLabel: tagName,
+          posts: filteredCheeps.slice(0, pageSize),
           currentPage: 1,
-          lastPage: Math.ceil(filteredCheeps.length / pageSize)
+          totalPages: Math.ceil(filteredCheeps.length / pageSize),
+          route: `${ROUTES.posts.href}/${tagName.toLowerCase()}`
         }
       },
     }
   });
 }
 
-const params = Astro.params
-const { banner, character, page, tagLabel } = Astro.props
+const { banner, character, tagLabel, page } = Astro.props
 ---
-<Layout
+<FeedLayout
   title={`${tagLabel} posts from Jhey Tompkins`}
   ogtitle={`${tagLabel} posts from Jhey Tompkins`}
   description={`A collection of posts from Jhey all about ${tagLabel}`}
   oggradient="8"
->
-  <FeedLayout
-    character={character}
-    banner={banner}
-    posts={page.data}
-    category={tagLabel}
-    currentPage={page.currentPage}
-    totalPages={page.lastPage}
-    route={`/posts/${params.tag}`}
-    navItems={getRoutes()}
-  />
-</Layout>
+  page={page}
+/>
