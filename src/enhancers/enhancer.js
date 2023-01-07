@@ -2,6 +2,7 @@ import fs from 'fs'
 import {JSDOM} from 'jsdom'
 import styleInliner from './inline-styles.js'
 import htmlMinifier from './html-minifier.js'
+import scriptInliner from './inline-scripts.js'
 const BASE = `${process.cwd()}/dist`
 
 const getFiles = dir => {
@@ -11,7 +12,6 @@ const getFiles = dir => {
     const p = `${dir}/${file}`
     if (fs.statSync(p).isDirectory()) {
       const files = getFiles(p)
-      // console.info({ files })
       result.push(getFiles(p))
     }
     else {
@@ -32,8 +32,10 @@ HTML.forEach(file => {
   } = new JSDOM(content)
 
   const inlined = styleInliner(document)
+  const scripty = scriptInliner(inlined)
   const minified = htmlMinifier(inlined.documentElement.outerHTML)
 
-  // return "<!DOCTYPE html>\r\n" + document.documentElement.outerHTML
   fs.writeFileSync(file, "<!DOCTYPE html>\r\n" + minified)
+  // For debugging
+  // fs.writeFileSync(file + '--amended', "<!DOCTYPE html>\r\n" + minified)
 })
