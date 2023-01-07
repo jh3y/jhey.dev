@@ -1,6 +1,6 @@
-@import url("../../node_modules/open-props/colors.min.css");
+/* @import url("../../node_modules/open-props/colors.min.css");
 @import url("../../node_modules/open-props/colors-hsl.min.css");
-@import url("../../node_modules/open-props/gradients.min.css");
+@import url("../../node_modules/open-props/gradients.min.css"); */
 @import url("./night-owl.css");
 
 @tailwind base;
@@ -9,6 +9,34 @@
 
 @layer base {
   :root {
+    /* Open Props Gray Palette */
+    --gray-0: #f8f9fa;
+    --gray-1: #f1f3f5;
+    --gray-2: #e9ecef;
+    --gray-3: #dee2e6;
+    --gray-4: #ced4da;
+    --gray-5: #adb5bd;
+    --gray-6: #868e96;
+    --gray-7: #495057;
+    --gray-8: #343a40;
+    --gray-9: #212529;
+    --gray-10: #16191d;
+    --gray-11: #0d0f12;
+    --gray-12: #030507;
+    --gray-0-hsl: 210 17% 98%;
+    --gray-1-hsl: 210 17% 95%;
+    --gray-2-hsl: 210 16% 93%;
+    --gray-3-hsl: 210 14% 89%;
+    --gray-4-hsl: 210 14% 83%;
+    --gray-5-hsl: 210 11% 71%;
+    --gray-6-hsl: 210 7% 56%;
+    --gray-7-hsl: 210 9% 31%;
+    --gray-8-hsl: 210 10% 23%;
+    --gray-9-hsl: 210 11% 15%;
+    --gray-10-hsl: 214 14% 10%;
+    --gray-11-hsl: 216 16% 6%;
+    --gray-12-hsl: 210 40% 2%;
+    /* End palette */
     --step--2: clamp(0.69rem, calc(0.66rem + 0.18vw), 0.80rem);
     --step--1: clamp(0.83rem, calc(0.78rem + 0.29vw), 1.00rem);
     --step-0: clamp(1.00rem, calc(0.91rem + 0.43vw), 1.25rem);
@@ -84,6 +112,10 @@
       --surface-alpha: hsl(var(--gray-10-hsl) / 65%);
       color-scheme: dark;
     }
+  }
+
+  body > nav {
+    backdrop-filter: blur(8px);
   }
 
   /* TODO: Link styles: :visited, :hover, :active, etc. */

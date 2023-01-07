@@ -1,10 +1,9 @@
 import fs from 'fs'
-
+import {JSDOM} from 'jsdom'
+import styleInliner from './inline-styles.js'
+import htmlMinifier from './html-minifier.js'
 const BASE = `${process.cwd()}/dist`
 
-// const files = fs.readdirSync(BASE)
-// const filesToRemove = files.filter((f) => f.includes(".critical.css"))
-// Iterate through critical CSS files and remove them
 const getFiles = dir => {
   let result = []
   const files = fs.readdirSync(dir)
@@ -23,18 +22,18 @@ const getFiles = dir => {
 }
 
 const files = getFiles(BASE)
+const HTML = files.filter(f => f.endsWith('.html'))
 
-console.info({ files: files.filter(f => f.endsWith('.html')) })
+HTML.forEach(file => {
+  const content = fs.readFileSync(file, 'utf-8')
 
+  const {
+    window: { document }
+  } = new JSDOM(content)
 
+  const inlined = styleInliner(document)
+  const minified = htmlMinifier(inlined.documentElement.outerHTML)
 
-// module.exports = function (content, outputPath) {
-//   if (outputPath.endsWith && outputPath.endsWith(".html")) {
-//     const {
-//       window: { document },
-//     } = new JSDOM(content)
-//     enhanceInlineStyles(document)
-//     return "<!DOCTYPE html>\r\n" + document.documentElement.outerHTML
-//   }
-//   return content
-// }
+  // return "<!DOCTYPE html>\r\n" + document.documentElement.outerHTML
+  fs.writeFileSync(file, "<!DOCTYPE html>\r\n" + minified)
+})
