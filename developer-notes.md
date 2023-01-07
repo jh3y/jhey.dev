@@ -62,6 +62,7 @@
 - Deploy CMS
 - Blockquote author citeation?
 - Inline stylesheets and make CSS only pull in where it's needed.
+- Move script tags?
 - Pages
   - about - Include sig and some way to show demos?
   - 404
