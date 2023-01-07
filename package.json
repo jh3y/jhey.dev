@@ -48,6 +48,8 @@
     "eslint": ">=5.16.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-react": "^7.31.11",
+    "html-minifier": "^4.0.0",
+    "jsdom": "^20.0.3",
     "open-props": "^1.5.1",
     "postcss": "^8.4.19",
     "postcss-combine-duplicated-selectors": "^10.0.3",
