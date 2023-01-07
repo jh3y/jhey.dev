@@ -57,12 +57,13 @@
 - Had issues after a machine upgrade with `storybook`. But, this gave me the opp to try the Vite builder `npx sb@next upgrade --prerelease`
 - Persona authors for the different tag pages... Define a specialty. Make those topic pages discoverable.
 - Tabs
+- Inline stylesheets and make CSS only pull in where it's needed.
+- Move script tags?
 
 ## TODO::
 - Deploy CMS
+- Sanity plugin Cloudinary
 - Blockquote author citeation?
-- Inline stylesheets and make CSS only pull in where it's needed.
-- Move script tags?
 - Pages
   - about - Include sig and some way to show demos?
   - 404

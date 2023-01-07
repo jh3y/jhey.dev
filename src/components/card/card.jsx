@@ -67,7 +67,7 @@ const Card = (props) => {
         {props.status && (
           <div>
             <div className="py-1 px-3 inline-flex items-center gap-1 bg-surface-4 inline rounded-full">
-              <span role="img">{props.status.icon}</span>
+              <span role="img" alt="Status icon" aria-hidden="true">{props.status.icon}</span>
               <span className="text-fluid--2 font-bold">
                 {props.status.title}
               </span>

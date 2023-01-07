@@ -41,8 +41,8 @@ const remarkToc = () => {
           .join('')
         node.value = `
           <aside data-type="tableofcontents">
-            <details role="navigation" className="bg-surface-2 p-4">
-              <summary class="flex justify-between cursor-pointer">
+            <details data-toc="true" role="navigation" className="bg-surface-2 p-4">
+              <summary data-toc-summary="true" class="flex justify-between cursor-pointer">
                 <span class="uppercase text-fluid--1 font-bold">Table of Contents</span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-brand-stroke">
                   <path fill-rule="evenodd" d="M12.53 16.28a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 011.06-1.06L12 14.69l6.97-6.97a.75.75 0 111.06 1.06l-7.5 7.5z" clip-rule="evenodd" />
@@ -71,6 +71,7 @@ const defaultComponents = {
     )
   },
   summary({ node, ...props }) {
+    if (node.properties.dataTocSummary) return <summary {...props}></summary>
     return (
       <summary className="flex justify-between cursor-pointer">
         <span className="uppercase text-fluid--1 font-bold">{props.children}</span>
@@ -184,7 +185,7 @@ const defaultComponents = {
       (child) => child.tagName === 'tweet' || child.tagName === 'codepen'
     )
     if (interactive) return <>{props.children}</>
-    return <p {...props} className="mb-6"></p>
+    return <p className="mb-6" {...props}></p>
   },
   code({ node, inline, className, children, ...props }) {
     const match = /language-(\w+)/.exec(className || '')
@@ -382,7 +383,7 @@ const cardComponents = {
       (child) => child.tagName === 'tweet' || child.tagName === 'codepen'
     )
     if (interactive) return <>{props.children}</>
-    return <p {...props} className="mb-4"></p>
+    return <p className="mb-4" {...props} ></p>
   },
   img({ node, ...props }) {
     if (props.src.endsWith('.mp4')) {

@@ -42,3 +42,4 @@ Need a link to find me somewhere? Odds are, it's here.
 - [NFTs](https://rarible.com/jh3y)
 - [Uses](https://jhey.dev/uses)
 - [Bear Merch](https://cottonbureau.com/people/jhey-tompkins)
+- [Slide Decks](https://jhey-presents.netlify.app)
