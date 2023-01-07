@@ -4,7 +4,7 @@ import { ABOUT } from '../../constants/routes.js'
 
 const About = ({ body }) => {
   return (
-    <div class="px-4">
+    <div className="px-4">
       <ContentBlock type="card">{body}</ContentBlock>
     </div>
   )
