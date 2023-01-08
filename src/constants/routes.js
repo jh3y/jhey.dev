@@ -1,11 +1,7 @@
 import About from '../components/about/about.jsx'
 import Posts from '../components/posts/posts.jsx'
 import Activity from '../components/activity/activity.jsx'
-
-export const POSTS = 'posts'
-export const ABOUT = 'about'
-export const TESIMONIALS = 'testimonials'
-export const ACTIVITY = 'activity'
+import Guestbook from '../components/guestbook/guestbook.jsx'
 
 export const ROUTES = {
   posts: {
@@ -27,18 +23,21 @@ export const ROUTES = {
     renderer: Activity,
   },
   testimonials: {
-    href: '/testimonials',
-    label: 'Testimonials',
-    enabled: false,
+    href: '/guestbook',
+    label: 'Guestbook',
+    enabled: true,
+    renderer: Guestbook,
   }
 }
 
 export const getRoutes = key => {
-  return Object.keys(ROUTES).reduce((acc, cur) => {
+  const newRoutes = Object.keys(ROUTES).reduce((acc, cur) => {
     acc.push({
       ...ROUTES[cur],
-      active: (cur === POSTS && !key) || key === cur
+      active: (cur === ROUTES.posts.href.slice(1) && !key) || key === cur
     })
     return acc
   }, [])
+  console.info({ newRoutes })
+  return newRoutes
 }

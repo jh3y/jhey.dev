@@ -41,6 +41,9 @@ export const SITE_CONFIG = `
 export const ALL_TAGS = `
   *[_type == "tag"]
 `
+export const ALL_GUESTBOOK_ENTRIES = `
+  *[_type == "guestEntry"] | order((when || _createdAt) desc)
+`
 export const ALL_AUTHORS = `
   *[_type == "author"]{
     ...,
@@ -48,7 +51,7 @@ export const ALL_AUTHORS = `
     specialty->{...}
   }`
 export const ALL_POSTS = `
-  *[_type == "cheep" || _type == "article"]{
+  *[_type == "cheep" || _type == "article" || _type == "guestEntry"]{
     ...,
     status->{...},
     author->{
@@ -77,6 +80,10 @@ export const getAllCheeps = async () => {
 
 export const getAllAuthors = async () => {
   return getData(ALL_AUTHORS)
+}
+
+export const getGuestbook = async () => {
+  return getData(ALL_GUESTBOOK_ENTRIES)
 }
 
 export const getRssCheeps = async () => {
