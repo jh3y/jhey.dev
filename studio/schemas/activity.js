@@ -11,6 +11,11 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'string',
+    }),
+    defineField({
       name: 'category',
       title: 'Category',
       type: 'string',
@@ -29,9 +34,26 @@ export default defineType({
       },
     }),
     defineField({
-      name: 'link',
-      title: 'Link',
-      type: 'url',
+      name: 'links',
+      title: 'Links',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'label',
+              title: 'Label',
+              type: 'string',
+            }),
+            defineField({
+              name: 'link',
+              title: 'URL',
+              type: 'url',
+            }),
+          ]
+        }
+      ]
     }),
     defineField({
       name: 'when',

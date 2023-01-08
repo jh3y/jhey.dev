@@ -44,7 +44,7 @@ const sync = async (query, filePath, key, defaultProperties ) => {
         _type: key,
         ...defaultProperties,
       }
-      const res = await client.create(docToCreate)
+      const res = await client.create(docToCreate, {autoGenerateArrayKeys: true})
       console.log(`${key} was created, document ID is ${res._id}`)
       newData.push(res)
     }
@@ -56,6 +56,7 @@ const sync = async (query, filePath, key, defaultProperties ) => {
       newData.push(data)
     }
   }
+
   fs.writeFileSync(filePath, JSON.stringify({
     [key]: newData
   }, undefined, 2))
