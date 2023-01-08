@@ -6,11 +6,12 @@ const COOKIE_KEY = 'jhey-theme'
 export default async (request, context) => {
   const res = await context.next()
 
+
   const type = res.headers.get('content-type')
 
-  if (!type.startsWith('text/html')) {
+  if (!type.startsWith('text/html') || request.url.includes('/demos/')) {
     return
-  }
+  } 
 
   // Grab the theme to make sure it's set on the HTML
   const theme = context.cookies.get(COOKIE_KEY) || THEMES[0]
