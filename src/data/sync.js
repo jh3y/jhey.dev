@@ -57,5 +57,5 @@ for (const activity of FETCHED_ACTIVITY) {
 
 fs.writeFileSync(PATH, JSON.stringify({
   activity: NEW_ACTIVITY
-}))
+}, undefined, 2))
 console.info('Activity synced with CMS!')
