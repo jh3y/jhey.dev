@@ -1,4 +1,5 @@
 import activity from './activity'
+import guestEntry from './guestEntry'
 import siteConfig from './siteConfig'
 import blockContent from './blockContent'
 import status from './status'
@@ -11,6 +12,7 @@ export const schemaTypes = [
   cheep,
   article,
   activity,
+  guestEntry,
   author,
   siteConfig,
   status,

@@ -19,6 +19,8 @@ export default defineType({
           {title: 'Blog', value: 'blog'},
           {title: 'Newsletter', value: 'newsletter'},
           {title: 'Video', value: 'video'},
+          {title: 'Stream', value: 'stream'},
+          {title: 'Podcast', value: 'podcast'},
           {title: 'Conference', value: 'conference'},
           {title: 'Demo', value: 'demo'},
           {title: 'Work', value: 'work'},

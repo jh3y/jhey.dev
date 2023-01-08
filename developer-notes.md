@@ -59,10 +59,10 @@
 - Tabs
 - Inline stylesheets and make CSS only pull in where it's needed.
 - Move script tags?
+- Sanity plugin Cloudinary
 
 ## TODO::
 - Deploy CMS
-- Sanity plugin Cloudinary
 - Blockquote author citeation?
 - Pages
   - about - Include sig and some way to show demos?

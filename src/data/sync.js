@@ -1,3 +1,4 @@
+
 /**
  * A little util for pushing things into Sanity CMS or syncing locally to a file
  * Run this to make sure everything is in sync.
@@ -5,7 +6,7 @@
  * 1. Run through local and push up anything that doesn't have an "_id"
  * 2. Pull everything down and make that the new file content
  * */
-
+import {v4 as uuidv4} from 'uuid'
 import * as dotenv from 'dotenv'
 dotenv.config()
 import fs from 'fs'
@@ -25,37 +26,41 @@ const client = sanityClient({
   useCdn: true, // `false` if you want to ensure fresh data
 })
 
-const query = '*[_type == "activity"] {...}'
-const PATH = `${process.cwd()}/src/data/activity.json`
-const FILE = fs.readFileSync(PATH, 'utf-8')
+const ACTIVITY_QUERY = '*[_type == "activity"] {...}'
+const ACTIVITY_PATH = `${process.cwd()}/src/data/activity.json`
 
+const GUESTBOOK_QUERY = '*[_type == "guestEntry"] {...}'
+const GUESTBOOK_PATH = `${process.cwd()}/src/data/guestbook.json`
 
-const CURRENT_ACTIVITY = JSON.parse(FILE)
-
-const NEW_ACTIVITY = []
-
-const docsToCreate = CURRENT_ACTIVITY?.activity.filter(a => !a.hasOwnProperty("_id"))
-if (docsToCreate.length > 0) {
-  for (const doc of docsToCreate) {
-    const docToCreate = {
-      ...doc,
-      _type: 'activity',
+const sync = async (query, filePath, key, defaultProperties ) => {  
+  const newData = []
+  const currentFile = fs.readFileSync(filePath, 'utf-8')
+  const currentData = JSON.parse(currentFile)
+  const docsToCreate = currentData?.[key].filter(a => !a.hasOwnProperty("_id"))
+  if (docsToCreate.length > 0) {
+    for (const doc of docsToCreate) {
+      const docToCreate = {
+        ...doc,
+        _type: key,
+        ...defaultProperties,
+      }
+      const res = await client.create(docToCreate)
+      console.log(`${key} was created, document ID is ${res._id}`)
+      newData.push(res)
     }
-    const res = await client.create(docToCreate)
-    console.log(`Activity was created, document ID is ${res._id}`)
-    NEW_ACTIVITY.push(res)
   }
+  // Once new docs are created, pull down the current and sync to local
+  const fetchedData = await client.fetch(query)
+  for (const data of fetchedData) {
+    if (!newData.find(f => f._id === data._id)) {
+      newData.push(data)
+    }
+  }
+  fs.writeFileSync(filePath, JSON.stringify({
+    [key]: newData
+  }, undefined, 2))
+  console.info(`${key} synced with CMS!`)
 }
 
-const FETCHED_ACTIVITY = await client.fetch(query)
-
-for (const activity of FETCHED_ACTIVITY) {
-  if (!NEW_ACTIVITY.find(f => f._id === activity._id)) {
-    NEW_ACTIVITY.push(activity)
-  }
-}
-
-fs.writeFileSync(PATH, JSON.stringify({
-  activity: NEW_ACTIVITY
-}, undefined, 2))
-console.info('Activity synced with CMS!')
+await sync(ACTIVITY_QUERY, ACTIVITY_PATH, 'activity')
+await sync(GUESTBOOK_QUERY, GUESTBOOK_PATH, 'guestEntry', { visible: true, slug: { current: uuidv4(), type: '_slug' }})
