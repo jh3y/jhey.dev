@@ -28,16 +28,18 @@ const remarkToc = () => {
           .join('')
         node.value = `
           <aside data-type="tableofcontents">
-            <details data-toc="true" role="navigation" className="bg-surface-2 p-4">
-              <summary data-toc-summary="true" class="flex justify-between cursor-pointer">
+            <details data-toc="true" role="navigation" className="bg-surface-2">
+              <summary data-toc-summary="true" class="flex justify-between cursor-pointer p-4">
                 <span class="uppercase text-fluid--1 font-bold">Table of Contents</span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-brand-stroke">
                   <path fill-rule="evenodd" d="M12.53 16.28a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 011.06-1.06L12 14.69l6.97-6.97a.75.75 0 111.06 1.06l-7.5 7.5z" clip-rule="evenodd" />
                 </svg>
               </summary>
-              <ul className="mb-0 list-disc pl-4 pt-4 grid gap-y-1">
-                ${children}
-              </ul>
+              <div className="p-4 pt-0">
+                <ul className="mb-0 pl-4 list-disc grid gap-y-1">
+                  ${children}
+                </ul>
+              </div>
             </details>
           </aside>
         `
