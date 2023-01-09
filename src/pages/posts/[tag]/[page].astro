@@ -1,65 +1,36 @@
 ---
 import FeedLayout from "../../../layouts/Feed.astro";
-import { getAllAuthors, getAllCheeps, getAllTags, getSiteConfig } from '../../../constants/queries.js'
 import { ROUTES } from '../../../constants/routes.js'
+import { getTagPageData } from './_getTagPageData.js'
  
 export async function getStaticPaths({ paginate }) {
-  const { PAGINATION_SIZE } = import.meta.env
-  const pageSize = parseInt(PAGINATION_SIZE, 10)
-  
-  const allAuthors = await getAllAuthors()
-  const allTags = await getAllTags()
-  const allCheeps = await getAllCheeps()
-  const siteConfig = await getSiteConfig()
+  const datasets = await getTagPageData()
 
-  return allTags.map((tag) => {
-    const tagName = tag.title
-    const filteredCheeps = allCheeps.filter(
-      (cheep) => {
-        const cheepTags = cheep.tags.filter(t => t !== null)
-        let tags = [...cheepTags]
-        if (cheep.article) {
-          for (const article of cheep.article) {
-            // Add related tags from an article
-            if (article.tags) {
-              for (const tag of article.tags) {
-                if(!tags.find(t => t._id === tag._id)) tags.push(tag)
-              }
-            }
-          }
-        }
-        if (tags.find(tag => tag.title === tagName)) return true
-        return false
-      }
-    )
-
-    // If there's a specialty character, show them
-    let character = siteConfig.character
-    const specialtyIndex = allAuthors.findIndex(author => author?.specialty?.title === tagName )
-    if (specialtyIndex !== -1)
-      character = allAuthors[specialtyIndex]
-
-    return paginate(filteredCheeps, {
-      params: { tag: tagName.toLowerCase() },
-      props: {
-        tagLabel: tagName,
-        character,
-      },
-      pageSize
+  return datasets.map(dataset => {
+    return paginate(dataset.data, {
+      params: dataset.params,
+      props: dataset.props,
+      pageSize: dataset.pageSize
     });
-  });
+  })
 }
 
-const { character, tagLabel } = Astro.props
+const { character, guestbook, tagLabel } = Astro.props
 
 const page = {
-  ...Astro.props.page,
-  totalPages: Astro.props.page.lastPage,
-  posts: Astro.props.page.data,
-  route: `${ROUTES.posts.href}/${Astro.params.tag}`,
   tagLabel,
   character,
+  route: `${ROUTES.posts.href}/${Astro.params.tag}`,
+  guestbook,
+  posts: {
+    ...Astro.props.page,
+    category: tagLabel,
+    data: Astro.props.page.data,
+    totalPages: Astro.props.page.lastPage,
+    route: `${ROUTES.posts.href}/${Astro.params.tag}`,
+  }
 }
+
 ---
 <FeedLayout
   title={`${tagLabel} posts from Jhey Tompkins`}

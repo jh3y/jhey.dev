@@ -1,21 +1,29 @@
 ---
 import FeedLayout from "../../layouts/Feed.astro";
+import { getGuestbookData } from '../../utils/getPageData.js'
 import { getAllCheeps } from '../../constants/queries.js'
 import { ROUTES } from '../../constants/routes.js'
 
+const guestbook = await getGuestbookData()
+
 export async function getStaticPaths({ paginate }) {
-  const { PAGINATION_SIZE } = import.meta.env
-  const pageSize = parseInt(PAGINATION_SIZE, 10)
+  const { POSTS_PAGINATION_SIZE } = import.meta.env
+  const postsPageSize = parseInt(POSTS_PAGINATION_SIZE, 10)
   const allCheeps = await getAllCheeps()
-  return paginate(allCheeps, { pageSize })
+  return paginate(allCheeps, { pageSize: postsPageSize })
 }
 
 const page = {
-  ...Astro.props.page,
-  totalPages: Astro.props.page.lastPage,
-  posts: Astro.props.page.data,
+  guestbook,
+  posts: {
+    ...Astro.props.page,
+    data: Astro.props.page.data,
+    totalPages: Astro.props.page.lastPage,
+    route: ROUTES.posts.href,
+  },
   route: ROUTES.posts.href,
 }
+
 ---
 <FeedLayout
   title="The Feed"

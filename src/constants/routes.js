@@ -22,7 +22,7 @@ export const ROUTES = {
     enabled: false,
     renderer: Activity,
   },
-  testimonials: {
+  guestbook: {
     href: '/guestbook',
     label: 'Guestbook',
     enabled: true,
@@ -34,10 +34,9 @@ export const getRoutes = key => {
   const newRoutes = Object.keys(ROUTES).reduce((acc, cur) => {
     acc.push({
       ...ROUTES[cur],
-      active: (cur === ROUTES.posts.href.slice(1) && !key) || key === cur
+      active: (!key && cur === ROUTES.posts.href.slice(1)) || key.indexOf(cur) !== -1
     })
     return acc
   }, [])
-  console.info({ newRoutes })
   return newRoutes
 }

@@ -1,17 +1,12 @@
 ---
 import FeedLayout from "../../layouts/Feed.astro";
-import { getAllCheeps } from '../../constants/queries.js'
+import { getAllPageData } from '../../utils/getPageData.js'
 import { ROUTES } from '../../constants/routes.js'
 
-const { PAGINATION_SIZE } = import.meta.env
-const pageSize = parseInt(PAGINATION_SIZE, 10)
-
-const allCheeps = await getAllCheeps()
+const data = await getAllPageData()
 
 const page = {
-  posts: allCheeps.slice(0, pageSize),
-  currentPage: 1,
-  totalPages: Math.ceil(allCheeps.length / pageSize),
+  ...data,
   route: ROUTES.about.href,
 }
 ---

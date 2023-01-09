@@ -10,30 +10,31 @@ import TabNav from '../components/tab-nav/tab-nav.jsx'
 const siteConfig = await getSiteConfig()
 
 const {
+  // Page meta stuff for open graph, etc.
   title,
   ogtitle,
   description,
   oggradient,
   page: {
+    // Banner and character for each page
     banner,
     character,
-    posts,
-    category,
-    currentPage,
-    totalPages,
+    // Current route to please tabs
     route,
+    // Need pagination blocks for each category of paginated things
+    posts,
+    guestbook,
+    activity,
   },
 } = Astro.props
 
 // Set the enabled tab list item via the "route" prop
-const navItems = getRoutes(route.slice(1, route.lastIndexOf('/')))
+const navItems = getRoutes(route)
 
 const contentProps = {
-  posts,
-  category,
-  currentPage,
-  totalPages,
   route,
+  posts,
+  guestbook,
   body: siteConfig.about
 }
 

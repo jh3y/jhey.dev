@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Guestbook = () => {
+const Guestbook = ({ guestbook }) => {
+  console.info({ guestbook })
   return (
     <h1>Guestbook</h1>
   )
