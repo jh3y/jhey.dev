@@ -58,6 +58,11 @@ export default defineType({
       type: 'boolean',
     }),
     defineField({
+      name: 'pinned',
+      title: 'Pinned',
+      type: 'boolean',
+    }),
+    defineField({
       name: 'when',
       title: 'When',
       type: 'date',

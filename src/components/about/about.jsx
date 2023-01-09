@@ -1,6 +1,5 @@
 import React from 'react'
 import ContentBlock from '../content-block/content-block.jsx'
-import { ABOUT } from '../../constants/routes.js'
 
 const About = ({ body }) => {
   return (

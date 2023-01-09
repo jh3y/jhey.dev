@@ -42,7 +42,7 @@ export const ALL_TAGS = `
   *[_type == "tag"]
 `
 export const ALL_GUESTBOOK_ENTRIES = `
-  *[_type == "guestEntry"] | order((when || _createdAt) desc)
+  *[_type == "guestEntry"] | order((when || _createdAt) desc) | order(pinned desc)
 `
 export const ALL_AUTHORS = `
   *[_type == "author"]{

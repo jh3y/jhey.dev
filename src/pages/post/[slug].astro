@@ -23,10 +23,9 @@ export async function getStaticPaths() {
 }
 
 const { slug } = Astro.params
-const { description, title, post, body } = Astro.props
+const { description, title } = Astro.props
 
 const shareLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`"${title}" via @jh3yy\n`)}https://jhey.dev/post/${slug}/`
-
 ---
 <Layout
   title={title}
@@ -34,7 +33,7 @@ const shareLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`"
   ogtitle={Astro.props?.og?.title}
   oghue={Astro.props?.og?.hue}
   oggradient={Astro.props?.og?.gradient}
-  flexLayout={Astro.props._type === 'cheep'}
+  flexLayout={Astro.props._type === 'cheep' || Astro.props._type === 'guestEntry'}
 >
   <PostLayout {...Astro.props} {...Astro.params} shareLink={shareLink} />
 </Layout>

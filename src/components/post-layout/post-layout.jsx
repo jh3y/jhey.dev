@@ -2,6 +2,7 @@ import React from "react"
 import ContentBlock from '../content-block/content-block.jsx'
 import PostHeader from '../post-header/post-header.jsx'
 import Card from '../card/card.jsx'
+import GuestCard from '../guest-card/guest-card.jsx'
 
 const PostLayout = ({ _type: type, title, body, cheep, ...props}) => {
   
@@ -13,6 +14,15 @@ const PostLayout = ({ _type: type, title, body, cheep, ...props}) => {
 
     )
   }
+
+  if (type === 'guestEntry') {
+    return (
+      <main className="w-main-content flex items-center grow max-w-full mv-0 mx-auto px-4">
+        <GuestCard permacard={true} body={body} {...props} />
+      </main>
+    )
+  }
+
   if (type === 'article') {
     return (
       <>
