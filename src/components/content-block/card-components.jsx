@@ -17,7 +17,7 @@ const cardComponents = {
             <path fillRule="evenodd" d="M12.53 16.28a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 011.06-1.06L12 14.69l6.97-6.97a.75.75 0 111.06 1.06l-7.5 7.5z" clipRule="evenodd" />
           </svg>
         </summary>
-        <form className="grid gap-2" name="guestbook" netlify action="/guestbook?success=true" >
+        <form className="grid gap-2" name="guestbook" data-netlify="true" action="/guestbook?success=true" >
           <p className="mb-4">Fill in this form and then I'll get your guestbook entry added.</p>
           <div className="grid gap-2 grid-cols-[auto_1fr] items-center">
             <label htmlFor="name">Name</label>
