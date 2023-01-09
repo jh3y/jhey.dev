@@ -3,6 +3,8 @@ import Posts from '../components/posts/posts.jsx'
 import Activity from '../components/activity/activity.jsx'
 import Guestbook from '../components/guestbook/guestbook.jsx'
 
+export const GUESTBOOK_SUCCESS_PATH = 'thanks'
+
 export const ROUTES = {
   posts: {
     href: '/posts',

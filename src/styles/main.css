@@ -192,6 +192,15 @@
     width: calc(100% + (4 * var(--step-1)));
   }
 
+  .banner-message {
+    animation: fade-away 0s 2s forwards;
+    @apply pointer-events-none bg-surface-1 shadow-lg text-text-1 fixed top-24 z-10 left-1/2 -translate-x-1/2 rounded-md p-4 text-green-800 grid place-items-center leading-tight border border-green-800 bg-green-100;
+  }
+
+  @keyframes fade-away {
+    to { opacity: 0; }
+  }
+
   .bleed {
     width: calc(100% + (2 * var(--step-1)));
   }

@@ -5,7 +5,7 @@ import Pagination from '../pagination/pagination.jsx'
 const Guestbook = ({ guestbook: { data, currentPage, totalPages, route } }) => {
   
   return (
-    <>
+    <div className="grid gap-4">
       {data && data.length === 0 && (
         <p className="border-2 border-current text-center text-text-2 p-4 grid items-center rounded-md">
           {`No guestbook entries to show currently.`}
@@ -23,7 +23,7 @@ const Guestbook = ({ guestbook: { data, currentPage, totalPages, route } }) => {
           prefix={route}
         />
       )}
-    </>
+    </div>
   )
 }
 

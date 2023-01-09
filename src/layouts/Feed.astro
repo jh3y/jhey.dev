@@ -59,7 +59,13 @@ const contentProps = {
       )
     })}
   </main>
+  {Astro.props.page.guestbook.thanks && (
+    <div role="status" aria-live="polite" class="banner-message">
+      Thank you for your submission!
+    </div>
+  )}
 </Layout>
 <script>
   import '../scripts/tabs.js'
+  import '../scripts/guestbook.js'
 </script>

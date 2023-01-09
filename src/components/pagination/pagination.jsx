@@ -4,7 +4,7 @@ const Pagination = ({ current, total, prefix = '/posts', splice = 5 }) => {
   if (total <= 1 || !current || !total) return null
   return (
     <nav aria-labelledby="pagination-header" className="mt-8">
-      <h2 className="sr-only" id="pagination-header">
+      <h2 className="sr-only" id={`pagination-header-${prefix.slice(1)}`}>
         Pagination links
       </h2>
       <ul className="flex items-center justify-center gap-x-2">
@@ -48,20 +48,6 @@ const Pagination = ({ current, total, prefix = '/posts', splice = 5 }) => {
             </span>
           )}
         </li>
-        {/* Map over from the current to the threshold */}
-        {/*{new Array(Math.min(splice, total)).fill().map((page, index) => {
-          if (index === 0) return null
-          return (
-            <li>
-              <a
-                href={`${prefix}/${index}`}
-                className={`w-10 grid place-items-center aspect-square bg-red-200 inline-block ${index === current ? "text-blue-600" : ''}`}
-              >
-                {index}
-              </a>
-            </li>
-          )
-        })}*/}
         <li>
           <span
             className="grid place-items-center">

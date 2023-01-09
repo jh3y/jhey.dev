@@ -13,7 +13,7 @@ const Posts = ({
   },
 }) => {
   return (
-    <>
+    <div className="grid gap-4">
       {data && data.length === 0 && (
         <p className="border-2 border-current text-center text-text-2 p-4 grid items-center rounded-md">
           {`No ${category || ''} cheeps to show currently.`}
@@ -31,7 +31,7 @@ const Posts = ({
           prefix={route}
         />
       )}
-    </>
+    </div>
   )
 }
 

@@ -13,7 +13,7 @@ const headingBold = ({ node, ...props }) => {
 const defaultComponents = {
   details({ node, ...props }) {
     return (
-      <details className="bg-surface-2 p-4">
+      <details className="bg-surface-4 p-4">
         {props.children}
       </details>
     )

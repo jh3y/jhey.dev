@@ -7,7 +7,7 @@ import {v4 as uuidv4} from 'uuid'
 
 const { POSTS_PAGINATION_SIZE, GUESTBOOK_PAGINATION_SIZE, ACTIVITY_PAGINATION_SIZE } = import.meta.env
 const postsPageSize = parseInt(POSTS_PAGINATION_SIZE, 10)
-const guestbookPageSize = parseInt(POSTS_PAGINATION_SIZE, 10)
+const guestbookPageSize = parseInt(GUESTBOOK_PAGINATION_SIZE, 10)
 
 export const getAllPageData = async () => {
   const allCheeps = await getAllCheeps()
