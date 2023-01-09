@@ -46,13 +46,13 @@ const cardComponents = {
             </p>
             <div className="grid gap-2 grid-cols-[auto_1fr] items-center">
               <label htmlFor="name">Name</label>
-              <input type="text" id="name" required className="p-2 rounded-md" />
+              <input type="text" id="name" name="name" required className="p-2 rounded-md" />
               <label htmlFor="organisation">Organisation</label>
-              <input type="text" id="organisation" className="p-2 rounded-md" />
+              <input type="text" id="organisation" name="organisation" className="p-2 rounded-md" />
               <label htmlFor="avatar">Avatar</label>
-              <input type="url" id="avatar" className="p-2 rounded-md" />
-              <label htmlFor="body">Message</label>
-              <textarea id="body" className="p-2 rounded-md" />
+              <input type="url" id="avatar" name="avatar" className="p-2 rounded-md" />
+              <label htmlFor="message">Message</label>
+              <textarea id="message" name="message" className="p-2 rounded-md" />
             </div>
             <button
               type="submit"

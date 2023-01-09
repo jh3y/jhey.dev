@@ -13,8 +13,6 @@ export async function getStaticPaths({ paginate }) {
 
   const paginated = paginate(allCheeps, { pageSize: postsPageSize })
 
-  console.info({ paginated: JSON.stringify(paginated, undefined, 2) })
-
   return paginated
 }
 
