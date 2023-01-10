@@ -1,7 +1,7 @@
 import About from '../components/about/about.jsx'
 import Posts from '../components/posts/posts.jsx'
 import Content from '../components/content/content.jsx'
-import Guestbook from '../components/guestbook/guestbook.jsx'
+import Guestbook from '../components/guestbook/guestbook.astro'
 
 export const GUESTBOOK_SUCCESS_PATH = 'thanks'
 
@@ -10,24 +10,28 @@ export const ROUTES = {
     href: '/posts',
     label: 'Feed',
     enabled: true,
+    render: true,
     renderer: Posts,
   },
   about: {
     href: '/about',
     label: 'About',
-    enabled: false,
+    enabled: true,
+    render: true,
     renderer: About
   },
   content: {
     href: '/content',
     label: 'Content',
-    enabled: false,
+    enabled: true,
+    render: true,
     renderer: Content,
   },
   guestbook: {
     href: '/guestbook',
     label: 'Guestbook',
-    enabled: false,
+    enabled: true,
+    render: true,
     renderer: Guestbook,
   }
 }

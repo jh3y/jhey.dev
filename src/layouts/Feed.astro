@@ -1,11 +1,11 @@
 ---
 import Layout from './Layout.astro'
-
+import TabScripts from './TabScripts.astro'
 import { getSiteConfig } from '../constants/queries.js'
 import {getRoutes, ROUTES } from '../constants/routes.js'
 
 import LayoutHeader from '../components/header/header.jsx'
-import TabNav from '../components/tab-nav/tab-nav.jsx'
+import TabNav from '../components/tab-nav/tab-nav.astro'
 
 const siteConfig = await getSiteConfig()
 
@@ -39,6 +39,8 @@ const contentProps = {
   body: siteConfig.about
 }
 
+const INTERACTIVE_TABS = true
+
 ---
 <Layout
   title={title}
@@ -51,7 +53,7 @@ const contentProps = {
     {navItems && <TabNav items={navItems} />}
     {Object.keys(ROUTES).map(ROUTE => {
       const routeSection = ROUTES[ROUTE]
-      if (!routeSection.enabled) return null
+      if (!routeSection.render || (INTERACTIVE_TABS === false && !route.slice(1).startsWith(ROUTE))) return null
       const Body = routeSection.renderer
       return (
         <section data-tab-panel="true" id={routeSection.href} class={route.startsWith(routeSection.href) ? 'block' : 'hidden' }>
@@ -66,7 +68,3 @@ const contentProps = {
     </div>
   )}
 </Layout>
-<script>
-  import '../scripts/tabs.js'
-  import '../scripts/guestbook.js'
-</script>

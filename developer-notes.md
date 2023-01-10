@@ -60,15 +60,16 @@
 - Inline stylesheets and make CSS only pull in where it's needed.
 - Move script tags?
 - Sanity plugin Cloudinary
+- Easy way to eject from the JavaScript tags is to check against the current route in Feed and remove the JavaScript for tabs. Set a debug variable in the Feed.astro file for optional scripts, etc.
+- Blockquote author citeation?
+- Guestbook && Testimonials (Tie these together somehow)
+- Timeline items [ Article, Newsletter feature, YouTube appearance, Life thing, Random Misc, Smashing person of week, Did a thing, etc. Drop an icon type if needed that can be mapped? ]
 
 ## TODO::
 - Deploy CMS
-- Blockquote author citeation?
 - Pages
   - about - Include sig and some way to show demos?
   - 404
-  - Guestbook && Testimonials (Tie these together somehow)
-- Timeline items [ Article, Newsletter feature, YouTube appearance, Life thing, Random Misc, Smashing person of week, Did a thing, etc. Drop an icon type if needed that can be mapped? ]
 
 - Edge functions for "New items in feed?"
 - Skewed gradient stinger from Auto Alex
