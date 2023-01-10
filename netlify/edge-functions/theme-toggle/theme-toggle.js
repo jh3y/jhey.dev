@@ -3,6 +3,8 @@ const THEMES = ['system', 'light', 'dark']
 const COOKIE_KEY = 'jhey-theme'
 
 export default async (request, context) => {
+  console.info('running')
+
   const res = await context.next()
   const type = res.headers.get('content-type')
 

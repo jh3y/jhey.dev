@@ -12,7 +12,31 @@
 
 [[edge_functions]]
   function = "theme-toggle"
-  path = "/*"
+  path = "/"
+
+[[edge_functions]]
+  function = "theme-toggle"
+  path = "/posts/*"
+
+[[edge_functions]]
+  function = "theme-toggle"
+  path = "/about"
+
+[[edge_functions]]
+  function = "theme-toggle"
+  path = "/content"
+
+[[edge_functions]]
+  function = "theme-toggle"
+  path = "/*/"
+
+[[edge_functions]]
+  function = "theme-toggle"
+  path = "/guestbook/*"
+
+[[edge_functions]]
+  function = "theme-toggle"
+  path = "/post/*"
 
 [[headers]]
   for = "/*"
