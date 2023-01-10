@@ -1,17 +1,13 @@
-import { HTMLRewriter } from 'https://ghuc.cc/worker-tools/html-rewriter'
-
 const THEMES = ['system', 'light', 'dark']
 const COOKIE_KEY = 'jhey-theme'
 
 export default async (request, context) => {
   const res = await context.next()
-
-
   const type = res.headers.get('content-type')
 
   if (!type.startsWith('text/html') || request.url.includes('/demos/')) {
     return
-  } 
+  }
 
   // Grab the theme to make sure it's set on the HTML
   const theme = context.cookies.get(COOKIE_KEY) || THEMES[0]
@@ -47,13 +43,7 @@ export default async (request, context) => {
     // If it's a JavaScript fetch request, return the new value
     if (isClient) {
       const headers = {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers':
-          'Origin, X-Requested-With, Content-Type, Accept',
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Methods': '*',
-        'Access-Control-Max-Age': '2592000',
-        'Access-Control-Allow-Credentials': 'true',
       }
       // Return the new theme that's been set in the cookie
       return new Response(JSON.stringify({ theme: nextTheme, nextTheme: futureTheme }), {
@@ -73,6 +63,8 @@ export default async (request, context) => {
     }
   }
 
+  // You don't need to import the module unless you're using it.
+  const { HTMLRewriter } = await import('https://ghuc.cc/worker-tools/html-rewriter')
   const label = `Set theme to ${nextTheme}`
   return new HTMLRewriter()
     .on('html', {
