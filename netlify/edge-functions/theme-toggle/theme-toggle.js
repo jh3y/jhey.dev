@@ -1,3 +1,4 @@
+import { HTMLRewriter } from 'https://ghuc.cc/worker-tools/html-rewriter'
 const THEMES = ['system', 'light', 'dark']
 const COOKIE_KEY = 'jhey-theme'
 
@@ -64,7 +65,7 @@ export default async (request, context) => {
   }
 
   // You don't need to import the module unless you're using it.
-  const { HTMLRewriter } = await import('https://ghuc.cc/worker-tools/html-rewriter')
+  // const { HTMLRewriter } = await import('https://ghuc.cc/worker-tools/html-rewriter')
   const label = `Set theme to ${nextTheme}`
   return new HTMLRewriter()
     .on('html', {
