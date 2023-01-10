@@ -18,7 +18,7 @@ export const ROUTES = {
     enabled: true,
     renderer: About
   },
-  activity: {
+  content: {
     href: '/content',
     label: 'Content',
     enabled: true,

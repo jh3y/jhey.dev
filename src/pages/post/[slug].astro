@@ -25,8 +25,6 @@ export async function getStaticPaths() {
 const { slug } = Astro.params
 const { description, title } = Astro.props
 
-console.info({ props: Astro.props })
-
 const backupTitle = Astro.props._type === 'guestEntry' ? 'Guest entry' : 'A Post from Jhey'
 const backupDescription = Astro.props._type === 'guestEntry' ? 'Someone said something about Jhey' : 'Check out this post from Jhey Tompkins' 
 

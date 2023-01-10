@@ -3,7 +3,6 @@
  * */
 import { getAllArticles, getAllCheeps, getGuestbook, getContent } from '../constants/queries.js'
 import { ROUTES } from '../constants/routes.js'
-import {v4 as uuidv4} from 'uuid'
 
 const { POSTS_PAGINATION_SIZE, GUESTBOOK_PAGINATION_SIZE } = import.meta.env
 const postsPageSize = parseInt(POSTS_PAGINATION_SIZE, 10)
