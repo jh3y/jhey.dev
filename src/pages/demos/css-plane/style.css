@@ -345,16 +345,12 @@ body {
 .cuboid--body div:nth-of-type(4) {
   background: var(--white-four);
 }
-.cuboid--body div:nth-of-type(5):after,
-.cuboid--body div:nth-of-type(6):after {
-  content: '';
+.cuboid--body div:nth-of-type(5) svg {
   position: absolute;
   top: 50%;
   left: 50%;
   height: calc(var(--base-size) * 0.25vmin);
   width: calc(var(--base-size) * 0.25vmin);
-  background-image: url("https://assets.codepen.io/605876/avatar.png");
-  background-size: cover;
   filter: saturate(0.65);
   transform: translate3d(-50%, -50%, 1px);
 }
@@ -634,7 +630,7 @@ body {
 .cuboid--strobe div {
   background: hsla(0, 90%, 98%, var(--alpha));
 }
-@media (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: reduced) {
   .plane {
     animation: roll 10s infinite ease-out alternate;
   }
