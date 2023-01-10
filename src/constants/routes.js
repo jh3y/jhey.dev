@@ -15,19 +15,19 @@ export const ROUTES = {
   about: {
     href: '/about',
     label: 'About',
-    enabled: true,
+    enabled: false,
     renderer: About
   },
   content: {
     href: '/content',
     label: 'Content',
-    enabled: true,
+    enabled: false,
     renderer: Content,
   },
   guestbook: {
     href: '/guestbook',
     label: 'Guestbook',
-    enabled: true,
+    enabled: false,
     renderer: Guestbook,
   }
 }
