@@ -1,6 +1,6 @@
 import { getAllAuthors, getAllCheeps, getAllTags, getSiteConfig } from '../../../constants/queries.js'
 import { ROUTES } from '../../../constants/routes.js'
-import { getGuestbookData } from '../../../utils/getPageData.js'
+import { getGuestbookData, getContentData } from '../../../utils/getPageData.js'
 
 const { POSTS_PAGINATION_SIZE, GUESTBOOK_PAGINATION_SIZE, ACTIVITY_PAGINATION_SIZE } = import.meta.env
 const postsPageSize = parseInt(POSTS_PAGINATION_SIZE, 10)
@@ -12,6 +12,7 @@ export const getTagPageData = async () => {
   const allCheeps = await getAllCheeps()
   const siteConfig = await getSiteConfig()
   const guestbook = await getGuestbookData()
+  const content = await getContentData()
 
   const dataSets = []
 
@@ -54,6 +55,7 @@ export const getTagPageData = async () => {
         tagLabel: tagName,
         character,
         guestbook,
+        content,
       },
       pageSize: postsPageSize
     })

@@ -15,13 +15,14 @@ export async function getStaticPaths({ paginate }) {
   })
 }
 
-const { character, guestbook, tagLabel } = Astro.props
+const { character, content, guestbook, tagLabel } = Astro.props
 
 const page = {
   tagLabel,
   character,
   route: `${ROUTES.posts.href}/${Astro.params.tag}`,
   guestbook,
+  content,
   posts: {
     ...Astro.props.page,
     category: tagLabel,

@@ -1,11 +1,12 @@
 ---
 import FeedLayout from "../../layouts/Feed.astro";
 import { getGuestbook } from "../../constants/queries.js"
-import { getPostsData } from "../../utils/getPageData.js";
+import { getPostsData, getContentData } from "../../utils/getPageData.js";
 import { ROUTES, GUESTBOOK_SUCCESS_PATH } from '../../constants/routes.js'
 
 
 const posts = await getPostsData()
+const content = await getContentData()
 
 export async function getStaticPaths({ paginate }) {
   const { GUESTBOOK_PAGINATION_SIZE } = import.meta.env
@@ -36,6 +37,7 @@ export async function getStaticPaths({ paginate }) {
 
 const page = {
   posts,
+  content,
   guestbook: {
     ...Astro.props.page,
     thanks: Astro.params.page === GUESTBOOK_SUCCESS_PATH,

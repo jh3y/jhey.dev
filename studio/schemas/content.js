@@ -70,22 +70,6 @@ export default defineType({
       name: 'where',
       title: 'Where',
       type: 'string',
-    }),
-    defineField({
-      name: 'publication',
-      title: 'Publication',
-      type: 'string',
-      options: {
-        list: [
-          {title: 'CSS Tricks', value: 'CSS Tricks'},
-          {title: 'Smashing Magazine', value: 'Smashing Magazin'},
-          {title: 'SitePoint', value: 'SitePoint'},
-          {title: 'developer.chrome.com', value: 'developer.chrome.com'},
-          {title: 'web.dev', value: 'web.dev'},
-          {title: 'CodePen', value: 'CodePen'},
-          {title: 'Codrops', value: 'Codrops'},
-        ]
-      }
-    }),
+    })
   ],
 })
