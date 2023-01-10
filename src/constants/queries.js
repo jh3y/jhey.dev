@@ -44,6 +44,12 @@ export const ALL_TAGS = `
 export const ALL_GUESTBOOK_ENTRIES = `
   *[_type == "guestEntry"] | order((when || _createdAt) desc) | order(pinned desc)
 `
+export const ALL_CONTENT = `
+  *[_type == "content"] | order((when || _createdAt) desc) | order(feature desc)
+`
+export const ALL_ARTICLES = `
+  *[_type == "article"] | order(publishedAt desc)
+`
 export const ALL_AUTHORS = `
   *[_type == "author"]{
     ...,
@@ -74,6 +80,10 @@ export const getData = async query => {
   return DATA
 }
 
+export const getAllArticles = async () => {
+  return getData(ALL_ARTICLES)
+}
+
 export const getAllCheeps = async () => {
   return getData(ORDERED_CHEEPS)
 }
@@ -84,6 +94,10 @@ export const getAllAuthors = async () => {
 
 export const getGuestbook = async () => {
   return getData(ALL_GUESTBOOK_ENTRIES)
+}
+
+export const getContent = async () => {
+  return getData(ALL_CONTENT)
 }
 
 export const getRssCheeps = async () => {

@@ -24,7 +24,7 @@ const {
     // Need pagination blocks for each category of paginated things
     posts,
     guestbook,
-    activity,
+    content,
   },
 } = Astro.props
 
@@ -33,8 +33,9 @@ const navItems = getRoutes(route)
 
 const contentProps = {
   route,
-  posts,
-  guestbook,
+  posts: posts || {},
+  guestbook: guestbook || {},
+  content: content || {},
   body: siteConfig.about
 }
 

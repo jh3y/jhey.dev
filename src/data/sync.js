@@ -26,8 +26,8 @@ const client = sanityClient({
   useCdn: true, // `false` if you want to ensure fresh data
 })
 
-const ACTIVITY_QUERY = '*[_type == "activity"] {...}'
-const ACTIVITY_PATH = `${process.cwd()}/src/data/activity.json`
+const CONTENT_QUERY = '*[_type == "content"] {...}'
+const CONTENT_PATH = `${process.cwd()}/src/data/content.json`
 
 const GUESTBOOK_QUERY = '*[_type == "guestEntry"] {...}'
 const GUESTBOOK_PATH = `${process.cwd()}/src/data/guestbook.json`
@@ -63,5 +63,5 @@ const sync = async (query, filePath, key, defaultProperties ) => {
   console.info(`${key} synced with CMS!`)
 }
 
-await sync(ACTIVITY_QUERY, ACTIVITY_PATH, 'activity')
+await sync(CONTENT_QUERY, CONTENT_PATH, 'content')
 await sync(GUESTBOOK_QUERY, GUESTBOOK_PATH, 'guestEntry', { visible: true, slug: { current: uuidv4(), type: '_slug' }})

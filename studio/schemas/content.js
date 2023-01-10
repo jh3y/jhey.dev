@@ -1,9 +1,12 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'activity',
-  title: 'Activity',
+  name: 'content',
+  title: 'Content',
   type: 'document',
+  initialValue: {
+    feature: false,
+  },
   fields: [
     defineField({
       name: 'title',
@@ -16,20 +19,23 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'feature',
+      title: 'Feature',
+      description: 'Gets this feature to the top of its pile',
+      type: 'boolean',
+    }),
+    defineField({
       name: 'category',
       title: 'Category',
       type: 'string',
       options: {
         list: [
-          {title: 'Blog', value: 'blog'},
-          {title: 'Newsletter', value: 'newsletter'},
+          {title: 'Article', value: 'article'},
+          {title: 'Appearance', value: 'appearance'},
+          {title: 'Speaking', value: 'speaking'},
+          {title: 'Feature', value: 'feature'},
           {title: 'Video', value: 'video'},
-          {title: 'Stream', value: 'stream'},
-          {title: 'Podcast', value: 'podcast'},
-          {title: 'Conference', value: 'conference'},
           {title: 'Demo', value: 'demo'},
-          {title: 'Work', value: 'work'},
-          {title: 'Life', value: 'life'},
         ],
       },
     }),
@@ -59,6 +65,11 @@ export default defineType({
       name: 'when',
       title: 'When',
       type: 'date',
+    }),
+    defineField({
+      name: 'where',
+      title: 'Where',
+      type: 'string',
     }),
     defineField({
       name: 'publication',

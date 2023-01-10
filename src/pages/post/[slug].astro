@@ -25,11 +25,16 @@ export async function getStaticPaths() {
 const { slug } = Astro.params
 const { description, title } = Astro.props
 
+console.info({ props: Astro.props })
+
+const backupTitle = Astro.props._type === 'guestEntry' ? 'Guest entry' : 'A Post from Jhey'
+const backupDescription = Astro.props._type === 'guestEntry' ? 'Someone said something about Jhey' : 'Check out this post from Jhey Tompkins' 
+
 const shareLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`"${title}" via @jh3yy\n`)}https://jhey.dev/post/${slug}/`
 ---
 <Layout
-  title={title}
-  description={description}
+  title={title || backupTitle}
+  description={description || backupDescription}
   ogtitle={Astro.props?.og?.title}
   oghue={Astro.props?.og?.hue}
   oggradient={Astro.props?.og?.gradient}

@@ -3,7 +3,7 @@ import React from 'react'
 const TabNav = ({ items }) => {
   return (
     <div data-tabs="true" role="navigation">
-      <ul className="max-w-full overflow-auto flex items-center text-fluid--1">
+      <ul className="max-w-full overflow-auto grid grid-flow-col auto-cols-[1fr] items-center text-fluid--1">
         {items.map(({ active, enabled, href, label }) => {
           if (!enabled) return null
           return (
