@@ -630,7 +630,7 @@ body {
 .cuboid--strobe div {
   background: hsla(0, 90%, 98%, var(--alpha));
 }
-@media (prefers-reduced-motion: reduced) {
+@media (prefers-reduced-motion: no-preference) {
   .plane {
     animation: roll 10s infinite ease-out alternate;
   }
