@@ -45,8 +45,8 @@ const Card = (props) => {
           src={`${props.author.avatar}?h=96`}
           alt="Author image"
           className="rounded-full"
-          width="40"
-          height="40"
+          width="80"
+          height="80"
         />
       </a>
       <div className="card__content grid gap-y-1 leading-tight">
