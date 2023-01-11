@@ -3,7 +3,7 @@ const setUpCopyCats = () => {
   const COPY = e => {
     const BUTTON = e.currentTarget
     const el = Object.assign(document.createElement('textarea'), {
-      value: BUTTON.nextElementSibling.textContent,
+      value: BUTTON.previousElementSibling.firstChild.textContent,
       className: 'sr-only',
     })
     document.body.appendChild(el)
@@ -22,5 +22,4 @@ const setUpCopyCats = () => {
     b.addEventListener('click', COPY)
   })
 }
-
 document.addEventListener('DOMContentLoaded', setUpCopyCats)

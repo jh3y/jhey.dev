@@ -88,7 +88,10 @@ const articleComponents = {
   },
   pre({ node, ...props }) {
     return (
-      <pre tabIndex="0" className="mb-6 group lg:rounded-lg bg-[var(--gray-8)] p-4 m-0 max-w-[100vw] bleed overflow-auto transform relative left-1/2 -translate-x-1/2">
+      <div className="mb-6 group bg-[var(--gray-8)] bleed max-w-[100vw] transform relative left-1/2 -translate-x-1/2 lg:rounded-lg">
+        <pre tabIndex="0" className="p-4 m-0 overflow-auto">
+          {props.children}
+        </pre>
         <button
           data-copy-code="true"
           data-copied="false"
@@ -111,8 +114,7 @@ const articleComponents = {
             <path d="M12.971 1.816A5.23 5.23 0 0114.25 5.25v1.875c0 .207.168.375.375.375H16.5a5.23 5.23 0 013.434 1.279 9.768 9.768 0 00-6.963-6.963z" />
           </svg>
         </button>
-        {props.children}
-      </pre>
+      </div>
     )
   },
 }
