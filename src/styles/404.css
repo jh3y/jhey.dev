@@ -6,3 +6,12 @@ html {
   display: inline-block;
   translate: calc((var(--px, 0) * var(--mx, 0)) * 1%) calc((var(--py, 0) * var(--my, 0)) * 1%);
 }
+
+.big-bear {
+  height: 65vh;
+  opacity: 0.5;
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateX(50%);
+}
