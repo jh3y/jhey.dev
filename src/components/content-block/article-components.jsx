@@ -88,7 +88,7 @@ const articleComponents = {
   },
   pre({ node, ...props }) {
     return (
-      <pre className="mb-6 group lg:rounded-lg bg-[var(--gray-8)] p-4 m-0 max-w-[100vw] bleed overflow-auto transform relative left-1/2 -translate-x-1/2">
+      <pre tabIndex="0" className="mb-6 group lg:rounded-lg bg-[var(--gray-8)] p-4 m-0 max-w-[100vw] bleed overflow-auto transform relative left-1/2 -translate-x-1/2">
         <button
           data-copy-code="true"
           data-copied="false"

@@ -82,7 +82,7 @@ const cardComponents = {
   },
   pre({ node, ...props }) {
     return (
-      <pre className="rounded-lg bg-[var(--gray-8)] p-4 m-0 overflow-auto mb-2">
+      <pre tabIndex="0" className="rounded-lg bg-[var(--gray-8)] p-4 m-0 overflow-auto mb-2">
         {props.children}
       </pre>
     )

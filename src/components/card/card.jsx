@@ -44,7 +44,7 @@ const Card = (props) => {
         <img
           src={`${props.author.avatar}?h=96`}
           alt="Author image"
-          className="rounded-full"
+          className="rounded-full bg-surface-4"
           width="80"
           height="80"
         />

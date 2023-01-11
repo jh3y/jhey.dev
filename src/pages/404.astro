@@ -1,32 +1,56 @@
 ---
+import '../styles/404.css'
 import Layout from "../layouts/Layout.astro";
-import FeedLayout from "../components/feed-layout/feed-layout.jsx";
 
-const { SANITY_STUDIO_PROJECT_ID, SANITY_STUDIO_PROJECT_DATASET, PAGINATION_SIZE } = import.meta.env
-const pageSize = parseInt(PAGINATION_SIZE, 10)
+const EXEMPT_JIGGLES = [0, 1, 4, 6, 7]
 
-const CHEEP_QUERY = encodeURIComponent('*[_type == "cheep"]{..., author->{"avatar": image.asset->url, ...}} | order(publishedAt desc)');
-const CHEEP_URL = `https://${SANITY_STUDIO_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_STUDIO_PROJECT_DATASET}?query=${CHEEP_QUERY}`;
+const JIGGLE_404 = [
+  [-50, 100],
+  [50, -50],
+  [-20, 80],
+]
 
-const allCheeps = await (await (await fetch(CHEEP_URL)).json()).result
-
-const CONFIG_QUERY = encodeURIComponent('*[_type == "config"]{...,character->{"avatar": image.asset->url, ...}}');
-const CONFIG_URL = `https://${SANITY_STUDIO_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${SANITY_STUDIO_PROJECT_DATASET}?query=${CONFIG_QUERY}`;
-
-const siteConfig = await (await (await fetch(CONFIG_URL)).json()).result
-
-const page = {
-  character: siteConfig[0].character,
-  banner: siteConfig[0].banner,
-  data: allCheeps.slice(0, pageSize),
-  currentPage: 1,
-  lastPage: Math.ceil(allCheeps.length / pageSize),
+const JIGGLE_SETS = {
+  t: [-50, 100],
+  o: [0, 0],
+  n: [10, -10],
+  d: [50, 60],
 }
+
+const getRandom = () => Math.floor(Math.random() * 200) - 100
+
 ---
 <Layout
   title="Uh Oh"
   ogtitle="Uh Oh!"
   description="The page for when pages can't be found"
+  flexLayout={true}
   oghue="112">
-  <h1>404</h1>
+  <svg class="h-[65vh] opacity-50 fixed right-0 top-1/2 translate-x-1/2" viewBox="0 0 969 955" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="161.191" cy="320.191" r="133.191" stroke="currentColor" stroke-width="20"/>
+    <circle cx="806.809" cy="320.191" r="133.191" stroke="currentColor" stroke-width="20"/>
+    <circle cx="695.019" cy="587.733" r="31.4016" fill="currentColor" stroke-width="20" />
+    <circle cx="272.981" cy="587.733" r="31.4016" fill="currentColor" stroke-width="20" />
+    <path d="M564.388 712.083C564.388 743.994 526.035 779.911 483.372 779.911C440.709 779.911 402.356 743.994 402.356 712.083C402.356 680.173 440.709 664.353 483.372 664.353C526.035 664.353 564.388 680.173 564.388 712.083Z" fill="currentColor"/>
+    <rect x="310.42" y="448.31" width="343.468" height="51.4986" fill="#FF1E1E"/>
+    <path fillRule="evenodd" clipRule="evenodd" d="M745.643 288.24C815.368 344.185 854.539 432.623 854.539 511.741H614.938V454.652C614.938 433.113 597.477 415.652 575.938 415.652H388.37C366.831 415.652 349.37 433.113 349.37 454.652V511.741L110.949 511.741C110.949 432.623 150.12 344.185 219.845 288.24C289.57 232.295 384.138 200.865 482.744 200.865C581.35 200.865 675.918 232.295 745.643 288.24Z" fill="currentColor"/>
+  </svg>
+  <main class="w-main-content flex justify-center items-center grow max-w-full mv-0 mx-auto px-4">
+    <div class="grid place-items-center leading-tight">
+      <h1 class="text-fluid-9 font-mono font-bold">
+        {'404'.split('').map((l, i) => <span data-jiggle style={`--mx:${getRandom()};--my:${getRandom()}`}>{l}</span>)}
+        <span class="sr-only">404</span>
+      </h1>
+      <p class="font-mono text-fluid-4 font-bold">
+        {'not found'.split('').map((l, i) => l !== ' ' && EXEMPT_JIGGLES.indexOf(i) === -1 ?
+          <span data-jiggle style={`--mx:${getRandom()};--my:${getRandom()}`}>{l}</span> :
+          <span>{l}</span>
+        )}
+        <span data-jiggle-label="true" class="sr-only">Not found</span>
+      </p>
+    </div>
+  </main>
 </Layout>
+<script>
+  import '../scripts/404.js';
+</script>

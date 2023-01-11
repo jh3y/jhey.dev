@@ -82,7 +82,7 @@ const LayoutHeader = ({ banner, character }) => {
         <Banner {...banner} />
         <div className="relative flex justify-end items-center min-h-half-avatar py-2">
           <img
-            className="absolute top-0 transform bg-surface-2 -translate-y-1/2 left-0 rounded-full aspect-square w-avatar border-4 border-text-1"
+            className="absolute top-0 transform bg-surface-4 -translate-y-1/2 left-0 rounded-full aspect-square w-avatar border-4 border-text-1"
             src={`${character?.avatar || '/media/image/headshot--small.jpeg'}?h=200`}
             alt="Jhey presenting at All Day Hey! 2022"
             width="200"
