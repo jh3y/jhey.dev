@@ -43,7 +43,7 @@ const Card = (props) => {
         <span className="sr-only">{`${props.author.name}'s feed`}</span>
         <img
           src={`${props.author.avatar}?h=96`}
-          alt=""
+          alt="Author image"
           className="rounded-full"
           width="40"
           height="40"

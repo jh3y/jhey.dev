@@ -9,6 +9,7 @@
     "build": "astro build",
     "prebuild": "node src/data/sync.js",
     "postbuild": "node src/enhancers/enhancer.js",
+    "just-build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "storybook": "storybook dev -p 6006",
@@ -31,6 +32,7 @@
     "rehype-raw": "^6.1.1",
     "remark-gfm": "^3.0.1",
     "sanitize-html": "^2.8.1",
+    "sharp": "^0.31.3",
     "tailwindcss": "^3.2.4",
     "unist-util-visit": "^4.1.1"
   },

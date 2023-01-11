@@ -3,6 +3,7 @@ import {JSDOM} from 'jsdom'
 import styleInliner from './inline-styles.js'
 import htmlMinifier from './html-minifier.js'
 import scriptInliner from './inline-scripts.js'
+import { enhanceImages, imageEnhancer } from './image-processor.js'
 const BASE = `${process.cwd()}/dist`
 
 const getFiles = dir => {
@@ -24,18 +25,27 @@ const getFiles = dir => {
 const files = getFiles(BASE)
 const HTML = files.filter(f => f.endsWith('.html'))
 
+let docs = []
+// Create an Array of documents and their paths for reuse
 HTML.forEach(file => {
   const content = fs.readFileSync(file, 'utf-8')
-
   const {
     window: { document }
   } = new JSDOM(content)
+  docs.push({file, document})
+})
+
+// Enhance the images before optimizing the HTML
+await enhanceImages(docs)
+
+docs.forEach(async ({document, file}) => {
 
   const inlined = styleInliner(document)
   const scripty = scriptInliner(inlined)
-  const minified = htmlMinifier(inlined.documentElement.outerHTML)
+  const pictured = await imageEnhancer(scripty)
+  const minified = htmlMinifier(pictured.documentElement.outerHTML)
 
   fs.writeFileSync(file, "<!DOCTYPE html>\r\n" + minified)
   // For debugging
-  // fs.writeFileSync(file + '--amended', "<!DOCTYPE html>\r\n" + minified)
+  // fs.writeFileSync(file + '--amended.html', "<!DOCTYPE html>\r\n" + minified)
 })

@@ -21,12 +21,12 @@ const LayoutHeader = ({ character, ...props }) => {
           {/* Gets funky here... If there's a demo, do that. Else do an image */}
           {props?.hero?.heroDemo && (
             <>
-              {props.hero.heroDemoImage && <img width="3" height="1" className="motion-safe:hidden absolute inset-0 w-full h-full" src={props.hero.heroDemoImage} alt="Result demo for this post" />}
+              {props.hero.heroDemoImage && <img width="750" height="250" className="motion-safe:hidden absolute inset-0 w-full h-full" src={props.hero.heroDemoImage} alt="Result demo for this post" />}
               <iframe title="Result demo for this post" className="hidden motion-safe:block absolute inset-0 w-full h-full" loading="lazy" src={props.hero.heroDemo}></iframe>
             </>
           )}
           {heroSrc && !props.hero.heroDemo && (
-            <img width="3" height="1" className="w-full h-full" src={heroSrc} alt={props.hero.heroAlt} />
+            <img width="750" height="250" className="w-full h-full" src={heroSrc} alt={props.hero.heroAlt} />
           )}
         </div>
         <div className="relative flex justify-end items-center min-h-half-avatar py-2">
@@ -34,6 +34,8 @@ const LayoutHeader = ({ character, ...props }) => {
             className="absolute top-0 transform -translate-y-1/2 left-0 rounded-full aspect-square w-avatar border-4 border-text-1"
             src={`${character.avatar}?h=200`}
             alt={character.name}
+            width="200"
+            height="200"
           />
           <a
             href={props.shareLink}

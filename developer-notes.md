@@ -67,6 +67,8 @@
 
 ## TODO::
 - Deploy CMS
+- Dedicated articles page
+- Image optimisation with sharp
 - Pages
   - about - Include sig and some way to show demos?
   - 404

@@ -180,6 +180,10 @@
     color: var(--brand-fill);
   }
 
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+
   @media (prefers-reduced-motion: no-preference) {
     :where(html) {
       scroll-behavior: smooth;
