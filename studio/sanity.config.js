@@ -8,6 +8,7 @@ import {schemaTypes} from './schemas'
 
 export default defineConfig({
   name: 'default',
+  basePath: '/studio',
   title: import.meta.env.SANITY_STUDIO_PROJECT_NAME,
 
   projectId: import.meta.env.SANITY_STUDIO_PROJECT_ID,

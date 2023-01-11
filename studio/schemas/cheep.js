@@ -112,7 +112,6 @@ export default defineType({
     select: {
       title: 'title',
       author: 'author.name',
-      media: 'author.image',
       date: 'publishedAt'
     },
     prepare(value) {

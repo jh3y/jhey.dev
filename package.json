@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "build:cms": "cd ./studio && ./studio/node_modules/.bin/sanity build ../dist",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",

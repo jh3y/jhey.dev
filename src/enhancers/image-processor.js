@@ -47,7 +47,7 @@ export const enhanceImages = async (docs) => {
       // If we need to grab the image, do that.
       const blob = !img.src.startsWith('/')
         ? await (await fetch(img.src)).arrayBuffer()
-        : await fs.promises.readFile(img.src)
+        : await fs.promises.readFile(`${process.cwd()}/public${img.src}`)
       // Process image using img attributes
       console.info('generating', img.src)
       const newImg = await sharp(new Uint8Array(blob)).resize(

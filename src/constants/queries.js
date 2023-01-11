@@ -10,7 +10,7 @@ export const ORDERED_CHEEPS = `
     },
     tags[]->{...},
     author->{
-      "avatar": image.asset->url,
+      "avatar": image,
       ...,
       specialty->{...},
     }
@@ -25,7 +25,7 @@ export const RSS_CHEEPS = `
     },
     tags[]->{...},
     author->{
-      "avatar": image.asset->url,
+      "avatar": image,
       ...
     }
   } | order(publishedAt desc)
@@ -34,7 +34,7 @@ export const SITE_CONFIG = `
   *[_type == "siteConfig"][0]{
     ...,
     character->{
-      "avatar": image.asset->url,
+      "avatar": image,
       ...
     }
   }`
@@ -61,7 +61,7 @@ export const ALL_POSTS = `
     ...,
     status->{...},
     author->{
-      "avatar": image.asset->url,
+      "avatar": image,
       ...,
       specialty->{...},
     },

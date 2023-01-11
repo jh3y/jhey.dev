@@ -32,10 +32,7 @@ export default defineType({
     defineField({
       name: 'image',
       title: 'Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
+      type: 'string',
     }),
     defineField({
       name: 'specialty',
@@ -58,7 +55,6 @@ export default defineType({
   preview: {
     select: {
       title: 'title',
-      media: 'image',
     },
   },
 })

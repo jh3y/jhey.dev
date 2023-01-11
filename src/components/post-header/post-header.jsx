@@ -32,7 +32,7 @@ const LayoutHeader = ({ character, ...props }) => {
         <div className="relative flex justify-end items-center min-h-half-avatar py-2">
           <img
             className="absolute top-0 transform -translate-y-1/2 left-0 rounded-full bg-surface-4 aspect-square w-avatar border-4 border-text-1"
-            src={`${character.avatar}?h=200`}
+            src={character.avatar}
             alt={character.name}
             width="200"
             height="200"

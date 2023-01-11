@@ -63,14 +63,6 @@ export default defineType({
       type: 'object',
       fields: [
         defineField({
-          name: 'sanityImage',
-          title: 'Sanity image',
-          type: 'image',
-          options: {
-            hotspot: true,
-          },
-        }),
-        defineField({
           name: 'heroDemo',
           title: 'Hero embedded demo',
           description: 'Point at a demo to embed',
@@ -80,16 +72,6 @@ export default defineType({
           name: 'heroDemoImage',
           title: 'Hero demo image',
           description: 'Backup image in case demo has motion',
-          type: 'string',
-        }),
-        defineField({
-          name: 'localImage',
-          title: 'Local image',
-          type: 'string',
-        }),
-        defineField({
-          name: 'cloudinaryImage',
-          title: 'Cloudinary image',
           type: 'string',
         }),
         defineField({
