@@ -5,6 +5,7 @@ import slugify from 'slugify'
 const FORMATS = ['png', 'avif', 'webp']
 
 const BASE = `${process.cwd()}/public/media/image/enhanced`
+const DIST = `${process.cwd()}/dist/media/image/enhanced`
 
 const getEnhancedPath = (img, prod = false) =>
   `${prod ? BASE.slice(BASE.indexOf('/public/') + 7) : BASE}/${img.src.slice(
@@ -17,6 +18,8 @@ const getEnhancedPath = (img, prod = false) =>
  * And it's only based on the first one it finds
  * */
 export const enhanceImages = async (docs) => {
+  if (!fs.existsSync(BASE)) fs.mkdirSync(BASE)
+  if (!fs.existsSync(DIST)) fs.mkdirSync(DIST)
   // Grab the images to be enhanced
   const images = []
   docs.forEach(async ({ document }) => {
@@ -30,7 +33,6 @@ export const enhanceImages = async (docs) => {
         images.push({ src: img.src, el: img, destination: enhancedPath })
     })
   })
-  // console.info({ images })
   // Now you have a unique set of images to enhance if required.
   for (const img of images) {
     if (!img.el.width || !img.el.height)
@@ -58,14 +60,20 @@ export const enhanceImages = async (docs) => {
       )
       // Loop over the formats and save to disk...
       FORMATS.forEach((format) => {
-        newImg.toFormat(format).toFile(`${img.destination}.${format}`)
+        const newFormat = newImg.toFormat(format)
+        newFormat.toFile(`${img.destination}.${format}`)
+        /**
+         * If it's the first time enhancing, make sure we push it to the
+         * dist folder too!
+         * */
+        newFormat.toFile(`${img.destination.replace('public', 'dist')}.${format}`)
       })
     }
   }
 }
 
-// This is what we're trying to make from <img> elements
 /**
+ * This is what we're trying to make from <img> elements
  *
  * <picture class="site-header__me">
  *   <source type="image/avif" srcset="/assets/enhanced/d0f67a1f-384.avif 384w" sizes="384px">
@@ -79,9 +87,9 @@ export const imageEnhancer = async (document) => {
   // Just modify all the images... Swap the source for the enhanced path
   allImg.forEach(img => {
     const enhancedSrc = getEnhancedPath(img, true)
-    if (img.src.includes('/media/image/enhanced/')) {
-      // console.info('<img> src already optimised')
-    } else {
+    img.setAttribute('decoding', 'async')
+    img.setAttribute('loading', 'lazy')
+    if (!img.src.includes('/media/image/enhanced/')) {
       img.src = `${enhancedSrc}.${FORMATS[0]}`
     }
     if (img.parentNode.tagName !== 'PICTURE') {
@@ -93,15 +101,12 @@ export const imageEnhancer = async (document) => {
           <source type="image/${format}" srcset="${enhancedSrc}.${format} ${img.width}w" sizes="${img.width}px">
         `
       }
-
       PICTURE.innerHTML = `
         ${sourceString}
         ${img.outerHTML}
       `
       img.replaceWith(PICTURE)
     }
-    img.setAttribute('decoding', 'async')
-    img.setAttribute('loading', 'lazy')
   })
   return document
 }
