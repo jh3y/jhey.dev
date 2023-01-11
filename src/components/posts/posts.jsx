@@ -24,7 +24,7 @@ const Posts = ({
         data.map((CHEEP) => {
           return <Card key={CHEEP._id} {...CHEEP} />
         })}
-      {currentPage && totalPages && route && (
+      {currentPage !== 0 && totalPages !== 0 && route && (
         <Pagination
           current={currentPage}
           total={totalPages}

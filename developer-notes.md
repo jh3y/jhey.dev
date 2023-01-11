@@ -64,11 +64,12 @@
 - Blockquote author citeation?
 - Guestbook && Testimonials (Tie these together somehow)
 - Timeline items [ Article, Newsletter feature, YouTube appearance, Life thing, Random Misc, Smashing person of week, Did a thing, etc. Drop an icon type if needed that can be mapped? ]
+- Image optimisation with sharp
+- Some interesting quirks here where you need to do some async stuff and make sure you have width/height set etc.
 
 ## TODO::
 - Deploy CMS
 - Dedicated articles page
-- Image optimisation with sharp
 - Pages
   - about - Include sig and some way to show demos?
   - 404

@@ -116,12 +116,16 @@ const ContentSection = ({ data, title, intro, supplementKey }) => {
 }
 
 const Content = ({ content: { data, currentPage, totalPages, route } }) => {
-  const internalPosts = JSON.parse(JSON.stringify(data.post)).map((post) => ({
-    ...post,
-    links: [{ link: `/post/${post.slug.current}` }],
-    where: 'jhey.dev',
-    when: post.publishedAt,
-  }))
+  let internalPosts = []
+
+  if (data.post) {
+    internalPosts = JSON.parse(JSON.stringify(data?.post)).map((post) => ({
+      ...post,
+      links: [{ link: `/post/${post.slug.current}` }],
+      where: 'jhey.dev',
+      when: post.publishedAt,
+    }))
+  }
 
   data.post = internalPosts
 

@@ -22,7 +22,6 @@
     "react-is": "^18.2.0",
     "sanity": "^3.0.0",
     "sanity-plugin-markdown": "^3.0.1",
-    "sanity-plugin-media": "^2.0.2",
     "styled-components": "^5.2.0",
     "uuid": "^9.0.0"
   },
