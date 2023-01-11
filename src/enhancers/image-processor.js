@@ -22,21 +22,24 @@ export const enhanceImages = async (docs) => {
   docs.forEach(async ({ document }) => {
     const allImg = [...document.querySelectorAll('img[src]')]
     allImg.forEach((img) => {
-      if (!images.find((i) => i.src === img.src))
-        images.push({ src: img.src, el: img })
+      // If it's an enhanced image, ignore it.
+      if (img.src.includes('/media/image/enhanced/')) return
+      // This is incorrect. Should be worked out on destination...
+      const enhancedPath = getEnhancedPath(img)
+      if (!images.find((i) => i.destination === enhancedPath))
+        images.push({ src: img.src, el: img, destination: enhancedPath })
     })
   })
+  // console.info({ images })
   // Now you have a unique set of images to enhance if required.
   for (const img of images) {
     if (!img.el.width || !img.el.height)
       return console.warn(
         `Image doesn't have height/width set: ${img.el.outerHTML}`
       )
-    if (fs.existsSync(`${process.cwd()}/public${img.src}`))
-      return console.info('Already pointing at optimised image')
     
-    const destination = getEnhancedPath(img.el)
-    const alreadyEnhanced = fs.existsSync(`${destination}.${FORMATS[0]}`)
+    const testPath = `${img.destination}.${FORMATS[0]}`
+    const alreadyEnhanced = fs.existsSync(testPath) 
 
     if (!alreadyEnhanced) {
       // If we need to grab the image, do that.
@@ -55,7 +58,7 @@ export const enhanceImages = async (docs) => {
       )
       // Loop over the formats and save to disk...
       FORMATS.forEach((format) => {
-        newImg.toFormat(format).toFile(`${destination}.${format}`)
+        newImg.toFormat(format).toFile(`${img.destination}.${format}`)
       })
     }
   }
@@ -77,7 +80,7 @@ export const imageEnhancer = async (document) => {
   allImg.forEach(img => {
     const enhancedSrc = getEnhancedPath(img, true)
     if (img.src.includes('/media/image/enhanced/')) {
-      console.info('<img> src already optimised')
+      // console.info('<img> src already optimised')
     } else {
       img.src = `${enhancedSrc}.${FORMATS[0]}`
     }
