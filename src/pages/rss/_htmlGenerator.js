@@ -43,7 +43,7 @@ export const generatePosts = (posts, metadata) => posts.map(post => {
         }
       }
     }
-    if (metadata.tag && !tags.find(tag => tag.title.toLowerCase() === metadata.tag.toLowerCase())) return null
+    if (metadata.tag && tags.length !== 0 && !tags.find(tag => tag.title.toLowerCase() === metadata.tag.toLowerCase())) return null
 
     return (`
       <item>
@@ -57,7 +57,7 @@ export const generatePosts = (posts, metadata) => posts.map(post => {
         }
         <pubDate>${new Date(post.publishedAt).toUTCString()}</pubDate>
         <guid isPermaLink="true">${post.url}</guid>
-        <source url="${metadata.url}rss/${metadata.tag ? `${metadata.tag}` : 'rss'}.xml">jhey.dev${metadata.tag ? ` ${metadata.tag}` : ''} RSS feed</source>
+        <source url="${metadata.url}rss/${metadata.tag ? `${metadata.tag}` : 'rss'}.xml">Jhey Tompkins${metadata.tag ? ` ${metadata.tag}` : ''} RSS feed</source>
         ${tags !== undefined && tags.length > 0 ? tags.map(tag => (`
           <category>${tag.title}</category>
         `)).join('') : ''}

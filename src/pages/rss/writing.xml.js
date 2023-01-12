@@ -13,10 +13,10 @@ export const get = () => new Promise((resolve, reject) => {
     url: siteConfig?.rss?.url || 'https://jhey.dev/',
     title: siteConfig?.rss?.title || 'https://jhey.dev/',
     subtitle: siteConfig?.rss?.subtitle || 'Posts from Jhey',
-    description: `The RSS feed for ${params.tag} posts from Jhey Tompkins`,
+    description: `The RSS feed for all writing from Jhey Tompkins`,
     author: siteConfig.character,
     email: 'rss@jhey.dev',
-    tag: params.tag
+    tag: 'writing'
   }
   const writingPosts = allWriting.writing.map(article => {
     return {
