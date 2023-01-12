@@ -41,6 +41,7 @@ export const SITE_CONFIG = `
 export const ALL_TAGS = `
   *[_type == "tag"]
 `
+
 export const ALL_GUESTBOOK_ENTRIES = `
   *[_type == "guestEntry"] | order((when || _createdAt) desc) | order(pinned desc)
 `
@@ -68,6 +69,32 @@ export const ALL_POSTS = `
     tags[]->{...}
   }
 `
+export const ALL_WRITING = `
+  {
+    "writing": *[_type == "article" ||_type == "content" && category match "article"] {...} | order((publishedAt || when) desc)
+  }
+`
+
+export const ALL_PAGE_DATA = `
+  {
+    "authors": ${ALL_AUTHORS},
+    "tags": ${ALL_TAGS},
+    "config": ${SITE_CONFIG},
+    "posts": ${ORDERED_CHEEPS},
+    "guestbook": ${ALL_GUESTBOOK_ENTRIES},
+    "articles": ${ALL_ARTICLES},
+    "content": ${ALL_CONTENT},
+  }
+`
+
+export const RSS_FEED = `
+  {
+    "posts": ${RSS_CHEEPS},
+    "writing": ${ALL_WRITING}, 
+    "tags": ${ALL_TAGS},
+    "config": ${SITE_CONFIG},
+  }
+`
 
 export const getQueryUrl = query => {
   const queryString = encodeURIComponent(query)
@@ -78,6 +105,10 @@ export const getData = async query => {
   const QUERY_URL = getQueryUrl(query)
   const DATA = await (await (await fetch(QUERY_URL)).json()).result
   return DATA
+}
+
+export const getRssData = async () => {
+  return getData(RSS_FEED)
 }
 
 export const getAllArticles = async () => {
@@ -100,6 +131,10 @@ export const getContent = async () => {
   return getData(ALL_CONTENT)
 }
 
+export const getWriting = async () => {
+  return getData(ALL_WRITING)
+}
+
 export const getRssCheeps = async () => {
   return getData(RSS_CHEEPS)
 }
@@ -114,4 +149,8 @@ export const getAllTags = async () => {
 
 export const getAllPosts = async () => {
   return getData(ALL_POSTS)
+}
+
+export const getAllData = async () => {
+  return getData(ALL_PAGE_DATA)
 }

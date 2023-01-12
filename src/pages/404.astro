@@ -1,5 +1,6 @@
 ---
 import '../styles/404.css'
+import '../styles/bear.css'
 import Layout from "../layouts/Layout.astro";
 
 const EXEMPT_JIGGLES = [0, 1, 4, 6, 7]
@@ -26,7 +27,7 @@ const getRandom = () => Math.floor(Math.random() * 200) - 100
   description="The page for when pages can't be found"
   flexLayout={true}
   oghue="112">
-  <svg class="big-bear" viewBox="0 0 969 955" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg aria-hidden="true" class="watermark-bear" viewBox="0 0 969 955" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="161.191" cy="320.191" r="133.191" stroke="currentColor" stroke-width="20"/>
     <circle cx="806.809" cy="320.191" r="133.191" stroke="currentColor" stroke-width="20"/>
     <circle cx="695.019" cy="587.733" r="31.4016" fill="currentColor" stroke-width="20" />
@@ -37,15 +38,19 @@ const getRandom = () => Math.floor(Math.random() * 200) - 100
   </svg>
   <main class="w-main-content flex justify-center items-center grow max-w-full mv-0 mx-auto px-4">
     <div class="grid place-items-center leading-tight">
-      <h1 class="font-mono font-bold" style="font-size: var(--step-9);">
+      <h1 aria-hidden="true" class="font-mono font-bold" style="font-size: var(--step-9);">
         {'404'.split('').map((l, i) => <span data-jiggle style={`--mx:${getRandom()};--my:${getRandom()}`}>{l}</span>)}
+      </h1>
+      <h1>
         <span class="sr-only">404</span>
       </h1>
-      <p class="font-mono font-bold" style="font-size: var(--step-4);">
-        {'not found'.split('').map((l, i) => l !== ' ' && EXEMPT_JIGGLES.indexOf(i) === -1 ?
-          <span data-jiggle style={`--mx:${getRandom()};--my:${getRandom()}`}>{l}</span> :
-          <span>{l}</span>
-        )}
+      <p class="font-mono font-bold text-center" style="font-size: var(--step-4);">
+        <span data-jigglers="true" aria-hidden="true">
+          {'not found'.split('').map((l, i) => l !== ' ' && EXEMPT_JIGGLES.indexOf(i) === -1 ?
+            <span data-jiggle style={`--mx:${getRandom()};--my:${getRandom()}`}>{l}</span> :
+            <span>{l}</span>
+          )}
+        </span>
         <span data-jiggle-label="true" class="sr-only">Not found</span>
       </p>
     </div>

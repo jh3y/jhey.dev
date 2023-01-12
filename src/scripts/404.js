@@ -1,14 +1,15 @@
 const LABEL = document.querySelector('[data-jiggle-label]')
+const JIGGLERS = document.querySelector('[data-jigglers]')
 LABEL.innerText = `"${window.location.pathname}" not found`
 
 let jiggles = ''
 
 const getRandom = () => Math.floor(Math.random() * 200) - 100
 for (const letter of window.location.pathname.split('')) {
-  jiggles += `<span style="--mx:${getRandom()};--my:${getRandom()}" class="text-brand-stroke font-bold" data-jiggle="true">${letter}</span>`
+  jiggles += `<span aria-hidden="true" style="--mx:${getRandom()};--my:${getRandom()}" class="text-brand-stroke font-bold" data-jiggle="true">${letter}</span>`
 }
 
-LABEL.parentNode.innerHTML = `${jiggles}${LABEL.parentNode.innerHTML}`
+JIGGLERS.innerHTML = `${jiggles}<br>${LABEL.parentNode.innerHTML}`
 
 const update = ({ x, y }) => {
   document.documentElement.style.setProperty(

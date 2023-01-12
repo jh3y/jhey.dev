@@ -1,12 +1,8 @@
 ---
 import FeedLayout from "../layouts/Feed.astro"
 import { ROUTES } from '../constants/routes.js'
-import { getAllPageData } from '../utils/getPageData'
-
-const data = await getAllPageData()
 
 const page = {
-  ...data,
   route: ROUTES.posts.href,
 }
 

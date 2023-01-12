@@ -1,7 +1,7 @@
 /**
  * Idea of this file is to provide an easy way to get base data for a collection.
  * */
-import { getAllArticles, getAllCheeps, getGuestbook, getContent } from '../constants/queries.js'
+import { getAllArticles, getAllCheeps, getGuestbook, getContent, getAllData } from '../constants/queries.js'
 import { ROUTES } from '../constants/routes.js'
 
 const { POSTS_PAGINATION_SIZE, GUESTBOOK_PAGINATION_SIZE } = import.meta.env
@@ -18,26 +18,23 @@ const sortContent = data => {
 }
 
 export const getAllPageData = async () => {
-  const allCheeps = await getAllCheeps()
-  const allEntries = await getGuestbook()
-  const allContent = await getContent()
-  const allArticles = await getAllArticles()
-
+  const allData = await getAllData()
   const page = {
+    config: allData.config,
     posts: {
-      data: allCheeps.slice(0, postsPageSize),
+      data: allData.posts.slice(0, postsPageSize),
       currentPage: 1,
-      totalPages: Math.ceil(allCheeps.length / postsPageSize),
+      totalPages: Math.ceil(allData.posts.length / postsPageSize),
       route: ROUTES.posts.href,
     },
     guestbook: {
-      data: allEntries.slice(0, guestbookPageSize),
+      data: allData.guestbook.slice(0, guestbookPageSize),
       currentPage: 1,
-      totalPages: Math.ceil(allEntries.length / guestbookPageSize),
+      totalPages: Math.ceil(allData.guestbook.length / guestbookPageSize),
       route: ROUTES.guestbook.href,
     },
     content: {
-      data: sortContent([...allContent, ...allArticles.map(a => ({...a, category: 'post'}))]),
+      data: sortContent([...allData.content, ...allData.articles.map(a => ({...a, category: 'post'}))]),
     },
   }
   return page

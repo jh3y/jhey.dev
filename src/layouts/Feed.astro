@@ -1,13 +1,13 @@
 ---
 import Layout from './Layout.astro'
 import TabScripts from './TabScripts.astro'
-import { getSiteConfig } from '../constants/queries.js'
+import { getAllPageData } from '../utils/getPageData.js'
 import {getRoutes, ROUTES } from '../constants/routes.js'
 
 import LayoutHeader from '../components/header/header.jsx'
 import TabNav from '../components/tab-nav/tab-nav.astro'
 
-const siteConfig = await getSiteConfig()
+const pageData = await getAllPageData()
 
 const {
   // Page meta stuff for open graph, etc.
@@ -33,10 +33,10 @@ const navItems = getRoutes(route)
 
 const contentProps = {
   route,
-  posts: posts || {},
-  guestbook: guestbook || {},
-  content: content || {},
-  body: siteConfig.about
+  posts: posts || pageData.posts,
+  guestbook: guestbook || pageData.guestbook,
+  content: content || pageData.content,
+  body: pageData.config.about
 }
 
 const INTERACTIVE_TABS = true
@@ -48,7 +48,7 @@ const INTERACTIVE_TABS = true
   description={description}
   oggradient={oggradient}
 >
-  <LayoutHeader character={character || siteConfig.character} banner={banner || siteConfig.banner} />
+  <LayoutHeader character={character || pageData.config.character} banner={banner || pageData.config.banner} />
   <main class="w-main-content max-w-full mv-0 mx-auto flex flex-col justify-center pt-4 gap-8">
     {navItems && <TabNav items={navItems} />}
     {Object.keys(ROUTES).map(ROUTE => {
@@ -62,7 +62,7 @@ const INTERACTIVE_TABS = true
       )
     })}
   </main>
-  {Astro.props.page.guestbook.thanks && (
+  {contentProps.guestbook.thanks && (
     <div role="status" aria-live="polite" class="banner-message">
       Thank you for your submission!
     </div>

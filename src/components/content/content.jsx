@@ -92,6 +92,7 @@ const sections = [
 const getShortDate = (stamp) => shortDateFormatter.format(new Date(stamp))
 
 const ContentSection = ({ data, title, intro, supplementKey }) => {
+  if (data.length === 0) return null
   return (
     <section className="mb-8">
       <h2 className="font-bold mb-2 text-fluid-1">{title}</h2>
