@@ -6,7 +6,7 @@ Need a link to find me somewhere? Odds are, it's here.
 - [Resumé](https://jhey.dev/resume)
 - [Email](mailto:hey@jhey.dev)
 - [Schedule a call](https://calendly.com/jh3y)
-
+- [Writing Page](https://jhey.dev/writing)
 
 ## Social Media
 - [Twitter](https://twitter.com/jh3yy)
@@ -20,6 +20,7 @@ Need a link to find me somewhere? Odds are, it's here.
 
 ## RSS
 - [Main Feed](https://jhey.dev/rss/rss.xml)
+- [Writing](https://jhey.dev/rss/writing.xml)
 - [CSS Feed](https://jhey.dev/rss/css.xml)
 - [JavaScript Feed](https://jhey.dev/rss/javascript.xml)
 
