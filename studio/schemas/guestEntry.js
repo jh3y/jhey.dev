@@ -18,19 +18,14 @@ export default defineType({
   name: 'guestEntry',
   title: 'Guestbook Entry',
   type: 'document',
-  initialValue: () => ({
-    visible: true,
-    slug: {
-      _type: 'slug',
-      current: uuidv4(),
-    },
-  }),
   fields: [
     defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      readOnly: true,
+      options: {
+        source: () => uuidv4(),
+      }
     }),
     defineField({
       name: 'name',

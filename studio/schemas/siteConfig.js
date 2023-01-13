@@ -72,15 +72,15 @@ export default defineType({
       type: 'markdown',
     }),
     defineField({
-      name: 'posts',
-      title: 'Posts',
-      description: 'Post related site content',
+      name: 'cheeps',
+      title: 'Cheeps',
+      description: 'Cheeps related site content',
       type: 'object',
       fields: [
         defineField({
-          name: 'postFooter',
-          title: 'Post footer',
-          description: 'Sign off for article posts',
+          name: 'cheepFooter',
+          title: 'Cheep footer',
+          description: 'Sign off for long-form cheeps',
           type: 'markdown',
         })
       ]

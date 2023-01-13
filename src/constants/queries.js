@@ -43,7 +43,7 @@ export const ALL_TAGS = `
 `
 
 export const ALL_GUESTBOOK_ENTRIES = `
-  *[_type == "guestEntry"] | order((when || _createdAt) desc) | order(pinned desc)
+  *[_type == "guestEntry"] | order(pinned desc, when desc)
 `
 export const ALL_CONTENT = `
   *[_type == "content"]{

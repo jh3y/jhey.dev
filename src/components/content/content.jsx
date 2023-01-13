@@ -11,14 +11,15 @@ const shortDateFormatter = new Intl.DateTimeFormat('en-GB', {
 const getShortDate = (stamp) => shortDateFormatter.format(new Date(stamp))
 
 const ContentSection = ({ data, title, intro, limit, supplementKey }) => {
-  if (!data || data.length === 0) return null
+  if (!data || data.filter(d => d).length === 0) return null
+
   return (
     <section className="mb-8">
       <h2 className="font-bold mb-2 text-fluid-1">{title}</h2>
       <ContentBlock>{intro}</ContentBlock>
       <ul>
         {data.map((item) => {
-          if (!item.links) return null
+          if (!item || !item.links) return null
           return (
             <li key={item._id} className="mb-2">
               <a href={item?.links[0].url} className="leading-tight">
@@ -68,7 +69,7 @@ const Content = ({ content: { data, currentPage, totalPages, route } }) => {
           }))
           section.selection = internalPosts
         }
-
+        console.info({ key })
         return (
           <ContentSection
             key={section.heading}
