@@ -87,6 +87,7 @@ const LayoutHeader = ({ banner, character }) => {
             alt="Jhey presenting at All Day Hey! 2022"
             width="200"
             height="200"
+            loading="eager"
           />
           <a
             href="/rss/rss.xml"
