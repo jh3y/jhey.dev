@@ -39,44 +39,6 @@
       "where": "web.dev"
     },
     {
-      "_createdAt": "2023-01-13T11:06:19Z",
-      "_id": "B4PIvYGv2UFUcg0RK9gGFb",
-      "_rev": "B4PIvYGv2UFUcg0RK9gGD0",
-      "_type": "article",
-      "_updatedAt": "2023-01-13T11:06:19Z",
-      "description": "",
-      "links": [
-        {
-          "_key": "6Vls4oQANAVoKc5IPZ63h6",
-          "label": "link",
-          "link": "https://developer.chrome.com/blog/pop-ups-theyre-making-a-resurgence/",
-          "url": "https://developer.chrome.com/blog/pop-ups-theyre-making-a-resurgence/"
-        }
-      ],
-      "title": "Pop-ups: They're making a resurgence!",
-      "when": "2022-09-13",
-      "where": "developer.chrome.com"
-    },
-    {
-      "_createdAt": "2023-01-13T11:06:20Z",
-      "_id": "8DAcJLIO7Kw5bjud3vnojV",
-      "_rev": "8DAcJLIO7Kw5bjud3vnogz",
-      "_type": "article",
-      "_updatedAt": "2023-01-13T11:06:20Z",
-      "description": "",
-      "links": [
-        {
-          "_key": "6Vls4oQANAVoKc5IPZ9oxA",
-          "label": "link",
-          "link": "https://css-tricks.com/ghost-buttons-with-directional-awareness-in-css/",
-          "url": "https://css-tricks.com/ghost-buttons-with-directional-awareness-in-css/"
-        }
-      ],
-      "title": "Ghost buttons with directional awareness in CSS",
-      "when": "2019-09-13",
-      "where": "CSS Tricks"
-    },
-    {
       "_createdAt": "2023-01-13T11:06:21Z",
       "_id": "6Vls4oQANAVoKc5IPZtl8O",
       "_rev": "6Vls4oQANAVoKc5IPZtl3B",
@@ -93,44 +55,6 @@
       ],
       "title": "Create a responsive CSS motion path? Sure we can!",
       "when": "2020-04-15",
-      "where": "CSS Tricks"
-    },
-    {
-      "_createdAt": "2023-01-13T11:06:22Z",
-      "_id": "8DAcJLIO7Kw5bjud3vnpNl",
-      "_rev": "8DAcJLIO7Kw5bjud3vnpLF",
-      "_type": "article",
-      "_updatedAt": "2023-01-13T11:06:22Z",
-      "description": "",
-      "links": [
-        {
-          "_key": "6Vls4oQANAVoKc5IPZ9r8c",
-          "label": "link",
-          "link": "https://css-tricks.com/css-in-3d-learning-to-think-in-cubes-instead-of-boxes/",
-          "url": "https://css-tricks.com/css-in-3d-learning-to-think-in-cubes-instead-of-boxes/"
-        }
-      ],
-      "title": "CSS in 3D: Learning to think in cubes instead of boxes",
-      "when": "2020-10-23",
-      "where": "CSS Tricks"
-    },
-    {
-      "_createdAt": "2023-01-13T11:06:23Z",
-      "_id": "B4PIvYGv2UFUcg0RK9gH2w",
-      "_rev": "B4PIvYGv2UFUcg0RK9gH0L",
-      "_type": "article",
-      "_updatedAt": "2023-01-13T11:06:23Z",
-      "description": "",
-      "links": [
-        {
-          "_key": "6Vls4oQANAVoKc5IPZ9uV0",
-          "label": "link",
-          "link": "https://css-tricks.com/a-css-slinky-in-3d/",
-          "url": "https://css-tricks.com/a-css-slinky-in-3d/"
-        }
-      ],
-      "title": "A CSS slinky in 3D? Challenge accepted",
-      "when": "2022-05-12",
       "where": "CSS Tricks"
     },
     {
@@ -153,25 +77,6 @@
       "where": "Smashing Magazine"
     },
     {
-      "_createdAt": "2023-01-13T11:06:25Z",
-      "_id": "B4PIvYGv2UFUcg0RK9gHVV",
-      "_rev": "B4PIvYGv2UFUcg0RK9gHSu",
-      "_type": "article",
-      "_updatedAt": "2023-01-13T11:06:25Z",
-      "description": "",
-      "links": [
-        {
-          "_key": "6Vls4oQANAVoKc5IPZLjt4",
-          "label": "event",
-          "link": "https://www.smashingmagazine.com/2022/03/audio-visualization-javascript-gsap-part2/",
-          "url": "https://www.smashingmagazine.com/2022/03/audio-visualization-javascript-gsap-part2/"
-        }
-      ],
-      "title": "A guide to audio visualization with JavaScript and GSAP (pt.2)",
-      "when": "2022-03-09",
-      "where": "Smashing Magazine"
-    },
-    {
       "_createdAt": "2023-01-13T11:06:26Z",
       "_id": "6Vls4oQANAVoKc5IPZtn9Q",
       "_rev": "6Vls4oQANAVoKc5IPZtn4D",
@@ -188,25 +93,6 @@
       ],
       "title": "Creating directionally lit 3D buttons with CSS",
       "when": "2021-02-16",
-      "where": "SitePoint"
-    },
-    {
-      "_createdAt": "2023-01-13T11:06:27Z",
-      "_id": "8DAcJLIO7Kw5bjud3vnqEb",
-      "_rev": "8DAcJLIO7Kw5bjud3vnqC5",
-      "_type": "article",
-      "_updatedAt": "2023-01-13T11:06:27Z",
-      "description": "",
-      "links": [
-        {
-          "_key": "6Vls4oQANAVoKc5IPZP5Qy",
-          "label": "link",
-          "link": "https://www.sitepoint.com/css-path-function-squeaky-portraits/",
-          "url": "https://www.sitepoint.com/css-path-function-squeaky-portraits/"
-        }
-      ],
-      "title": "Squeaky portraits: Having fun with the CSS path() function",
-      "when": "2021-03-25",
       "where": "SitePoint"
     },
     {
@@ -229,25 +115,6 @@
       "where": "web.dev"
     },
     {
-      "_createdAt": "2023-01-13T11:06:29Z",
-      "_id": "8DAcJLIO7Kw5bjud3vnqdl",
-      "_rev": "8DAcJLIO7Kw5bjud3vnqbF",
-      "_type": "article",
-      "_updatedAt": "2023-01-13T11:06:29Z",
-      "description": "",
-      "links": [
-        {
-          "_key": "8DAcJLIO7Kw5bjud3vPUBx",
-          "label": "link",
-          "link": "https://web.dev/speedy-css-tip-animated-loader/",
-          "url": "https://web.dev/speedy-css-tip-animated-loader/"
-        }
-      ],
-      "title": "Speedy CSS Tip! Animated Loader",
-      "when": "2022-09-22",
-      "where": "web.dev"
-    },
-    {
       "_createdAt": "2023-01-13T11:06:30Z",
       "_id": "6Vls4oQANAVoKc5IPZtoF9",
       "_rev": "6Vls4oQANAVoKc5IPZto9w",
@@ -267,25 +134,6 @@
       "where": "developer.chrome.com"
     },
     {
-      "_createdAt": "2023-01-13T11:06:31Z",
-      "_id": "B4PIvYGv2UFUcg0RK9gIO2",
-      "_rev": "B4PIvYGv2UFUcg0RK9gILR",
-      "_type": "article",
-      "_updatedAt": "2023-01-13T11:06:31Z",
-      "description": "",
-      "links": [
-        {
-          "_key": "8DAcJLIO7Kw5bjud3vS4hF",
-          "label": "link",
-          "link": "https://css-tricks.com/the-power-and-fun-of-scope-with-css-custom-properties/",
-          "url": "https://css-tricks.com/the-power-and-fun-of-scope-with-css-custom-properties/"
-        }
-      ],
-      "title": "The power (and fun) of scope with CSS custom properties",
-      "when": "2019-11-27",
-      "where": "CSS Tricks"
-    },
-    {
       "_createdAt": "2023-01-13T11:06:32Z",
       "_id": "6Vls4oQANAVoKc5IPZtoup",
       "_rev": "6Vls4oQANAVoKc5IPZtopc",
@@ -302,44 +150,6 @@
       ],
       "title": "Advice for complex CSS illustrations",
       "when": "2020-06-20",
-      "where": "CSS Tricks"
-    },
-    {
-      "_createdAt": "2023-01-13T11:06:33Z",
-      "_id": "8DAcJLIO7Kw5bjud3vnrmD",
-      "_rev": "8DAcJLIO7Kw5bjud3vnrjh",
-      "_type": "article",
-      "_updatedAt": "2023-01-13T11:06:33Z",
-      "description": "",
-      "links": [
-        {
-          "_key": "8DAcJLIO7Kw5bjud3vS5kf",
-          "label": "link",
-          "link": "https://css-tricks.com/exploring-property-and-its-animating-powers/",
-          "url": "https://css-tricks.com/exploring-property-and-its-animating-powers/"
-        }
-      ],
-      "title": "Exploring @property and it's animating powers",
-      "when": "2021-03-04",
-      "where": "CSS Tricks"
-    },
-    {
-      "_createdAt": "2023-01-13T11:06:34Z",
-      "_id": "B4PIvYGv2UFUcg0RK9gIyO",
-      "_rev": "B4PIvYGv2UFUcg0RK9gIvn",
-      "_type": "article",
-      "_updatedAt": "2023-01-13T11:06:34Z",
-      "description": "",
-      "links": [
-        {
-          "_key": "8DAcJLIO7Kw5bjud3vS64n",
-          "label": "link",
-          "link": "https://css-tricks.com/going-meta-gsap-the-quest-for-perfect-infinite-scrolling/",
-          "url": "https://css-tricks.com/going-meta-gsap-the-quest-for-perfect-infinite-scrolling/"
-        }
-      ],
-      "title": "Going \"Meta GSAP\": The quest for perfect infinite scrolling",
-      "when": "2021-04-14",
       "where": "CSS Tricks"
     },
     {
@@ -362,63 +172,6 @@
       "where": "CSS Tricks"
     },
     {
-      "_createdAt": "2023-01-13T11:06:36Z",
-      "_id": "8DAcJLIO7Kw5bjud3vnspd",
-      "_rev": "8DAcJLIO7Kw5bjud3vnsn7",
-      "_type": "article",
-      "_updatedAt": "2023-01-13T11:06:36Z",
-      "description": "",
-      "links": [
-        {
-          "_key": "8DAcJLIO7Kw5bjud3vS6qb",
-          "label": "link",
-          "link": "https://css-tricks.com/parallax-powered-by-css-custom-properties/",
-          "url": "https://css-tricks.com/parallax-powered-by-css-custom-properties/"
-        }
-      ],
-      "title": "Parallax powered by CSS custom properties",
-      "when": "2021-11-19",
-      "where": "CSS Tricks"
-    },
-    {
-      "_createdAt": "2023-01-13T11:06:37Z",
-      "_id": "B4PIvYGv2UFUcg0RK9gJqv",
-      "_rev": "B4PIvYGv2UFUcg0RK9gJj8",
-      "_type": "article",
-      "_updatedAt": "2023-01-13T11:06:37Z",
-      "description": "",
-      "links": [
-        {
-          "_key": "8DAcJLIO7Kw5bjud3vS7IH",
-          "label": "link",
-          "link": "https://css-tricks.com/creating-the-digitalocean-logo-in-3d-with-css/",
-          "url": "https://css-tricks.com/creating-the-digitalocean-logo-in-3d-with-css/"
-        }
-      ],
-      "title": "Creating the DigitalOcean logo in 3D with CSS",
-      "when": "2022-04-29",
-      "where": "CSS Tricks"
-    },
-    {
-      "_createdAt": "2023-01-13T11:06:38Z",
-      "_id": "8DAcJLIO7Kw5bjud3vntCH",
-      "_rev": "8DAcJLIO7Kw5bjud3vnt9l",
-      "_type": "article",
-      "_updatedAt": "2023-01-13T11:06:38Z",
-      "description": "",
-      "links": [
-        {
-          "_key": "8DAcJLIO7Kw5bjud3vXjAX",
-          "label": "event",
-          "link": "https://www.smashingmagazine.com/2021/05/get-started-whac-a-mole-react-game/",
-          "url": "https://www.smashingmagazine.com/2021/05/get-started-whac-a-mole-react-game/"
-        }
-      ],
-      "title": "Get started with React by building a Whac-A-Mole game",
-      "when": "2021-05-10",
-      "where": "Smashing Magazine"
-    },
-    {
       "_createdAt": "2023-01-13T11:06:39Z",
       "_id": "6Vls4oQANAVoKc5IPZtrwN",
       "_rev": "6Vls4oQANAVoKc5IPZtrrA",
@@ -439,25 +192,6 @@
     },
     {
       "_createdAt": "2023-01-13T11:06:41Z",
-      "_id": "B4PIvYGv2UFUcg0RK9gKrF",
-      "_rev": "B4PIvYGv2UFUcg0RK9gKoe",
-      "_type": "article",
-      "_updatedAt": "2023-01-13T11:06:41Z",
-      "description": "",
-      "links": [
-        {
-          "_key": "B4PIvYGv2UFUcg0RK9HBcX",
-          "label": "link",
-          "link": "https://developer.chrome.com/blog/has-m105/",
-          "url": "https://developer.chrome.com/blog/has-m105/"
-        }
-      ],
-      "title": ":has(): the family selector",
-      "when": "2022-08-03",
-      "where": "developer.chrome.com"
-    },
-    {
-      "_createdAt": "2023-01-13T11:06:41Z",
       "_id": "6Vls4oQANAVoKc5IPZtsC0",
       "_rev": "6Vls4oQANAVoKc5IPZts6n",
       "_type": "article",
@@ -474,44 +208,6 @@
       "title": "Animated Matryoshka dolls in CSS",
       "when": "2020-02-27",
       "where": "CSS Tricks"
-    },
-    {
-      "_createdAt": "2023-01-13T11:06:42Z",
-      "_id": "B4PIvYGv2UFUcg0RK9gL4E",
-      "_rev": "B4PIvYGv2UFUcg0RK9gL1d",
-      "_type": "article",
-      "_updatedAt": "2023-01-13T11:06:42Z",
-      "description": "",
-      "links": [
-        {
-          "_key": "B4PIvYGv2UFUcg0RK9P7v1",
-          "label": "event",
-          "link": "https://www.smashingmagazine.com/2020/07/thoughts-feelings-creative-wellness/",
-          "url": "https://www.smashingmagazine.com/2020/07/thoughts-feelings-creative-wellness/"
-        }
-      ],
-      "title": "It's good to talk: Thoughts and feelings on creative wellness",
-      "when": "2020-07-17",
-      "where": "Smashing Magazine"
-    },
-    {
-      "_createdAt": "2023-01-13T11:06:43Z",
-      "_id": "8DAcJLIO7Kw5bjud3vnuID",
-      "_rev": "8DAcJLIO7Kw5bjud3vnuFh",
-      "_type": "article",
-      "_updatedAt": "2023-01-13T11:06:43Z",
-      "description": "",
-      "links": [
-        {
-          "_key": "B4PIvYGv2UFUcg0RK9P8DC",
-          "label": "event",
-          "link": "https://www.smashingmagazine.com/2020/11/playfulness-code-supercharge-fun-learning/",
-          "url": "https://www.smashingmagazine.com/2020/11/playfulness-code-supercharge-fun-learning/"
-        }
-      ],
-      "title": "Playfulness in code: Supercharge your learning by having fun",
-      "when": "2020-11-25",
-      "where": "Smashing Magazine"
     },
     {
       "_createdAt": "2023-01-13T11:06:45Z",
@@ -535,9 +231,9 @@
     {
       "_createdAt": "2023-01-13T11:06:46Z",
       "_id": "6Vls4oQANAVoKc5IPZtud5",
-      "_rev": "6Vls4oQANAVoKc5IPZtuSf",
+      "_rev": "8DAcJLIO7Kw5bjud3wSpMX",
       "_type": "article",
-      "_updatedAt": "2023-01-13T11:06:46Z",
+      "_updatedAt": "2023-01-13T14:06:43Z",
       "description": "",
       "links": [
         {
@@ -547,8 +243,160 @@
           "url": "https://www.smashingmagazine.com/2022/03/audio-visualization-javascript-gsap-part1/"
         }
       ],
-      "title": "A guide to audio visualization with JavaScript and GSAP (pt.2)",
+      "title": "A guide to audio visualization with JavaScript and GSAP (pt.1)",
       "when": "2022-03-02",
+      "where": "Smashing Magazine"
+    },
+    {
+      "_createdAt": "2023-01-13T11:06:20Z",
+      "_id": "8DAcJLIO7Kw5bjud3vnojV",
+      "_rev": "8DAcJLIO7Kw5bjud3vnogz",
+      "_type": "article",
+      "_updatedAt": "2023-01-13T11:06:20Z",
+      "description": "",
+      "links": [
+        {
+          "_key": "6Vls4oQANAVoKc5IPZ9oxA",
+          "label": "link",
+          "link": "https://css-tricks.com/ghost-buttons-with-directional-awareness-in-css/",
+          "url": "https://css-tricks.com/ghost-buttons-with-directional-awareness-in-css/"
+        }
+      ],
+      "title": "Ghost buttons with directional awareness in CSS",
+      "when": "2019-09-13",
+      "where": "CSS Tricks"
+    },
+    {
+      "_createdAt": "2023-01-13T11:06:22Z",
+      "_id": "8DAcJLIO7Kw5bjud3vnpNl",
+      "_rev": "8DAcJLIO7Kw5bjud3vnpLF",
+      "_type": "article",
+      "_updatedAt": "2023-01-13T11:06:22Z",
+      "description": "",
+      "links": [
+        {
+          "_key": "6Vls4oQANAVoKc5IPZ9r8c",
+          "label": "link",
+          "link": "https://css-tricks.com/css-in-3d-learning-to-think-in-cubes-instead-of-boxes/",
+          "url": "https://css-tricks.com/css-in-3d-learning-to-think-in-cubes-instead-of-boxes/"
+        }
+      ],
+      "title": "CSS in 3D: Learning to think in cubes instead of boxes",
+      "when": "2020-10-23",
+      "where": "CSS Tricks"
+    },
+    {
+      "_createdAt": "2023-01-13T11:06:27Z",
+      "_id": "8DAcJLIO7Kw5bjud3vnqEb",
+      "_rev": "8DAcJLIO7Kw5bjud3vnqC5",
+      "_type": "article",
+      "_updatedAt": "2023-01-13T11:06:27Z",
+      "description": "",
+      "links": [
+        {
+          "_key": "6Vls4oQANAVoKc5IPZP5Qy",
+          "label": "link",
+          "link": "https://www.sitepoint.com/css-path-function-squeaky-portraits/",
+          "url": "https://www.sitepoint.com/css-path-function-squeaky-portraits/"
+        }
+      ],
+      "title": "Squeaky portraits: Having fun with the CSS path() function",
+      "when": "2021-03-25",
+      "where": "SitePoint"
+    },
+    {
+      "_createdAt": "2023-01-13T11:06:29Z",
+      "_id": "8DAcJLIO7Kw5bjud3vnqdl",
+      "_rev": "8DAcJLIO7Kw5bjud3vnqbF",
+      "_type": "article",
+      "_updatedAt": "2023-01-13T11:06:29Z",
+      "description": "",
+      "links": [
+        {
+          "_key": "8DAcJLIO7Kw5bjud3vPUBx",
+          "label": "link",
+          "link": "https://web.dev/speedy-css-tip-animated-loader/",
+          "url": "https://web.dev/speedy-css-tip-animated-loader/"
+        }
+      ],
+      "title": "Speedy CSS Tip! Animated Loader",
+      "when": "2022-09-22",
+      "where": "web.dev"
+    },
+    {
+      "_createdAt": "2023-01-13T11:06:33Z",
+      "_id": "8DAcJLIO7Kw5bjud3vnrmD",
+      "_rev": "8DAcJLIO7Kw5bjud3vnrjh",
+      "_type": "article",
+      "_updatedAt": "2023-01-13T11:06:33Z",
+      "description": "",
+      "links": [
+        {
+          "_key": "8DAcJLIO7Kw5bjud3vS5kf",
+          "label": "link",
+          "link": "https://css-tricks.com/exploring-property-and-its-animating-powers/",
+          "url": "https://css-tricks.com/exploring-property-and-its-animating-powers/"
+        }
+      ],
+      "title": "Exploring @property and it's animating powers",
+      "when": "2021-03-04",
+      "where": "CSS Tricks"
+    },
+    {
+      "_createdAt": "2023-01-13T11:06:36Z",
+      "_id": "8DAcJLIO7Kw5bjud3vnspd",
+      "_rev": "8DAcJLIO7Kw5bjud3vnsn7",
+      "_type": "article",
+      "_updatedAt": "2023-01-13T11:06:36Z",
+      "description": "",
+      "links": [
+        {
+          "_key": "8DAcJLIO7Kw5bjud3vS6qb",
+          "label": "link",
+          "link": "https://css-tricks.com/parallax-powered-by-css-custom-properties/",
+          "url": "https://css-tricks.com/parallax-powered-by-css-custom-properties/"
+        }
+      ],
+      "title": "Parallax powered by CSS custom properties",
+      "when": "2021-11-19",
+      "where": "CSS Tricks"
+    },
+    {
+      "_createdAt": "2023-01-13T11:06:38Z",
+      "_id": "8DAcJLIO7Kw5bjud3vntCH",
+      "_rev": "8DAcJLIO7Kw5bjud3vnt9l",
+      "_type": "article",
+      "_updatedAt": "2023-01-13T11:06:38Z",
+      "description": "",
+      "links": [
+        {
+          "_key": "8DAcJLIO7Kw5bjud3vXjAX",
+          "label": "event",
+          "link": "https://www.smashingmagazine.com/2021/05/get-started-whac-a-mole-react-game/",
+          "url": "https://www.smashingmagazine.com/2021/05/get-started-whac-a-mole-react-game/"
+        }
+      ],
+      "title": "Get started with React by building a Whac-A-Mole game",
+      "when": "2021-05-10",
+      "where": "Smashing Magazine"
+    },
+    {
+      "_createdAt": "2023-01-13T11:06:43Z",
+      "_id": "8DAcJLIO7Kw5bjud3vnuID",
+      "_rev": "8DAcJLIO7Kw5bjud3vnuFh",
+      "_type": "article",
+      "_updatedAt": "2023-01-13T11:06:43Z",
+      "description": "",
+      "links": [
+        {
+          "_key": "B4PIvYGv2UFUcg0RK9P8DC",
+          "label": "event",
+          "link": "https://www.smashingmagazine.com/2020/11/playfulness-code-supercharge-fun-learning/",
+          "url": "https://www.smashingmagazine.com/2020/11/playfulness-code-supercharge-fun-learning/"
+        }
+      ],
+      "title": "Playfulness in code: Supercharge your learning by having fun",
+      "when": "2020-11-25",
       "where": "Smashing Magazine"
     },
     {
@@ -571,25 +419,6 @@
       "where": "SitePoint"
     },
     {
-      "_createdAt": "2023-01-13T11:06:48Z",
-      "_id": "B4PIvYGv2UFUcg0RK9gLea",
-      "_rev": "B4PIvYGv2UFUcg0RK9gLbz",
-      "_type": "article",
-      "_updatedAt": "2023-01-13T11:06:48Z",
-      "description": "",
-      "links": [
-        {
-          "_key": "5a45624c29a2",
-          "label": "link",
-          "link": "https://css-tricks.com/an-interactive-starry-backdrop-for-content/",
-          "url": "https://css-tricks.com/an-interactive-starry-backdrop-for-content/"
-        }
-      ],
-      "title": "An Interactive Starry Backdrop for Content",
-      "when": "2022-05-18",
-      "where": "CSS Tricks"
-    },
-    {
       "_createdAt": "2023-01-13T11:06:49Z",
       "_id": "8DAcJLIO7Kw5bjud3vnvaj",
       "_rev": "8DAcJLIO7Kw5bjud3vnvYD",
@@ -606,6 +435,177 @@
       ],
       "title": "How to Make a Pure CSS 3D Package Toggle",
       "when": "2022-01-12",
+      "where": "CSS Tricks"
+    },
+    {
+      "_createdAt": "2023-01-13T11:06:19Z",
+      "_id": "B4PIvYGv2UFUcg0RK9gGFb",
+      "_rev": "B4PIvYGv2UFUcg0RK9gGD0",
+      "_type": "article",
+      "_updatedAt": "2023-01-13T11:06:19Z",
+      "description": "",
+      "links": [
+        {
+          "_key": "6Vls4oQANAVoKc5IPZ63h6",
+          "label": "link",
+          "link": "https://developer.chrome.com/blog/pop-ups-theyre-making-a-resurgence/",
+          "url": "https://developer.chrome.com/blog/pop-ups-theyre-making-a-resurgence/"
+        }
+      ],
+      "title": "Pop-ups: They're making a resurgence!",
+      "when": "2022-09-13",
+      "where": "developer.chrome.com"
+    },
+    {
+      "_createdAt": "2023-01-13T11:06:23Z",
+      "_id": "B4PIvYGv2UFUcg0RK9gH2w",
+      "_rev": "B4PIvYGv2UFUcg0RK9gH0L",
+      "_type": "article",
+      "_updatedAt": "2023-01-13T11:06:23Z",
+      "description": "",
+      "links": [
+        {
+          "_key": "6Vls4oQANAVoKc5IPZ9uV0",
+          "label": "link",
+          "link": "https://css-tricks.com/a-css-slinky-in-3d/",
+          "url": "https://css-tricks.com/a-css-slinky-in-3d/"
+        }
+      ],
+      "title": "A CSS slinky in 3D? Challenge accepted",
+      "when": "2022-05-12",
+      "where": "CSS Tricks"
+    },
+    {
+      "_createdAt": "2023-01-13T11:06:25Z",
+      "_id": "B4PIvYGv2UFUcg0RK9gHVV",
+      "_rev": "B4PIvYGv2UFUcg0RK9gHSu",
+      "_type": "article",
+      "_updatedAt": "2023-01-13T11:06:25Z",
+      "description": "",
+      "links": [
+        {
+          "_key": "6Vls4oQANAVoKc5IPZLjt4",
+          "label": "event",
+          "link": "https://www.smashingmagazine.com/2022/03/audio-visualization-javascript-gsap-part2/",
+          "url": "https://www.smashingmagazine.com/2022/03/audio-visualization-javascript-gsap-part2/"
+        }
+      ],
+      "title": "A guide to audio visualization with JavaScript and GSAP (pt.2)",
+      "when": "2022-03-09",
+      "where": "Smashing Magazine"
+    },
+    {
+      "_createdAt": "2023-01-13T11:06:31Z",
+      "_id": "B4PIvYGv2UFUcg0RK9gIO2",
+      "_rev": "B4PIvYGv2UFUcg0RK9gILR",
+      "_type": "article",
+      "_updatedAt": "2023-01-13T11:06:31Z",
+      "description": "",
+      "links": [
+        {
+          "_key": "8DAcJLIO7Kw5bjud3vS4hF",
+          "label": "link",
+          "link": "https://css-tricks.com/the-power-and-fun-of-scope-with-css-custom-properties/",
+          "url": "https://css-tricks.com/the-power-and-fun-of-scope-with-css-custom-properties/"
+        }
+      ],
+      "title": "The power (and fun) of scope with CSS custom properties",
+      "when": "2019-11-27",
+      "where": "CSS Tricks"
+    },
+    {
+      "_createdAt": "2023-01-13T11:06:34Z",
+      "_id": "B4PIvYGv2UFUcg0RK9gIyO",
+      "_rev": "B4PIvYGv2UFUcg0RK9gIvn",
+      "_type": "article",
+      "_updatedAt": "2023-01-13T11:06:34Z",
+      "description": "",
+      "links": [
+        {
+          "_key": "8DAcJLIO7Kw5bjud3vS64n",
+          "label": "link",
+          "link": "https://css-tricks.com/going-meta-gsap-the-quest-for-perfect-infinite-scrolling/",
+          "url": "https://css-tricks.com/going-meta-gsap-the-quest-for-perfect-infinite-scrolling/"
+        }
+      ],
+      "title": "Going \"Meta GSAP\": The quest for perfect infinite scrolling",
+      "when": "2021-04-14",
+      "where": "CSS Tricks"
+    },
+    {
+      "_createdAt": "2023-01-13T11:06:37Z",
+      "_id": "B4PIvYGv2UFUcg0RK9gJqv",
+      "_rev": "B4PIvYGv2UFUcg0RK9gJj8",
+      "_type": "article",
+      "_updatedAt": "2023-01-13T11:06:37Z",
+      "description": "",
+      "links": [
+        {
+          "_key": "8DAcJLIO7Kw5bjud3vS7IH",
+          "label": "link",
+          "link": "https://css-tricks.com/creating-the-digitalocean-logo-in-3d-with-css/",
+          "url": "https://css-tricks.com/creating-the-digitalocean-logo-in-3d-with-css/"
+        }
+      ],
+      "title": "Creating the DigitalOcean logo in 3D with CSS",
+      "when": "2022-04-29",
+      "where": "CSS Tricks"
+    },
+    {
+      "_createdAt": "2023-01-13T11:06:41Z",
+      "_id": "B4PIvYGv2UFUcg0RK9gKrF",
+      "_rev": "B4PIvYGv2UFUcg0RK9gKoe",
+      "_type": "article",
+      "_updatedAt": "2023-01-13T11:06:41Z",
+      "description": "",
+      "links": [
+        {
+          "_key": "B4PIvYGv2UFUcg0RK9HBcX",
+          "label": "link",
+          "link": "https://developer.chrome.com/blog/has-m105/",
+          "url": "https://developer.chrome.com/blog/has-m105/"
+        }
+      ],
+      "title": ":has(): the family selector",
+      "when": "2022-08-03",
+      "where": "developer.chrome.com"
+    },
+    {
+      "_createdAt": "2023-01-13T11:06:42Z",
+      "_id": "B4PIvYGv2UFUcg0RK9gL4E",
+      "_rev": "B4PIvYGv2UFUcg0RK9gL1d",
+      "_type": "article",
+      "_updatedAt": "2023-01-13T11:06:42Z",
+      "description": "",
+      "links": [
+        {
+          "_key": "B4PIvYGv2UFUcg0RK9P7v1",
+          "label": "event",
+          "link": "https://www.smashingmagazine.com/2020/07/thoughts-feelings-creative-wellness/",
+          "url": "https://www.smashingmagazine.com/2020/07/thoughts-feelings-creative-wellness/"
+        }
+      ],
+      "title": "It's good to talk: Thoughts and feelings on creative wellness",
+      "when": "2020-07-17",
+      "where": "Smashing Magazine"
+    },
+    {
+      "_createdAt": "2023-01-13T11:06:48Z",
+      "_id": "B4PIvYGv2UFUcg0RK9gLea",
+      "_rev": "B4PIvYGv2UFUcg0RK9gLbz",
+      "_type": "article",
+      "_updatedAt": "2023-01-13T11:06:48Z",
+      "description": "",
+      "links": [
+        {
+          "_key": "5a45624c29a2",
+          "label": "link",
+          "link": "https://css-tricks.com/an-interactive-starry-backdrop-for-content/",
+          "url": "https://css-tricks.com/an-interactive-starry-backdrop-for-content/"
+        }
+      ],
+      "title": "An Interactive Starry Backdrop for Content",
+      "when": "2022-05-18",
       "where": "CSS Tricks"
     }
   ]

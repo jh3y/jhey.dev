@@ -38,7 +38,6 @@ const sync = async (query, filePath, key, defaultProperties ) => {
   const newData = []
   const currentFile = fs.readFileSync(filePath, 'utf-8')
   const currentData = JSON.parse(currentFile)
-  console.info({ currentData })
   const docsToCreate = currentData?.[key].filter(a => !a.hasOwnProperty("_id"))
   if (docsToCreate.length > 0) {
     for (const doc of docsToCreate) {
@@ -67,7 +66,6 @@ const sync = async (query, filePath, key, defaultProperties ) => {
 }
 
 for (const CONTENT_TYPE of TYPES) {
-  console.info({ CONTENT_TYPE })
   const CONTENT_QUERY = `*[_type == "${CONTENT_TYPE}"] {...}`
   const CONTENT_PATH = `${process.cwd()}/src/data/${CONTENT_TYPE}.json`
   await sync(CONTENT_QUERY, CONTENT_PATH, CONTENT_TYPE)
