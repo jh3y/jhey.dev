@@ -13,6 +13,13 @@ const shortDateFormatter = new Intl.DateTimeFormat('en-GB', {
   month: 'short',
 })
 const getShortDate = (stamp) => shortDateFormatter.format(new Date(stamp))
+
+// Do the ordering yourself here...
+const sorted = writing.sort((a, b) => {
+  const dateA = new Date(a.when || a.publishedAt)
+  const dateB = new Date(b.when || b.publishedAt)
+  return dateB - dateA
+})
 ---
 <Layout
   title="Writing"
@@ -63,7 +70,7 @@ const getShortDate = (stamp) => shortDateFormatter.format(new Date(stamp))
       I love to write and I've been fortunate to write for some of my favorite publications. Here you'll find a bunch of my writing on all sorts of topics. Don't want to miss a post? Check out the <a href="/rss/writing.xml" target="_blank">RSS feed</a>!
     </p>
     <ul>
-      {writing.map(article => {
+      {sorted.map(article => {
         const data = {
           title: article.title,
           id: article._id,
