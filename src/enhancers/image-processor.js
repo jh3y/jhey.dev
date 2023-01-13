@@ -88,7 +88,7 @@ export const imageEnhancer = async (document) => {
   allImg.forEach(img => {
     const enhancedSrc = getEnhancedPath(img, true)
     img.setAttribute('decoding', 'async')
-    img.setAttribute('loading', img.getAttribute('lazy') || 'lazy')
+    img.setAttribute('loading', img.getAttribute('loading') || 'lazy')
     if (!img.src.includes('/media/image/enhanced/')) {
       img.src = `${enhancedSrc}.${FORMATS[0]}`
     }
