@@ -1,7 +1,7 @@
 import { getRssData } from '../../constants/queries.js'
 import { genRssMarkup } from './_htmlGenerator.js'
 
-const { posts, config: siteConfig } = await getRssData()
+const { cheeps, config: siteConfig } = await getRssData()
 
 const metadata = {
   url: siteConfig?.rss?.url || 'https://jhey.dev/',
@@ -17,9 +17,9 @@ export const get = () =>
   new Promise((resolve, reject) => {
     resolve({
       body: genRssMarkup(
-        posts.map((post) => ({
-          ...post,
-          url: `${metadata.url}post/${post.slug.current}`,
+        cheeps.map((cheep) => ({
+          ...cheep,
+          url: `${metadata.url}cheep/${cheep.slug.current}`,
         })),
         metadata
       ),

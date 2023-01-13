@@ -1,10 +1,10 @@
 {
-  "speaking": [
+  "talk": [
     {
       "_createdAt": "2023-01-13T11:03:22Z",
       "_id": "6Vls4oQANAVoKc5IPZsS33",
       "_rev": "6Vls4oQANAVoKc5IPZsRxq",
-      "_type": "speaking",
+      "_type": "talk",
       "_updatedAt": "2023-01-13T11:03:22Z",
       "description": "Looking at new things coming to the <web-platform>",
       "links": [
@@ -29,7 +29,7 @@
       "_createdAt": "2023-01-13T11:03:21Z",
       "_id": "B4PIvYGv2UFUcg0RK9fYTy",
       "_rev": "B4PIvYGv2UFUcg0RK9fYRN",
-      "_type": "speaking",
+      "_type": "talk",
       "_updatedAt": "2023-01-13T11:03:21Z",
       "description": "The quest for a styleable <select>",
       "links": [

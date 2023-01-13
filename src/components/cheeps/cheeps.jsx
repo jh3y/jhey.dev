@@ -3,8 +3,8 @@ import React from 'react'
 import Card from '../card/card.jsx'
 import Pagination from '../pagination/pagination.jsx'
 
-const Posts = ({
-  posts: {
+const Cheeps = ({
+  cheeps: {
     data,
     currentPage,
     totalPages,
@@ -35,4 +35,4 @@ const Posts = ({
   )
 }
 
-export default Posts
+export default Cheeps

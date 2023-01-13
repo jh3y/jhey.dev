@@ -21,13 +21,13 @@ export async function getStaticPaths({ paginate }) {
       props: {
         page: {
           ...dataset.props,
-          route: `${ROUTES.posts.href}/${dataset.props.tagLabel.toLowerCase()}`,
-          posts: {
+          route: `${ROUTES.cheeps.href}/${dataset.props.tagLabel.toLowerCase()}`,
+          cheeps: {
             category: dataset.props.tagLabel,
             data: dataset.data.slice(0, postsPageSize),
             currentPage: 1,
             totalPages: Math.ceil(dataset.data.length / postsPageSize),
-            route: `${ROUTES.posts.href}/${dataset.props.tagLabel.toLowerCase()}`,
+            route: `${ROUTES.cheeps.href}/${dataset.props.tagLabel.toLowerCase()}`,
           }
         }
       }

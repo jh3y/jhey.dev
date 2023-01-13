@@ -37,7 +37,7 @@ const GuestCard = (props) => {
       <a
         title="Permalink"
         className="w-10 h-10"
-        href={props.link || `/post/${props.slug.current}`}
+        href={props.link || `/cheep/${props.slug.current}`}
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -60,7 +60,7 @@ const GuestCard = (props) => {
       <div className="card__content grid gap-y-1 leading-tight">
         <div className="flex gap-x-2 text-fluid--1 items-center text-text-4">
           <a
-            href={props.link || `/post/${props.slug.current}`}
+            href={props.link || `/cheep/${props.slug.current}`}
             className="hover:underline font-bold text-text-1"
           >
             {props.name}
@@ -77,7 +77,7 @@ const GuestCard = (props) => {
           <a
             title="Permalink"
             className="w-10 h-10 grid place-items-center hover:bg-surface-4 rounded-md text-text-2 hover:text-brand-stroke"
-            href={props.link || `/post/${props.slug.current}`}
+            href={props.link || `/cheep/${props.slug.current}`}
             target="_blank"
             rel="noopener noreferrer"
           >

@@ -1,17 +1,17 @@
 import About from '../components/about/about.jsx'
-import Posts from '../components/posts/posts.jsx'
+import Cheeps from '../components/cheeps/cheeps.jsx'
 import Content from '../components/content/content.jsx'
 import Guestbook from '../components/guestbook/guestbook.astro'
 
 export const GUESTBOOK_SUCCESS_PATH = 'thanks'
 
 export const ROUTES = {
-  posts: {
-    href: '/posts',
+  cheeps: {
+    href: '/cheeps',
     label: 'Feed',
     enabled: true,
     render: true,
-    renderer: Posts,
+    renderer: Cheeps,
   },
   about: {
     href: '/about',
@@ -40,7 +40,7 @@ export const getRoutes = key => {
   const newRoutes = Object.keys(ROUTES).reduce((acc, cur) => {
     acc.push({
       ...ROUTES[cur],
-      active: (!key && cur === ROUTES.posts.href.slice(1)) || key.indexOf(cur) !== -1
+      active: (!key && cur === ROUTES.cheeps.href.slice(1)) || key.indexOf(cur) !== -1
     })
     return acc
   }, [])

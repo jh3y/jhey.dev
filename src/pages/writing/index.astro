@@ -67,9 +67,9 @@ const getShortDate = (stamp) => shortDateFormatter.format(new Date(stamp))
         const data = {
           title: article.title,
           id: article._id,
-          url: article?.slug?.current ? `/post/${article.slug.current}` : article.links[0].link,
+          url: article?.slug?.current ? `/cheep/${article.slug.current}` : article.links[0].url,
           where: article.where || 'jhey.dev',
-          when: article.publishedAt || article.when,
+          when: article.publishedAt || article.when || new Date(),
         }
         return (
           <li key={data.id} class="mb-2">

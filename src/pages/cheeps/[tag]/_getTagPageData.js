@@ -9,7 +9,7 @@ export const getTagPageData = async () => {
   const {
     authors: allAuthors,
     tags: allTags,
-    posts: allCheeps,
+    cheeps: allCheeps,
     config: siteConfig,
   } = await getAllData()
 

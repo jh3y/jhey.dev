@@ -5,7 +5,7 @@ import Card from '../card/card.jsx'
 import Pagination from '../pagination/pagination.jsx'
 import TabNav from '../tab-nav/tab-nav.jsx'
 
-const FeedLayout = ({ navItems, banner, character, posts, category = '', currentPage, totalPages, route = "/posts" }) => {
+const FeedLayout = ({ navItems, banner, character, posts, category = '', currentPage, totalPages, route = "/cheeps" }) => {
   return (
     <>
       <LayoutHeader character={character} banner={banner} />

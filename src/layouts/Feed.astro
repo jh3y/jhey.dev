@@ -22,7 +22,7 @@ const {
     // Current route to please tabs
     route,
     // Need pagination blocks for each category of paginated things
-    posts,
+    cheeps,
     guestbook,
     content,
   },
@@ -33,13 +33,18 @@ const navItems = getRoutes(route)
 
 const contentProps = {
   route,
-  posts: posts || pageData.posts,
+  cheeps: cheeps || pageData.cheeps,
   guestbook: guestbook || pageData.guestbook,
   content: content || pageData.content,
   body: pageData.config.about
 }
 
 const INTERACTIVE_TABS = true
+
+/**
+ * NOTE:: /posts is gonna map to contentProps.cheeps.
+ * Don't forget that naming convention...
+ * */
 
 ---
 <Layout

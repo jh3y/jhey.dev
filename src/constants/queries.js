@@ -46,7 +46,15 @@ export const ALL_GUESTBOOK_ENTRIES = `
   *[_type == "guestEntry"] | order((when || _createdAt) desc) | order(pinned desc)
 `
 export const ALL_CONTENT = `
-  *[_type == "content"] | order((when || _createdAt) desc) | order(feature desc)
+  *[_type == "content"]{
+    articles{..., selection[]->{...}},
+    appearances{..., selection[]->{...}},
+    talks{..., selection[]->{...}},
+    videos{..., selection[]->{...}},
+    demos{..., selection[]->{...}},
+    features{..., selection[]->{...}},        
+    posts{..., selection[]->{...}},        
+  }
 `
 export const ALL_POSTS = `
   *[_type == "post"] | order(publishedAt desc)
@@ -89,7 +97,7 @@ export const ALL_PAGE_DATA = `
 
 export const RSS_FEED = `
   {
-    "posts": ${RSS_CHEEPS},
+    "cheeps": ${RSS_CHEEPS},
     "writing": ${ALL_WRITING}, 
     "tags": ${ALL_TAGS},
     "config": ${SITE_CONFIG},

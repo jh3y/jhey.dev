@@ -14,13 +14,13 @@ export async function getStaticPaths({ paginate }) {
 }
 
 const page = {
-  posts: {
+  cheeps: {
     ...Astro.props.page,
     data: Astro.props.page.data,
     totalPages: Astro.props.page.lastPage,
-    route: ROUTES.posts.href,
+    route: ROUTES.cheeps.href,
   },
-  route: ROUTES.posts.href,
+  route: ROUTES.cheeps.href,
 }
 
 ---

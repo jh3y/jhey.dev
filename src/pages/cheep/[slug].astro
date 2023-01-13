@@ -1,6 +1,6 @@
 ---
 import Markdown from 'react-markdown'
-import { getAllPosts, getSiteConfig } from "../../constants/queries.js"
+import { getSitePosts, getSiteConfig } from "../../constants/queries.js"
 import Layout from "../../layouts/Layout.astro";
 import Card from "../../components/card/card.jsx";
 import ContentBlock from "../../components/content-block/content-block.jsx";
@@ -8,7 +8,7 @@ import LayoutHeader from "../../components/header/header.jsx";
 import PostLayout from "../../components/post-layout/post-layout.jsx";
 
 export async function getStaticPaths() {
-  const posts = await getAllPosts()
+  const posts = await getSitePosts()
   const siteConfig = await getSiteConfig()
   // Loop over them and get the content
   return posts.map(({ slug, ...props }) => {
@@ -28,7 +28,8 @@ const { description, title } = Astro.props
 const backupTitle = Astro.props._type === 'guestEntry' ? 'Guest entry' : 'A Post from Jhey'
 const backupDescription = Astro.props._type === 'guestEntry' ? 'Someone said something about Jhey' : 'Check out this post from Jhey Tompkins' 
 
-const shareLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`"${title}" via @jh3yy\n`)}https://jhey.dev/post/${slug}/`
+const shareLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`"${title}" via @jh3yy\n`)}https://jhey.dev/cheep/${slug}/`
+
 ---
 <Layout
   title={title || backupTitle}

@@ -3,7 +3,7 @@ import Markdown from 'react-markdown'
 import ContentBlock from '../content-block/content-block'
 
 const Card = (props) => {
-  const authorLink = `/posts/${
+  const authorLink = `/cheeps/${
     props.author.specialty
       ? props.author.specialty.title.toLowerCase()
       : ''
@@ -81,7 +81,7 @@ const Card = (props) => {
             <a
               title="Permalink"
               className="w-10 h-10 grid place-items-center hover:bg-surface-4 rounded-md text-text-2 hover:text-brand-stroke"
-              href={`/post/${props.slug.current}`}
+              href={`/cheep/${props.slug.current}`}
               target="_blank"
               rel="noopener noreferrer"
             >

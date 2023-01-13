@@ -63,24 +63,24 @@ export default defineType({
       type: 'object',
       fields: [
         defineField({
-          name: 'heroDemo',
+          name: 'demo',
           title: 'Hero embedded demo',
           description: 'Point at a demo to embed',
           type: 'string',
         }),
         defineField({
-          name: 'heroDemoImage',
+          name: 'image',
           title: 'Hero demo image',
           description: 'Backup image in case demo has motion',
           type: 'string',
         }),
         defineField({
-          name: 'heroAlt',
+          name: 'imageAlt',
           title: 'Image alt',
           type: 'string',
         }),
         defineField({
-          name: 'heroAttribution',
+          name: 'attribution',
           title: 'Image attribution',
           type: 'markdown',
         }),

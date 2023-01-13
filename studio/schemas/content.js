@@ -2,74 +2,37 @@ import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'content',
-  title: 'Content',
+  title: 'Curated Content',
+  description: 'Curated content for the content tab',
   type: 'document',
-  initialValue: {
-    feature: false,
-  },
-  fields: [
+  fields: ['post', 'article', 'talk', 'video', 'demo', 'appearance', 'feature'].map((contentType) =>
     defineField({
-      name: 'title',
-      title: 'Title',
-      type: 'string',
-    }),
-    defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'string',
-    }),
-    defineField({
-      name: 'feature',
-      title: 'Feature',
-      description: 'Gets this feature to the top of its pile',
-      type: 'boolean',
-    }),
-    defineField({
-      name: 'category',
-      title: 'Category',
-      type: 'string',
-      options: {
-        list: [
-          {title: 'Article', value: 'article'},
-          {title: 'Appearance', value: 'appearance'},
-          {title: 'Speaking', value: 'speaking'},
-          {title: 'Feature', value: 'feature'},
-          {title: 'Video', value: 'video'},
-          {title: 'Demo', value: 'demo'},
-        ],
-      },
-    }),
-    defineField({
-      name: 'links',
-      title: 'Links',
-      type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            defineField({
-              name: 'label',
-              title: 'Label',
-              type: 'string',
-            }),
-            defineField({
-              name: 'link',
-              title: 'URL',
-              type: 'url',
-            }),
-          ]
-        }
-      ]
-    }),
-    defineField({
-      name: 'when',
-      title: 'When',
-      type: 'date',
-    }),
-    defineField({
-      name: 'where',
-      title: 'Where',
-      type: 'string',
+      name: `${contentType}s`,
+      title: `${contentType.charAt(0).toUpperCase()}${contentType.slice(1)}s`,
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'heading',
+          title: 'Heading',
+          type: 'string',
+        }),
+        defineField({
+          name: 'active',
+          title: 'Active',
+          type: 'boolean',
+        }),
+        defineField({
+          name: 'intro',
+          title: 'Intro',
+          type: 'markdown',
+        }),
+        defineField({
+          name: 'selection',
+          title: 'Selection',
+          type: 'array',
+          of: [{type: 'reference', to: [{type: contentType}]}],
+        }),
+      ],
     })
-  ],
+  ),
 })

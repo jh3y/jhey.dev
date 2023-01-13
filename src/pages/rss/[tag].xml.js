@@ -1,7 +1,7 @@
 import { genRssMarkup } from './_htmlGenerator.js'
 import { getRssData } from '../../constants/queries.js'
 
-const { posts, config: siteConfig, tags: allTags } = await getRssData()
+const { cheeps, config: siteConfig, tags: allTags } = await getRssData()
 
 export function getStaticPaths() {
   const tagPaths = allTags.map((tag) => {
@@ -23,9 +23,9 @@ export const get = ({ params, request }) =>
     }
     resolve({
       body: genRssMarkup(
-        posts.map((post) => ({
-          ...post,
-          url: `${metadata.url}post/${post.slug.current}`,
+        cheeps.map((cheep) => ({
+          ...cheep,
+          url: `${metadata.url}cheep/${cheep.slug.current}`,
         })),
         metadata
       ),
