@@ -69,7 +69,7 @@ const Content = ({ content: { data, currentPage, totalPages, route } }) => {
           }))
           section.selection = internalPosts
         }
-        console.info({ key })
+
         return (
           <ContentSection
             key={section.heading}
