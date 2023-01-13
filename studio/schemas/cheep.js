@@ -101,10 +101,10 @@ export default defineType({
       validation: Rule => Rule.required(),
     }),
     defineField({
-      name: 'article',
-      title: 'Related Article',
+      name: 'post',
+      title: 'Related Post',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'article'}}],
+      of: [{type: 'reference', to: {type: 'post'}}],
     }),
   ],
 

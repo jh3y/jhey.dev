@@ -26,8 +26,10 @@ const client = sanityClient({
   useCdn: true, // `false` if you want to ensure fresh data
 })
 
-const CONTENT_QUERY = '*[_type == "content"] {...}'
-const CONTENT_PATH = `${process.cwd()}/src/data/content.json`
+// const CONTENT_QUERY = '*[_type == "content"] {...}'
+// const CONTENT_PATH = `${process.cwd()}/src/data/content.json`
+
+const TYPES = ['video', 'demo', 'speaking', 'article', 'feature', 'appearance']
 
 const GUESTBOOK_QUERY = '*[_type == "guestEntry"] {...}'
 const GUESTBOOK_PATH = `${process.cwd()}/src/data/guestbook.json`
@@ -36,6 +38,7 @@ const sync = async (query, filePath, key, defaultProperties ) => {
   const newData = []
   const currentFile = fs.readFileSync(filePath, 'utf-8')
   const currentData = JSON.parse(currentFile)
+  console.info({ currentData })
   const docsToCreate = currentData?.[key].filter(a => !a.hasOwnProperty("_id"))
   if (docsToCreate.length > 0) {
     for (const doc of docsToCreate) {
@@ -63,5 +66,10 @@ const sync = async (query, filePath, key, defaultProperties ) => {
   console.info(`${key} synced with CMS!`)
 }
 
-await sync(CONTENT_QUERY, CONTENT_PATH, 'content')
+for (const CONTENT_TYPE of TYPES) {
+  console.info({ CONTENT_TYPE })
+  const CONTENT_QUERY = `*[_type == "${CONTENT_TYPE}"] {...}`
+  const CONTENT_PATH = `${process.cwd()}/src/data/${CONTENT_TYPE}.json`
+  await sync(CONTENT_QUERY, CONTENT_PATH, CONTENT_TYPE)
+}
 await sync(GUESTBOOK_QUERY, GUESTBOOK_PATH, 'guestEntry', { visible: true, slug: { current: uuidv4(), type: '_slug' }})

@@ -1,0 +1,54 @@
+{
+  "speaking": [
+    {
+      "_createdAt": "2023-01-13T11:03:22Z",
+      "_id": "6Vls4oQANAVoKc5IPZsS33",
+      "_rev": "6Vls4oQANAVoKc5IPZsRxq",
+      "_type": "speaking",
+      "_updatedAt": "2023-01-13T11:03:22Z",
+      "description": "Looking at new things coming to the <web-platform>",
+      "links": [
+        {
+          "_key": "705931b0316f",
+          "label": "video",
+          "link": "https://youtu.be/Bs7ZUyK6MnA",
+          "url": "https://youtu.be/Bs7ZUyK6MnA"
+        },
+        {
+          "_key": "50b755ae72f3",
+          "label": "event",
+          "link": "https://webdevconf.com/events/2022/",
+          "url": "https://webdevconf.com/events/2022/"
+        }
+      ],
+      "title": "Supercharge your skills with creative coding vol. IV",
+      "when": "2022-10-06",
+      "where": "WDC 2022"
+    },
+    {
+      "_createdAt": "2023-01-13T11:03:21Z",
+      "_id": "B4PIvYGv2UFUcg0RK9fYTy",
+      "_rev": "B4PIvYGv2UFUcg0RK9fYRN",
+      "_type": "speaking",
+      "_updatedAt": "2023-01-13T11:03:21Z",
+      "description": "The quest for a styleable <select>",
+      "links": [
+        {
+          "_key": "7ad40d98cd1f",
+          "label": "video",
+          "link": "https://youtu.be/YTQkJALeQfg?t=21732",
+          "url": "https://youtu.be/YTQkJALeQfg?t=21732"
+        },
+        {
+          "_key": "97128d513a7a",
+          "label": "event",
+          "link": "https://gdg.community.dev/events/details/google-women-techmakers-tokyo-presents-gdg-devfest-tokyo-2022/",
+          "url": "https://gdg.community.dev/events/details/google-women-techmakers-tokyo-presents-gdg-devfest-tokyo-2022/"
+        }
+      ],
+      "title": "Supercharge your skills with creative coding vol. V",
+      "when": "2022-12-16",
+      "where": "Tokyo DevFest 2022"
+    }
+  ]
+}

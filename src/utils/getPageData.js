@@ -34,7 +34,7 @@ export const getAllPageData = async () => {
       route: ROUTES.guestbook.href,
     },
     content: {
-      data: sortContent([...allData.content, ...allData.articles.map(a => ({...a, category: 'post'}))]),
+      data: sortContent([...allData.content, ...allData.posts.map(a => ({...a, category: 'post'}))]),
     },
   }
   return page

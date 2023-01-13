@@ -5,7 +5,7 @@ export const ORDERED_CHEEPS = `
   *[_type == "cheep"]{
     ...,
     status->{...},
-    article[]->{
+    post[]->{
       tags[]->{...}
     },
     tags[]->{...},
@@ -20,7 +20,7 @@ export const RSS_CHEEPS = `
   *[_type == "cheep"]{
     ...,
     status->{...},
-    article[]->{
+    post[]->{
       tags[]->{...}
     },
     tags[]->{...},
@@ -48,8 +48,8 @@ export const ALL_GUESTBOOK_ENTRIES = `
 export const ALL_CONTENT = `
   *[_type == "content"] | order((when || _createdAt) desc) | order(feature desc)
 `
-export const ALL_ARTICLES = `
-  *[_type == "article"] | order(publishedAt desc)
+export const ALL_POSTS = `
+  *[_type == "post"] | order(publishedAt desc)
 `
 export const ALL_AUTHORS = `
   *[_type == "author"]{
@@ -57,8 +57,8 @@ export const ALL_AUTHORS = `
     "avatar": image.asset->url,
     specialty->{...}
   }`
-export const ALL_POSTS = `
-  *[_type == "cheep" || _type == "article" || _type == "guestEntry"]{
+export const ALL_SITE_POSTS = `
+  *[_type == "cheep" || _type == "post" || _type == "guestEntry"]{
     ...,
     status->{...},
     author->{
@@ -71,7 +71,7 @@ export const ALL_POSTS = `
 `
 export const ALL_WRITING = `
   {
-    "writing": *[_type == "article" ||_type == "content" && category match "article"] {...} | order((publishedAt || when) desc)
+    "writing": *[_type == "post" || _type == "article"] {...} | order((publishedAt || when) desc)
   }
 `
 
@@ -80,9 +80,9 @@ export const ALL_PAGE_DATA = `
     "authors": ${ALL_AUTHORS},
     "tags": ${ALL_TAGS},
     "config": ${SITE_CONFIG},
-    "posts": ${ORDERED_CHEEPS},
+    "cheeps": ${ORDERED_CHEEPS},
     "guestbook": ${ALL_GUESTBOOK_ENTRIES},
-    "articles": ${ALL_ARTICLES},
+    "posts": ${ALL_POSTS},
     "content": ${ALL_CONTENT},
   }
 `
@@ -112,7 +112,7 @@ export const getRssData = async () => {
 }
 
 export const getAllArticles = async () => {
-  return getData(ALL_ARTICLES)
+  return getData(ALL_POSTS)
 }
 
 export const getAllCheeps = async () => {
@@ -143,12 +143,12 @@ export const getSiteConfig = async () => {
   return getData(SITE_CONFIG)
 }
 
-export const getAllTags = async () => {
+export const getTags = async () => {
   return getData(ALL_TAGS)
 }
 
-export const getAllPosts = async () => {
-  return getData(ALL_POSTS)
+export const getSitePosts = async () => {
+  return getData(ALL_SITE_POSTS)
 }
 
 export const getAllData = async () => {

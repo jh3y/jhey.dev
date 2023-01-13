@@ -1,0 +1,22 @@
+{
+  "video": [
+    {
+      "_createdAt": "2023-01-13T11:03:18Z",
+      "_id": "8DAcJLIO7Kw5bjud3vnEN3",
+      "_rev": "8DAcJLIO7Kw5bjud3vnEKX",
+      "_type": "video",
+      "_updatedAt": "2023-01-13T11:03:18Z",
+      "description": "",
+      "links": [
+        {
+          "_key": "3b5c0bf1f3ea",
+          "label": "link",
+          "link": "https://twitter.com/jh3yy/status/1517629642064150529",
+          "url": "https://twitter.com/jh3yy/status/1517629642064150529"
+        }
+      ],
+      "title": "Speedy CSS Tip – Boujee Text",
+      "when": "2022-04-22"
+    }
+  ]
+}

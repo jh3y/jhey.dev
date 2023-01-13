@@ -1,0 +1,23 @@
+{
+  "appearance": [
+    {
+      "_createdAt": "2023-01-13T11:04:00Z",
+      "_id": "8DAcJLIO7Kw5bjud3vnPKP",
+      "_rev": "8DAcJLIO7Kw5bjud3vnPHt",
+      "_type": "appearance",
+      "_updatedAt": "2023-01-13T11:04:00Z",
+      "description": "",
+      "links": [
+        {
+          "_key": "b0f2a1144dfb",
+          "label": "link",
+          "link": "https://blog.codepen.io/2021/12/29/348-with-jhey/",
+          "url": "https://blog.codepen.io/2021/12/29/348-with-jhey/"
+        }
+      ],
+      "title": "#348: With Jhey",
+      "when": "2021-12-29",
+      "where": "Codepen Radio"
+    }
+  ]
+}

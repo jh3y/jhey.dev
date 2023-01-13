@@ -58,11 +58,12 @@ const Card = (props) => {
             {props.author.displayName}
           </a>
           <span>•</span>
-          <time className="text-fluid--2">{`${new Intl.DateTimeFormat('en-GB', {
+          {props.publishedAt && (
+            <time className="text-fluid--2">{`${new Intl.DateTimeFormat('en-GB', {
             year: 'numeric',
             day: 'numeric',
             month: 'short',
-          }).format(new Date(props.publishedAt))}`}</time>
+          }).format(new Date(props.publishedAt))}`}</time>)}
         </div>
         {props.status && (
           <div>
