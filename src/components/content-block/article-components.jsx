@@ -18,6 +18,22 @@ const articleComponents = {
       ></p>
     )
   },
+  img({ node, ...props }) {
+    if (props.src.endsWith('.mp4')) {
+      return (
+        <video className="rounded-lg" {...props} controls loop muted></video>
+      )
+    }
+    if (props.src.endsWith('.mp3')) {
+      return <audio className="rounded-lg" {...props} controls></audio>
+    }
+    return (
+      <figure className="grid place-items-center mb-6">
+        <img className="rounded-lg mb-2" {...props} />
+        {props.alt && props.alt !== "" && <figcaption className="text-text-3 text-fluid--1">{props.alt}</figcaption>}
+      </figure>
+    )
+  },
   h2({ node, children, ...props }) {
     const id = `${slugify(node.children[0].value.toLowerCase(), {
       remove: /[*+~.()'"!:@?]/g,

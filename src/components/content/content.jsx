@@ -3,21 +3,11 @@ import Pagination from '../pagination/pagination.jsx'
 import ContentItem from './content-item.jsx'
 import ContentBlock from '../content-block/content-block.jsx'
 
-const LIMITS = {
-  speaking: 10,
-  article: 4,
-  post: 4,
-  appearance: 10,
-  feature: 6,
-  demo: 4,
-  video: 5,
-}
-
 const speakingIntro = `
   Howdy. I do some speaking. Want me to speak at your event? [Hit me up!](mailto:speaking@jhey.dev)
 `
 const articlesIntro = `
-  It's been an honor to write for some of my favorite publications such as CSS Tricks, Smashing Magazine, and web.dev.
+  It's been an honor to write for some of my favorite publications. For a longer list of my writing, check out [/writing](/writing).
 `
 const postsIntro = `
   Don't wanna dig through the feed? Here's my latest full-length posts.
@@ -50,48 +40,55 @@ const sections = [
     key: 'post',
     title: 'Latest Posts',
     intro: postsIntro,
+    limit: 10,
   },
   {
     active: true,
     key: 'article',
     title: 'Published Articles',
     intro: articlesIntro,
+    limit: 10,
   },
   {
     active: true,
     key: 'speaking',
     title: 'Speaking',
     intro: speakingIntro,
+    limit: 10,
   },
   {
     active: true,
     key: 'appearance',
     title: 'Appearances',
     intro: appearanceIntro,
+    limit: 10,
   },
   {
     active: true,
     key: 'feature',
     title: 'Featured Work',
     intro: featuredIntro,
+    limit: 10,
   },
   {
     active: true,
     key: 'demo',
     title: 'Demos',
     intro: demoIntro,
+    limit: 10,
   },
   {
     active: false,
     key: 'video',
     title: 'Videos',
     intro: videoIntro,
+    limit: 10,
   },
 ]
 
 const getShortDate = (stamp) => shortDateFormatter.format(new Date(stamp))
 
-const ContentSection = ({ data, title, intro, supplementKey }) => {
+const ContentSection = ({ data, title, intro, limit, supplementKey }) => {
   if (data.length === 0) return null
   return (
     <section className="mb-8">
@@ -142,7 +139,7 @@ const Content = ({ content: { data, currentPage, totalPages, route } }) => {
         return (
           <ContentSection
             key={section.title}
-            data={data[section.key]}
+            data={data[section.key].slice(0, section.limit)}
             title={section.title}
             intro={section.intro}
           />

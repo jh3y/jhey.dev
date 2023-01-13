@@ -66,17 +66,32 @@
 - Timeline items [ Article, Newsletter feature, YouTube appearance, Life thing, Random Misc, Smashing person of week, Did a thing, etc. Drop an icon type if needed that can be mapped? ]
 - Image optimisation with sharp
 - Some interesting quirks here where you need to do some async stuff and make sure you have width/height set etc.
-
-## TODO::
 - Deploy CMS
 - Dedicated articles page
 - Pages
-  - about - Include sig and some way to show demos?
-  - 404
+- 404
+- Roll your own image optimisation with Sharp like you did on jhey.dev
+- article-component – Convert image to figure if it has an alt with the alt as the figcaption and bleed.
+- https://improvmx.com/guides/send-emails-using-gmail/
 
-- Edge functions for "New items in feed?"
-- Skewed gradient stinger from Auto Alex
+
+## Web Mentions
+1. Sign up for brid.gy
+2. IndieAuth for webmention.io
+3. Make static builds
+4. Fetch stats on page load
+5. Profit...
+
+## TODO::
+- Better handle showcasing featured content
+- Sort content into type categories instead
+- Test out some interval based DOM changing scripts in Prod
+- Start writing some production posts
+- about - Include sig and some way to show demos?
+
+- Ranking posts by page views???
+- Xata serverless view counter
 - Web Mentions?
+- Edge functions for "New items in feed?"
 - Serverless likes with Xata
 - Serverless hit counter?
-- Roll your own image optimisation with Sharp like you did on jhey.dev

@@ -18,7 +18,7 @@ const linksComponents = {
     return <ul children={props.children} className="flex flex-wrap gap-2"></ul>
   },
   li({ node, ...props }) {
-    return <li {...props} className="grid"></li>
+    return <li className="grid">{props.children}</li>
   }
 }
 

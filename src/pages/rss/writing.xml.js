@@ -25,7 +25,8 @@ export const get = () => new Promise((resolve, reject) => {
         name: 'Jhey Tompkins',
       },
       publishedAt: article.publishedAt || article.when,
-      url: article.hasOwnProperty('category') ? article.links[0].link : `${metadata.url}post/${article.slug.current}`
+      url: article.hasOwnProperty('category') ? article.links[0].link : `${metadata.url}post/${article.slug.current}`,
+      body: article.body || `Check out <a href="${article.links[0].link}">this post</a> from Jhey over on <a href="${article.links[0].link}">${article.where}</a>!`,
     }
   })
   resolve({ body: genRssMarkup(writingPosts, metadata) })

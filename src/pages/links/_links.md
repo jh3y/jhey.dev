@@ -3,10 +3,11 @@
 Need a link to find me somewhere? Odds are, it's here.
 
 - [Website](https://jhey.dev)
-- [Resumé](https://jhey.dev/resume)
+- [Resumé](/resume)
 - [Email](mailto:hey@jhey.dev)
 - [Schedule a call](https://calendly.com/jh3y)
-- [Writing Page](https://jhey.dev/writing)
+- [Writing Page](/writing)
+- [Speedy Dev Tips](https://twitter.com/i/events/1549102292632305665)
 
 ## Social Media
 - [Twitter](https://twitter.com/jh3yy)
@@ -19,10 +20,10 @@ Need a link to find me somewhere? Odds are, it's here.
 - [Polywork](https://www.polywork.com/jh3y)
 
 ## RSS
-- [Main Feed](https://jhey.dev/rss/rss.xml)
-- [Writing](https://jhey.dev/rss/writing.xml)
-- [CSS Feed](https://jhey.dev/rss/css.xml)
-- [JavaScript Feed](https://jhey.dev/rss/javascript.xml)
+- [Main Feed](/rss/rss.xml)
+- [Writing](/rss/writing.xml)
+- [CSS Feed](/rss/css.xml)
+- [JavaScript Feed](/rss/javascript.xml)
 
 ## Publications
 - [web.dev](https://web.dev/authors/jheyy/)
@@ -41,6 +42,6 @@ Need a link to find me somewhere? Odds are, it's here.
 
 ## Misc
 - [NFTs](https://rarible.com/jh3y)
-- [Uses](https://jhey.dev/uses)
+- [Uses](/uses)
 - [Bear Merch](https://cottonbureau.com/people/jhey-tompkins)
 - [Slide Decks](https://jhey-presents.netlify.app)
