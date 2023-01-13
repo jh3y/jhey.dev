@@ -29,7 +29,7 @@ const client = sanityClient({
 // const CONTENT_QUERY = '*[_type == "content"] {...}'
 // const CONTENT_PATH = `${process.cwd()}/src/data/content.json`
 
-const TYPES = ['video', 'demo', 'speaking', 'article', 'feature', 'appearance']
+const TYPES = ['video', 'demo', 'talk', 'article', 'feature', 'appearance']
 
 const GUESTBOOK_QUERY = '*[_type == "guestEntry"] {...}'
 const GUESTBOOK_PATH = `${process.cwd()}/src/data/guestbook.json`
