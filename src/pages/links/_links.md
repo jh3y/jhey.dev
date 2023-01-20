@@ -11,7 +11,7 @@ Need a link to find me somewhere? Odds are, it's here.
 
 ## Social Media
 - [Twitter](https://twitter.com/jh3yy)
-- [Mastodon](https://front-end.social/jhey)
+- [Mastodon](https://front-end.social/@jhey)
 - [Twitch - Live stream](https://twitch.tv/jh3yy)
 - [Instagram](https://instagram.com/jh3yyyy)
 - [Discord](https://discord.gg/3VvXBwaREk)

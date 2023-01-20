@@ -11,6 +11,7 @@ import remarkToc from './remarkToc.js'
 
 import defaultComponents from './default-components.jsx'
 import articleComponents from './article-components.jsx'
+import aboutComponents from './about-components.jsx'
 import linksComponents from './links-components.jsx'
 import cardComponents from './card-components.jsx'
 import bioComponents from './bio-components.jsx'
@@ -33,6 +34,8 @@ const ContentBlock = ({ type, children }) => {
     components = rssComponents
   if (type === 'links')
     components = { ...defaultComponents, ...linksComponents }
+  if (type === 'about')
+    components = { ...defaultComponents, ...aboutComponents }
 
   return (
     <Markdown

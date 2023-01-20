@@ -20,7 +20,7 @@ export const getTagPageData = async () => {
     // Filter out the cheeps by tag
     const filteredCheeps = allCheeps.filter(
       (cheep) => {
-        const cheepTags = cheep.tags.filter(t => t !== null)
+        const cheepTags = cheep.tags ? cheep.tags.filter(t => t !== null) : []
         let tags = [...cheepTags]
         if (cheep.article) {
           for (const article of cheep.article) {

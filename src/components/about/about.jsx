@@ -1,10 +1,10 @@
 import React from 'react'
 import ContentBlock from '../content-block/content-block.jsx'
 
-const About = ({ body }) => {
+const About = ({ about }) => {
   return (
     <div className="px-4">
-      <ContentBlock type="card">{body}</ContentBlock>
+      <ContentBlock type="about">{about}</ContentBlock>
     </div>
   )
 }

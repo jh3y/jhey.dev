@@ -174,9 +174,9 @@
     {
       "_createdAt": "2023-01-13T11:06:39Z",
       "_id": "6Vls4oQANAVoKc5IPZtrwN",
-      "_rev": "6Vls4oQANAVoKc5IPZtrrA",
+      "_rev": "8DAcJLIO7Kw5bjud3zWgBB",
       "_type": "article",
-      "_updatedAt": "2023-01-13T11:06:39Z",
+      "_updatedAt": "2023-01-14T02:41:47Z",
       "description": "",
       "links": [
         {
@@ -186,7 +186,7 @@
           "url": "https://www.sitepoint.com/3d-css-printer/"
         }
       ],
-      "title": "Create a 3D CSS printer that actually prints",
+      "title": "print.css but not how you know it – Creating a 3D CSS printer",
       "when": "2021-06-16",
       "where": "SitePoint"
     },
@@ -607,6 +607,23 @@
       "title": "An Interactive Starry Backdrop for Content",
       "when": "2022-05-18",
       "where": "CSS Tricks"
+    },
+    {
+      "_createdAt": "2023-01-19T19:49:55Z",
+      "_id": "a105603e-b08c-45a7-9b86-46d4b5a1b3db",
+      "_rev": "2OC1Ybc57tuoCLBU7nAzxF",
+      "_type": "article",
+      "_updatedAt": "2023-01-19T19:49:55Z",
+      "links": [
+        {
+          "_key": "8906c5f88b00",
+          "label": "link",
+          "url": "https://developer.chrome.com/blog/control-your-drop-caps-with-css-initial-letter/"
+        }
+      ],
+      "title": "Control your drop caps with CSS initial-letter",
+      "when": "2023-01-19",
+      "where": "developer.chrome.com"
     }
   ]
 }

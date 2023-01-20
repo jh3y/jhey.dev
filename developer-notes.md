@@ -74,6 +74,8 @@
 - article-component – Convert image to figure if it has an alt with the alt as the figcaption and bleed.
 - https://improvmx.com/guides/send-emails-using-gmail/
 
+- Sort content into type categories instead [ This required a CMS shuffle on content types and more thinking ]
+- Better handle showcasing featured content [ A curated document type where you pick an Array of things ]
 
 ## Web Mentions
 1. Sign up for brid.gy
@@ -83,12 +85,13 @@
 5. Profit...
 
 ## TODO::
-- Better handle showcasing featured content
-- Sort content into type categories instead
+- Add permalink header sup for panels...
+- about - Include sig and some way to show demos? Photo collage on the tilt perhaps?
+- Add your egghead.io content d'uh!
 - Test out some interval based DOM changing scripts in Prod
 - Start writing some production posts
-- about - Include sig and some way to show demos?
 
+- Don't forget that Konami code Easter egg...
 - Ranking posts by page views???
 - Xata serverless view counter
 - Web Mentions?

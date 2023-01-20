@@ -69,6 +69,11 @@ const cardComponents = {
       </div>
     )
   },
+  h2({ node, children, ...props }) {
+    return (
+      <h2 className="mb-2 font-bold text-fluid-2">{children}</h2>
+    )
+  },
   img({ node, ...props }) {
     if (props.src.endsWith('.mp4')) {
       return (
