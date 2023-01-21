@@ -1,4 +1,4 @@
-# jhey.dev 
+# jhey.dev
 
 The source for the jhey.dev rebuild.
 
@@ -19,7 +19,7 @@ The source for the jhey.dev rebuild.
 
 ## Set up `.env`
 
-You'll need the following keys in your `.env` file.
+You'll need the following keys in your `.env` file. You'll also need two `.env` files. One has to go inside `studio`.
 
 ```shell
 SANITY_STUDIO_PROJECT_ID=

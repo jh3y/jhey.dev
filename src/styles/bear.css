@@ -1,8 +1,9 @@
 .watermark-bear {
   height: 65vh;
-  opacity: 0.15;
+  opacity: 0.05;
   position: fixed;
   right: 0;
   top: 50%;
   transform: translateX(50%);
+  z-index: -1;
 }
