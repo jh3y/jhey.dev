@@ -48,7 +48,7 @@
 - Banner backup image for motion...
 - Set up SEO for each page inside Sanity - Meta Descriptions in schema and fix title inside Layout
 - Post footers...
-- RSS 
+- RSS
 - Card Status/Pinned
 - Sort out the pinned posts sorting
 - Refactor and keep all your queries in one place to make your life easier
@@ -76,6 +76,9 @@
 
 - Sort content into type categories instead [ This required a CMS shuffle on content types and more thinking ]
 - Better handle showcasing featured content [ A curated document type where you pick an Array of things ]
+- about - Include sig and some way to show demos? Photo collage on the tilt perhaps?
+- Add permalink header sup for panels...
+- Change content links to singular links...
 
 ## Web Mentions
 1. Sign up for brid.gy
@@ -85,8 +88,6 @@
 5. Profit...
 
 ## TODO::
-- Add permalink header sup for panels...
-- about - Include sig and some way to show demos? Photo collage on the tilt perhaps?
 - Add your egghead.io content d'uh!
 - Test out some interval based DOM changing scripts in Prod
 - Start writing some production posts

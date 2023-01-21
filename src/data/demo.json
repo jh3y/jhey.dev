@@ -3,18 +3,11 @@
     {
       "_createdAt": "2023-01-13T11:03:20Z",
       "_id": "8DAcJLIO7Kw5bjud3vnEX7",
-      "_rev": "8DAcJLIO7Kw5bjud3vnEUb",
+      "_rev": "2OC1Ybc57tuoCLBU7vvSx3",
       "_type": "demo",
-      "_updatedAt": "2023-01-13T11:03:20Z",
+      "_updatedAt": "2023-01-21T13:52:54Z",
       "description": "",
-      "links": [
-        {
-          "_key": "093c048193f5",
-          "label": "link",
-          "link": "https://twitter.com/jh3yy/status/1611450493129330689",
-          "url": "https://twitter.com/jh3yy/status/1611450493129330689"
-        }
-      ],
+      "link": "https://twitter.com/jh3yy/status/1611450493129330689",
       "title": "Layout with CSS trigonometric functions",
       "when": "2023-01-05",
       "where": "CodePen"
@@ -22,18 +15,11 @@
     {
       "_createdAt": "2023-01-13T11:03:19Z",
       "_id": "B4PIvYGv2UFUcg0RK9fYMB",
-      "_rev": "B4PIvYGv2UFUcg0RK9fYJa",
+      "_rev": "2OC1Ybc57tuoCLBU7vvSzl",
       "_type": "demo",
-      "_updatedAt": "2023-01-13T11:03:19Z",
+      "_updatedAt": "2023-01-21T13:52:54Z",
       "description": "",
-      "links": [
-        {
-          "_key": "f379886ff137",
-          "label": "link",
-          "link": "https://twitter.com/jh3yy/status/1611475080818851840?s=20&t=9b5XqHZxY3hbgagIvdruRg",
-          "url": "https://twitter.com/jh3yy/status/1611475080818851840?s=20&t=9b5XqHZxY3hbgagIvdruRg"
-        }
-      ],
+      "link": "https://twitter.com/jh3yy/status/1611475080818851840?s=20&t=9b5XqHZxY3hbgagIvdruRg",
       "title": "Using CSS Trigonometric functions for animation",
       "when": "2022-01-05",
       "where": "CodePen"

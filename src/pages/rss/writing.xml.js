@@ -24,9 +24,13 @@ export const get = () => new Promise((resolve, reject) => {
         name: 'Jhey Tompkins',
       },
       publishedAt: article.publishedAt || article.when,
-      url: article._type === 'article' ? article.links[0].url : `${metadata.url}cheep/${article.slug.current}`,
-      body: article.body || `Check out <a href="${article.links[0].url}">this post</a> from Jhey over on <a href="${article.links[0].url}">${article.where}</a>!`,
+      url: article._type === 'article' ? article.link : `${metadata.url}cheep/${article.slug.current}`,
+      body: article.body || `Check out <a href="${article.link}">this post</a> from Jhey over on <a href="${article.link}">${article.where}</a>!`,
     }
+  }).sort((a, b) => {
+    const dateA = new Date(a.publishedAt)
+    const dateB = new Date(b.publishedAt)
+    return dateB - dateA
   })
   resolve({ body: genRssMarkup(writingPosts, metadata) })
 })

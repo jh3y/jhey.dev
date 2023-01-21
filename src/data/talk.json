@@ -3,22 +3,11 @@
     {
       "_createdAt": "2023-01-13T14:22:48Z",
       "_id": "6Vls4oQANAVoKc5IPbPh38",
-      "_rev": "6Vls4oQANAVoKc5IPbPgxv",
+      "_rev": "gqtj7V240nQPr7YcKkbj1b",
       "_type": "talk",
-      "_updatedAt": "2023-01-13T14:22:48Z",
+      "_updatedAt": "2023-01-21T13:55:26Z",
       "description": "Looking at new things coming to the <web-platform>",
-      "links": [
-        {
-          "_key": "6Vls4oQANAVoKc5IPbPhDY",
-          "label": "video",
-          "url": "https://youtu.be/Bs7ZUyK6MnA"
-        },
-        {
-          "_key": "6Vls4oQANAVoKc5IPbPhNy",
-          "label": "event",
-          "url": "https://webdevconf.com/events/2022/"
-        }
-      ],
+      "link": "https://youtu.be/Bs7ZUyK6MnA",
       "title": "Supercharge your skills with creative coding vol. IV",
       "when": "2022-10-06",
       "where": "WDC 2022"
@@ -26,22 +15,11 @@
     {
       "_createdAt": "2023-01-13T14:22:50Z",
       "_id": "B4PIvYGv2UFUcg0RKAQrxR",
-      "_rev": "B4PIvYGv2UFUcg0RKAQruq",
+      "_rev": "2OC1Ybc57tuoCLBU7vvhan",
       "_type": "talk",
-      "_updatedAt": "2023-01-13T14:22:50Z",
+      "_updatedAt": "2023-01-21T13:55:38Z",
       "description": "The quest for a styleable <select>",
-      "links": [
-        {
-          "_key": "B4PIvYGv2UFUcg0RKAQs2d",
-          "label": "video",
-          "url": "https://youtu.be/YTQkJALeQfg?t=21732"
-        },
-        {
-          "_key": "B4PIvYGv2UFUcg0RKAQs7p",
-          "label": "event",
-          "url": "https://gdg.community.dev/events/details/google-women-techmakers-tokyo-presents-gdg-devfest-tokyo-2022/"
-        }
-      ],
+      "link": "https://youtu.be/YTQkJALeQfg?t=21732",
       "title": "Supercharge your skills with creative coding vol. V",
       "when": "2022-12-16",
       "where": "Tokyo DevFest 2022"

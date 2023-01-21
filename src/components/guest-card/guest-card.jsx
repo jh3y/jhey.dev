@@ -1,5 +1,4 @@
 import React from 'react'
-import Markdown from 'react-markdown'
 import ContentBlock from '../content-block/content-block'
 
 const GuestCard = (props) => {
@@ -34,37 +33,65 @@ const GuestCard = (props) => {
           </div>
         </>
       )}
-      <a
-        title="Permalink"
-        className="w-10 h-10"
-        href={props.link || `/cheep/${props.slug.current}`}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {props.avatar && (
-          <img
-            src={props.avatar}
-            alt="Author avatar"
-            className="rounded-full"
-            width="80"
-            height="80"
-          />
-        )}
-        {!props.avatar && (
-          <svg style={{ color: `hsl(${Math.floor(Math.random() * 359)} 80% 50%)`}} className="w-10 h-10" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" />
-          </svg>
-        )}
-        <span className="sr-only">{`${props.name}'s entry`}</span>
-      </a>
+      {!props.permacard && (
+        <a
+          title="Permalink"
+          className="w-10 h-10"
+          href={props.link || `/cheep/${props.slug.current}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {props.avatar && (
+            <img
+              src={props.avatar}
+              alt="Author avatar"
+              className="rounded-full"
+              width="80"
+              height="80"
+            />
+          )}
+          {!props.avatar && (
+            <svg style={{ color: `hsl(${Math.floor(Math.random() * 359)} 80% 50%)`}} className="w-10 h-10" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" />
+            </svg>
+          )}
+          <span className="sr-only">{`${props.name}'s entry`}</span>
+        </a>
+      )}
+      {props.permacard && (
+        <div
+          className="w-10 h-10"
+        >
+          {props.avatar && (
+            <img
+              src={props.avatar}
+              alt="Author avatar"
+              className="rounded-full"
+              width="80"
+              height="80"
+            />
+          )}
+          {!props.avatar && (
+            <svg style={{ color: `hsl(${Math.floor(Math.random() * 359)} 80% 50%)`}} className="w-10 h-10" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" />
+            </svg>
+          )}
+          <span className="sr-only">{`${props.name}'s entry`}</span>
+        </div>
+      )}
       <div className="card__content grid gap-y-1 leading-tight">
         <div className="flex gap-x-2 text-fluid--1 items-center text-text-4">
-          <a
-            href={props.link || `/cheep/${props.slug.current}`}
-            className="hover:underline font-bold text-text-1"
-          >
-            {props.name}
-          </a>
+          {!props.permacard && (
+            <a
+              href={props.link || `/cheep/${props.slug.current}`}
+              className="hover:underline font-bold text-text-1"
+            >
+              {props.name}
+            </a>
+          )}
+          {props.permacard && (
+            <span className="font-bold text-text-1">{props.name}</span>
+          )}
           <span>•</span>
           <time className="text-fluid--2">{`${new Intl.DateTimeFormat('en-GB', {
             year: 'numeric',
@@ -74,7 +101,7 @@ const GuestCard = (props) => {
         </div>
         <ContentBlock type="card">{props.body}</ContentBlock>
         <div className="card__actions flex justify-end items-center">
-          <a
+          {!props.permacard && <a
             title="Permalink"
             className="w-10 h-10 grid place-items-center hover:bg-surface-4 rounded-md text-text-2 hover:text-brand-stroke"
             href={props.link || `/cheep/${props.slug.current}`}
@@ -94,7 +121,7 @@ const GuestCard = (props) => {
                 clipRule="evenodd"
               />
             </svg>
-          </a>
+          </a>}
         </div>
       </div>
     </article>

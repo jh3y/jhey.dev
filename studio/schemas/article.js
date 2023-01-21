@@ -4,9 +4,6 @@ export default defineType({
   name: 'article',
   title: 'Article',
   type: 'document',
-  initialValue: {
-    feature: false,
-  },
   fields: [
     defineField({
       name: 'title',

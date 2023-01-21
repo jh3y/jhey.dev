@@ -26,7 +26,11 @@ export const get = ({ params, request }) =>
         cheeps.map((cheep) => ({
           ...cheep,
           url: `${metadata.url}cheep/${cheep.slug.current}`,
-        })),
+        })).sort((a, b) => {
+          const dateA = new Date(a.publishedAt)
+          const dateB = new Date(b.publishedAt)
+          return dateB - dateA
+        }),
         metadata
       ),
     })

@@ -64,7 +64,7 @@ const sorted = writing.sort((a, b) => {
         const data = {
           title: article.title,
           id: article._id,
-          url: article?.slug?.current ? `/cheep/${article.slug.current}` : article.links[0].url,
+          url: article?.slug?.current ? `/cheep/${article.slug.current}` : article.link,
           where: article.where || 'jhey.dev',
           when: article.publishedAt || article.when || new Date(),
         }
