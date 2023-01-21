@@ -10,8 +10,19 @@ export function getStaticPaths() {
   return tagPaths
 }
 
-export const get = ({ params, request }) =>
-  new Promise((resolve, reject) => {
+export const get = ({ params, request }) => {
+  const posts = cheeps.filter(cheep => {
+    return cheep.tags && cheep.tags.length > 0 && cheep.tags.find(tag => tag.title.toLowerCase() === params.tag.toLowerCase())
+  }).map((cheep) => ({
+    ...cheep,
+    url: `${metadata.url}cheep/${cheep.slug.current}`,
+  })).sort((a, b) => {
+    const dateA = new Date(a.publishedAt)
+    const dateB = new Date(b.publishedAt)
+    return dateB - dateA
+  })
+
+  return new Promise((resolve, reject) => {
     const metadata = {
       url: siteConfig?.rss?.url || 'https://jhey.dev/',
       title: siteConfig?.rss?.title || 'https://jhey.dev/',
@@ -23,15 +34,9 @@ export const get = ({ params, request }) =>
     }
     resolve({
       body: genRssMarkup(
-        cheeps.map((cheep) => ({
-          ...cheep,
-          url: `${metadata.url}cheep/${cheep.slug.current}`,
-        })).sort((a, b) => {
-          const dateA = new Date(a.publishedAt)
-          const dateB = new Date(b.publishedAt)
-          return dateB - dateA
-        }),
+        posts,
         metadata
       ),
     })
   })
+}

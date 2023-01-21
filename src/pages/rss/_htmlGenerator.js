@@ -50,7 +50,7 @@ export const generatePosts = (posts, metadata) => posts.map(post => {
         <title>${post.title}</title>
         <link>${post.url}</link>
         <author>${metadata.email} (${post.author.name})</author>
-        ${post.body || post.cheep ? 
+        ${post.body || post.cheep ?
           `<description><![CDATA[${genHtml(post.body || post.cheep)}]]></description>`
           :
           ''
@@ -93,7 +93,7 @@ export const genRssMarkup = (posts, metadata) => `<?xml version="1.0" encoding="
         <title>${metadata.title}</title>
         <link>${metadata.url}</link>
       </image>
-      ${generatePosts(posts, metadata)}
+      ${posts.length > 0 ? generatePosts(posts, metadata) : ''}
     </channel>
-  </rss>  
+  </rss>
 `
