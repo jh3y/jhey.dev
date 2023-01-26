@@ -163,16 +163,16 @@
     {
       "_createdAt": "2023-01-13T15:37:54Z",
       "_id": "6Vls4oQANAVoKc5IPc9X63",
-      "_rev": "6Vls4oQANAVoKc5IPc9X0q",
+      "_rev": "musiNgaCJCFj96pZgKguuF",
       "_type": "guestEntry",
-      "_updatedAt": "2023-01-13T15:37:54Z",
+      "_updatedAt": "2023-01-25T23:42:41Z",
       "avatar": "https://pbs.twimg.com/profile_images/1602782624027549696/xhENXIVQ_400x400.jpg",
       "body": "What I’m hearing is “it’s okay if we’re awful because Jhey’s talks are always amazing and will make up” 😊",
       "link": "https://twitter.com/addyosmani/status/1599167017550217217?s=20&t=EYnIjVI8XljnaFhhSxW0Dg",
       "name": "Addy Osmani",
       "pinned": false,
       "slug": {
-        "current": "c53aa0aa-d35e-4cba-8f45-1d0ca5eea7d1",
+        "current": "011f5153-8795-41d6-a387-12cbcc15aca4",
         "type": "_slug"
       },
       "visible": true,
@@ -412,24 +412,6 @@
       },
       "visible": true,
       "when": "2022-01-29"
-    },
-    {
-      "_createdAt": "2023-01-13T15:37:54Z",
-      "_id": "drafts.6Vls4oQANAVoKc5IPc9X63",
-      "_rev": "e6bf540e-e792-4047-b7e9-e65e1110f98b",
-      "_type": "guestEntry",
-      "_updatedAt": "2023-01-18T21:15:31Z",
-      "avatar": "https://pbs.twimg.com/profile_images/1602782624027549696/xhENXIVQ_400x400.jpg",
-      "body": "What I’m hearing is “it’s okay if we’re awful because Jhey’s talks are always amazing and will make up” 😊",
-      "link": "https://twitter.com/addyosmani/status/1599167017550217217?s=20&t=EYnIjVI8XljnaFhhSxW0Dg",
-      "name": "Addy Osmani",
-      "pinned": false,
-      "slug": {
-        "current": "c53aa0aa-d35e-4cba-8f45-1d0ca5eea7d1",
-        "type": "_slug"
-      },
-      "visible": true,
-      "when": "2022-12-03"
     },
     {
       "_createdAt": "2023-01-09T02:56:02Z",

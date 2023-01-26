@@ -34,7 +34,7 @@ Need a link to find me somewhere? Odds are, it's here.
 - [Dev.to](https://dev.to/jh3y)
 - [Medium](https://jh3y.medium.com/)
 - [CSS Animation Ebook](https://gumroad.com/l/move-things-with-css/)
-- [Teaching Screencasts](https://egghead.io/instructors/jhey-tompkins)
+- [egghead.io Videos](https://egghead.io/instructors/jhey-tompkins)
 
 ## Code
 - [CodePen](https://codepen.io/jh3y)

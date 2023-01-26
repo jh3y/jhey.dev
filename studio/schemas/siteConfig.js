@@ -72,6 +72,12 @@ export default defineType({
       type: 'markdown',
     }),
     defineField({
+      name: 'writing',
+      title: 'Writing',
+      description: 'Writing intro',
+      type: 'markdown',
+    }),
+    defineField({
       name: 'cheeps',
       title: 'Cheeps',
       description: 'Cheeps related site content',

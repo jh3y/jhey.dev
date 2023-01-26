@@ -79,7 +79,7 @@ export const ALL_SITE_POSTS = `
 `
 export const ALL_WRITING = `
   {
-    "writing": *[_type == "post" || _type == "article"] {...} | order((publishedAt || when) desc)
+    "writing": *[_type == "post" || _type == "article"] {..., tags[]->{...}} | order((publishedAt || when) desc)
   }
 `
 

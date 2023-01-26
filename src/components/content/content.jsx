@@ -26,9 +26,13 @@ const ContentSection = ({ data, title, intro, limit, supplementKey }) => {
                 {item.title}
               </a>
               <p className="text-fluid--2 text-text-4">
-                {item.where &&
-                  item.when &&
-                  `${item.where.toUpperCase()} – ${getShortDate(item.when)}`}
+                {
+                  `
+                    ${item.where ? item.where.toUpperCase() : ''}
+                    ${item.where && item.when ? ' - ' : ''}
+                    ${item.when ? getShortDate(item.when) : ''}
+                  `
+                }
               </p>
             </li>
           )

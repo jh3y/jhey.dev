@@ -33,7 +33,7 @@ const genHtml = (children) => {
 
 export const generatePosts = (posts, metadata) => posts.map(post => {
     if (post.excludeFromRss) return null
-    let tags = posts.tags ? [...post?.tags.filter(t => t !== null)] : []
+    let tags = post.tags ? [...post?.tags.filter(t => t !== null)] : []
     if (post._type === 'cheep' && post.article) {
       for (const article of post.article) {
         if (article.tags) {
@@ -43,7 +43,10 @@ export const generatePosts = (posts, metadata) => posts.map(post => {
         }
       }
     }
-    if (metadata.tag && tags.length !== 0 && !tags.find(tag => tag.title.toLowerCase() === metadata.tag.toLowerCase())) return null
+
+    console.info({ post: post.title, tags, tag: metadata.tag })
+
+    if (metadata.tag && metadata.tag !== 'writing' && tags.length !== 0 && !tags.find(tag => tag.title.toLowerCase() === metadata.tag.toLowerCase())) return null
 
     return (`
       <item>

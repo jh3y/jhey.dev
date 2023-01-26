@@ -66,7 +66,7 @@ const sync = async (query, filePath, key, defaultProperties ) => {
 }
 
 for (const CONTENT_TYPE of TYPES) {
-  const CONTENT_QUERY = `*[_type == "${CONTENT_TYPE}"] {...}`
+  const CONTENT_QUERY = `*[_type == "${CONTENT_TYPE}"] {..., tags[]->{...}}`
   const CONTENT_PATH = `${process.cwd()}/src/data/${CONTENT_TYPE}.json`
   await sync(CONTENT_QUERY, CONTENT_PATH, CONTENT_TYPE)
 }

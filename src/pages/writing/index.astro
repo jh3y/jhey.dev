@@ -3,9 +3,12 @@ import Layout from "../../layouts/Layout.astro";
 import ContentBlock from "../../components/content-block/content-block.jsx"
 import Links from './_links.md?raw'
 
-import { getWriting } from '../../constants/queries'
+import { getWriting, getSiteConfig } from '../../constants/queries'
 
 const {writing} = await getWriting()
+const siteConfig = await getSiteConfig()
+
+console.info({ siteConfig })
 
 const shortDateFormatter = new Intl.DateTimeFormat('en-GB', {
   year: 'numeric',
@@ -56,9 +59,7 @@ const sorted = writing.sort((a, b) => {
         </svg>
       </a>
     </div>
-    <p class="mb-6 leading-tight">
-      I love to write and I've been fortunate to write for some of my favorite publications. Here you'll find a bunch of my writing on all sorts of topics. Don't want to miss a post? Check out the <a href="/rss/writing.xml" target="_blank">RSS feed</a>!
-    </p>
+    <ContentBlock type="about" children={siteConfig.writing} />
     <ul>
       {sorted.map(article => {
         const data = {

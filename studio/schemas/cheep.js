@@ -66,6 +66,11 @@ export default defineType({
       to:{type: 'status'},
     }),
     defineField({
+      name: 'location',
+      title: 'Location',
+      type: 'string',
+    }),
+    defineField({
       name: 'tags',
       title: 'Tags',
       type: 'array',

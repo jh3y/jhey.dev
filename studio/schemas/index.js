@@ -8,12 +8,6 @@ import tag from './tag'
 import post from './post'
 import cheep from './cheep'
 import author from './author'
-import article from './article'
-import demo from './demo'
-import video from './video'
-import talk from './talk'
-import feature from './feature'
-import appearance from './appearance'
 
 const contentTypes = ['article', 'talk', 'video', 'demo', 'appearance', 'feature']
 const contentDefinitions = contentTypes.map((contentType) => {
@@ -47,6 +41,12 @@ const contentDefinitions = contentTypes.map((contentType) => {
         title: 'Where',
         type: 'string',
       }),
+      defineField({
+        name: 'tags',
+        title: 'Tags',
+        type: 'array',
+        of:[{type: 'reference', to: { type: 'tag' }}],
+      }),
     ],
   })
 })
@@ -57,12 +57,6 @@ export const schemaTypes = [
   guestEntry,
   siteConfig,
   ...contentDefinitions,
-  // article,
-  // talk,
-  // appearance,
-  // feature,
-  // demo,
-  // video,
   content,
   author,
   status,
