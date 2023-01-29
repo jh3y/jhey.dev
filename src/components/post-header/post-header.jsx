@@ -2,18 +2,25 @@ import React from 'react'
 import Banner from '../banner/banner.jsx'
 import ContentBlock from '../content-block/content-block.jsx'
 
-const getReadingTime = content => {
+const getReadingTime = (content) => {
   const WPM = 350
-  let result = {};
-  const regex=/\w+/g;
-  result.wordCount = content.match(regex).length;
-  result.readingTime = Math.ceil(result.wordCount / WPM);
-  return result;
+  let result = {}
+  const regex = /\w+/g
+  result.wordCount = content.match(regex).length
+  result.readingTime = Math.ceil(result.wordCount / WPM)
+  return result
 }
+
+const formatter = new Intl.DateTimeFormat('en-GB', {
+  year: 'numeric',
+  day: 'numeric',
+  month: 'short',
+})
 
 const LayoutHeader = ({ character, ...props }) => {
   const readingTime = getReadingTime(props.body)
-  
+  const publishedAt = formatter.format(new Date(props.publishedAt))
+  const updatedAt = formatter.format(new Date(props._updatedAt))
   return (
     <header className="w-article max-w-full mx-auto grid gap-2 px-4 mb-12">
       <div className="">
@@ -21,8 +28,21 @@ const LayoutHeader = ({ character, ...props }) => {
           {/* Gets funky here... If there's a demo, do that. Else do an image */}
           {props?.hero?.demo && (
             <>
-              {props.hero.image && <img width="750" height="250" className="motion-safe:hidden absolute inset-0 w-full h-full" src={props.hero.image} alt="Result demo for this post" />}
-              <iframe title="Result demo for this post" className="hidden motion-safe:block absolute inset-0 w-full h-full" loading="lazy" src={props.hero.demo}></iframe>
+              {props.hero.image && (
+                <img
+                  width="750"
+                  height="250"
+                  className="motion-safe:hidden absolute inset-0 w-full h-full"
+                  src={props.hero.image}
+                  alt="Result demo for this post"
+                />
+              )}
+              <iframe
+                title="Result demo for this post"
+                className="hidden motion-safe:block absolute inset-0 w-full h-full"
+                loading="lazy"
+                src={props.hero.demo}
+              ></iframe>
             </>
           )}
         </div>
@@ -41,7 +61,12 @@ const LayoutHeader = ({ character, ...props }) => {
             className="hover:no-underline border-transparent focus:border-text-1 outline-transparent focus-visible:border-text-1 hover:border-text-1 border-4 rounded-full text-fluid--1 flex gap-x-1 items-center text-white bg-brand-fill px-3 py-1"
           >
             <span className="font-bold">Share</span>
-            <svg fill="currentColor" className="w-4 h-4" viewBox="0 0 24 24" role="img">
+            <svg
+              fill="currentColor"
+              className="w-4 h-4"
+              viewBox="0 0 24 24"
+              role="img"
+            >
               <title>Twitter icon</title>
               <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path>
             </svg>
@@ -49,9 +74,7 @@ const LayoutHeader = ({ character, ...props }) => {
         </div>
       </div>
       {/* Actions Row [ Avatar + Follow RSS Button] */}
-      <h1 className="text-fluid-4 font-bold">
-        {props.title}
-      </h1>
+      <h1 className="text-fluid-4 font-bold">{props.title}</h1>
       <h2 className="text-fluid-0 text-text-3 flex gap-x-2 items-center mb-2">
         <span>{`${character.name}`}</span>
         {character.verified && (
@@ -87,32 +110,78 @@ const LayoutHeader = ({ character, ...props }) => {
               clipRule="evenodd"
             />
           </svg>
-          <time>{`${new Intl.DateTimeFormat('en-GB', {
-            year: 'numeric',
-            day: 'numeric',
-            month: 'short',
-          }).format(new Date(props.publishedAt))}`}</time>
+          <span className="sr-only">Published</span>
+          <time>{`${publishedAt}`}</time>
         </span>
-
+        {publishedAt !== updatedAt && (
+          <span className="flex items-center gap-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-5 h-5"
+            >
+              <path fillRule="evenodd" d="M14.615 1.595a.75.75 0 01.359.852L12.982 9.75h7.268a.75.75 0 01.548 1.262l-10.5 11.25a.75.75 0 01-1.272-.71l1.992-7.302H3.75a.75.75 0 01-.548-1.262l10.5-11.25a.75.75 0 01.913-.143z" clipRule="evenodd" />
+            </svg>
+            <span className="sr-only">Updated</span>
+            <time>{`${updatedAt}`}</time>
+          </span>
+        )}
         <span className="flex items-center gap-1">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-5 h-5"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
           </svg>
-          <span>{`~${readingTime.readingTime} min`}</span>
+          <span>
+            <span className="sr-only">Time to read</span>
+            {`~${readingTime.readingTime} min`}
+          </span>
         </span>
         <span className="flex items-center gap-1">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 6h.008v.008H6V6z" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-5 h-5"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z"
+            />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 6h.008v.008H6V6z"
+            />
           </svg>
           <span className="flex items-center gap-1">
-            {props.tags && props.tags.map((tag, index) => {
-              return (
-                <React.Fragment key={tag._id}>
-                  <a className="font-bold" href={`/cheeps/${tag.title.toLowerCase()}`}>{tag.title}</a>
-                  {index !== props.tags.length - 1 ? ',' : ''}
-                </React.Fragment>)
-            })}
+            {props.tags &&
+              props.tags.map((tag, index) => {
+                return (
+                  <React.Fragment key={tag._id}>
+                    <a
+                      className="font-bold"
+                      href={`/cheeps/${tag.title.toLowerCase()}`}
+                    >
+                      {tag.title}
+                    </a>
+                    {index !== props.tags.length - 1 ? ',' : ''}
+                  </React.Fragment>
+                )
+              })}
           </span>
         </span>
       </span>

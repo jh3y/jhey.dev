@@ -79,6 +79,7 @@
 - about - Include sig and some way to show demos? Photo collage on the tilt perhaps?
 - Add permalink header sup for panels...
 - Change content links to singular links...
+- Add your egghead.io content d'uh!
 
 ## Web Mentions
 1. Sign up for brid.gy
@@ -88,14 +89,13 @@
 5. Profit...
 
 ## TODO::
-- Add your egghead.io content d'uh!
+- /AMA, /Uses, /Now
 - Test out some interval based DOM changing scripts in Prod
 - Start writing some production posts
 
 - Don't forget that Konami code Easter egg...
 - Ranking posts by page views???
 - Xata serverless view counter
-- Web Mentions?
 - Edge functions for "New items in feed?"
 - Serverless likes with Xata
 - Serverless hit counter?
