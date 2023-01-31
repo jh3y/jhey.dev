@@ -44,8 +44,6 @@ export const generatePosts = (posts, metadata) => posts.map(post => {
       }
     }
 
-    console.info({ post: post.title, tags, tag: metadata.tag })
-
     if (metadata.tag && metadata.tag !== 'writing' && tags.length !== 0 && !tags.find(tag => tag.title.toLowerCase() === metadata.tag.toLowerCase())) return null
 
     return (`

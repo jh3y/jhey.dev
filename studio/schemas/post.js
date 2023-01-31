@@ -9,14 +9,14 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: Rule => Rule.required(),
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'description',
       title: 'Description',
       description: 'Used for the page description/OG images',
       type: 'string',
-      validation: Rule => Rule.required(),
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'og',
@@ -31,14 +31,14 @@ export default defineType({
         defineField({
           name: 'hue',
           title: 'Hue',
-          type: 'string',
+          type: 'number',
         }),
         defineField({
           name: 'gradient',
           title: 'Gradient',
-          type: 'string',
-        })
-      ]
+          type: 'number',
+        }),
+      ],
     }),
     defineField({
       name: 'slug',
@@ -54,12 +54,12 @@ export default defineType({
       title: 'Author',
       type: 'reference',
       to: {type: 'author'},
-      validation: Rule => Rule.required(),
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'hero',
       title: 'Hero',
-      description: "Use a 3:1 aspect ratio for banner images and point to a URL for a demo",
+      description: 'Use a 3:1 aspect ratio for banner images and point to a URL for a demo',
       type: 'object',
       fields: [
         defineField({
@@ -75,7 +75,7 @@ export default defineType({
           type: 'string',
         }),
         defineField({
-          name: 'imageAlt',
+          name: 'alt',
           title: 'Image alt',
           type: 'string',
         }),
@@ -84,7 +84,7 @@ export default defineType({
           title: 'Image attribution',
           type: 'markdown',
         }),
-      ]
+      ],
     }),
     defineField({
       name: 'tags',
@@ -96,14 +96,20 @@ export default defineType({
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
-      validation: Rule => Rule.required(),
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'updatedAt',
+      title: 'Updated at',
+      type: 'datetime',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'body',
       title: 'Body',
       description: 'This is body of the article',
       type: 'markdown',
-      validation: Rule => Rule.required(),
+      validation: (Rule) => Rule.required(),
     }),
   ],
 

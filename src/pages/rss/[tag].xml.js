@@ -11,8 +11,19 @@ export function getStaticPaths() {
 }
 
 export const get = ({ params, request }) => {
+  const metadata = {
+    url: siteConfig?.rss?.url || 'https://jhey.dev/',
+    title: siteConfig?.rss?.title || 'https://jhey.dev/',
+    subtitle: siteConfig?.rss?.subtitle || 'Posts from Jhey',
+    description: `The RSS feed for ${params.tag} posts from Jhey Tompkins`,
+    author: siteConfig.character,
+    email: 'rss@jhey.dev',
+    tag: params.tag,
+  }
   const posts = cheeps.filter(cheep => {
-    return cheep.tags && cheep.tags.length > 0 && cheep.tags.find(tag => tag.title.toLowerCase() === params.tag.toLowerCase())
+    return params.tag && cheep.tags && cheep.tags.length > 0 && cheep.tags.find(tag => {
+      return tag !== null && tag.title.toLowerCase() === params.tag.toLowerCase()
+    })
   }).map((cheep) => ({
     ...cheep,
     url: `${metadata.url}cheep/${cheep.slug.current}`,
@@ -23,15 +34,6 @@ export const get = ({ params, request }) => {
   })
 
   return new Promise((resolve, reject) => {
-    const metadata = {
-      url: siteConfig?.rss?.url || 'https://jhey.dev/',
-      title: siteConfig?.rss?.title || 'https://jhey.dev/',
-      subtitle: siteConfig?.rss?.subtitle || 'Posts from Jhey',
-      description: `The RSS feed for ${params.tag} posts from Jhey Tompkins`,
-      author: siteConfig.character,
-      email: 'rss@jhey.dev',
-      tag: params.tag,
-    }
     resolve({
       body: genRssMarkup(
         posts,

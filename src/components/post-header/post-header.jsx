@@ -1,6 +1,4 @@
 import React from 'react'
-import Banner from '../banner/banner.jsx'
-import ContentBlock from '../content-block/content-block.jsx'
 
 const getReadingTime = (content) => {
   const WPM = 350
@@ -20,7 +18,7 @@ const formatter = new Intl.DateTimeFormat('en-GB', {
 const LayoutHeader = ({ character, ...props }) => {
   const readingTime = getReadingTime(props.body)
   const publishedAt = formatter.format(new Date(props.publishedAt))
-  const updatedAt = formatter.format(new Date(props._updatedAt))
+  const updatedAt = formatter.format(new Date(props.updatedAt || props.publishedAt))
   return (
     <header className="w-article max-w-full mx-auto grid gap-2 px-4 mb-12">
       <div className="">
@@ -78,7 +76,7 @@ const LayoutHeader = ({ character, ...props }) => {
       <h2 className="text-fluid-0 text-text-3 flex gap-x-2 items-center mb-2">
         <span>{`${character.name}`}</span>
         {character.verified && (
-          <span className="w-4 w-4 inline-block">
+          <span className="w-4 inline-block">
             <svg
               viewBox="0 0 750 750"
               fill="none"

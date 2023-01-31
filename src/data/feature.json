@@ -1,30 +1,3 @@
 {
-  "feature": [
-    {
-      "_createdAt": "2023-01-13T11:03:58Z",
-      "_id": "8DAcJLIO7Kw5bjud3vnOTZ",
-      "_rev": "gqtj7V240nQPr7YcKkbUsx",
-      "_type": "feature",
-      "_updatedAt": "2023-01-21T13:52:54Z",
-      "description": "",
-      "link": "https://codepen.io/2022/popular/pens/5",
-      "tags": null,
-      "title": "CodePen \"Most Hearted of 2022\"",
-      "when": "2023-01-04",
-      "where": "CodePen"
-    },
-    {
-      "_createdAt": "2023-01-13T11:03:59Z",
-      "_id": "B4PIvYGv2UFUcg0RK9fiez",
-      "_rev": "gqtj7V240nQPr7YcKkbUqB",
-      "_type": "feature",
-      "_updatedAt": "2023-01-21T13:52:54Z",
-      "description": "",
-      "link": "https://codepen.io/spark/318",
-      "tags": null,
-      "title": "Spark #318",
-      "when": "2022-12-19",
-      "where": "CodePen"
-    }
-  ]
+  "feature": []
 }

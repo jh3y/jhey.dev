@@ -28,9 +28,9 @@ const articleComponents = {
       return <audio className="rounded-lg" {...props} controls></audio>
     }
     return (
-      <figure className="grid place-items-center my-6">
-        <img className="rounded-lg mb-2" {...props} />
-        {props.alt && props.alt !== "" && <figcaption className="text-text-3 text-fluid--1">{props.alt}</figcaption>}
+      <figure className="bleed max-w-[100vw] transform relative left-1/2 -translate-x-1/2 lg:rounded-lg grid place-items-center my-6">
+        <img {...props} />
+        {props.alt && props.alt !== "" && <figcaption className="text-text-3 text-fluid--2 text-center">{props.alt}</figcaption>}
       </figure>
     )
   },

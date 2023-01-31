@@ -15,7 +15,7 @@ document.addEventListener('pointermove', ({ x, y }) => {
 })
 
 let CHECKED = false
-document.addEventListener('pointerdown', e => {
+document.addEventListener('pointerdown', (e) => {
   CHECKED = !CHECKED
   document.documentElement.style.setProperty('--dark', CHECKED ? 1 : 0)
 })

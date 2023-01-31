@@ -8,8 +8,6 @@ import { getWriting, getSiteConfig } from '../../constants/queries'
 const {writing} = await getWriting()
 const siteConfig = await getSiteConfig()
 
-console.info({ siteConfig })
-
 const shortDateFormatter = new Intl.DateTimeFormat('en-GB', {
   year: 'numeric',
   month: 'short',

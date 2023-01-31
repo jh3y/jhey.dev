@@ -89,12 +89,12 @@ export default defineType({
         defineField({
           name: 'hue',
           title: 'Hue',
-          type: 'string',
+          type: 'number',
         }),
         defineField({
           name: 'gradient',
           title: 'Gradient',
-          type: 'string',
+          type: 'number',
         })
       ]
     }),
