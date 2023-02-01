@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="flex">
           <a
             className="text-text-2 w-10 h-10 grid place-items-center rounded-md hover:bg-surface-4"
-            href="/rss"
+            href="/rss/rss.xml"
             rel="noopener noreferrer"
             target="_blank"
             title="Grab my RSS Feed!"

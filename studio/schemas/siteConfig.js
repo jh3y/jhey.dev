@@ -84,7 +84,7 @@ export default defineType({
       type: 'object',
       fields: [
         defineField({
-          name: 'cheepFooter',
+          name: 'footer',
           title: 'Cheep footer',
           description: 'Sign off for long-form cheeps',
           type: 'markdown',

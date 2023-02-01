@@ -70,11 +70,11 @@ The styles for our grid are quite straightforward. We can use `display: grid` an
 console.info(true === true)
 ```
 
-<aside data-type="note">
+<aside type="note">
   Before we get started. It’s worth noting that performance of this demo is affected by the grid size and the demos are best viewed in Chromium based browsers.
 </aside>
 
-<aside data-type="warning">
+<aside type="warning">
   Before we get started. It’s worth noting that performance of this demo is affected by the grid size and the demos are best viewed in Chromium based browsers.
 </aside>
 

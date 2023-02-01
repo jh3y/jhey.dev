@@ -1711,6 +1711,11 @@
   resolved "https://registry.yarnpkg.com/@ljharb/has-package-exports-patterns/-/has-package-exports-patterns-0.0.2.tgz#c1718939b65efa1f45f53686c2fcfa992b9fb68f"
   integrity sha512-4/RWEeXDO6bocPONheFe6gX/oQdP/bEpv0oL4HqjPP5DCenBSt0mHgahppY49N0CpsaqffdwPq+TlX9CYOq2Dw==
 
+"@mdn/browser-compat-data@^5.2.33":
+  version "5.2.33"
+  resolved "https://registry.yarnpkg.com/@mdn/browser-compat-data/-/browser-compat-data-5.2.33.tgz#b1dd87e221097d76d185ea8e5ffb6649295f2770"
+  integrity sha512-CEhwV3X4w6Hv1SiaWQFtChNGZ/p7VwdFRQ4dL6ieYACMm6EI0XTWtA1L+afkbV4eCB8bS63cmSYVyzsETZryDA==
+
 "@mdx-js/react@^2.1.5":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mdx-js/react/-/react-2.2.1.tgz#5a70592418d52b1b01538c37e795034601c96ec5"
@@ -4665,6 +4670,11 @@ csstype@^3.0.2:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.1.tgz#841b532c45c758ee546a11d5bd7b7b473c8c30b9"
   integrity sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==
+
+dat.gui@^0.7.9:
+  version "0.7.9"
+  resolved "https://registry.yarnpkg.com/dat.gui/-/dat.gui-0.7.9.tgz#860cab06053b028e327820eabdf25a13cf07b17e"
+  integrity sha512-sCNc1OHobc+Erc1HqiswYgHdVNpSJUlk/Hz8vzOCsER7rl+oF/4+v8GXFUyCgtXpoCX6+bnmg07DedLvBLwYKQ==
 
 data-uri-to-buffer@^4.0.0:
   version "4.0.0"

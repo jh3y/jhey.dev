@@ -27,7 +27,7 @@ const remarkToc = () => {
           })
           .join('')
         node.value = `
-          <aside data-type="tableofcontents">
+          <aside type="tableofcontents">
             <details data-toc="true" role="navigation" className="bg-surface-2">
               <summary data-toc-summary="true" class="flex justify-between cursor-pointer p-4">
                 <span class="uppercase text-fluid--1 font-bold">Table of Contents</span>

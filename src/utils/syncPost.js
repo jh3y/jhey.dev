@@ -53,7 +53,6 @@ const generateFrontMatter = (object, indent = 0) => {
   for (const key of Object.keys(object)) {
     if (key !== 'body' && key !== 'author' && key !== 'tags') {
       if (typeof object[key] === 'object' && object[key] !== null) {
-        console.info({ object, key })
         contentString += `${indentString}${key}:\n`
         contentString += `${generateFrontMatter(object[key], indent + 2)}\n`
       } else {
