@@ -167,7 +167,7 @@ const TextRing = (text) => {
   const INNER_ANGLE = 360 / CHARS.length
   return (
     <span
-      className="ring"
+      className="text-ring"
       style={{
         '--total': CHARS.length,
         '--radius': 1 / Math.sin(INNER_ANGLE / (180 / Math.PI))
@@ -190,7 +190,7 @@ Random fact. Not meeting the grade in advanced Mathematics in school put me on t
 </Aside>
 
 ## Introducing CSS trigonometry
-Trigonometric functions are coming to CSS. This will give you access to functions such as `sin`, `cos`, and `tan` within CSS. They're already available in Firefox and Safari. They're poised to ship in Chromium 111. Be sure to check out the ["CSS Values and Units Module Level 4"](https://w3c.github.io/csswg-drafts/css-values/#trig-funcs) spec. The introduction of these functions in CSS opens up some exciting opportunities. For example, you could use them [in layouts]() or the timing of [loading animations]().
+Trigonometric functions are coming to CSS. This will give you access to functions such as `sin`, `cos`, and `tan` within CSS. They're already available in Firefox and Safari. They're poised to ship in Chromium 111. Be sure to check out the ["CSS Values and Units Module Level 4"](https://w3c.github.io/csswg-drafts/css-values/#trig-funcs) spec. The introduction of these functions in CSS opens up some exciting opportunities. For example, you could use them [in layouts](https://twitter.com/jh3yy/status/1611450493129330689) or the timing of [loading animations](https://twitter.com/jh3yy/status/1611475080818851840).
 
 <BrowserSupport language="css" category="types" api="sin"></BrowserSupport>
 
