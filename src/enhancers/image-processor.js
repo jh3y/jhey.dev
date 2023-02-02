@@ -7,11 +7,14 @@ const FORMATS = ['png', 'avif', 'webp']
 const BASE = `${process.cwd()}/public/media/image/enhanced`
 const DIST = `${process.cwd()}/dist/media/image/enhanced`
 
-const getEnhancedPath = (img, prod = false) =>
-  `${prod ? BASE.slice(BASE.indexOf('/public/') + 7) : BASE}/${img.src.slice(
-    img.src.lastIndexOf('/') + 1,
-    img.src.lastIndexOf('.')
-  )}-${img.width}x${img.height}`
+const getEnhancedPath = (el, prod = false) => {
+  const SRC = el.tagName === 'VIDEO' ? el.poster : el.src
+  return `${prod ? BASE.slice(BASE.indexOf('/public/') + 7) : BASE}/${SRC.slice(
+    SRC.lastIndexOf('/') + 1,
+    SRC.lastIndexOf('.')
+  )}-${el.width}x${el.height}`
+
+}
 
 /**
  * This only takes the images and optimizes for the size in the Markup...
@@ -23,14 +26,15 @@ export const enhanceImages = async (docs) => {
   // Grab the images to be enhanced
   const images = []
   docs.forEach(async ({ document }) => {
-    const allImg = [...document.querySelectorAll('img[src]')]
-    allImg.forEach((img) => {
+    // Let's try including video...
+    const allMedia = [...document.querySelectorAll('img[src]'), ...document.querySelectorAll('video[poster]')]
+    allMedia.forEach((el) => {
       // If it's an enhanced image, ignore it.
-      if (img.src.includes('/media/image/enhanced/')) return
+      if (el.src.includes('/media/image/enhanced/') || el.poster.includes('/media/image/enhanced/')) return
       // This is incorrect. Should be worked out on destination...
-      const enhancedPath = getEnhancedPath(img)
+      const enhancedPath = getEnhancedPath(el)
       if (!images.find((i) => i.destination === enhancedPath))
-        images.push({ src: img.src, el: img, destination: enhancedPath })
+        images.push({ src: el.tagName === 'VIDEO' ? el.poster : el.src, el, destination: enhancedPath })
     })
   })
   // Now you have a unique set of images to enhance if required.
@@ -39,9 +43,9 @@ export const enhanceImages = async (docs) => {
       return console.warn(
         `Image doesn't have height/width set: ${img.el.outerHTML}`
       )
-    
+
     const testPath = `${img.destination}.${FORMATS[0]}`
-    const alreadyEnhanced = fs.existsSync(testPath) 
+    const alreadyEnhanced = fs.existsSync(testPath)
 
     if (!alreadyEnhanced) {
       // If we need to grab the image, do that.
@@ -82,30 +86,34 @@ export const enhanceImages = async (docs) => {
  * </picture>
  * */
 export const imageEnhancer = async (document) => {
-  const allImg = [...document.querySelectorAll('img[src]')]
+  const allMedia = [...document.querySelectorAll('img[src]'), ...document.querySelectorAll('video[poster]')]
 
   // Just modify all the images... Swap the source for the enhanced path
-  allImg.forEach(img => {
-    const enhancedSrc = getEnhancedPath(img, true)
-    img.setAttribute('decoding', 'async')
-    img.setAttribute('loading', img.getAttribute('loading') || 'lazy')
-    if (!img.src.includes('/media/image/enhanced/')) {
-      img.src = `${enhancedSrc}.${FORMATS[0]}`
-    }
-    if (img.parentNode.tagName !== 'PICTURE') {
-      const PICTURE = document.createElement('picture')
-      let sourceString = ''
-      for (let f = 1; f < FORMATS.length; f++) {
-        const format = FORMATS[f]
-        sourceString += `
-          <source type="image/${format}" srcset="${enhancedSrc}.${format} ${img.width}w" sizes="${img.width}px">
-        `
+  allMedia.forEach(el => {
+    const enhancedSrc = getEnhancedPath(el, true)
+    if (el.tagName === 'VIDEO') {
+      el.poster = `${enhancedSrc}.png`
+    } else {
+      el.setAttribute('decoding', 'async')
+      el.setAttribute('loading', el.getAttribute('loading') || 'lazy')
+      if (!el.src.includes('/media/image/enhanced/')) {
+        el.src = `${enhancedSrc}.${FORMATS[0]}`
       }
-      PICTURE.innerHTML = `
-        ${sourceString}
-        ${img.outerHTML}
-      `
-      img.replaceWith(PICTURE)
+      if (el.parentNode.tagName !== 'PICTURE') {
+        const PICTURE = document.createElement('picture')
+        let sourceString = ''
+        for (let f = 1; f < FORMATS.length; f++) {
+          const format = FORMATS[f]
+          sourceString += `
+            <source type="image/${format}" srcset="${enhancedSrc}.${format} ${el.width}w" sizes="${el.width}px">
+          `
+        }
+        PICTURE.innerHTML = `
+          ${sourceString}
+          ${el.outerHTML}
+        `
+        el.replaceWith(PICTURE)
+      }
     }
   })
   return document
