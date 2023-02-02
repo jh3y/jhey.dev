@@ -1,6 +1,4 @@
 import React from 'react'
-import Pagination from '../pagination/pagination.jsx'
-import ContentItem from './content-item.jsx'
 import ContentBlock from '../content-block/content-block.jsx'
 
 const shortDateFormatter = new Intl.DateTimeFormat('en-GB', {
@@ -10,7 +8,7 @@ const shortDateFormatter = new Intl.DateTimeFormat('en-GB', {
 
 const getShortDate = (stamp) => shortDateFormatter.format(new Date(stamp))
 
-const ContentSection = ({ data, title, intro, limit, supplementKey }) => {
+const ContentSection = ({ data, title, intro }) => {
   if (!data || data.filter(d => d).length === 0) return null
 
   return (
@@ -52,6 +50,7 @@ const SECTIONS = [
   'videos',
 ]
 const Content = ({ content: { data, currentPage, totalPages, route } }) => {
+
   return (
     <div className="px-4">
       <div className="flex justify-end mb-4">
@@ -66,11 +65,10 @@ const Content = ({ content: { data, currentPage, totalPages, route } }) => {
         const section = data[key]
         if (!section || !section.active) return null
 
-        let sectionData = section.selection
         if (key === 'posts') {
           const internalPosts = JSON.parse(JSON.stringify(section.data)).map((post) => ({
             ...post,
-            links: [{ url: `/cheep/${post.slug.current}` }],
+            link: `/cheep/${post.slug.current}`,
             where: 'jhey.dev',
             when: post.publishedAt,
           }))

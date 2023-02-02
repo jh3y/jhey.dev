@@ -80,6 +80,7 @@
 - Add permalink header sup for panels...
 - Change content links to singular links...
 - Add your egghead.io content d'uh!
+- Start writing some production posts
 
 ## Web Mentions
 1. Sign up for brid.gy
@@ -91,11 +92,11 @@
 ## TODO::
 - /AMA, /Uses, /Now
 - Test out some interval based DOM changing scripts in Prod
-- Start writing some production posts
 
 - Don't forget that Konami code Easter egg...
 - Ranking posts by page views???
 - Xata serverless view counter
 - Edge functions for "New items in feed?"
+- Edge functions for "Web mentions"???
 - Serverless likes with Xata
 - Serverless hit counter?
