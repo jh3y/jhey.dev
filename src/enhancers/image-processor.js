@@ -30,7 +30,7 @@ export const enhanceImages = async (docs) => {
     const allMedia = [...document.querySelectorAll('img[src]'), ...document.querySelectorAll('video[poster]')]
     allMedia.forEach((el) => {
       // If it's an enhanced image, ignore it.
-      if (el.src.includes('/media/image/enhanced/') || el.poster.includes('/media/image/enhanced/')) return
+      if (el.src.includes('/media/image/enhanced/') || (el.tagName === 'VIDEO' && el.poster.includes('/media/image/enhanced/'))) return
       // This is incorrect. Should be worked out on destination...
       const enhancedPath = getEnhancedPath(el)
       if (!images.find((i) => i.destination === enhancedPath))
