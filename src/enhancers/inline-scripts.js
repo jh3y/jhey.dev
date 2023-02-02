@@ -26,6 +26,14 @@ const scriptInliner = document => {
            * in its own <script> tag at the end.
            * */
           const chunk = line.slice(line.indexOf('"') + 2, line.lastIndexOf('"'))
+          /**
+           * Note:: You could check if doing a named import here.
+           * And then change the text in the chunk to replace the export with a variable name.
+           * Then replace every instance of "new i" with the right variable.
+           *
+           * But, this will introduce issues when you start doing other things like React, etc.
+           * Instead just attack at a level above and only inline non-demo pages.
+           */
           if (!chunks[chunk]) chunks[chunk] = fs.readFileSync(`${BASE}${chunk}`, 'utf-8')
           // Remove the chunk reference
           scripts = scripts.replace(`${line};`, '')

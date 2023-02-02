@@ -41,7 +41,8 @@ await enhanceImages(docs)
 docs.forEach(async ({document, file}) => {
 
   const inlined = styleInliner(document)
-  const scripty = scriptInliner(inlined)
+  // Do an if file.includes(/demos/) here and ignore demo pages
+  const scripty = !file.includes('/demos/') ? scriptInliner(inlined) : inlined
   const pictured = await imageEnhancer(scripty)
   const minified = htmlMinifier(pictured.documentElement.outerHTML)
 
