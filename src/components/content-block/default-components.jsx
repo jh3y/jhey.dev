@@ -42,7 +42,7 @@ const defaultComponents = {
   signature() {
     return (
       <svg
-        ariaHidden="true"
+        aria-hidden="true"
         className="ml-6 w-1/4"
         stroke="var(--text-1)"
         fill="none"
