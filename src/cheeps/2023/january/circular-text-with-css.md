@@ -252,7 +252,7 @@ And that'll do it. Putting it all together, we can make a demo like this one.
 
 <CodePen id="LYBdKXE" title="Circular text with CSS Trigonometric functions"></CodePen>
 
-In this demo, CSS trigonometric functions get used if supported. If not, we fall back to setting the `--radius` with JavaScript. For now, you could copy the HTML and CSS you need until CSS trigonometric functions get full support.
+In this demo, CSS trigonometric functions get used if supported. If not, we fall back to setting the `--radius` with JavaScript. For now, you could copy the HTML and CSS you need until CSS trigonometric functions get full support. The next step is getting `sibling-count` and `sibling-index` in CSS. There's [a proposal](https://github.com/w3c/csswg-drafts/issues/4559) for it in the CSSWG repo. Then we wouldn't need the inline custom properties anymore.
 
 ---
 
@@ -263,7 +263,8 @@ __Until next time, stay awesome!__
 <Signature></Signature>
 
 ## Further reading
+- [An Intro to Trigonometric CSS Functions](https://blog.stephaniestimac.com/posts/2023/1/css-trigonometric-functions/): Stephanie Stimac
+- [The Power (and fun) of Scope with Custom CSS Properties](https://css-tricks.com/the-power-and-fun-of-scope-with-css-custom-properties/): CSS Tricks
 - [textPath](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/textPath): MDN
 - [textLength](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/textLength): MDN
 - [SVG circle decomposition to paths](https://www.smashingmagazine.com/2019/03/svg-circle-decomposition-paths/): Smashing Magazine
-- [An Intro to Trigonometric CSS Functions](https://blog.stephaniestimac.com/posts/2023/1/css-trigonometric-functions/): Stephanie Stimac
