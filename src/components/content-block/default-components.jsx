@@ -256,7 +256,7 @@ const defaultComponents = {
         allowtransparency="true"
         allowFullScreen={true}
       >
-        Check out this <a href={props.src}>demo</a>.
+        Check out <a href={props.src}>this demo</a> from <a href="https://jhey.dev/">Jhey</a>.
       </iframe>
     )
   },

@@ -12,11 +12,22 @@ const rssComponents = {
       </blockquote>
     )
   },
+  demo({ node, ...props }) {
+    return (
+      <blockquote>
+        <p>
+          Check out <a href={props.src}>this demo</a> from <a href="https://jhey.dev">Jhey</a>.
+        </p>
+      </blockquote>
+    )
+  },
   codepen({ node, ...props }) {
     return (
       <blockquote>
         <p>
-          Check out the <a href={`https://codepen.io/jh3y/${props.id}`}>demo pen</a> by Jhey (<a href="https://codepen.io/jh3y">@jh3y</a>) over on{' '}
+          Check out the{' '}
+          <a href={`https://codepen.io/jh3y/${props.id}`}>demo pen</a> by Jhey (
+          <a href="https://codepen.io/jh3y">@jh3y</a>) over on{' '}
           <a href={`https://codepen.io/jh3y/${props.id}`}>CodePen</a>.
         </p>
       </blockquote>
@@ -26,7 +37,9 @@ const rssComponents = {
     const interactive = node.children.find(
       (child) => child.tagName === 'tweet' || child.tagName === 'codepen'
     )
-    const toc = node.children.find(child => child.tagName === 'tableofcontents')
+    const toc = node.children.find(
+      (child) => child.tagName === 'tableofcontents'
+    )
     if (toc) return null
     if (interactive) return <>{props.children}</>
     return <p>{props.children}</p>
