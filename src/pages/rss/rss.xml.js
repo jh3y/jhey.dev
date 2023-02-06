@@ -29,7 +29,9 @@ const writingPosts = allWriting.writing.map(article => {
   }
 })
 
-const posts = [...cheepPosts, ...writingPosts].sort((a, b) => {
+// const posts = [...cheepPosts, ...writingPosts].sort((a, b) => {
+// exclude writing by default for now...
+const posts = [...cheepPosts].sort((a, b) => {
   const dateA = new Date(a.publishedAt)
   const dateB = new Date(b.publishedAt)
   return dateB - dateA
