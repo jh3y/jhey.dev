@@ -9,11 +9,27 @@ const DIST = `${process.cwd()}/dist/media/image/enhanced`
 
 const getEnhancedPath = (el, prod = false) => {
   const SRC = el.tagName === 'VIDEO' ? el.poster : el.src
-  return `${prod ? BASE.slice(BASE.indexOf('/public/') + 7) : BASE}/${SRC.slice(
-    SRC.lastIndexOf('/') + 1,
-    SRC.lastIndexOf('.')
-  )}-${el.width}x${el.height}`
 
+  const IS_LOCAL = SRC.startsWith('/')
+
+  let enhanced
+
+  if (IS_LOCAL) {
+    enhanced = `${
+      prod ? BASE.slice(BASE.indexOf('/public/') + 7) : BASE
+    }/${slugify(SRC.slice(SRC.lastIndexOf('image/') + 6, SRC.lastIndexOf('.')))}-${
+      el.width
+    }x${el.height}`
+  } else {
+    enhanced = `${
+      prod ? BASE.slice(BASE.indexOf('/public/') + 7) : BASE
+    }/${slugify(SRC.slice(0, SRC.lastIndexOf('.')))}-${el.width}x${
+      el.height
+    }`.replace('https:', '')
+  }
+
+  console.info({ enhanced })
+  return enhanced
 }
 
 /**
@@ -27,14 +43,25 @@ export const enhanceImages = async (docs) => {
   const images = []
   docs.forEach(async ({ document }) => {
     // Let's try including video...
-    const allMedia = [...document.querySelectorAll('img[src]'), ...document.querySelectorAll('video[poster]')]
+    const allMedia = [
+      ...document.querySelectorAll('img[src]'),
+      ...document.querySelectorAll('video[poster]'),
+    ]
     allMedia.forEach((el) => {
       // If it's an enhanced image, ignore it.
-      if (el.src.includes('/media/image/enhanced/') || (el.tagName === 'VIDEO' && el.poster.includes('/media/image/enhanced/'))) return
+      if (
+        el.src.includes('/media/image/enhanced/') ||
+        (el.tagName === 'VIDEO' && el.poster.includes('/media/image/enhanced/'))
+      )
+        return
       // This is incorrect. Should be worked out on destination...
       const enhancedPath = getEnhancedPath(el)
       if (!images.find((i) => i.destination === enhancedPath))
-        images.push({ src: el.tagName === 'VIDEO' ? el.poster : el.src, el, destination: enhancedPath })
+        images.push({
+          src: el.tagName === 'VIDEO' ? el.poster : el.src,
+          el,
+          destination: enhancedPath,
+        })
     })
   })
   // Now you have a unique set of images to enhance if required.
@@ -70,7 +97,9 @@ export const enhanceImages = async (docs) => {
          * If it's the first time enhancing, make sure we push it to the
          * dist folder too!
          * */
-        newFormat.toFile(`${img.destination.replace('public', 'dist')}.${format}`)
+        newFormat.toFile(
+          `${img.destination.replace('public', 'dist')}.${format}`
+        )
       })
     }
   }
@@ -86,10 +115,13 @@ export const enhanceImages = async (docs) => {
  * </picture>
  * */
 export const imageEnhancer = async (document) => {
-  const allMedia = [...document.querySelectorAll('img[src]'), ...document.querySelectorAll('video[poster]')]
+  const allMedia = [
+    ...document.querySelectorAll('img[src]'),
+    ...document.querySelectorAll('video[poster]'),
+  ]
 
   // Just modify all the images... Swap the source for the enhanced path
-  allMedia.forEach(el => {
+  allMedia.forEach((el) => {
     const enhancedSrc = getEnhancedPath(el, true)
     if (el.tagName === 'VIDEO') {
       el.poster = `${enhancedSrc}.png`

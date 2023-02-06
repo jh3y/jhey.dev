@@ -81,7 +81,8 @@
 - Change content links to singular links...
 - Add your egghead.io content d'uh!
 - Start writing some production posts
-
+- Be mindful of locally hosted demos in RSS and also for how you export to say Dev.To, Medium, etc.
+-
 ## Web Mentions
 1. Sign up for brid.gy
 2. IndieAuth for webmention.io

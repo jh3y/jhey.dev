@@ -43,7 +43,7 @@ export const ALL_TAGS = `
 `
 
 export const ALL_GUESTBOOK_ENTRIES = `
-  *[_type == "guestEntry"] | order(pinned desc, when desc)
+  *[_type == "guestEntry"] | order(when desc) | order(pinned desc)
 `
 export const ALL_CONTENT = `
   *[_type == "content"]{
@@ -52,8 +52,8 @@ export const ALL_CONTENT = `
     talks{..., selection[]->{...}},
     videos{..., selection[]->{...}},
     demos{..., selection[]->{...}},
-    features{..., selection[]->{...}},        
-    posts{..., selection[]->{...}},        
+    features{..., selection[]->{...}},
+    posts{..., selection[]->{...}},
   }
 `
 export const ALL_POSTS = `
@@ -98,7 +98,7 @@ export const ALL_PAGE_DATA = `
 export const RSS_FEED = `
   {
     "cheeps": ${RSS_CHEEPS},
-    "writing": ${ALL_WRITING}, 
+    "writing": ${ALL_WRITING},
     "tags": ${ALL_TAGS},
     "config": ${SITE_CONFIG},
   }
