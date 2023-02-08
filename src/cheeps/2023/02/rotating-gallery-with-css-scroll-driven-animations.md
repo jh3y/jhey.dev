@@ -1,12 +1,12 @@
 ---
-_id: 882j5943xKO7x9UDiC2Klt # Production ID
+# _id: 882j5943xKO7x9UDiC2Klt # Production ID
 # _id: z2uAtY26VYglFQT423Dfxp # Development ID
-title: Circular text with CSS?
-description: Exploring how to lay out text in a circle with new CSS trigonometric functions
-slug: circular-text-with-css
+title: Rotating gallery with CSS scroll driven animations
+description: Tying CSS animations to page scroll with the CSS scroll driven animations API
+slug: rotating-gallery-with-css-scroll-driven-animations
 og:
   hue: 130
-  title: Circular text with CSS?
+  title: Drive CSS animation with page scroll?
   gradient: 9
 # If you can find an author with this title, do it. Else fallback to main. You can change it easily in the CMS.
 author: CSS
@@ -19,8 +19,8 @@ tags:
   - CSS
   - HTML
   - JavaScript
-publishedAt: 2023-01-26
-updatedAt: 2023-01-26
+publishedAt: 2023-02-04
+updatedAt: 2023-02-04
 ---
 Have you ever wanted to lay out some text in a circle but it felt like a lot of prodding in the dark? How might you do it today? Could you do it with CSS alone in an accurate way? Let's take a look at a new way 👀
 
