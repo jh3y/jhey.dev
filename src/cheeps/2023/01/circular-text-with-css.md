@@ -29,7 +29,7 @@ Have you ever wanted to lay out some text in a circle but it felt like a lot of 
 ## How you might solve this today
 You've definitely got options. Before we go down the CSS route, you could use images. The least maintainable route could be creating an image each time you need to change the text. Make sure to use the `alt` attribute to describe the text that's shown.
 
-<img src="/media/image/2023/january/cheeps/circular-text-with-css/circular-text.png" alt="Circular text generated in Figma" width="250" height="250" />
+<img src="/media/image/2023/01/cheeps/circular-text-with-css/circular-text.png" alt="Circular text generated in Figma" width="250" height="250" />
 
 <Aside type="note">
   The SVG generated in Figma, creates a path for each letter individually based on their position.
@@ -145,7 +145,7 @@ How do you calculate that radius though? We're still prodding in the dark. Try a
 ## Enter trigonometric functions
 Try not to fear the word "trigonometric". I know, I know. When I hear it, I start thinking of "Differential equations", "Mechanics", and so on. But, some Math and leaning into font behavior is going to get us a solution.
 
-<img src="/media/image/2023/january/cheeps/circular-text-with-css/math-lady-meme.jpeg" alt="Math lady meme" width="645" height="430" />
+<img src="/media/image/2023/01/cheeps/circular-text-with-css/math-lady-meme.jpeg" alt="Math lady meme" width="645" height="430" />
 
 You may have noticed the demos above use a monospace font. The benefit of doing so is that you know every character will be the same width. Think about the circle in a different way. It's actually lots of triangles around a point. A monospace font means every "side" of our circle is the same width. If you have the width of a side and the inner angle, you can calculate the hypoteneuse. That hypoteneuse is our radius!
 

@@ -13,7 +13,6 @@ const getEnhancedPath = (el, prod = false) => {
   const IS_LOCAL = SRC.startsWith('/')
 
   let enhanced
-
   if (IS_LOCAL) {
     enhanced = `${
       prod ? BASE.slice(BASE.indexOf('/public/') + 7) : BASE
@@ -27,8 +26,6 @@ const getEnhancedPath = (el, prod = false) => {
       el.height
     }`.replace('https:', '')
   }
-
-  console.info({ enhanced })
   return enhanced
 }
 

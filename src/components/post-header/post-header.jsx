@@ -24,24 +24,22 @@ const LayoutHeader = ({ character, ...props }) => {
       <div className="">
         <div className="banner max-w-[100vw] transform relative left-1/2 -translate-x-1/2 aspect-[3/1] bg-surface-4">
           {/* Gets funky here... If there's a demo, do that. Else do an image */}
+          {props?.hero?.image && (
+            <img
+              width="750"
+              height="250"
+              className="absolute inset-0 w-full h-full"
+              src={props.hero.image}
+              alt={props.hero.alt}
+            />
+          )}
           {props?.hero?.demo && (
-            <>
-              {props.hero.image && (
-                <img
-                  width="750"
-                  height="250"
-                  className="motion-safe:hidden absolute inset-0 w-full h-full"
-                  src={props.hero.image}
-                  alt="Result demo for this post"
-                />
-              )}
-              <iframe
-                title="Result demo for this post"
-                className="hidden motion-safe:block absolute inset-0 w-full h-full"
-                loading="lazy"
-                src={props.hero.demo}
-              ></iframe>
-            </>
+            <iframe
+              title="Result demo for this post"
+              className="hidden motion-safe:block absolute inset-0 w-full h-full"
+              loading="lazy"
+              src={props.hero.demo}
+            ></iframe>
           )}
         </div>
         <div className="relative flex justify-end items-center min-h-half-avatar py-2">
