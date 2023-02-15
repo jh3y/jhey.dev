@@ -192,7 +192,7 @@ Random fact. Not meeting the grade in advanced Mathematics in school put me on t
 ## Introducing CSS trigonometry
 Trigonometric functions are coming to CSS. This will give you access to functions such as `sin`, `cos`, and `tan` within CSS. They're already available in Firefox and Safari. They're poised to ship in Chromium 111. Be sure to check out the ["CSS Values and Units Module Level 4"](https://w3c.github.io/csswg-drafts/css-values/#trig-funcs) spec. The introduction of these functions in CSS opens up some exciting opportunities. For example, you could use them [in layouts](https://twitter.com/jh3yy/status/1611450493129330689) or the timing of [loading animations](https://twitter.com/jh3yy/status/1611475080818851840).
 
-<BrowserSupport language="css" category="types" api="sin"></BrowserSupport>
+<BrowserSupport property="css.types.sin"></BrowserSupport>
 
 What does this mean for our circular text? CSS can now do the radius calculation. You no longer need to couple the layout styling to some JavaScript. The `--radius` is now calculated using `sin` in our CSS.
 

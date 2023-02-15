@@ -77,7 +77,7 @@ const defaultComponents = {
     }
     return (
       <aside
-        className="relative my-12 rounded-lg bg-surface-3 text-text-2 p-8"
+        className="relative my-12 rounded-lg bg-surface-3 text-fluid--1 text-text-2 p-8"
         {...props}
       >
         {type && (
@@ -105,13 +105,24 @@ const defaultComponents = {
               )}
               {type === 'random' && (
                 <>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"
+                  />
+                </>
+              )}
+              {type === 'tip' && (
+                <>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
                 </>
               )}
             </svg>
           </span>
         )}
-        {props.children}
+        <div className="overflow-auto">
+          {props.children}
+        </div>
       </aside>
     )
   },
@@ -245,39 +256,47 @@ const defaultComponents = {
       </div>
     )
   },
+  demopreview({ node, ...props }) {
+    return (
+      <video src={props.video}  preload="none" controls loop muted width="600" height="400" poster={props.image}></video>
+    )
+  },
   demo({ node, ...props }) {
     return (
-      <iframe
-        height="300"
-        className="m-0 mb-6 max-w-[100vw] bleed transform relative left-1/2 -translate-x-1/2"
-        title={props.title || 'A demo from Jhey'}
-        src={props.src}
-        loading="lazy"
-        allowtransparency="true"
-        allowFullScreen={true}
-      >
-        Check out <a href={props.src}>this demo</a> from <a href="https://jhey.dev/">Jhey</a>.
-      </iframe>
+      <div className="m-0 mb-6 max-w-[100vw] bleed -ml-4">
+        <iframe
+          className="w-full aspect-video"
+          title={props.title || 'A demo from Jhey'}
+          src={props.src}
+          loading="lazy"
+          allowtransparency="true"
+          allowFullScreen={true}
+        >
+          Check out <a href={props.src}>this demo</a> from{' '}
+          <a href="https://jhey.dev/">Jhey</a>.
+        </iframe>
+      </div>
     )
   },
   codepen({ node, ...props }) {
     return (
-      <iframe
-        height="360"
-        className="m-0 mb-6 max-w-[100vw] bleed transform relative left-1/2 -translate-x-1/2"
-        scrolling="no"
-        title={props.title}
-        src={`https://codepen.io/jh3y/embed/preview/${props.id}?default-tab=result&editable=true&theme-id=43641`}
-        frameBorder="no"
-        loading="lazy"
-        allowtransparency="true"
-        allowFullScreen={true}
-      >
-        Check out the{' '}
-        <a href={`https://codepen.io/jh3y/${props.id}`}>demo pen</a> by Jhey (
-        <a href="https://codepen.io/jh3y">@jh3y</a>) over on{' '}
-        <a href={`https://codepen.io/jh3y/${props.id}`}>CodePen</a>.
-      </iframe>
+      <div className="m-0 mb-6 max-w-[100vw] bleed -ml-4">
+        <iframe
+          className="w-full aspect-video"
+          scrolling="no"
+          title={props.title}
+          src={`https://codepen.io/jh3y/embed/preview/${props.id}?default-tab=result&editable=true&theme-id=43641`}
+          frameBorder="no"
+          loading="lazy"
+          allowtransparency="true"
+          allowFullScreen={true}
+        >
+          Check out the{' '}
+          <a href={`https://codepen.io/jh3y/${props.id}`}>demo pen</a> by Jhey (
+          <a href="https://codepen.io/jh3y">@jh3y</a>) over on{' '}
+          <a href={`https://codepen.io/jh3y/${props.id}`}>CodePen</a>.
+        </iframe>
+      </div>
     )
   },
   a({ node, children, ...props }) {

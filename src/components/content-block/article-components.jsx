@@ -113,8 +113,9 @@ const articleComponents = {
       </h3>
     )
   },
-  browsersupport({ node, language, category, api, ...props }) {
-    if (!language || !category || !api) return null
+  browsersupport({ node, property, ...props }) {
+    const [language, category, api] = property.split('.')
+
     const support = bcd[language][category][api].__compat
 
     return (

@@ -87,6 +87,7 @@
     accent-color: var(--brand-fill);
     background: var(--surface-1);
     color: var(--text-1);
+    text-rendering: optimizeSpeed;
   }
 
   body {
@@ -206,7 +207,7 @@
   }
 
   .bleed {
-    width: calc(100% + (2 * var(--step-1)));
+    width: calc(100% + 2rem);
   }
 
   .google {

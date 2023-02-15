@@ -1,17 +1,17 @@
 ---
-# _id: 882j5943xKO7x9UDiC2Klt # Production ID
-# _id: z2uAtY26VYglFQT423Dfxp # Development ID
-title: Rotating gallery with CSS scroll driven animations
-description: Tying CSS animations to page scroll with the CSS scroll driven animations API
+_id: DgQFRrSeZMmDYuP4eCwOTE # Production ID
+# _id: FuJyiSPoBy5dqTgGctHuWV # Development ID
+title: Rotating gallery with CSS scroll-driven animations
+description: Driving CSS animations with page scroll with the CSS scroll-driven animations API
 slug: rotating-gallery-with-css-scroll-driven-animations
 og:
   hue: 130
   title: Drive CSS animation with page scroll?
   gradient: 9
 # If you can find an author with this title, do it. Else fallback to main. You can change it easily in the CMS.
-author: CSS
+author: Main
 hero:
-  demo: /demos/circular-text-with-css/result/index.html
+  demo: https://cdpn.io/pen/debug/poOvyor
   image:
   alt:
   attribution:
@@ -22,249 +22,234 @@ tags:
 publishedAt: 2023-02-04
 updatedAt: 2023-02-04
 ---
-Have you ever wanted to lay out some text in a circle but it felt like a lot of prodding in the dark? How might you do it today? Could you do it with CSS alone in an accurate way? Let's take a look at a new way 👀
+Saw this [neat gallery effect](https://twitter.com/austin_malerba/status/1618380647541932032) concept over on Twitter. It's built with [Framer](https://www.framer.com/). It got me thinking about how exciting the CSS scroll-driven animations API is going to be. I couldn't resist [building a version](https://twitter.com/jh3yy/status/1621564942175322112) taking the API for a spin. And now I'm going to show you how to do it!
 
-<TableOfContents></TableOfContents>
-
-## How you might solve this today
-You've definitely got options. Before we go down the CSS route, you could use images. The least maintainable route could be creating an image each time you need to change the text. Make sure to use the `alt` attribute to describe the text that's shown.
-
-<img src="/media/image/2023/january/cheeps/circular-text-with-css/circular-text.png" alt="Circular text generated in Figma" width="250" height="250" />
+<CodePen id="VwBgPxP"></CodePen>
 
 <Aside type="note">
-  The SVG generated in Figma, creates a path for each letter individually based on their position.
+Sometimes the polyfill doesn't kick in for these embeds. Hit the "Rerun" button and try again if it animates on load.
 </Aside>
 
-Or you could use an inline SVG. SVG has a `textPath` element. For the most part, it's pretty good. You give it some text and a path to lay that text on.
+If you're not familiar with this API, I introduced it in "[Building Chrometober](https://web.dev/building-chrometober/)". It allows you to drive CSS animations with scroll. The magic part is that this will all happen off the main thread. That means performant scroll-driven animations where JavaScript is optional.
 
-```html
-<svg
-  viewBox="0 0 100 100"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path
-    id="circlePath"
-    d="
-      M 10, 50
-      a 40,40 0 1,1 80,0
-      40,40 0 1,1 -80,0
-    "
-  />
-  <text>
-    <textPath href="#circlePath">
-      Your text here!
-    </textPath>
-  </text>
-</svg>
-```
+It's currently experimental in Chrome. But, there is a polyfill that you can use. That's what powers today's demo.
 
-This route does pose a couple of hurdles. First, you need a `path`. You can't pass reference to a `circle`. That means converting a `circle` to a `path`.
+<BrowserSupport property="css.properties.animation-timeline"></BrowserSupport>
 
-```html
-<path
-  d="
-    M (CENTER_X - RADIUS),CENTER_Y
-    a RADIUS,RADIUS 0 1,1 (2 * RADIUS),0
-    RADIUS,RADIUS 0 1,1 (-2 * RADIUS),0
-  "
-/>
-```
+The API has been through many changes. The compatibility data from [MDN is a little inaccurate](https://caniuse.com/mdn-css_properties_animation-timeline) currently (That's what powers the `<BrowserSupport>` widget above). I'd recommend keeping an eye on [the spec](https://drafts.csswg.org/scroll-animations-1/) or the [polyfill repo](https://github.com/flackr/scroll-timeline) if you're interested in keeping up to date with things. Or [keep in touch](https://twitter.com/jh3yy) with me!
 
-Next, you need to choose whether you use the `textLength` attribute of `textPath`. This can spread the text around the path. The value of this will be the circumference.
+## Drive type
+At a high level, scroll-driven animations fall into two categories:
 
-```jsx
-<textPath
-  href="#circularPath"
-  textLength={Math.floor(Math.PI * 2 * RADIUS)}
->
-  Your text here!
-</textPath>
-```
+1. Those driven by scroll position using `scroll-timeline`.
+2. Those driven by an element's position within its scroll container (scrollport) using `view-timeline`.
 
-Put everything together and you'll get something like this.
+Today, we're concerned with the first of those. Driving animations based on scroll position.
 
-<Demo src="/demos/circular-text-with-css/using-textpath/index.html" title="Using textPath to create circular text"></Demo>
-
-In this demo, you can change the text and see how the use of `textLength` plays a part. You can also change the radius and font size. A neat part of using SVG is that we have something scalable. Another cool feature is that the text will follow the path direction. That makes it easy to flip whether the text is inside or outside of the path. You can do that by changing the [sweep flag of an arc](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths#arcs) between `1` and `0`.
-
-So SVG can do the job, right? Well, kinda. But, if you try punching in some longer text, that radius will need adjusting. And, at this point, you're prodding in the dark.
-
----
-
-For the most part, working in code, we're somewhat wired to assume some degree of accuracy. That is, minus some rounding and other JavaScript quirks. So for me, punching numbers in until it "looks right", sometimes doesn't sit quite well with me.
-
-Could you be more accurate with CSS? A rudimentary approach could go like this:
-
-1. Split text into span elements for each character.
-2. Set an inline custom property for the character index.
-3. Set an inline custom property on the parent for total characters.
-4. Using CSS calc, transform each span by rotating and then translating it using its index.
-5. If this will be visible to screenreaders, hide all the characters with `aria-hidden`. Then create a visually hidden span with the full text inside it.
-
-Here's how the HTML might look:
-
-```html
-<span
-  class="text-ring"
-  style="--total: 15;"
->
-  <span aria-hidden="true">
-    <span style="--index: 0">Y</span>
-    <span style="--index: 1">o</span>
-    <span style="--index: 2">u</span>
-    <!-- Obfuscated markup -->
-  </span>
-  <span class="sr-only">
-    Your text here!
-  </span>
-</span>
-```
-
-And the CSS could go a little like this:
-
-```css
-.text-ring {
-  position: relative;
-}
-.text-ring [style*=--index] {
-  font-size: calc(var(--font-size, 2) * 1rem);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform:
-    translate(-50%, -50%)
-    rotate(calc(360deg / var(--total) * var(--index)))
-    translateY(calc(var(--radius, 5) * -1ch));
-}
-```
-
-How do you calculate that radius though? We're still prodding in the dark. Try adjusting things until they "look right" in this demo.
-
-<Demo src="/demos/circular-text-with-css/rudimentary-css/index.html" title="A rudimentary attempt with CSS"></Demo>
-
-## Enter trigonometric functions
-Try not to fear the word "trigonometric". I know, I know. When I hear it, I start thinking of "Differential equations", "Mechanics", and so on. But, some Math and leaning into font behavior is going to get us a solution.
-
-<img src="/media/image/2023/january/cheeps/circular-text-with-css/math-lady-meme.jpeg" alt="Math lady meme" width="645" height="430" />
-
-You may have noticed the demos above use a monospace font. The benefit of doing so is that you know every character will be the same width. Think about the circle in a different way. It's actually lots of triangles around a point. A monospace font means every "side" of our circle is the same width. If you have the width of a side and the inner angle, you can calculate the hypoteneuse. That hypoteneuse is our radius!
-
-```js
-const TOTAL_CHARACTERS = 15
-const INNER_ANGLE = 360 / 15
-const LENGTH_OF_SIDE = 1 // 1ch
-const RADIUS = LENGTH_OF_SIDE /
-  Math.sin(INNER_ANGLE / (180 / Math.PI))
-```
-
-A neat trick here is to define the side width using the "ch" unit. That's equal to the width of a "0" in our font. And because a monospace font is being used, that'll be the width of every character. That means we'll get a radius in "ch" units. But, changing the `font-size` will behave in a way that scales the text ring. Neat!
-
-That snippet of JavaScript above gets us the radius and now we can set that in our CSS. The bonus is that if you're doing static markup generation, you can pass all the details in as inline styles. Here it is [in a React component](https://codepen.io/jh3y/pen/OJwagZa). You might server-side render this or use it in something like Astro (What this site uses).
-
-```jsx
-const TextRing = (text) => {
-  const CHARS = text.split('')
-  const INNER_ANGLE = 360 / CHARS.length
-  return (
-    <span
-      className="text-ring"
-      style={{
-        '--total': CHARS.length,
-        '--radius': 1 / Math.sin(INNER_ANGLE / (180 / Math.PI))
-      }}
-    >
-      {CHARS.map((char, index) => (
-        <span style={{'--index': index }}>
-          {char}
-        </span>
-      ))}
-    </span>
-  )
-}
-```
-
-For the most part, this will do the trick. But, what if you don't like the feel of dictating your layout styles in JavaScript? Well, CSS might be able to help with that very soon.
-
-<Aside type="random">
-Random fact. Not meeting the grade in advanced Mathematics in school put me on the programming path. But, that's a story for another day.
+<Aside type="note">
+Triggering animations on scroll is currently out of scope. For now, using an IntersectionObserver or a package like ScrollOut is a good option. You could also use GreenSock, more on this later.
 </Aside>
 
-## Introducing CSS trigonometry
-Trigonometric functions are coming to CSS. This will give you access to functions such as `sin`, `cos`, and `tan` within CSS. They're already available in Firefox and Safari. They're poised to ship in Chromium 111. Be sure to check out the ["CSS Values and Units Module Level 4"](https://w3c.github.io/csswg-drafts/css-values/#trig-funcs) spec. The introduction of these functions in CSS opens up some exciting opportunities. For example, you could use them [in layouts](https://twitter.com/jh3yy/status/1611450493129330689) or the timing of [loading animations](https://twitter.com/jh3yy/status/1611475080818851840).
+## Building this demo
+First things first, we need that polyfill. Import this in a way that works for you. Here it is in a `script` tag.
 
-<BrowserSupport language="css" category="types" api="sin"></BrowserSupport>
+```html
+<script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"></script>
+```
 
-What does this mean for our circular text? CSS can now do the radius calculation. You no longer need to couple the layout styling to some JavaScript. The `--radius` is now calculated using `sin` in our CSS.
+Up next, you need some elements to animate. A list with some images will work for what we want. For this demo, I've used [picsum.photos](https://picsum.photos/) for placeholder images:
+
+```html
+<main>
+  <ul>
+    <li style="--x1: 2; --x2: 6; --y1: 1; --y2: 4;">
+      <img src="https://picsum.photos/600/600?random=1" alt="">
+    </li>
+    <li style="--x1: 6; --x2: 8; --y1: 2; --y2: 4;">
+      <img src="https://picsum.photos/600/600?random=2" alt="">
+    </li>
+    <!-- Obfuscated items -->
+  </ul>
+</main>
+```
+
+<Aside type="tip">
+Using something like [emmett](https://www.emmet.io/) makes generating markup for images a breeze. To get random images in a list:
+<code>main>ul>li*10>img[src="https://picsum.photos/600/600?random=$" alt=""]</code>.
+</Aside>
+
+Now to lay them out in this grid-like manner. You have options here. You could use `grid-template-areas` and draw the layout in your CSS.
 
 ```css
-.text-ring {
-  --character-width: 1; /* In "ch" units */
-  --inner-angle: calc((360 / var(--total)) * 1deg);
-  --radius: calc(
-    (
-      var(--character-width, 1) /
-      sin(var(--inner-angle))
-    ) * -1ch
-  );
+ul {
+  grid-template-areas: ". a a a a . . . . ."
+                       ". a a a a c c . ."
+                       ". a a a a c c . .";
 }
-.text-ring [style*=--index] {
+li:nth-of-type(1) {
+  grid-area: a;
+}
+
+```
+I'm not a huge fan of [`grid-template-areas`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas) though. They sometimes [don't play nice](https://github.com/sass/sass/issues/216).
+
+You may have noticed the inline styles in the markup above:
+
+```html
+<li style="--x1: 2; --x2: 6; --y1: 1; --y2: 4;">
+  <img src="https://picsum.photos/600/600?random=1" alt="">
+</li>
+```
+
+They define the coordinates for grid position. It might seem verbose to write these out. But, I like to lean into the use of custom property scope here. You can likely get away with positioning the main items and then rely on [`grid-auto-flow: dense`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow) too. Another approach would be having these coordinates in a JavaScript object. Then you can use whatever templating language you like to generate the markup and inline styles.
+
+Anyway, back to the styles. Taking the custom property approach, you can scope the styles for the items:
+
+```css
+ul {
+  --big-tile-size: 50vmin;
+  --rotation: 270deg;
+  --scale: 0.4;
+  --tile-size: calc(var(--big-tile-size) / 3);
+  display: grid;
+  grid-template: repeat(9, var(--tile-size)) / repeat(9, var(--tile-size));
+  gap: 1vmin;
   transform:
     translate(-50%, -50%)
-    rotate(calc(var(--inner-angle) * var(--index)))
-    translateY(var(--radius, -5ch));
+    scale(var(--scale))
+    rotate(0deg);
+}
+li {
+  grid-column: var(--x1, auto) / var(--x2, auto);
+  grid-row: var(--y1, auto) / var(--y2, auto);
 }
 ```
 
-Plug that into our demo and we get the right radius.
+<CodePen id="BaOyjgj"></CodePen>
 
-<Demo src="/demos/circular-text-with-css/css-trig/index.html" title="CSS trig demo"></Demo>
+Now the grid is starting to take shape. There are custom properties to define the behavior of the grid and it's time for animation. This is where the `--scale` and `--rotation` properties are going to come into play.
 
-If you're not in a supporting browser, you _should_ see a warning message. You can detect CSS trigonometric function support in CSS with:
+You need to animate two things:
 
-```css
-@supports (top: calc(sin(1) * 1px)) {
-  /* Insert styles */
-}
-```
+1. The layout's scale and rotation.
+2. The image rotation to counter the layout rotation.
 
-Or in JavaScript with:
+But, you don't need two keyframes for that. You can share one set using custom properties.
 
-```javascript
-const canTrig = CSS.supports('(top: calc(sin(1) * 1px))')
-```
-
-For the finishing touches, let's make our text ring spin:
-
-```css
-@media (prefers-reduced-motion: no-preference) {
-  .text-ring {
-  	animation: spin 6s infinite linear;
+``` css
+@keyframes scale-up {
+  0% {
+    transform:
+      translate(-50%, -50%)
+      scale(var(--scale))
+      rotate(0deg);
   }
-  @keyframes spin {
-    to {
-      rotate: -360deg;
+  100% {
+    transform:
+      translate(-50%, -50%)
+      scale(1)
+      rotate(var(--rotation));
+  }
+}
+```
+
+The images set their direction to counter the layout rotation and use the same keyframes:
+
+```css
+img {
+  --rotation: -270deg;
+  --scale: 1;
+}
+```
+
+<Aside type="note">
+You could refactor this to reduce some of the code but we're building to understand how the idea comes to life.
+</Aside>
+
+Now you can apply the animation. Let's set the iteration count to infinite to see it on loop.
+
+```css
+ul, img {
+  animation: scale-up 10s infinite ease-in-out alternate;
+}
+```
+
+<CodePen id="poOvyor"></CodePen>
+
+Ready for the last piece of the puzzle? Let's drive it with the body's scroll position.
+
+``` css
+ul, img {
+  animation-timeline: scroll(root);
+  animation: 1s scale-up both ease-in;
+}
+```
+
+Yep. That's all you need for a scroll timeline. Remove the iteration count from our animation and set the `animation-fill-mode` to `both`. The `animation-timeline` property is set to `scroll(root)`. This defines that the animation will get driven by the scroll of the root scroller. In this case, that's the `body`. To tie it all together, we fix the position of our layout and set the body height to the amount we'd like to scroll.
+
+``` css
+body { height: 300vh; }
+```
+
+And we get the end result!
+
+<CodePen id="VwBgPxP"></CodePen>
+
+Driving CSS animation with scroll and no JavaScript is an exciting prospect. I'm excited for it to make its way into browsers. Let's hope future versions of the spec include the ability to trigger or ease the animations.
+
+## Bonus (GSAP Solution)
+
+The scroll-driven animations API is in its early stages. Someone did reach out asking if you could ease the scroll. If it were me, I'd be reaching for [GreenSock](https://greensock.com/). The [ScrollTrigger plugin](https://greensock.com/scrolltrigger/) handles this use case well with the `scrub` property.
+
+You have to adjust your implementation a little. But, you can power the whole thing with this block of JavaScript:
+
+``` javascript
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
+
+gsap.defaults({
+  duration: 2,
+  ease: "power1.inOut"
+});
+
+const rotate = 270
+
+gsap
+  .timeline({
+    scrollTrigger: {
+      scrub: 1, // smooth scrubbing catch up duration
     }
-  }
-}
+  })
+  .to("ul", {
+    scale: 1,
+    rotate,
+  })
+  .to(
+    "img",
+    {
+      rotate: -rotate
+    },
+    0
+  );
 ```
 
-And that'll do it. Putting it all together, we can make a demo like this one.
-
-<CodePen id="LYBdKXE" title="Circular text with CSS Trigonometric functions"></CodePen>
-
-In this demo, CSS trigonometric functions get used if supported. If not, we fall back to setting the `--radius` with JavaScript. For now, you could copy the HTML and CSS you need until CSS trigonometric functions get full support. The next step is getting `sibling-count` and `sibling-index` in CSS. There's [a proposal](https://github.com/w3c/csswg-drafts/issues/4559) for it in the CSSWG repo. Then we wouldn't need the inline custom properties anymore.
+<CodePen id="yLxyOJp"></CodePen>
 
 ---
 
-That's it! It's wild to think how the web platform is evolving. All these new features and tools that are knocking down hurdles we've faced for some time.
+That's it! The [CSS scroll-driven animation API](https://drafts.csswg.org/scroll-animations-1/) is an exciting one. I've been [playing](https://twitter.com/jh3yy/status/1621564942175322112) with it a [bunch](https://twitter.com/jh3yy/status/1615815314087837696) seeing what kind of [things](https://twitter.com/jh3yy/status/1590450608620044288) you can do with it. I'm excited to see it in your hands! Until that API matures though, solutions like [GreenSock's ScrollTrigger](https://greensock.com/scrolltrigger/) are fantastic.
 
-__Until next time, stay awesome!__
+__Stay awesome!__
 
 <Signature></Signature>
-
 ## Further reading
-- [An Intro to Trigonometric CSS Functions](https://blog.stephaniestimac.com/posts/2023/1/css-trigonometric-functions/): Stephanie Stimac
-- [The Power (and fun) of Scope with Custom CSS Properties](https://css-tricks.com/the-power-and-fun-of-scope-with-css-custom-properties/): CSS Tricks
-- [textPath](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/textPath): MDN
-- [textLength](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/textLength): MDN
-- [SVG circle decomposition to paths](https://www.smashingmagazine.com/2019/03/svg-circle-decomposition-paths/): Smashing Magazine
+
+- [Building Chrometober](https://web.dev/building-chrometober/): web.dev
+- [Scroll Animations Spec](https://drafts.csswg.org/scroll-animations-1/): CSSWG
+- [Animation Timeline Browser Support](https://caniuse.com/mdn-css_properties_animation-timeline): caniuse.com
+- [Demo tweet](https://twitter.com/jh3yy/status/1621564942175322112): Twitter
+- [Demo link](https://codepen.io/jh3y/pen/VwBgPxP): CodePen
+- [Demo Collection](https://codepen.io/collection/qOobRy): CodePen
+- [GSAP ScrollTrigger](https://greensock.com/scrolltrigger/): GreenSock
