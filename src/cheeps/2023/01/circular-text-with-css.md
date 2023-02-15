@@ -11,7 +11,7 @@ og:
 # If you can find an author with this title, do it. Else fallback to main. You can change it easily in the CMS.
 author: CSS
 hero:
-  demo: /demos/circular-text-with-css/result/index.html
+  demo: https://cdpn.io/pen/debug/NWLPpgW
   image:
   alt:
   attribution:
@@ -83,7 +83,7 @@ Next, you need to choose whether you use the `textLength` attribute of `textPath
 
 Put everything together and you'll get something like this.
 
-<Demo src="/demos/circular-text-with-css/using-textpath/index.html" title="Using textPath to create circular text"></Demo>
+<CodePen id="ZEMYebW" title="Using textPath to create circular text"></CodePen>
 
 In this demo, you can change the text and see how the use of `textLength` plays a part. You can also change the radius and font size. A neat part of using SVG is that we have something scalable. Another cool feature is that the text will follow the path direction. That makes it easy to flip whether the text is inside or outside of the path. You can do that by changing the [sweep flag of an arc](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths#arcs) between `1` and `0`.
 
@@ -140,7 +140,7 @@ And the CSS could go a little like this:
 
 How do you calculate that radius though? We're still prodding in the dark. Try adjusting things until they "look right" in this demo.
 
-<Demo src="/demos/circular-text-with-css/rudimentary-css/index.html" title="A rudimentary attempt with CSS"></Demo>
+<CodePen id="jOvEBME" title="A rudimentary attempt with CSS"></CodePen>
 
 ## Enter trigonometric functions
 Try not to fear the word "trigonometric". I know, I know. When I hear it, I start thinking of "Differential equations", "Mechanics", and so on. But, some Math and leaning into font behavior is going to get us a solution.
@@ -217,7 +217,7 @@ What does this mean for our circular text? CSS can now do the radius calculation
 
 Plug that into our demo and we get the right radius.
 
-<Demo src="/demos/circular-text-with-css/css-trig/index.html" title="CSS trig demo"></Demo>
+<CodePen id="QWVwppw" title="CSS trig demo"></CodePen>
 
 If you're not in a supporting browser, you _should_ see a warning message. You can detect CSS trigonometric function support in CSS with:
 
@@ -268,3 +268,4 @@ __Until next time, stay awesome!__
 - [textPath](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/textPath): MDN
 - [textLength](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/textLength): MDN
 - [SVG circle decomposition to paths](https://www.smashingmagazine.com/2019/03/svg-circle-decomposition-paths/): Smashing Magazine
+- [Demo Collection](https://codepen.io/collection/yrKLvE): CodePen
