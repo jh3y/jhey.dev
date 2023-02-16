@@ -7,7 +7,7 @@ export default async (request, context) => {
   const type = res.headers.get('content-type')
 
   if (!type.startsWith('text/html') || request.url.includes('/demos/')) {
-    return
+    return res
   }
 
   // Grab the theme to make sure it's set on the HTML

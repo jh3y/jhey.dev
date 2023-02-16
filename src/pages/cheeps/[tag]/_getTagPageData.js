@@ -16,17 +16,17 @@ export const getTagPageData = async () => {
   const dataSets = []
 
   allTags.map((tag) => {
-    const tagName = tag.title  
+    const tagName = tag.title
     // Filter out the cheeps by tag
     const filteredCheeps = allCheeps.filter(
       (cheep) => {
         const cheepTags = cheep.tags ? cheep.tags.filter(t => t !== null) : []
         let tags = [...cheepTags]
-        if (cheep.article) {
-          for (const article of cheep.article) {
-            // Add related tags from an article
-            if (article.tags) {
-              for (const tag of article.tags) {
+        if (cheep.post) {
+          for (const post of cheep.post) {
+            // Add related tags from an post
+            if (post.tags) {
+              for (const tag of post.tags) {
                 if(!tags.find(t => t._id === tag._id)) tags.push(tag)
               }
             }
@@ -45,7 +45,7 @@ export const getTagPageData = async () => {
 
     // Push dataset to collection
     dataSets.push({
-      id: tagName, 
+      id: tagName,
       data: filteredCheeps,
       params: {
         tag: tagName.toLowerCase()

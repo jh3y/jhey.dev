@@ -265,7 +265,7 @@ const defaultComponents = {
     return (
       <div className="m-0 mb-6 max-w-[100vw] bleed -ml-4">
         <iframe
-          className="w-full aspect-video"
+          className="w-full aspect-[3/2]"
           title={props.title || 'A demo from Jhey'}
           src={props.src}
           loading="lazy"
@@ -282,7 +282,7 @@ const defaultComponents = {
     return (
       <div className="m-0 mb-6 max-w-[100vw] bleed -ml-4">
         <iframe
-          className="w-full aspect-video"
+          className="w-full aspect-[3/2]"
           scrolling="no"
           title={props.title}
           src={`https://codepen.io/jh3y/embed/preview/${props.id}?default-tab=result&editable=true&theme-id=43641`}

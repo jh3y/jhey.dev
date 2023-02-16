@@ -121,7 +121,7 @@ export const imageEnhancer = async (document) => {
   allMedia.forEach((el) => {
     const enhancedSrc = getEnhancedPath(el, true)
     if (el.tagName === 'VIDEO') {
-      el.poster = `${enhancedSrc}.png`
+      el.poster = `${enhancedSrc}.webp`
     } else {
       el.setAttribute('decoding', 'async')
       el.setAttribute('loading', el.getAttribute('loading') || 'lazy')

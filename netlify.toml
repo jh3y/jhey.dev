@@ -14,6 +14,9 @@
   function = "theme-toggle"
   path = "/*"
 
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+
 [[headers]]
   for = "/*"
   [headers.values]

@@ -82,7 +82,8 @@
 - Add your egghead.io content d'uh!
 - Start writing some production posts
 - Be mindful of locally hosted demos in RSS and also for how you export to say Dev.To, Medium, etc.
--
+- Convert video posters to webp
+
 ## Web Mentions
 1. Sign up for brid.gy
 2. IndieAuth for webmention.io
@@ -91,6 +92,7 @@
 5. Profit...
 
 ## TODO::
+- Related post tags aren't being picked up...
 - /AMA, /Uses, /Now
 - Test out some interval based DOM changing scripts in Prod
 
