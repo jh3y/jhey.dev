@@ -93,8 +93,6 @@ const cardComponents = {
     )
   },
   a({ node, children, ...props }) {
-    props.target = '_blank'
-    props.rel = 'noopener noreferrer'
     return (
       <a className="font-bold" {...props}>
         {children}

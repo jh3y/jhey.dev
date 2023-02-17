@@ -90,8 +90,6 @@ const Card = (props) => {
               title="Permalink"
               className="w-10 h-10 grid place-items-center hover:bg-surface-4 rounded-md text-text-2 hover:text-brand-stroke"
               href={`/cheep/${props.slug.current}`}
-              target="_blank"
-              rel="noopener noreferrer"
             >
               <span className="sr-only">Permalink</span>
               <svg

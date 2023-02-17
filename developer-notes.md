@@ -83,6 +83,7 @@
 - Start writing some production posts
 - Be mindful of locally hosted demos in RSS and also for how you export to say Dev.To, Medium, etc.
 - Convert video posters to webp
+- Related post tags aren't being picked up...
 
 ## Web Mentions
 1. Sign up for brid.gy
@@ -92,7 +93,8 @@
 5. Profit...
 
 ## TODO::
-- Related post tags aren't being picked up...
+- Fix meta tags for open graph cards...
+- Writing page filtering and tags for articles based on publications, etc. Ordered by amount.
 - /AMA, /Uses, /Now
 - Test out some interval based DOM changing scripts in Prod
 
@@ -103,3 +105,172 @@
 - Edge functions for "Web mentions"???
 - Serverless likes with Xata
 - Serverless hit counter?
+
+
+
+<!-- Weird debugging with masks and stuff -->
+Debugging transitions
+```html
+<meta name="view-transition" content="same-origin" />
+```
+``` css
+.wrapper {
+  background: lightblue;
+  display: inline-block;
+}
+.box {
+  --position: 50%;
+  height: 100vmin;
+  aspect-ratio: 1;
+  background: red;
+  --size: 4vmin;
+  mask:
+    linear-gradient(transparent 50%, black 50%),
+    radial-gradient(var(--size) at 25% 0%, transparent 99%, black),
+    radial-gradient(var(--size) at 50%, black 99%, transparent);
+  mask-size:
+    100% 200%,
+    calc(4 * var(--size)) calc(2 * var(--size)),
+    calc(4 * var(--size)) 200%;
+  mask-repeat:
+    repeat-x,
+    repeat-x,
+    repeat-x;
+  mask-position:
+    0 0%,
+    calc(50% - var(--size)) calc(0% - (2 * var(--size))),
+    50% calc(50% - var(--size));
+  animation: sludge 6s infinite ease-in;
+}
+
+@keyframes sludge {
+  0% {
+    mask-position:
+      0 100%,
+      calc(50% - var(--size)) calc(0% - (2 * var(--size))),
+      50% calc(100% - (2 * var(--size)));
+  }
+  100% {
+    mask-position:
+      0 calc(0% + (var(--size) * 1.9)),
+      calc(50% - var(--size)) calc(100% - (-3 * var(--size))),
+      50% calc(0% + (1 * var(--size)));
+  }
+}
+```
+View transitions for splodges
+```css
+@supports(view-transition-name: transition) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    contain: layout;
+    mix-blend-mode: normal;
+    display: block;
+  }
+  ::view-transition-new(root) {
+    animation: splodge-in 1.5s both ease-in-out;
+  }
+  ::view-transition-old(root) {
+    animation: splodge-out 1.5s both ease-in-out;
+    --size: 8vmin;
+    -webkit-mask:
+      linear-gradient(transparent 50%, black 50%),
+      radial-gradient(var(--size) at 25% 0%, transparent 99%, black),
+      radial-gradient(var(--size) at 50%, black 99%, transparent);
+    -webkit-mask-size:
+      100% 200%,
+      calc(4 * var(--size)) calc(2 * var(--size)),
+      calc(4 * var(--size)) 200%;
+    -webkit-mask-repeat:
+      repeat-x,
+      repeat-x,
+      repeat-x;
+    -webkit-mask-position:
+      0 100%,
+      calc(50% - var(--size)) calc(0% - (2 * var(--size))),
+      50% calc(100% - (2 * var(--size)));
+  }
+
+  ::view-transition-image-pair(root) {
+    isolation: auto;
+  }
+
+  @keyframes splodge-in {
+    0% {
+      filter: brightness(0);
+      clip-path: circle(0);
+      z-index: 2;
+    }
+    50% {
+      filter: brightness(0);
+      clip-path: circle(200%);
+      z-index: 2;
+    }
+    50.1%, 100% {
+      z-index: -1;
+      filter: brightness(1);
+      clip-path: circle(200%);
+    }
+  }
+
+  @keyframes splodge-out {
+    0%, 49% {
+      filter: brightness(1);
+      z-index: 1;
+      -webkit-mask: none;
+    }
+    50% {
+      filter: brightness(0);
+      z-index: 2;
+      -webkit-mask:
+        linear-gradient(transparent 50%, black 50%),
+        radial-gradient(var(--size) at 25% 0%, transparent 99%, black),
+        radial-gradient(var(--size) at 50%, black 99%, transparent);
+      -webkit-mask-size:
+        100% 200%,
+        calc(4 * var(--size)) calc(2 * var(--size)),
+        calc(4 * var(--size)) 200%;
+      -webkit-mask-repeat:
+        repeat-x,
+        repeat-x,
+        repeat-x;
+      -webkit-mask-position:
+        0 100%,
+        calc(50% - var(--size)) calc(0% - (2 * var(--size))),
+        50% calc(100% - (2 * var(--size)));
+    }
+    100% {
+      z-index: 2;
+      filter: brightness(0);
+      -webkit-mask-position:
+        0 calc(0% + (var(--size) * 1.9)),
+        calc(50% - var(--size)) calc(100% - (-3 * var(--size))),
+        50% calc(0% + (1 * var(--size)));
+      /* transform: rotate(180deg) scale(1.1) translate(0, -150%); */
+    }
+  }
+}
+```
+``` css
+  @supports (view-transition-name: foo) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation: none;
+      mix-blend-mode: normal;
+    }
+
+    ::view-transition-new(root) {
+      z-index: -1;
+    }
+
+    ::view-transition-old(root) {
+      z-index: 2;
+      animation: clip-out 1s both ease-in;
+    }
+
+    @keyframes clip-out {
+        0% { clip-path: inset(0 0 0 0); }
+      100% { clip-path: inset(100% 0 0 0); }
+    }
+  }
+```

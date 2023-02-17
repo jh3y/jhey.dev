@@ -38,8 +38,10 @@ const GuestCard = (props) => {
           title="Permalink"
           className="w-10 h-10"
           href={props.link || `/cheep/${props.slug.current}`}
-          target="_blank"
-          rel="noopener noreferrer"
+          {...(props.link && {
+            target: "_blank",
+            rel: "noopener noreferrer"
+          })}
         >
           {props.avatar && (
             <img
@@ -105,8 +107,10 @@ const GuestCard = (props) => {
             title="Permalink"
             className="w-10 h-10 grid place-items-center hover:bg-surface-4 rounded-md text-text-2 hover:text-brand-stroke"
             href={props.link || `/cheep/${props.slug.current}`}
-            target="_blank"
-            rel="noopener noreferrer"
+            {...(props.link && {
+              target: "_blank",
+              rel: "noopener noreferrer"
+            })}
           >
             <span className="sr-only">Permalink</span>
             <svg
