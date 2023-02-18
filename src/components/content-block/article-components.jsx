@@ -11,6 +11,9 @@ const articleComponents = {
         child.tagName === 'guestbookform'
     )
     if (interactive) return <>{props.children}</>
+    if (!props.children || props.children[0].toString().trim() === '') {
+      return null
+    }
     return (
       <p
         {...props}

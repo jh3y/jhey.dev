@@ -41,7 +41,7 @@ const LayoutHeader = ({ character, ...props }) => {
           ></iframe>
         )}
       </div>
-      <div className="w-content max-w-full mv-0 mx-auto grid justify-center gap-2 px-4 mb-12">
+      <div className="w-content max-w-full mv-0 mx-auto grid gap-2 px-4 mb-12">
         <div className="relative flex justify-end items-center min-h-half-avatar py-2">
           <img
             className="absolute top-0 transform -translate-y-1/2 left-0 rounded-full bg-surface-4 aspect-square w-avatar border-4 border-text-1"

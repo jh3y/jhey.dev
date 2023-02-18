@@ -24,7 +24,7 @@ updatedAt: 2023-02-04
 ---
 Saw this [neat gallery effect](https://twitter.com/austin_malerba/status/1618380647541932032) concept over on Twitter. It's built with [Framer](https://www.framer.com/). It got me thinking about how exciting the CSS scroll-driven animations API is going to be. I couldn't resist [building a version](https://twitter.com/jh3yy/status/1621564942175322112) taking the API for a spin. And now I'm going to show you how to do it!
 
-<CodePen id="VwBgPxP"></CodePen>
+<CodePen id="VwBgPxP" title="Rotating gallery with CSS scroll-driven animations"></CodePen>
 
 <Aside type="note">
 Sometimes the polyfill doesn't kick in for these embeds. Hit the "Rerun" button and try again if it animates on load.
@@ -47,7 +47,9 @@ At a high level, scroll-driven animations fall into two categories:
 Today, we're concerned with the first of those. Driving animations based on scroll position.
 
 <Aside type="note">
-Triggering animations on scroll is currently out of scope. For now, using an IntersectionObserver or a package like ScrollOut is a good option. You could also use GreenSock, more on this later.
+
+Triggering animations on scroll is currently out of scope. For now, using an [IntersectionObserver](https://developer.mozilla.org/docs/Web/API/Intersection_Observer_API) or a package like [ScrollOut](https://scroll-out.github.io/) is a good option. You could also use [GreenSock](https://greensock.com), more on this later.
+
 </Aside>
 
 ## Building this demo
@@ -127,7 +129,7 @@ li {
 }
 ```
 
-<CodePen id="BaOyjgj"></CodePen>
+<CodePen id="BaOyjgj" title="Staggered grid layout"></CodePen>
 
 Now the grid is starting to take shape. There are custom properties to define the behavior of the grid and it's time for animation. This is where the `--scale` and `--rotation` properties are going to come into play.
 
@@ -176,7 +178,7 @@ ul, img {
 }
 ```
 
-<CodePen id="poOvyor"></CodePen>
+<CodePen id="poOvyor" title="Animated gallery concept on loop"></CodePen>
 
 Ready for the last piece of the puzzle? Let's drive it with the body's scroll position.
 
@@ -195,7 +197,7 @@ body { height: 300vh; }
 
 And we get the end result!
 
-<CodePen id="VwBgPxP"></CodePen>
+<CodePen id="VwBgPxP" title="The result!"></CodePen>
 
 Driving CSS animation with scroll and no JavaScript is an exciting prospect. I'm excited for it to make its way into browsers. Let's hope future versions of the spec include the ability to trigger or ease the animations.
 
@@ -237,7 +239,7 @@ gsap
   );
 ```
 
-<CodePen id="yLxyOJp"></CodePen>
+<CodePen id="yLxyOJp" title="Gallery effect with GreenSock ScrollTrigger"></CodePen>
 
 ---
 

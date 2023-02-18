@@ -283,7 +283,7 @@ const defaultComponents = {
       <div className="m-0 mb-6 max-w-[100vw] col-span-full">
         <iframe
           className="w-full aspect-[3/2]"
-          title={props.title}
+          title={props.title || 'A demo from Jhey'}
           src={`https://codepen.io/jh3y/embed/preview/${props.id}?default-tab=result&editable=true&theme-id=43641`}
           loading="lazy"
           allowtransparency="true"
