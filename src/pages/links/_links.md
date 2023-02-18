@@ -20,10 +20,8 @@ Need a link to find me somewhere? Odds are, it's here.
 - [Polywork](https://www.polywork.com/jh3y)
 
 ## RSS
-- [Main Feed](/rss/rss.xml)
+- [Feed](/rss/rss.xml)
 - [Writing](/rss/writing.xml)
-- [JavaScript Feed](/rss/javascript.xml)
-- [CSS Feed](/rss/css.xml)
 
 ## Publications
 - [web.dev](https://web.dev/authors/jheyy/)
