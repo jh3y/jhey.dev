@@ -119,8 +119,6 @@
     backdrop-filter: blur(8px);
   }
 
-  /* TODO: Link styles: :visited, :hover, :active, etc. */
-
   h1 {
     font-size: var(--step-5);
     line-height: 1;
@@ -193,8 +191,24 @@
 }
 
 @layer components {
-  .banner {
-    width: calc(100% + (4 * var(--step-1)));
+  :root {
+    --width: 72ch;
+    --gutter: clamp(1rem, 8vw, 4rem);
+    --pop: minmax(0, 1rem);
+    --content: min(var(--width) - ((var(--gutter) * 2) + (2 * 1rem)), 100% - var(--gutter) * 2);
+  }
+  .main-column {
+    width: var(--width);
+    grid-template-columns:
+      var(--gutter)
+      var(--pop)
+      var(--content)
+      var(--pop)
+      var(--gutter);
+  }
+
+  main {
+    width: calc(var(--width) - (2 * var(--gutter)));
   }
 
   .banner-message {
@@ -204,10 +218,6 @@
 
   @keyframes fade-away {
     to { opacity: 0; }
-  }
-
-  .bleed {
-    width: calc(100% + 2rem);
   }
 
   .google {

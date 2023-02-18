@@ -21,7 +21,7 @@ module.exports = {
     extend: {
       width: {
         'main-content': '60ch',
-        'article': '66ch',
+        'article': '60ch',
       },
       minHeight,
       spacing,

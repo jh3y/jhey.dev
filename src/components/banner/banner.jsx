@@ -2,7 +2,7 @@ import React from 'react'
 
 const Banner = ({ bannerDemo, bannerAlt }) => {
   return (
-    <div className="banner max-w-[100vw] transform relative left-1/2 -translate-x-1/2 aspect-[3/1] bg-surface-4">
+    <div className="col-span-full aspect-[3/1] bg-surface-4">
       {bannerDemo && bannerAlt && (
         <iframe
           title={bannerAlt}

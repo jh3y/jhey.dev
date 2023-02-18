@@ -77,36 +77,35 @@ const DEETS = {
 
 const LayoutHeader = ({ banner, character }) => {
   return (
-    <header className="w-main-content max-w-full mv-0 mx-auto grid gap-2 px-4 snap-center">
-      <div>
-        <Banner {...banner} />
-        <div className="relative flex justify-end items-center min-h-half-avatar py-2">
-          <img
-            className="absolute top-0 transform bg-surface-4 -translate-y-1/2 left-0 rounded-full aspect-square w-avatar border-4 border-text-1"
-            src={character?.image || '/media/image/headshot.jpeg'}
-            alt="Jhey"
-            width="200"
-            height="200"
-            loading="eager"
-          />
-          <a
-            href="/rss/rss.xml"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:no-underline border-transparent focus:border-text-1 outline-transparent focus-visible:border-text-1 hover:border-text-1 border-4 rounded-full text-fluid--1 flex gap-x-1 items-center text-white bg-brand-fill px-3 py-1"
+    <>
+    <Banner {...banner} />
+    <header className="col-start-3 max-w-full mv-0 mx-auto grid gap-2 snap-center">
+      <div className="relative flex justify-end items-center min-h-half-avatar py-2">
+        <img
+          className="absolute top-0 transform bg-surface-4 -translate-y-1/2 left-0 rounded-full aspect-square w-avatar border-4 border-text-1"
+          src={character?.image || '/media/image/headshot.jpeg'}
+          alt="Jhey"
+          width="200"
+          height="200"
+          loading="eager"
+        />
+        <a
+          href="/rss/rss.xml"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:no-underline border-transparent focus:border-text-1 outline-transparent focus-visible:border-text-1 hover:border-text-1 border-4 rounded-full text-fluid--1 flex gap-x-1 items-center text-white bg-brand-fill px-3 py-1"
+        >
+          <span className="font-bold">Follow</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            className="w-4 h-4"
           >
-            <span className="font-bold">Follow</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              className="w-4 h-4"
-            >
-              <path d="M3.75 3a.75.75 0 00-.75.75v.5c0 .414.336.75.75.75H4c6.075 0 11 4.925 11 11v.25c0 .414.336.75.75.75h.5a.75.75 0 00.75-.75V16C17 8.82 11.18 3 4 3h-.25z" />
-              <path d="M3 8.75A.75.75 0 013.75 8H4a8 8 0 018 8v.25a.75.75 0 01-.75.75h-.5a.75.75 0 01-.75-.75V16a6 6 0 00-6-6h-.25A.75.75 0 013 9.25v-.5zM7 15a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-          </a>
-        </div>
+            <path d="M3.75 3a.75.75 0 00-.75.75v.5c0 .414.336.75.75.75H4c6.075 0 11 4.925 11 11v.25c0 .414.336.75.75.75h.5a.75.75 0 00.75-.75V16C17 8.82 11.18 3 4 3h-.25z" />
+            <path d="M3 8.75A.75.75 0 013.75 8H4a8 8 0 018 8v.25a.75.75 0 01-.75.75h-.5a.75.75 0 01-.75-.75V16a6 6 0 00-6-6h-.25A.75.75 0 013 9.25v-.5zM7 15a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+        </a>
       </div>
       {/* Actions Row [ Avatar + Follow RSS Button] */}
       <h1 className="text-fluid-3 flex gap-x-2 items-center font-bold">
@@ -148,6 +147,7 @@ const LayoutHeader = ({ banner, character }) => {
         })}
       </span>
     </header>
+    </>
   )
 }
 
