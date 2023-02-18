@@ -185,7 +185,7 @@ const articleComponents = {
   },
   pre({ node, ...props }) {
     return (
-      <div className="mb-6 group bg-[var(--gray-8)] bleed max-w-[100vw] transform relative left-1/2 -translate-x-1/2 lg:rounded-lg">
+      <div className="col-span-full mb-6 group bg-[var(--gray-8)] max-w-[100vw] relative lg:rounded-lg">
         <pre tabIndex="0" className="p-4 m-0 overflow-auto">
           {props.children}
         </pre>

@@ -2,10 +2,10 @@ import React from 'react'
 
 const linksComponents = {
   h1({ node, ...props }) {
-    return <h1 {...props} className="mb-0 font-bold"></h1>
+    return <h1 {...props} className="mb-0 font-bold text-fluid-3"></h1>
   },
   h2({ node, ...props }) {
-    return <h2 {...props} className="mb-0 mt-4 font-bold"></h2>
+    return <h2 {...props} className="mb-0 mt-4 font-bold text-fluid-1"></h2>
   },
   a({ node, children, ...props }) {
     if (props.href.startsWith('http')) {

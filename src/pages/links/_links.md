@@ -2,11 +2,11 @@
 
 Need a link to find me somewhere? Odds are, it's here.
 
-- [Website](https://jhey.dev)
-- [Resumé](/resume)
+- [Website](/)
+- [Writing](/writing)
 - [Email](mailto:hey@jhey.dev)
+- [Resumé](/resume)
 - [Schedule a call](https://calendly.com/jh3y)
-- [Writing Page](/writing)
 - [Speedy Dev Tips](https://twitter.com/i/events/1549102292632305665)
 
 ## Social Media
@@ -22,8 +22,8 @@ Need a link to find me somewhere? Odds are, it's here.
 ## RSS
 - [Main Feed](/rss/rss.xml)
 - [Writing](/rss/writing.xml)
-- [CSS Feed](/rss/css.xml)
 - [JavaScript Feed](/rss/javascript.xml)
+- [CSS Feed](/rss/css.xml)
 
 ## Publications
 - [web.dev](https://web.dev/authors/jheyy/)

@@ -35,8 +35,8 @@ const openGraphTitle = ogtitle || Astro.props.title || 'A post from Jhey'
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
     <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <meta property="og:site_name" content={openGraphTitle} />
-    <meta property="og:title" content={openGraphTitle} />
+    <meta property="og:site_name" content={title} />
+    <meta property="og:title" content={title} />
     <meta name="author" content="Jhey Tompkins" />
     <meta name="image" content={ogImageUrl}/>
     <meta name="image" property="og:image" content={ogImageUrl} />
@@ -45,7 +45,7 @@ const openGraphTitle = ogtitle || Astro.props.title || 'A post from Jhey'
     <meta property="og:image:height" content="630" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://jhey.dev/" />
-    <meta name="twitter:title" content={openGraphTitle} />
+    <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
     <meta name="twitter:card" content="summary_large_image" />

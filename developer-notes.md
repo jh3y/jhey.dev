@@ -84,6 +84,8 @@
 - Be mindful of locally hosted demos in RSS and also for how you export to say Dev.To, Medium, etc.
 - Convert video posters to webp
 - Related post tags aren't being picked up...
+- Fix meta tags for open graph cards...
+- Fix the aside with emmett link for scrolling rotation gallery...
 
 ## Web Mentions
 1. Sign up for brid.gy
@@ -94,7 +96,6 @@
 
 ## TODO::
 - Fix up banner floating to use CSS grid...
-- Fix meta tags for open graph cards...
 - Writing page filtering and tags for articles based on publications, etc. Ordered by amount.
 - /AMA, /Uses, /Now
 - Test out some interval based DOM changing scripts in Prod

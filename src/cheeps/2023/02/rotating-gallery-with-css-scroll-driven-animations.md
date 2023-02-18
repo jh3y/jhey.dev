@@ -74,8 +74,10 @@ Up next, you need some elements to animate. A list with some images will work fo
 ```
 
 <Aside type="tip">
+
 Using something like [emmett](https://www.emmet.io/) makes generating markup for images a breeze. To get random images in a list:
 <code>main>ul>li*10>img[src="https://picsum.photos/600/600?random=$" alt=""]</code>.
+
 </Aside>
 
 Now to lay them out in this grid-like manner. You have options here. You could use `grid-template-areas` and draw the layout in your CSS.

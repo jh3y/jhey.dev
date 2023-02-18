@@ -242,7 +242,7 @@ const defaultComponents = {
   },
   tweet({ node, account = 'jh3yy', id, ...props }) {
     return (
-      <div className="mb-6 rounded-lg grid place-items-center">
+      <div className="col-span-full mb-6 rounded-lg grid place-items-center">
         <blockquote className="twitter-tweet" data-theme="dark">
           <a href={`https://twitter.com/${account}/status/${id}`}>
             Check out this related tweet!
@@ -263,7 +263,7 @@ const defaultComponents = {
   },
   demo({ node, ...props }) {
     return (
-      <div className="m-0 mb-6 max-w-[100vw] bleed -ml-4">
+      <div className="m-0 mb-6 max-w-[100vw]">
         <iframe
           className="w-full aspect-[3/2]"
           title={props.title || 'A demo from Jhey'}
@@ -280,13 +280,11 @@ const defaultComponents = {
   },
   codepen({ node, ...props }) {
     return (
-      <div className="m-0 mb-6 max-w-[100vw] bleed -ml-4">
+      <div className="m-0 mb-6 max-w-[100vw] col-span-full">
         <iframe
           className="w-full aspect-[3/2]"
-          scrolling="no"
           title={props.title}
           src={`https://codepen.io/jh3y/embed/preview/${props.id}?default-tab=result&editable=true&theme-id=43641`}
-          frameBorder="no"
           loading="lazy"
           allowtransparency="true"
           allowFullScreen={true}

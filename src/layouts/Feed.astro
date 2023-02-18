@@ -53,25 +53,23 @@ const INTERACTIVE_TABS = true
   description={description}
   oggradient={oggradient}
 >
-  <div class="main-column mx-auto grid max-w-full">
-    <LayoutHeader character={character || pageData.config.character} banner={banner || pageData.config.banner} />
-    <main class="col-span-full max-w-full mv-0 mx-auto flex flex-col justify-center pt-4 gap-8">
-      {navItems && <TabNav items={navItems} />}
-      {Object.keys(ROUTES).map(ROUTE => {
-        const routeSection = ROUTES[ROUTE]
-        if (!routeSection.render || (!INTERACTIVE_TABS && !route.slice(1).startsWith(ROUTE))) return null
-        const Body = routeSection.renderer
-        return (
-          <section data-tab-panel="true" id={routeSection.href} class={route.startsWith(routeSection.href) ? 'block' : 'hidden' }>
-            {Body && <Body {...contentProps} />}
-            </section>
-            )
-          })}
-    </main>
-    {contentProps.guestbook.thanks && (
-      <div role="status" aria-live="polite" class="banner-message">
-        Thank you for your submission!
-      </div>
-    )}
-  </div>
+  <LayoutHeader character={character || pageData.config.character} banner={banner || pageData.config.banner} />
+  <main class="w-content max-w-full mv-0 mx-auto flex flex-col justify-center pt-4 gap-8">
+    {navItems && <TabNav items={navItems} />}
+    {Object.keys(ROUTES).map(ROUTE => {
+      const routeSection = ROUTES[ROUTE]
+      if (!routeSection.render || (!INTERACTIVE_TABS && !route.slice(1).startsWith(ROUTE))) return null
+      const Body = routeSection.renderer
+      return (
+        <section data-tab-panel="true" id={routeSection.href} class={route.startsWith(routeSection.href) ? 'block' : 'hidden' }>
+          {Body && <Body {...contentProps} />}
+          </section>
+          )
+        })}
+  </main>
+  {contentProps.guestbook.thanks && (
+    <div role="status" aria-live="polite" class="banner-message">
+      Thank you for your submission!
+    </div>
+  )}
 </Layout>

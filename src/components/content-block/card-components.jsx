@@ -71,7 +71,7 @@ const cardComponents = {
   },
   h2({ node, children, ...props }) {
     return (
-      <h2 className="mb-2 font-bold text-fluid-2">{children}</h2>
+      <h2 className="mb-1 font-bold text-fluid-1">{children}</h2>
     )
   },
   img({ node, ...props }) {

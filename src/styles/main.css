@@ -192,23 +192,20 @@
 
 @layer components {
   :root {
-    --width: 72ch;
-    --gutter: clamp(1rem, 8vw, 4rem);
-    --pop: minmax(0, 1rem);
-    --content: min(var(--width) - ((var(--gutter) * 2) + (2 * 1rem)), 100% - var(--gutter) * 2);
+    --width: 724px;
   }
-  .main-column {
+  .w-content {
+    width: calc(var(--width) * 0.84);
+  }
+  .w-article {
+    width: calc(var(--width) * 0.84);
+    grid-template-columns: 1rem min(var(--width) * 0.84, 100% - 2rem) 1rem;
+  }
+  .w-article > * {
+    grid-column: 2;
+  }
+  .w-feature {
     width: var(--width);
-    grid-template-columns:
-      var(--gutter)
-      var(--pop)
-      var(--content)
-      var(--pop)
-      var(--gutter);
-  }
-
-  main {
-    width: calc(var(--width) - (2 * var(--gutter)));
   }
 
   .banner-message {

@@ -2,10 +2,10 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer className="w-main-content max-w-full mv-0 mx-auto py-8 text-text-3">
+    <footer className="w-content max-w-full mv-0 mx-auto py-8 text-text-3">
       <div className="text-fluid--2 grid place-items-center gap-y-2 w-full">
         {/* Social icons */}
-        <div className="flex">
+        <div className="flex flex-wrap justify-center">
           <a
             className="text-text-2 w-10 h-10 grid place-items-center rounded-md hover:bg-surface-4"
             href="/rss/rss.xml"

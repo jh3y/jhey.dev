@@ -19,17 +19,9 @@ module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
-      width: {
-        'main-content': '60ch',
-        'article': '60ch',
-      },
       minHeight,
       spacing,
       fontSize,
-      // fontFamily: {
-      //   sans: ['Inter', ...defaultTheme.fontFamily.sans],
-      //   mono: ['JetBrains Mono', ...defaultTheme.fontFamily.mono],
-      // },
       colors: {
         'brand-fill': 'var(--brand-fill)',
         'brand-stroke': 'var(--brand-stroke)',

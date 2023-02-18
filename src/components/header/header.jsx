@@ -40,7 +40,11 @@ const DEETS = {
         <path d="M11.603 7.963a.75.75 0 00-.977 1.138 2.5 2.5 0 01.142 3.667l-3 3a2.5 2.5 0 01-3.536-3.536l1.225-1.224a.75.75 0 00-1.061-1.06l-1.224 1.224a4 4 0 105.656 5.656l3-3a4 4 0 00-.225-5.865z" />
       </svg>
     ),
-    text: () => <a className="font-bold" href="/links">/links</a>,
+    text: () => (
+      <a className="font-bold" href="/links">
+        /links
+      </a>
+    ),
   },
   birthday: {
     icon: () => (
@@ -77,77 +81,80 @@ const DEETS = {
 
 const LayoutHeader = ({ banner, character }) => {
   return (
-    <>
-    <Banner {...banner} />
-    <header className="col-start-3 max-w-full mv-0 mx-auto grid gap-2 snap-center">
-      <div className="relative flex justify-end items-center min-h-half-avatar py-2">
-        <img
-          className="absolute top-0 transform bg-surface-4 -translate-y-1/2 left-0 rounded-full aspect-square w-avatar border-4 border-text-1"
-          src={character?.image || '/media/image/headshot.jpeg'}
-          alt="Jhey"
-          width="200"
-          height="200"
-          loading="eager"
-        />
-        <a
-          href="/rss/rss.xml"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:no-underline border-transparent focus:border-text-1 outline-transparent focus-visible:border-text-1 hover:border-text-1 border-4 rounded-full text-fluid--1 flex gap-x-1 items-center text-white bg-brand-fill px-3 py-1"
-        >
-          <span className="font-bold">Follow</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            className="w-4 h-4"
+    <header className="w-feature max-w-full mx-auto">
+      <Banner {...banner} />
+      {/* The header content wrapped in a grid wrapper */}
+      <div className="w-content max-w-full mv-0 mx-auto grid justify-center gap-2 px-4">
+        <div className="relative flex justify-end items-center min-h-half-avatar py-2">
+          <img
+            className="absolute top-0 transform bg-surface-4 -translate-y-1/2 left-0 rounded-full aspect-square w-avatar border-4 border-text-1"
+            src={character?.image || '/media/image/headshot.jpeg'}
+            alt="Jhey"
+            width="200"
+            height="200"
+            loading="eager"
+          />
+          <a
+            href="/rss/rss.xml"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:no-underline border-transparent focus:border-text-1 outline-transparent focus-visible:border-text-1 hover:border-text-1 border-4 rounded-full text-fluid--1 flex gap-x-1 items-center text-white bg-brand-fill px-3 py-1"
           >
-            <path d="M3.75 3a.75.75 0 00-.75.75v.5c0 .414.336.75.75.75H4c6.075 0 11 4.925 11 11v.25c0 .414.336.75.75.75h.5a.75.75 0 00.75-.75V16C17 8.82 11.18 3 4 3h-.25z" />
-            <path d="M3 8.75A.75.75 0 013.75 8H4a8 8 0 018 8v.25a.75.75 0 01-.75.75h-.5a.75.75 0 01-.75-.75V16a6 6 0 00-6-6h-.25A.75.75 0 013 9.25v-.5zM7 15a2 2 0 11-4 0 2 2 0 014 0z" />
-          </svg>
-        </a>
-      </div>
-      {/* Actions Row [ Avatar + Follow RSS Button] */}
-      <h1 className="text-fluid-3 flex gap-x-2 items-center font-bold">
-        {character?.name || 'Jhey'}
-        {character?.verified && (
-          <span className="w-6 aspect-square inline-block">
+            <span className="font-bold">Follow</span>
             <svg
-              viewBox="0 0 750 750"
-              fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              className="w-4 h-4"
             >
-              <circle cx="375" cy="375" r="310" fill="white" />
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M494.195 662.762C541.279 687.206 600.656 679.674 640.165 640.165C679.674 600.656 687.206 541.279 662.762 494.195C713.34 478.186 750 430.874 750 375C750 319.126 713.34 271.814 662.762 255.805C687.206 208.721 679.674 149.344 640.165 109.835C600.656 70.326 541.279 62.7937 494.195 87.2381C478.186 36.6595 430.874 0 375 0C319.126 0 271.814 36.6596 255.805 87.2381C208.721 62.7937 149.344 70.326 109.835 109.835C70.326 149.344 62.7937 208.721 87.2381 255.805C36.6596 271.814 0 319.126 0 375C0 430.874 36.6596 478.186 87.2381 494.195C62.7937 541.279 70.326 600.656 109.835 640.165C149.344 679.674 208.721 687.206 255.805 662.762C271.814 713.34 319.126 750 375 750C430.874 750 478.186 713.34 494.195 662.762ZM116 289.841C116 325.908 139.763 356.389 172.52 366.829C170.618 376.272 169.644 385.705 169.644 394.907H301.477V388.362H448.32V394.907H580.806C580.806 385.249 579.733 375.337 577.64 365.425C610.238 355.565 634 325.488 634 289.841C634 246.157 598.316 210.838 554.414 210.838C525.12 210.838 499.484 226.563 485.668 250.006C452.922 233.407 414.658 224.39 375.225 224.39C336.88 224.39 299.64 232.916 267.505 248.65C253.308 224.896 227.211 209 197.425 209C152.521 209 116 245.129 116 289.841ZM197.425 227.379C162.545 227.379 134.388 255.409 134.388 289.841C134.388 317.289 152.281 340.669 177.21 349.024C186.635 320.107 204.629 292.396 229.857 272.315C236.613 266.938 243.79 261.974 251.328 257.443C240.282 239.433 220.299 227.379 197.425 227.379ZM446.779 360.115H303.018C306.737 349.679 316.77 342.202 328.564 342.202H421.233C433.027 342.202 443.061 349.679 446.779 360.115ZM619.29 289.841C619.29 318.579 600.247 342.969 573.927 351.183C564.705 321.49 546.448 292.895 520.593 272.315C513.67 266.805 506.305 261.729 498.563 257.108C509.854 238.223 530.619 225.541 554.414 225.541C590.296 225.541 619.29 254.381 619.29 289.841ZM509.964 436.589C509.964 446.102 502.19 453.813 492.6 453.813C483.011 453.813 475.237 446.102 475.237 436.589C475.237 427.077 483.011 419.365 492.6 419.365C502.19 419.365 509.964 427.077 509.964 436.589ZM276.601 436.589C276.601 446.102 268.828 453.813 259.238 453.813C249.649 453.813 241.875 446.102 241.875 436.589C241.875 427.077 249.649 419.365 259.238 419.365C268.828 419.365 276.601 427.077 276.601 436.589ZM375.572 542C399.162 542 420.369 522.299 420.369 504.796C420.369 487.293 399.162 478.616 375.572 478.616C351.982 478.616 330.775 487.293 330.775 504.796C330.775 522.299 351.982 542 375.572 542Z"
-                fill="var(--brand-fill)"
-              />
+              <path d="M3.75 3a.75.75 0 00-.75.75v.5c0 .414.336.75.75.75H4c6.075 0 11 4.925 11 11v.25c0 .414.336.75.75.75h.5a.75.75 0 00.75-.75V16C17 8.82 11.18 3 4 3h-.25z" />
+              <path d="M3 8.75A.75.75 0 013.75 8H4a8 8 0 018 8v.25a.75.75 0 01-.75.75h-.5a.75.75 0 01-.75-.75V16a6 6 0 00-6-6h-.25A.75.75 0 013 9.25v-.5zM7 15a2 2 0 11-4 0 2 2 0 014 0z" />
             </svg>
-          </span>
-        )}
-      </h1>
-      {/* Blurb */}
-      <div className="leading-tight">
-        <ContentBlock type="bio">{character?.bio || 'Where in the world is Jhey Tompkins?'}</ContentBlock>
-      </div>
-      {/* Details */}
-      <span className="flex gap-x-4 items-center text-fluid--1 flex-wrap text-text-4">
-        {Object.keys(DEETS).map((key) => {
-          const Deet = DEETS[key]
-          return (
-            <span key={key} className="flex items-center gap-1">
-              <Deet.icon />
-              <span className="whitespace-nowrap">
-                <Deet.text />
-              </span>
+          </a>
+        </div>
+        {/* Actions Row [ Avatar + Follow RSS Button] */}
+        <h1 className="text-fluid-3 flex gap-x-2 items-center font-bold">
+          {character?.name || 'Jhey'}
+          {character?.verified && (
+            <span className="w-6 aspect-square inline-block">
+              <svg
+                viewBox="0 0 750 750"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="375" cy="375" r="310" fill="white" />
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M494.195 662.762C541.279 687.206 600.656 679.674 640.165 640.165C679.674 600.656 687.206 541.279 662.762 494.195C713.34 478.186 750 430.874 750 375C750 319.126 713.34 271.814 662.762 255.805C687.206 208.721 679.674 149.344 640.165 109.835C600.656 70.326 541.279 62.7937 494.195 87.2381C478.186 36.6595 430.874 0 375 0C319.126 0 271.814 36.6596 255.805 87.2381C208.721 62.7937 149.344 70.326 109.835 109.835C70.326 149.344 62.7937 208.721 87.2381 255.805C36.6596 271.814 0 319.126 0 375C0 430.874 36.6596 478.186 87.2381 494.195C62.7937 541.279 70.326 600.656 109.835 640.165C149.344 679.674 208.721 687.206 255.805 662.762C271.814 713.34 319.126 750 375 750C430.874 750 478.186 713.34 494.195 662.762ZM116 289.841C116 325.908 139.763 356.389 172.52 366.829C170.618 376.272 169.644 385.705 169.644 394.907H301.477V388.362H448.32V394.907H580.806C580.806 385.249 579.733 375.337 577.64 365.425C610.238 355.565 634 325.488 634 289.841C634 246.157 598.316 210.838 554.414 210.838C525.12 210.838 499.484 226.563 485.668 250.006C452.922 233.407 414.658 224.39 375.225 224.39C336.88 224.39 299.64 232.916 267.505 248.65C253.308 224.896 227.211 209 197.425 209C152.521 209 116 245.129 116 289.841ZM197.425 227.379C162.545 227.379 134.388 255.409 134.388 289.841C134.388 317.289 152.281 340.669 177.21 349.024C186.635 320.107 204.629 292.396 229.857 272.315C236.613 266.938 243.79 261.974 251.328 257.443C240.282 239.433 220.299 227.379 197.425 227.379ZM446.779 360.115H303.018C306.737 349.679 316.77 342.202 328.564 342.202H421.233C433.027 342.202 443.061 349.679 446.779 360.115ZM619.29 289.841C619.29 318.579 600.247 342.969 573.927 351.183C564.705 321.49 546.448 292.895 520.593 272.315C513.67 266.805 506.305 261.729 498.563 257.108C509.854 238.223 530.619 225.541 554.414 225.541C590.296 225.541 619.29 254.381 619.29 289.841ZM509.964 436.589C509.964 446.102 502.19 453.813 492.6 453.813C483.011 453.813 475.237 446.102 475.237 436.589C475.237 427.077 483.011 419.365 492.6 419.365C502.19 419.365 509.964 427.077 509.964 436.589ZM276.601 436.589C276.601 446.102 268.828 453.813 259.238 453.813C249.649 453.813 241.875 446.102 241.875 436.589C241.875 427.077 249.649 419.365 259.238 419.365C268.828 419.365 276.601 427.077 276.601 436.589ZM375.572 542C399.162 542 420.369 522.299 420.369 504.796C420.369 487.293 399.162 478.616 375.572 478.616C351.982 478.616 330.775 487.293 330.775 504.796C330.775 522.299 351.982 542 375.572 542Z"
+                  fill="var(--brand-fill)"
+                />
+              </svg>
             </span>
-          )
-        })}
-      </span>
+          )}
+        </h1>
+        {/* Blurb */}
+        <div className="leading-tight">
+          <ContentBlock type="bio">
+            {character?.bio || 'Where in the world is Jhey Tompkins?'}
+          </ContentBlock>
+        </div>
+        {/* Details */}
+        <span className="flex gap-x-4 items-center text-fluid--1 flex-wrap text-text-4">
+          {Object.keys(DEETS).map((key) => {
+            const Deet = DEETS[key]
+            return (
+              <span key={key} className="flex items-center gap-1">
+                <Deet.icon />
+                <span className="whitespace-nowrap">
+                  <Deet.text />
+                </span>
+              </span>
+            )
+          })}
+        </span>
+      </div>
     </header>
-    </>
   )
 }
 
