@@ -25,6 +25,18 @@ const articleComponents = {
       ></p>
     )
   },
+  articleimage({ node, ...props }) {
+    return (
+      <figure className="lg:rounded-lg col-span-full max-w-[100vw]">
+        <img {...props} className="mb-2 w-full" />
+        {props.caption && props.caption !== '' && (
+          <figcaption className="text-text-3 text-fluid--2 text-center">
+            {props.caption}
+          </figcaption>
+        )}
+      </figure>
+    )
+  },
   img({ node, ...props }) {
     if (props.src.endsWith('.mp4')) {
       return (
@@ -35,7 +47,7 @@ const articleComponents = {
       return <audio className="rounded-lg" {...props} controls></audio>
     }
     return (
-      <figure className="bleed max-w-[100vw] transform relative left-1/2 -translate-x-1/2 lg:rounded-lg grid place-items-center">
+      <figure className="col-span-full max-w-[100vw] lg:rounded-lg">
         <img {...props} className="mb-2" />
         {props.alt && props.alt !== '' && (
           <figcaption className="text-text-3 text-fluid--2 text-center">

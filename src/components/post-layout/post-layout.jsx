@@ -27,7 +27,7 @@ const PostLayout = ({ _type: type, title, body, cheep, ...props}) => {
     return (
       <>
         <PostHeader character={props.author} title={title} body={body} {...props} />
-        <main className="w-article grid gap-6 max-w-full mx-auto leading-[1.5]">
+        <main className="w-article grid gap-y-6 max-w-full mx-auto leading-[1.5]">
           <ContentBlock type="article">{body}</ContentBlock>
           {props.siteConfig?.cheeps?.footer && (
             <aside className="relative my-12 rounded-lg bg-surface-3 text-text-2 p-8 leading-tight gap-2 text-fluid--1 grid place-items-center">

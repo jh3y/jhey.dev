@@ -18,7 +18,9 @@ const formatter = new Intl.DateTimeFormat('en-GB', {
 const LayoutHeader = ({ character, ...props }) => {
   const readingTime = getReadingTime(props.body)
   const publishedAt = formatter.format(new Date(props.publishedAt))
-  const updatedAt = formatter.format(new Date(props.updatedAt || props.publishedAt))
+  const updatedAt = formatter.format(
+    new Date(props.updatedAt || props.publishedAt)
+  )
   return (
     <header className="w-feature max-w-full mx-auto">
       <div className="w-full aspect-[3/1] bg-surface-4">
@@ -115,7 +117,11 @@ const LayoutHeader = ({ character, ...props }) => {
                 fill="currentColor"
                 className="w-5 h-5"
               >
-                <path fillRule="evenodd" d="M14.615 1.595a.75.75 0 01.359.852L12.982 9.75h7.268a.75.75 0 01.548 1.262l-10.5 11.25a.75.75 0 01-1.272-.71l1.992-7.302H3.75a.75.75 0 01-.548-1.262l10.5-11.25a.75.75 0 01.913-.143z" clipRule="evenodd" />
+                <path
+                  fillRule="evenodd"
+                  d="M14.615 1.595a.75.75 0 01.359.852L12.982 9.75h7.268a.75.75 0 01.548 1.262l-10.5 11.25a.75.75 0 01-1.272-.71l1.992-7.302H3.75a.75.75 0 01-.548-1.262l10.5-11.25a.75.75 0 01.913-.143z"
+                  clipRule="evenodd"
+                />
               </svg>
               <span className="sr-only">Updated</span>
               <time>{`${updatedAt}`}</time>
@@ -161,22 +167,28 @@ const LayoutHeader = ({ character, ...props }) => {
                 d="M6 6h.008v.008H6V6z"
               />
             </svg>
-            <span className="flex items-center gap-1">
+            <ul className="flex flex-wrap items-center">
               {props.tags &&
                 props.tags.map((tag, index) => {
                   return (
                     <React.Fragment key={tag._id}>
-                      <a
-                        className="font-bold"
-                        href={`/cheeps/${tag.title.toLowerCase()}`}
-                      >
-                        {tag.title}
-                      </a>
-                      {index !== props.tags.length - 1 ? ',' : ''}
+                      <li>
+                        <a
+                          className="font-bold"
+                          href={`/cheeps/${tag.title.toLowerCase()}`}
+                        >
+                          {tag.title}
+                        </a>
+                        {index !== props.tags.length - 1 ? (
+                          <span aria-hidden="true">,&nbsp;</span>
+                        ) : (
+                          ''
+                        )}
+                      </li>
                     </React.Fragment>
                   )
                 })}
-            </span>
+            </ul>
           </span>
         </span>
       </div>

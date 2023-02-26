@@ -4,8 +4,12 @@ import Layout from "../../layouts/Layout.astro";
 import PostLayout from "../../components/post-layout/post-layout.jsx";
 
 export async function getStaticPaths() {
-  const posts = await getSitePosts()
+  let posts = await getSitePosts()
   const siteConfig = await getSiteConfig()
+  // Filter draft posts for production
+  if (import.meta.env.MODE !== 'development') {
+    posts = posts.filter(post => post.draft !== true)
+  }
   // Loop over them and get the content
   return posts.map(({ slug, ...props }) => {
     return {

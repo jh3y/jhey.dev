@@ -11,7 +11,6 @@ const scriptInliner = document => {
     inlineScripts.forEach((script) => {
       const path = script.getAttribute("src")
       const scriptPath = `${BASE}${path}`
-      console.info({ path, scriptPath })
       let scripts = fs.readFileSync(scriptPath, 'utf-8')
 
       const lines = scripts.split(';')
@@ -27,7 +26,6 @@ const scriptInliner = document => {
            * in its own <script> tag at the end.
            * */
           const chunk = line.slice(line.indexOf('"') + 2, line.lastIndexOf('"'))
-          console.info({ chunk })
           /**
            * Note:: You could check if doing a named import here.
            * And then change the text in the chunk to replace the export with a variable name.

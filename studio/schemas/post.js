@@ -19,6 +19,12 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'draft',
+      title: 'Draft',
+      description: 'Whether this article should be built for production',
+      type: 'boolean',
+    }),
+    defineField({
       name: 'og',
       title: 'Open Graph',
       type: 'object',
