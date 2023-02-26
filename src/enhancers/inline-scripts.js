@@ -11,6 +11,7 @@ const scriptInliner = document => {
     inlineScripts.forEach((script) => {
       const path = script.getAttribute("src")
       const scriptPath = `${BASE}${path}`
+      console.info({ path, scriptPath })
       let scripts = fs.readFileSync(scriptPath, 'utf-8')
 
       const lines = scripts.split(';')
@@ -26,6 +27,7 @@ const scriptInliner = document => {
            * in its own <script> tag at the end.
            * */
           const chunk = line.slice(line.indexOf('"') + 2, line.lastIndexOf('"'))
+          console.info({ chunk })
           /**
            * Note:: You could check if doing a named import here.
            * And then change the text in the chunk to replace the export with a variable name.
@@ -34,7 +36,7 @@ const scriptInliner = document => {
            * But, this will introduce issues when you start doing other things like React, etc.
            * Instead just attack at a level above and only inline non-demo pages.
            */
-          if (!chunks[chunk]) chunks[chunk] = fs.readFileSync(`${BASE}${chunk}`, 'utf-8')
+          if (!chunks[chunk]) chunks[chunk] = fs.readFileSync(`${BASE}/_astro${chunk}`, 'utf-8')
           // Remove the chunk reference
           scripts = scripts.replace(`${line};`, '')
           // Push the chunk refernce to the required Array

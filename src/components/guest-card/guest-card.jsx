@@ -5,9 +5,9 @@ const GuestCard = (props) => {
   return (
     <article
       data-cheep-id={props._id}
-      className={`card border border-transparent grid grid-cols-[auto_1fr] p-4 gap-2 rounded-lg max-w-full w-full ${
+      className={`card grid grid-cols-[auto_1fr] p-4 gap-2 rounded-lg max-w-full w-full ${
         props.permacard
-          ? 'bg-surface-2 shadow-lg border-surface-3'
+          ? 'bg-surface-2 shadow-lg border border-surface-3'
           : 'hover:bg-surface-2'
       }`}
     >

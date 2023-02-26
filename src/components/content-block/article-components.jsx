@@ -17,7 +17,7 @@ const articleComponents = {
     return (
       <p
         {...props}
-        className={`mb-6 ${
+        className={` ${
           node?.position?.start?.line === 1
             ? 'first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:mr-3 first-letter:float-left'
             : ''
@@ -35,7 +35,7 @@ const articleComponents = {
       return <audio className="rounded-lg" {...props} controls></audio>
     }
     return (
-      <figure className="bleed max-w-[100vw] transform relative left-1/2 -translate-x-1/2 lg:rounded-lg grid place-items-center my-6">
+      <figure className="bleed max-w-[100vw] transform relative left-1/2 -translate-x-1/2 lg:rounded-lg grid place-items-center">
         <img {...props} className="mb-2" />
         {props.alt && props.alt !== '' && (
           <figcaption className="text-text-3 text-fluid--2 text-center">
@@ -55,7 +55,7 @@ const articleComponents = {
       <h2
         id={id}
         tabIndex="-1"
-        className={`scroll-mt-16 flex gap-x-2 items-center mt-24 font-bold ${txt.toLowerCase() === 'further reading' ? 'uppercase text-fluid-1 mb-2' : 'mb-6'}`}
+        className={`scroll-mt-16 flex gap-x-2 items-center mt-20 font-bold ${txt.toLowerCase() === 'further reading' ? 'uppercase text-fluid-1 mb-2' : ''}`}
       >
         <span>{children}</span>
         <a
@@ -90,7 +90,7 @@ const articleComponents = {
       <h3
         id={id}
         tabIndex="-1"
-        className={`scroll-mt-16 flex gap-x-2 items-center mb-6 mt-24 font-bold`}
+        className={`scroll-mt-16 flex gap-x-2 items-center mb-6 mt-20 font-bold`}
       >
         <span>{children}</span>
         <a
@@ -123,7 +123,7 @@ const articleComponents = {
 
     return (
       <div className="grid place-items-center">
-        <div className="my-6 font-mono grid place-items-center gap-4 gap-y-2 grid-cols-3">
+        <div className="font-mono grid place-items-center gap-4 gap-y-2 grid-cols-3">
           <span>
             <svg
               fill="#4285F4"
@@ -188,7 +188,7 @@ const articleComponents = {
   },
   pre({ node, ...props }) {
     return (
-      <div className="col-span-full mb-6 group bg-[var(--gray-8)] max-w-[100vw] relative lg:rounded-lg">
+      <div className="col-span-full group bg-[var(--gray-8)] max-w-[100vw] relative lg:rounded-lg">
         <pre tabIndex="0" className="p-4 m-0 overflow-auto">
           {props.children}
         </pre>
