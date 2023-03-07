@@ -54,9 +54,9 @@ Before, jhey.dev used the second of those to create images like this.
 
 <ArticleImage src="/media/image/2023/02/dynamic-open-graph-images-for-your-site/old-open-graph.png" alt="Image of an old open graph image used on jhey.dev. It reads 'Get started with React by building a Whac-a-mole game'. There is cartoon bear head wearing a baseball cap and sunglasses. An image is reflected in the sunglasses. The bear is clipped in half by the image bounds." width="576" height="301" caption="Previous open graph image for jhey.dev"></ArticleImage>
 
-It can be quite a weighty solution. I wanted to reflect the article here in the bear's sunglasses though. The idea is that you create some HTML and use Puppeteer to open it and take a screenshot of it. Then save that and host it. This all happens in a node script that could get run post-build.
+It can be quite a weighty solution. I wanted to reflect the article hero image in the bear's sunglasses at the time. The idea is that you create some HTML and use Puppeteer to open it and take a screenshot of it. Then save that and host it. This all happens in a node script that could get run post-build.
 
-The use of an image CDN is quite appealing. Jason Lengstorf has a good write-up on using Cloudinary to auto-generate social images. This was the first time I recall seeing it done with generated URLs. It's a lovely solution.
+The use of an image CDN is quite appealing. Jason Lengstorf has a good write-up on using Cloudinary to auto-generate social images. This was the first time I recall seeing it done with generated URLs. It's a neat solution.
 
 Then Vercel announced `@vercel/og` built upon `satori`. This is the one that excited me. It's a balance between the URL solution and the control of HTML. I got a quick taste by integrating it into the Codu community site. And after seeing how good it was, I wanted it for my own site. But, I don't use Vercel. And switching hosting providers for social images seemed extreme. So, how can you do it?
 
@@ -69,6 +69,15 @@ https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation
 https://github.com/codu-code/codu/pull/92
 
 
+## Build your own
+
+Dislcaimer:
+
+This is what I use. But, the general idea _should_ scale and if you've got links to how you've done it, please share and I'll list them here.
+
+Getting started. WASM, DENO, Reverse Engineering, JSX, SVG, Satori limitations.
+
+That's it! Deploy and have fun using the Netlify CLI.
 
 ---
 

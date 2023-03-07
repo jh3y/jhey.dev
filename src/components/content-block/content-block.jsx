@@ -1,11 +1,8 @@
 import React from 'react'
-import slugify from 'slugify'
 import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
 import rehypeRaw from 'rehype-raw'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import nightOwl from 'react-syntax-highlighter/dist/cjs/styles/prism/night-owl'
 
 import remarkToc from './remarkToc.js'
 
@@ -44,9 +41,8 @@ const ContentBlock = ({ type, children }) => {
       }
       rehypePlugins={rehypePlugins}
       components={components}
-    >
-      {children}
-    </Markdown>
+      children={typeof children === 'string' ? children : children.props.value.toString()}
+    />
   )
 }
 

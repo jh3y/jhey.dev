@@ -72,7 +72,7 @@ const Content = ({ content: { data, currentPage, totalPages, route } }) => {
             where: 'jhey.dev',
             when: post.publishedAt,
           }))
-          section.selection = internalPosts.slice(0, 10)
+          section.selection = internalPosts.filter(p => p.draft !== true).slice(0, 10)
         }
 
         return (

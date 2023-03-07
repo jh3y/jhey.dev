@@ -1,7 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import ContentBlock from "../../components/content-block/content-block.jsx"
-import Links from './_links.md?raw'
 
 import { getWriting, getSiteConfig } from '../../constants/queries'
 
@@ -57,9 +56,10 @@ const sorted = writing.sort((a, b) => {
         </svg>
       </a>
     </div>
-    <ContentBlock type="about" children={siteConfig.writing} />
+    <ContentBlock type="about">{siteConfig.writing}</ContentBlock>
     <ul>
       {sorted.map(article => {
+        if (article.draft && import.meta.env.MODE !== 'development') return null
         const data = {
           title: article.title,
           id: article._id,

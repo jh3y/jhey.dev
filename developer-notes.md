@@ -97,6 +97,7 @@
 5. Profit...
 
 ## TODO::
+- Dynamic island style nav with icon buttons
 - Writing page filtering and tags for articles based on publications, etc. Ordered by amount.
 - /AMA, /Uses, /Now
 - Test out some interval based DOM changing scripts in Prod

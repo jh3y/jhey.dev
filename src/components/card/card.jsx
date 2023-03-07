@@ -1,5 +1,4 @@
 import React from 'react'
-import Markdown from 'react-markdown'
 import ContentBlock from '../content-block/content-block'
 
 const Card = (props) => {
