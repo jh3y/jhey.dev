@@ -48,7 +48,7 @@ const articleComponents = {
     }
     return (
       <figure className="col-span-full max-w-[100vw] lg:rounded-lg">
-        <img {...props} className="mb-2" />
+        <img {...props} className="mb-2 mx-auto" />
         {props.alt && props.alt !== '' && (
           <figcaption className="text-text-3 text-fluid--2 text-center">
             {props.alt}

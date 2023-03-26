@@ -3,11 +3,14 @@
 Need a link to find me somewhere? Odds are, it's here.
 
 - [Website](/)
+- [Sponsor](https://github.com/sponsors/jh3y)
+- [Mailing List](https://cubhouse.jhey.dev)
 - [Writing](/writing)
 - [Email](mailto:hey@jhey.dev)
-- [Resumé](/resume)
 - [Schedule a call](https://calendly.com/jh3y)
-- [Speedy Dev Tips](https://twitter.com/i/events/1549102292632305665)
+- [YouTube](https://youtube.com/jheytompkins)
+- [Twitch](https://twitch.tv/jh3yy)
+- [Resumé](/resume)
 
 ## Social Media
 - [Twitter](https://twitter.com/jh3yy)

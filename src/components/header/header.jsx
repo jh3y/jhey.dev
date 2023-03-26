@@ -21,10 +21,7 @@ const DEETS = {
     ),
     text: () => (
       <span>
-        DevRel @{' '}
-        <span className="google text-transparent bg-clip-text font-bold">
-          Google
-        </span>
+        Available
       </span>
     ),
   },
@@ -95,20 +92,15 @@ const LayoutHeader = ({ banner, character }) => {
             loading="eager"
           />
           <a
-            href="/rss/rss.xml"
+            href="https://twitter.com/intent/follow?screen_name=jh3yy"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:no-underline border-transparent focus:border-text-1 outline-transparent focus-visible:border-text-1 hover:border-text-1 border-4 rounded-full text-fluid--1 flex gap-x-1 items-center text-white bg-brand-fill px-3 py-1"
           >
             <span className="font-bold">Follow</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              className="w-4 h-4"
-            >
-              <path d="M3.75 3a.75.75 0 00-.75.75v.5c0 .414.336.75.75.75H4c6.075 0 11 4.925 11 11v.25c0 .414.336.75.75.75h.5a.75.75 0 00.75-.75V16C17 8.82 11.18 3 4 3h-.25z" />
-              <path d="M3 8.75A.75.75 0 013.75 8H4a8 8 0 018 8v.25a.75.75 0 01-.75.75h-.5a.75.75 0 01-.75-.75V16a6 6 0 00-6-6h-.25A.75.75 0 013 9.25v-.5zM7 15a2 2 0 11-4 0 2 2 0 014 0z" />
+            <svg fill="currentColor" className="w-5 h-5" viewBox="0 0 24 24" role="img">
+              <title>Twitter icon</title>
+              <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path>
             </svg>
           </a>
         </div>
@@ -153,6 +145,19 @@ const LayoutHeader = ({ banner, character }) => {
             )
           })}
         </span>
+        {/* Mailing list sign up */}
+        <form
+          className="my-6 grid gap-y-2 justify-center text-center"
+          action="https://app.convertkit.com/forms/4960615/subscriptions"
+          method="post"
+        >
+          <p>Keep up to date with my latest projects and adventures!</p>
+          <div className="flex">
+            <input className="p-2 px-4 flex-grow rounded-l-full" name="email_address" aria-label="Email Address" placeholder="Email Address" required="" type="email" />
+            <button className="font-bold hover:no-underline border-transparent focus:border-text-1 outline-transparent focus-visible:border-text-1 hover:border-text-1 border-4 rounded-r-full text-fluid--1 flex gap-x-1 items-center text-white bg-brand-fill px-3 py-1">Subscribe!</button>
+          </div>
+          <p className="text-fluid--2 text-center text-text-4">No spam. Unsubscribe any time.</p>
+        </form>
       </div>
     </header>
   )
