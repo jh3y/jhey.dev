@@ -1,82 +1,22 @@
----
-import Nav from '../components/nav/nav.jsx'
-import Footer from '../components/footer/footer.jsx'
-
-import '../styles/main.css'
-import "../styles/bear.css";
-
-const { ogtitle, oggradient, oghue, flexLayout } = Astro.props;
-
-let extras = ``
-if (oggradient) extras += `&gradient=${oggradient}`
-if (oghue) extras += `&hue=${oghue}`
-
-
-// Import here for siteConfig and then let outside props override...
-
-let ogImageUrl = `https://jhey.netlify.app/og?title=${encodeURIComponent(ogtitle)}${extras}`
-
-const title = `${Astro.props.title || "Howdy! I'm Jhey Tompkins"} – jhey.dev`
-const description = Astro.props.description || "A developer making awesome things for awesome people"
-const openGraphTitle = ogtitle || Astro.props.title || 'A post from Jhey'
----
-<!DOCTYPE html>
-<html lang="en" data-theme="system">
-  <head>
-    <title>{title}</title>
-    <meta charset="utf-8" />
-    <meta name="description" property="og:description" content={description}/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"/>
-    <meta name="theme-color" content="#CC0088" />
-    <link rel="manifest" href="/manifest.json" />
-    <link rel="icon" href="/icons/favicon-32x32.png" type="image/png" sizes="16x16"/>
-    <link rel="shortcut icon" href="/icons/favicon-32x32.png" />
-    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
-    <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <meta property="og:site_name" content={title} />
-    <meta property="og:title" content={title} />
-    <meta name="author" content="Jhey Tompkins" />
-    <meta name="image" content={ogImageUrl}/>
-    <meta name="image" property="og:image" content={ogImageUrl} />
-    <meta name="og:image" content={ogImageUrl} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://jhey.dev/" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImageUrl} />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:creator" content="@jh3yy" />
-  </head>
-  <body>
-    <svg aria-hidden="true" class="watermark-bear" viewBox="0 0 969 955" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="161.191" cy="320.191" r="133.191" stroke="currentColor" stroke-width="20"/>
-      <circle cx="806.809" cy="320.191" r="133.191" stroke="currentColor" stroke-width="20"/>
-      <circle cx="695.019" cy="587.733" r="31.4016" fill="currentColor" stroke-width="20" />
-      <circle cx="272.981" cy="587.733" r="31.4016" fill="currentColor" stroke-width="20" />
-      <path d="M564.388 712.083C564.388 743.994 526.035 779.911 483.372 779.911C440.709 779.911 402.356 743.994 402.356 712.083C402.356 680.173 440.709 664.353 483.372 664.353C526.035 664.353 564.388 680.173 564.388 712.083Z" fill="currentColor"/>
-      <rect x="310.42" y="448.31" width="343.468" height="51.4986" fill="#FF1E1E"/>
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M745.643 288.24C815.368 344.185 854.539 432.623 854.539 511.741H614.938V454.652C614.938 433.113 597.477 415.652 575.938 415.652H388.37C366.831 415.652 349.37 433.113 349.37 454.652V511.741L110.949 511.741C110.949 432.623 150.12 344.185 219.845 288.24C289.57 232.295 384.138 200.865 482.744 200.865C581.35 200.865 675.918 232.295 745.643 288.24Z" fill="currentColor"/>
-    </svg>
-    {flexLayout === true && (
-      <div class="flex flex-col min-h-screen">
-        <Nav />
-        <slot />
-        <Footer />
-      </div>
-    )}
-    {!flexLayout && (
-      <Fragment>
-        <Nav />
-        <slot />
-        <Footer />
-      </Fragment>
-    )}
-  </body>
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro Basics</title>
+	</head>
+	<body>
+		<slot />
+	</body>
 </html>
-<script>
-  import '../scripts/theme-toggle.js'
-</script>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+	}
+</style>

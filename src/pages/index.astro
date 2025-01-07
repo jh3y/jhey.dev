@@ -1,16 +1,12 @@
 ---
-import FeedLayout from "../layouts/Feed.astro"
-import { ROUTES } from '../constants/routes.js'
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
 
-const page = {
-  route: ROUTES.cheeps.href,
-}
-
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
-<FeedLayout
-  title="Feed"
-  ogtitle="The feed of Jhey Tompkins"
-  description="Thoughts and creations from the mind of Jhey Tompkins"
-  oggradient="8"
-  page={page}
-/>
+
+<Layout>
+  <h1 class="text-4xl font-bold">the one who builds</h1>
+  Jhey Tompkins - Design Engineer @ Vercel
+</Layout>
