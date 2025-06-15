@@ -139,6 +139,7 @@ body::before {
       --duration: 1.4;
       --delay: 0.2;
       --base-delay: calc((var(--duration) + var(--delay)));
+      --base-delay: 0.5;
       --natty-delay: 0.973125;
 
       path {
