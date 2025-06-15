@@ -1,0 +1,18 @@
+---
+title: 'Jhey Tompkins'
+layout: '../layouts/Layout.astro'
+---
+
+export const components = {
+  a: (props) => (
+    <a
+      class="text-red-400 [:is(:hover,:focus-visible)]:underline underline-offset-2"
+      href={props.href}
+      {...(props.href.startsWith('http') ? { target: '_blank' } : null)}
+    >
+      {props.children}
+    </a>
+  ),
+}
+
+I make lots of UI demos.<br/>You can [follow along on X](https://twitter.com/intent/follow?screen_name=jh3yy).
