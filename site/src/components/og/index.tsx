@@ -157,7 +157,7 @@ const OG = ({ title }: { title: string }) => {
           <img
             alt=""
             style={{ width: "40px", height: "40px", borderRadius: "50%" }}
-            src="https://jhey.dev/headshot.png"
+            src="https://jhey.dev/headshot-80x80.png"
           />
         </div>
       </div>
