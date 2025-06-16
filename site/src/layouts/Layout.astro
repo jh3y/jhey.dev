@@ -101,11 +101,7 @@ injectSpeedInsights()
     <main
       class={clsx(
         'w-content mx-auto flex-1 flex flex-col justify-center max-w-max-content',
-        '[&>p:not(:has(+ul))]:mb-8 leading-[1.5] [&_p]:text-md',
-        '[&_ul]:list-disc [&_ul]:mb-8 [&_ul]:mt-2 [&_ul]:pl-6',
-        '[&_ul]:flex [&_ul]:flex-col [&_ul]:gap-y-2',
-        '[&_h2]:font-serif [&_h2]:[--font-size-min:20] [&_h2]:[--font-level:1.4] [&_h2]:leading-none',
-        '[&_h2]:mt-20 [&_h2]:mb-4',
+        '[&_p]:font-serif [&_p]:[--font-size-min:20] [&_p]:[--font-level:1.8] [&_p]:leading-none',
       )}
     >
       <section class="text-center flex flex-col place-items-center gap-y-8">
@@ -116,10 +112,15 @@ injectSpeedInsights()
             Jhey Tompkins
           </h1>
         </header> -->
-        <slot />
+        <div class={clsx(
+          "motion-safe:animate-[reveal_0.35s_ease-out_0.5s_both]",
+          "[--translate-from-y:1rem]",
+        )}>
+          <slot />
+        </div>
 
         <svg
-          class="sig text-[canvasText]"
+          class="sig text-current"
           viewBox="0 0 271 209"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

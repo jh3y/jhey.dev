@@ -17,6 +17,21 @@
   --color-canvas: canvas;
 }
 
+@keyframes reveal {
+  0% {
+    filter: blur(var(--blur-from, 4px));
+    scale: var(--scale-from, 0.9);
+    opacity: var(--opacity-from, 0);
+    translate: var(--translate-from-x, 0) var(--translate-from-y, 0);
+  }
+  100% {
+    filter: blur(var(--blur-to, 0px));
+    scale: var(--scale-to, 1);
+    opacity: var(--opacity-to, 1);
+    translate: var(--translate-to-x, 0) var(--translate-to-y, 0);
+  }
+}
+
 :where(a, button):focus-visible {
   outline: 2px solid var(--color-red-400);
   outline-offset: 2px;
@@ -41,6 +56,7 @@ html {
   color-scheme: dark only;
 }
 
+main p,
 .text-fluid {
   --fluid-min: calc(
     var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0))
@@ -98,8 +114,9 @@ body::before {
 
 @layer signature {
   .sig {
-    width: 180px;
-    rotate: 10deg;
+    width: clamp(180px, 50%, 240px);
+    rotate: 12deg;
+    translate: 20% 0;
 
     .eye {
       transform-box: fill-box;
@@ -108,7 +125,7 @@ body::before {
 
     :is(.eye, .nose) {
       fill: currentColor;
-    }    
+    }
   }
   @media (prefers-reduced-motion: no-preference) {
     @keyframes fill {
@@ -121,7 +138,7 @@ body::before {
         stroke-dashoffset: 0;
       }
     }
-  
+
     @keyframes blink {
       0%,
       46%,
@@ -136,10 +153,10 @@ body::before {
       }
     }
     .sig {
-      --duration: 1.4;
+      --duration: 0.6;
       --delay: 0.2;
       --base-delay: calc((var(--duration) + var(--delay)));
-      --base-delay: 0.5;
+      --base-delay: 0.75;
       --natty-delay: 0.973125;
 
       path {
