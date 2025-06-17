@@ -5,7 +5,6 @@ import { clsx } from 'clsx'
 import { Font } from 'astro:assets'
 import '../styles/global.css'
 const title = 'Jhey Tompkins'
-const description = 'Craftsman. Engineer, Designer, Speaker.'
 const ogImageUrl = 'https://jhey.vercel.app/api/og'
 // inject scripts
 injectSpeedInsights()
@@ -16,7 +15,7 @@ injectSpeedInsights()
   <head>
     <title>{title}</title>
     <meta charset="utf-8" />
-    <meta name="description" property="og:description" content={description} />
+    <meta name="description" property="og:description" content="Making your ideas click. Jhey Tompkins is the one who crafts. Design Engineer, Craftsman, Speaker, Educator." />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000" />
@@ -41,8 +40,8 @@ injectSpeedInsights()
     <meta property="og:image:height" content="630" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://jhey.dev/" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:title" content="Jhey Tompkins" />
+    <meta name="twitter:description" content="Design Engineer, Craftsman, Speaker, Educator." />
     <meta name="twitter:image" content={ogImageUrl} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@jh3yy" />
