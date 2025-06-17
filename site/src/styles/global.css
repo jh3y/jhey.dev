@@ -2,6 +2,7 @@
 @import 'tailwindcss';
 
 @theme {
+  --color-bg: light-dark(#fff, #000);
   --header-height: 80px;
   --spacing-content: 600px;
   --content: 600px;
@@ -85,6 +86,7 @@ main p,
 }
 
 body {
+  background: var(--color-bg);
   color: color-mix(in hsl, canvasText, canvas 40%);
   display: flex;
   flex-direction: column;
@@ -95,7 +97,7 @@ body {
 
 body::before {
   --size: 40px;
-  --line: color-mix(in hsl, canvasText, transparent 90%);
+  --line: color-mix(in hsl, canvasText, transparent 82%);
   content: '';
   height: 100dvh;
   width: 100vw;
@@ -105,7 +107,7 @@ body::before {
       calc(var(--size) * 0.36) 50% / var(--size) var(--size),
     linear-gradient(var(--line) 1px, transparent 1px var(--size)) 0%
       calc(var(--size) * 0.32) / var(--size) var(--size);
-  mask: linear-gradient(125deg, transparent 70%, white);
+  mask: linear-gradient(125deg, transparent 60%, white);
   top: 0;
   transform-style: flat;
   pointer-events: none;
