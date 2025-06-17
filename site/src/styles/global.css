@@ -97,7 +97,7 @@ body {
 
 body::before {
   --size: 40px;
-  --line: color-mix(in hsl, canvasText, transparent 82%);
+  --line: light-dark(color-mix(in hsl, canvasText, transparent 82%), color-mix(in hsl, canvasText, transparent 70%));
   content: '';
   height: 100dvh;
   width: 100vw;
