@@ -124,6 +124,15 @@ const OG = ({ title }: { title: string }) => {
           </div>
         </div>
       </div>
+      <img src="https://jhey.dev/headshot-og.png" style={{
+        height: '120%',
+        objectFit: 'cover',
+        position: 'absolute',
+        right: -40,
+        bottom: -20,
+        opacity: 1,
+        filter: 'contrast(0.75)'
+      }} />
     </div>
   )
 }
