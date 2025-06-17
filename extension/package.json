@@ -1,22 +1,51 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
-  "name": "site",
-  "title": "site",
-  "description": "updates content for personal site",
+  "name": "jhey-dev",
+  "title": "Jhey.dev",
+  "description": "an extension for updating content on jhey.dev",
   "icon": "extension-icon.png",
   "author": "jhey",
+  "categories": [
+    "Productivity"
+  ],
+  "preferences": [
+    {
+      "name": "localRepoPath",
+      "type": "directory",
+      "description": "Path to your local repository",
+      "required": false,
+      "title": "Local Repository Path",
+      "placeholder": "e.g., /Users/username/projects/my-repo"
+    },
+    {
+      "name": "githubToken",
+      "type": "password",
+      "description": "GitHub Token for using API",
+      "required": false,
+      "title": "GitHub Token"
+    }
+  ],
   "license": "MIT",
   "commands": [
     {
       "name": "add-thought",
       "title": "Add Thought",
-      "description": "Adds a new thought to the site brain stream",
-      "mode": "no-view"
+      "description": "Commits new thoughts to your repository",
+      "mode": "view"
+    },
+    {
+      "name": "manage-thoughts",
+      "title": "Manage Thoughts",
+      "description": "View, edit, or delete thoughts",
+      "mode": "view"
     }
   ],
   "dependencies": {
-    "@raycast/api": "^1.100.2",
-    "@raycast/utils": "^1.17.0"
+    "@raycast/api": "^1.98.2",
+    "@raycast/utils": "^1.17.0",
+    "@types/uuid": "^10.0.0",
+    "octokit": "^3.1.2",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@raycast/eslint-config": "^2.0.4",
