@@ -64,11 +64,11 @@ export default function ManageThoughts() {
 
   const filteredThoughts = thoughts.filter((thought) => {
     const searchLower = searchText.toLowerCase();
-    const titleMatch =
-      thought.title?.toLowerCase().includes(searchLower) || false;
+    const statusMatch =
+      thought.status?.toLowerCase().includes(searchLower) || false;
     const bodyMatch =
       thought.body?.toLowerCase().includes(searchLower) || false;
-    return titleMatch || bodyMatch;
+    return statusMatch || bodyMatch;
   });
 
   return (
@@ -82,9 +82,9 @@ export default function ManageThoughts() {
         {filteredThoughts.map((thought: ThoughtItem) => (
           <List.Item
             key={thought.id}
-            title={thought.title || (thought.body || "").split("\n")[0]}
+            title={thought.status || (thought.body || "").split("\n")[0]}
             subtitle={
-              thought.title
+              thought.status
                 ? thought.body
                 : (thought.body || "").split("\n").slice(1).join("\n")
             }

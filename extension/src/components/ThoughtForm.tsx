@@ -4,7 +4,7 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 export interface ThoughtFormValues {
-  title?: string;
+  status?: string;
   body: string;
 }
 
@@ -21,7 +21,7 @@ export default function ThoughtForm({
   onCancel,
   isLoading,
 }: ThoughtFormProps) {
-  const [title, setTitle] = useState(defaultValues?.title || "");
+  const [status, setStatus] = useState(defaultValues?.status || "");
   const [body, setBody] = useState(defaultValues?.body || "");
 
   const handleSubmit = async (values: ThoughtFormValues) => {
@@ -40,17 +40,17 @@ export default function ThoughtForm({
         title: defaultValues ? "Updating thought..." : "Adding thought...",
       });
 
-      // Only include title if it's not empty
+      // Only include status if it's not empty
       const submissionValues = {
         id: defaultValues?.id || uuidv4(),
         body: values.body,
-        ...(values.title?.trim() ? { title: values.title } : {}),
+        ...(values.status?.trim() ? { status: values.status } : {}),
       };
 
       await onSubmit(submissionValues);
 
       // Clear form fields after successful submission
-      setTitle("");
+      setStatus("");
       setBody("");
 
       // Show success toast instead of HUD
@@ -86,10 +86,10 @@ export default function ThoughtForm({
         onChange={setBody}
       />
       <Form.TextField
-        id="title"
-        title="Title"
-        value={title}
-        onChange={setTitle}
+        id="status"
+        title="Status"
+        value={status}
+        onChange={setStatus}
       />
     </Form>
   );

@@ -39,7 +39,7 @@ export default function AddThoughts() {
     const success = await addThought({
       id: uuidv4(),
       body: values.body,
-      ...(values.title ? { title: values.title } : {}),
+      ...(values.status ? { status: values.status } : {}),
     });
     console.log("AddThoughts - addThought result:", success);
     if (!success) {

@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 
 export interface ThoughtItem {
   id: string;
-  title?: string;
+  status?: string;
   body: string;
   date: string;
 }
