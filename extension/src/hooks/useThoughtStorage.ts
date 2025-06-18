@@ -3,6 +3,7 @@ import { useGithubStorage } from "./useGithubStorage";
 import { useLocalStorage } from "./useLocalStorage";
 import { CONFIG } from "../config";
 import { v4 as uuidv4 } from "uuid";
+import { useState } from "react";
 
 export interface ThoughtItem {
   id: string;
@@ -97,4 +98,186 @@ export function useThoughtStorage(props: UseThoughtStorageProps) {
   };
 
   return storage;
+}
+
+export interface DemoItem {
+  title: string;
+  url: string;
+}
+
+export function useDemoStorage(props: UseThoughtStorageProps) {
+  const filePath = props.filePath || "site/src/data/demo.json";
+  const hasLocalConfig = props.localRepoPath;
+  const hasGithubConfig = props.githubToken && props.repoOwner && props.repoName;
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [demo, setDemo] = useState<DemoItem | null>(null);
+
+  const fetchDemo = async () => {
+    setIsLoading(true);
+    try {
+      let content = "";
+      if (hasLocalConfig) {
+        const fs = await import("fs");
+        const path = await import("path");
+        const fullPath = path.join(props.localRepoPath!, filePath);
+        if (fs.existsSync(fullPath)) {
+          content = fs.readFileSync(fullPath, "utf8");
+        }
+      } else if (hasGithubConfig) {
+        const { Octokit } = await import("octokit");
+        const octokit = new Octokit({ auth: props.githubToken });
+        const { data: fileData } = await octokit.rest.repos.getContent({
+          owner: props.repoOwner!,
+          repo: props.repoName!,
+          path: filePath,
+          ref: props.branch || "main",
+        });
+        if ("content" in fileData) {
+          content = Buffer.from(fileData.content, "base64").toString();
+        }
+      }
+      if (content) {
+        setDemo(JSON.parse(content));
+      }
+    } catch (error) {
+      setDemo(null);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const addDemo = async (demo: DemoItem) => {
+    setIsLoading(true);
+    try {
+      const content = JSON.stringify(demo, null, 2);
+      if (hasLocalConfig) {
+        const fs = await import("fs");
+        const path = await import("path");
+        const fullPath = path.join(props.localRepoPath!, filePath);
+        fs.writeFileSync(fullPath, content);
+      } else if (hasGithubConfig) {
+        const { Octokit } = await import("octokit");
+        const octokit = new Octokit({ auth: props.githubToken });
+        let sha = undefined;
+        try {
+          const { data: fileData } = await octokit.rest.repos.getContent({
+            owner: props.repoOwner!,
+            repo: props.repoName!,
+            path: filePath,
+            ref: props.branch || "main",
+          });
+          if ("sha" in fileData) sha = fileData.sha;
+        } catch {}
+        await octokit.rest.repos.createOrUpdateFileContents({
+          owner: props.repoOwner!,
+          repo: props.repoName!,
+          path: filePath,
+          message: "Update demo",
+          content: Buffer.from(content).toString("base64"),
+          branch: props.branch || "main",
+          ...(sha ? { sha } : {}),
+        });
+      }
+      setDemo(demo);
+      return true;
+    } catch (error) {
+      return false;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return { isLoading, demo, fetchDemo, addDemo };
+}
+
+export interface StatusItem {
+  location: string;
+  status: string;
+}
+
+export function useStatusStorage(props: UseThoughtStorageProps) {
+  const filePath = props.filePath || "site/src/data/status.json";
+  const hasLocalConfig = props.localRepoPath;
+  const hasGithubConfig = props.githubToken && props.repoOwner && props.repoName;
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [statusObj, setStatusObj] = useState<StatusItem | null>(null);
+
+  const fetchStatus = async () => {
+    setIsLoading(true);
+    try {
+      let content = "";
+      if (hasLocalConfig) {
+        const fs = await import("fs");
+        const path = await import("path");
+        const fullPath = path.join(props.localRepoPath!, filePath);
+        if (fs.existsSync(fullPath)) {
+          content = fs.readFileSync(fullPath, "utf8");
+        }
+      } else if (hasGithubConfig) {
+        const { Octokit } = await import("octokit");
+        const octokit = new Octokit({ auth: props.githubToken });
+        const { data: fileData } = await octokit.rest.repos.getContent({
+          owner: props.repoOwner!,
+          repo: props.repoName!,
+          path: filePath,
+          ref: props.branch || "main",
+        });
+        if ("content" in fileData) {
+          content = Buffer.from(fileData.content, "base64").toString();
+        }
+      }
+      if (content) {
+        setStatusObj(JSON.parse(content));
+      }
+    } catch (error) {
+      setStatusObj(null);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const updateStatus = async (statusObj: StatusItem) => {
+    setIsLoading(true);
+    try {
+      const content = JSON.stringify(statusObj, null, 2);
+      if (hasLocalConfig) {
+        const fs = await import("fs");
+        const path = await import("path");
+        const fullPath = path.join(props.localRepoPath!, filePath);
+        fs.writeFileSync(fullPath, content);
+      } else if (hasGithubConfig) {
+        const { Octokit } = await import("octokit");
+        const octokit = new Octokit({ auth: props.githubToken });
+        let sha = undefined;
+        try {
+          const { data: fileData } = await octokit.rest.repos.getContent({
+            owner: props.repoOwner!,
+            repo: props.repoName!,
+            path: filePath,
+            ref: props.branch || "main",
+          });
+          if ("sha" in fileData) sha = fileData.sha;
+        } catch {}
+        await octokit.rest.repos.createOrUpdateFileContents({
+          owner: props.repoOwner!,
+          repo: props.repoName!,
+          path: filePath,
+          message: "Update status",
+          content: Buffer.from(content).toString("base64"),
+          branch: props.branch || "main",
+          ...(sha ? { sha } : {}),
+        });
+      }
+      setStatusObj(statusObj);
+      return true;
+    } catch (error) {
+      return false;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return { isLoading, statusObj, fetchStatus, updateStatus };
 }
