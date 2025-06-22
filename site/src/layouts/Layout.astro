@@ -3,6 +3,8 @@ import Analytics from '@vercel/analytics/astro'
 import { injectSpeedInsights } from '@vercel/speed-insights'
 import { clsx } from 'clsx'
 import { Font } from 'astro:assets'
+import WeatherStatus from '../components/WeatherStatus'
+import SteamStatus from '../components/SteamStatus'
 import '../styles/global.css'
 const title = 'Jhey Tompkins'
 const ogImageUrl = 'https://jhey.vercel.app/api/og'
@@ -185,6 +187,16 @@ injectSpeedInsights()
             pathLength="1"
             style="--path-speed: 0.04; --path-delay: 0.933125"></path>
         </svg>
+
+        <!-- Weather Status Component -->
+        <div class="mt-8">
+          <WeatherStatus client:load />
+        </div>
+
+        <!-- Steam Status Component -->
+        <div class="mt-4">
+          <SteamStatus client:load />
+        </div>
       </section>
     </main>
     <footer class="text-center text-xs p-4 opacity-80">
