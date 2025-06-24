@@ -5,6 +5,7 @@ import { clsx } from 'clsx'
 import { Font } from 'astro:assets'
 import WeatherStatus from '../components/WeatherStatus'
 import SteamStatus from '../components/SteamStatus'
+import Status from '../components/Status.astro'
 import '../styles/global.css'
 const title = 'Jhey Tompkins'
 const ogImageUrl = 'https://jhey.vercel.app/api/og'
@@ -196,6 +197,10 @@ injectSpeedInsights()
         <!-- Steam Status Component -->
         <div class="mt-4">
           <SteamStatus client:load />
+        </div>
+        <!-- Steam Status Component -->
+        <div class="mt-4">
+          <Status client:load />
         </div>
       </section>
     </main>

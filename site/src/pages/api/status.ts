@@ -19,6 +19,7 @@ interface WeatherData {
     lon: number
     localtime: string
     localtime_epoch: number
+    tz_id: string // Timezone ID from weather API
   }
   current: {
     temp_c: number
@@ -41,6 +42,22 @@ interface WeatherData {
     uv: number
     is_day: number
   }
+}
+
+interface TimeApiResponse {
+  year: number
+  month: number
+  day: number
+  hour: number
+  minute: number
+  seconds: number
+  milliSeconds: number
+  dateTime: string
+  date: string
+  time: string
+  timeZone: string
+  dayOfWeek: string
+  dstActive: boolean
 }
 
 interface SteamGameData {
@@ -162,12 +179,38 @@ async function getLastPlayedSong(): Promise<any> {
   return null
 }
 
+async function getAccurateTime(timezone: string): Promise<TimeApiResponse | null> {
+  try {
+    const encodedTimezone = encodeURIComponent(timezone)
+    const timeUrl = `https://timeapi.io/api/time/current/zone?timeZone=${encodedTimezone}`
+    
+    const response = await fetch(timeUrl, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+
+    if (response.ok) {
+      const timeData: TimeApiResponse = await response.json()
+      return timeData
+    } else {
+      console.error('Time API error:', response.status)
+      return null
+    }
+  } catch (error) {
+    console.error('Error fetching time data:', error)
+    return null
+  }
+}
+
 export const GET: APIRoute = async () => {
   try {
     // Fetch weather data
     let weatherData = null
+    let accurateTime = null
     if (WEATHER_API_KEY) {
-      const weatherUrl = `http://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=${BEDFORD_LOCATION}&aqi=no`
+      const weatherUrl = `http://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=${BEDFORD_LOCATION}&aqi=no&current_fields=localtime_epoch`
       
       const weatherResponse = await fetch(weatherUrl, {
         method: 'GET',
@@ -179,13 +222,18 @@ export const GET: APIRoute = async () => {
       if (weatherResponse.ok) {
         const rawWeatherData: WeatherData = await weatherResponse.json()
         
+        // Get accurate time using the timezone from weather API
+        if (rawWeatherData.location.tz_id) {
+          accurateTime = await getAccurateTime(rawWeatherData.location.tz_id)
+        }
+        
         weatherData = {
           location: {
             name: rawWeatherData.location.name,
             region: rawWeatherData.location.region,
             country: rawWeatherData.location.country,
-            localtime: rawWeatherData.location.localtime,
-            timezone: 'Europe/London' // Bedford is in UK timezone
+            localtime: accurateTime?.dateTime || rawWeatherData.location.localtime,
+            timezone: rawWeatherData.location.tz_id || 'Europe/London'
           },
           weather: {
             temperature: {
@@ -277,6 +325,7 @@ export const GET: APIRoute = async () => {
       weather: weatherData,
       steam: steamData,
       spotify: spotifyData,
+      time: accurateTime,
       timestamp: new Date().toISOString()
     }
 

@@ -53,6 +53,21 @@ interface SteamData {
 interface ApiResponse {
   weather: WeatherData | null
   steam: SteamData | null
+  time: {
+    year: number
+    month: number
+    day: number
+    hour: number
+    minute: number
+    seconds: number
+    milliSeconds: number
+    dateTime: string
+    date: string
+    time: string
+    timeZone: string
+    dayOfWeek: string
+    dstActive: boolean
+  } | null
   timestamp: string
 }
 
@@ -61,8 +76,6 @@ export default function WeatherStatus() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [currentTime, setCurrentTime] = useState<Date | null>(null)
-  const [bedfordLocalTime, setBedfordLocalTime] = useState<Date | null>(null)
-  const [fetchTime, setFetchTime] = useState<Date | null>(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -78,23 +91,10 @@ export default function WeatherStatus() {
         console.info({ data })
         setApiData(data)
         
-        // Create Bedford local time using API hour but current minute
-        if (data.weather?.location?.localtime) {
-          const bedfordApiTime = new Date(data.weather.location.localtime)
-          const now = new Date()
-          
-          // Use the hour from Bedford API but current minute and second
-          const bedfordTime = new Date()
-          bedfordTime.setHours(bedfordApiTime.getHours())
-          bedfordTime.setMinutes(now.getMinutes())
-          bedfordTime.setSeconds(now.getSeconds())
-          bedfordTime.setMilliseconds(0) // Reset milliseconds for consistency
-          
-          const fetchTimestamp = new Date()
-          
-          setBedfordLocalTime(bedfordTime)
-          setFetchTime(fetchTimestamp)
-          setCurrentTime(bedfordTime)
+        // Use accurate time from the API
+        if (data.time?.dateTime) {
+          const accurateTime = new Date(data.time.dateTime)
+          setCurrentTime(accurateTime)
         }
         
         setError(null)
@@ -109,25 +109,38 @@ export default function WeatherStatus() {
     fetchData()
   }, [])
 
-  // Update current time every minute based on Bedford local time
+  // Update current time every minute
   useEffect(() => {
-    if (!bedfordLocalTime || !fetchTime) return
+    if (!currentTime) return
 
     const updateTime = () => {
-      const now = new Date()
-      const timeDiff = now.getTime() - fetchTime.getTime()
-      const updatedBedfordTime = new Date(bedfordLocalTime.getTime() + timeDiff)
-      setCurrentTime(updatedBedfordTime)
+      setCurrentTime(prevTime => {
+        if (!prevTime) return prevTime
+        return new Date(prevTime.getTime() + 60000) // Add 1 minute
+      })
     }
 
-    // Update immediately
-    updateTime()
+    // Calculate seconds until next minute starts
+    const now = new Date()
+    const secondsUntilNextMinute = 60 - now.getSeconds()
+    const millisecondsUntilNextMinute = secondsUntilNextMinute * 1000 - now.getMilliseconds()
     
-    // Then update every minute
-    const interval = setInterval(updateTime, 60 * 1000)
+    let intervalId: NodeJS.Timeout | null = null
     
-    return () => clearInterval(interval)
-  }, [bedfordLocalTime, fetchTime])
+    // Set interval to start at the beginning of the next minute
+    const initialTimeout = setTimeout(() => {
+      updateTime()
+      // Then update every minute
+      intervalId = setInterval(updateTime, 60 * 1000)
+    }, millisecondsUntilNextMinute)
+    
+    return () => {
+      clearTimeout(initialTimeout)
+      if (intervalId) {
+        clearInterval(intervalId)
+      }
+    }
+  }, [currentTime])
 
   if (loading) {
     return (
