@@ -1,4 +1,9 @@
 ---
+// export const prerender = false;
+const baseUrl = import.meta.env.SITE || 'http://localhost:4321'; // fallback for dev
+const response = await fetch(`${baseUrl}/api/status`);
+const data = await response.json();
+console.info({ ssr: data });
 // import { gsap } from "gsap";
 // import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 
@@ -8,35 +13,11 @@
 <section>
   <ul>
     <li data-platform="steam">
-      
+      {data.steam.last_game.name}
     </li>
     <li data-platform="spotify">
-      <marquee></marquee>
+      {data.spotify.track.name}
     </li>
   </ul>
 </section>
 <script src="./script.js"></script>
-<script type="module">
-  // import { gsap } from "gsap";
-  // console.info({ gsap })
-  // import * as gsap from "/node_modules/gsap/dist/gsap.js";
-  // import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
-
-  // gsap.registerPlugin(ScrambleTextPlugin);
-
-  // console.info('what', gsap)
-  // const response = await fetch('/api/status')
-  // if (!response.ok) {
-  //   throw new Error(`HTTP error! status: ${response.status}`)
-  // }
-  
-  // const dataLoaded = await response.json()
-  // console.info({ dataLoaded })
-
-  // const steamStatus = document.querySelector('[data-platform="steam"]')
-  // if (steamStatus) {
-  //   steamStatus.innerHTML = `
-  //     <span>${dataLoaded.steam.last_game.name}</span>
-  //   `
-  // }
-</script>
