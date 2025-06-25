@@ -3,6 +3,7 @@ import { getSecret } from 'astro:env/server'
 import type { APIRoute } from 'astro'
 import { promises as fs } from 'fs';
 import path from 'path';
+import { getStatusData } from '../../utils/getStatusData';
 
 const WEATHER_API_KEY = getSecret('WEATHER_API_KEY')
 const STEAM_API_KEY = getSecret('STEAM_API_KEY')
@@ -207,150 +208,22 @@ async function getAccurateTime(timezone: string): Promise<TimeApiResponse | null
 
 export const GET: APIRoute = async () => {
   try {
-    // Use fs to read the location data JSON at runtime
-    const filePath = path.join(process.cwd(), 'src/data/status.json');
-    const file = await fs.readFile(filePath, 'utf-8');
-    const locationData = JSON.parse(file);
-    const location = locationData.location || 'Bedford,UK';
-    // Fetch weather data
-    let weatherData = null
-    let accurateTime = null
-    if (WEATHER_API_KEY) {
-      const weatherUrl = `http://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=${location}&aqi=no&current_fields=localtime_epoch`
-      
-      const weatherResponse = await fetch(weatherUrl, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-
-      if (weatherResponse.ok) {
-        const rawWeatherData: WeatherData = await weatherResponse.json()
-        
-        // Get accurate time using the timezone from weather API
-        if (rawWeatherData.location.tz_id) {
-          accurateTime = await getAccurateTime(rawWeatherData.location.tz_id)
-        }
-        
-        weatherData = {
-          location: {
-            name: rawWeatherData.location.name,
-            region: rawWeatherData.location.region,
-            country: rawWeatherData.location.country,
-            localtime: accurateTime?.dateTime || rawWeatherData.location.localtime,
-            timezone: rawWeatherData.location.tz_id || 'Europe/London'
-          },
-          weather: {
-            temperature: {
-              celsius: rawWeatherData.current.temp_c,
-              fahrenheit: rawWeatherData.current.temp_f,
-              feels_like_celsius: rawWeatherData.current.feelslike_c,
-              feels_like_fahrenheit: rawWeatherData.current.feelslike_f
-            },
-            condition: {
-              text: rawWeatherData.current.condition.text,
-              icon: rawWeatherData.current.condition.icon
-            },
-            details: {
-              humidity: rawWeatherData.current.humidity,
-              wind_speed_kph: rawWeatherData.current.wind_kph,
-              wind_speed_mph: rawWeatherData.current.wind_mph,
-              wind_direction: rawWeatherData.current.wind_dir,
-              pressure_mb: rawWeatherData.current.pressure_mb,
-              precipitation_mm: rawWeatherData.current.precip_mm,
-              cloud_cover: rawWeatherData.current.cloud,
-              uv_index: rawWeatherData.current.uv,
-              is_day: rawWeatherData.current.is_day === 1
-            }
-          }
-        }
-      } else {
-        console.error('Weather API error:', weatherResponse.status)
-      }
-    } else {
-      console.error('Weather API key not configured')
-    }
-
-    // Fetch Steam data
-    let steamData = null
-    if (STEAM_API_KEY && STEAM_USER_ID) {
-      try {
-        console.log('Fetching Steam recently played games for user:', STEAM_USER_ID)
-        
-        // Get recently played games
-        const gamesUrl = `http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${STEAM_API_KEY}&steamid=${STEAM_USER_ID}&count=1`
-        console.log('Games URL:', gamesUrl)
-        
-        const gamesResponse = await fetch(gamesUrl)
-        console.log('Games response status:', gamesResponse.status)
-        
-        if (gamesResponse.ok) {
-          const gamesData: SteamGameData = await gamesResponse.json()
-          console.log('Games data response:', JSON.stringify(gamesData, null, 2))
-          
-          if (gamesData.response.games && gamesData.response.games.length > 0) {
-            const game = gamesData.response.games[0]
-            
-            steamData = {
-              last_game: {
-                name: game.name,
-                app_id: game.appid,
-                playtime_forever: game.playtime_forever,
-                last_played: game.rtime_last_played || 0,
-                icon_url: `https://media.steampowered.com/steamcommunity/public/images/apps/${game.appid}/${game.img_icon_url}.jpg`
-              }
-            }
-            
-            console.log('Final steam data:', JSON.stringify(steamData, null, 2))
-          } else {
-            console.log('No recently played games found')
-            steamData = { last_game: null }
-          }
-        } else {
-          const errorText = await gamesResponse.text()
-          console.error('Games API error response:', errorText)
-          steamData = { last_game: null }
-        }
-      } catch (steamError) {
-        console.error('Steam API error:', steamError)
-        steamData = { last_game: null }
-      }
-    } else {
-      console.error('Steam API key or user ID not configured')
-      console.log('STEAM_API_KEY exists:', !!STEAM_API_KEY)
-      console.log('STEAM_USER_ID exists:', !!STEAM_USER_ID)
-      steamData = { last_game: null }
-    }
-
-    // Fetch Spotify data
-    const spotifyData = await getLastPlayedSong()
-
-    // Format the response with all data
-    const formattedData = {
-      weather: weatherData,
-      steam: steamData,
-      spotify: spotifyData,
-      time: accurateTime,
-      timestamp: new Date().toISOString()
-    }
-
+    const formattedData = await getStatusData();
     return new Response(JSON.stringify(formattedData), {
       status: 200,
       headers: {
         'Content-Type': 'application/json',
-        'Cache-Control': 'public, max-age=300' // Cache for 5 minutes
+        'Cache-Control': 'public, max-age=300'
       }
-    })
-
+    });
   } catch (err) {
-    console.error('Unexpected error fetching data:', err)
+    console.error('Unexpected error fetching data:', err);
     return new Response(
       JSON.stringify({
         message: 'Internal server error',
         error: err instanceof Error ? err.message : String(err)
       }),
       { status: 500 }
-    )
+    );
   }
-} 
+}; 

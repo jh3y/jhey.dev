@@ -1,9 +1,7 @@
 ---
 // export const prerender = false;
-const url = new URL(Astro.request.url);
-const baseUrl = `${url.protocol}//${url.host}`;
-const response = await fetch(`${baseUrl}/api/status`);
-const data = await response.json();
+import { getStatusData } from '../utils/getStatusData';
+const data = await getStatusData();
 // import { gsap } from "gsap";
 // import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 
@@ -13,10 +11,10 @@ const data = await response.json();
 <section>
   <ul>
     <li data-platform="steam">
-      {data.steam.last_game.name}
+      {data.steam?.last_game ? data.steam.last_game.name : 'No recent game'}
     </li>
     <li data-platform="spotify">
-      {data.spotify.track.name}
+      {data.spotify?.track ? data.spotify.track.name : 'No recent track'}
     </li>
   </ul>
 </section>

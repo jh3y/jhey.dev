@@ -10,13 +10,13 @@
 //   ease: 'power2.inOut',
 // })
 
-// const response = await fetch('/api/status')
-// if (!response.ok) {
-//   throw new Error(`HTTP error! status: ${response.status}`)
-// }
+const response = await fetch('/api/status')
+if (!response.ok) {
+  throw new Error(`HTTP error! status: ${response.status}`)
+}
 
-// const dataLoaded = await response.json()
-// console.info({ dataLoaded })
+const dataLoaded = await response.json()
+console.info({ dataLoaded })
 
 // const steamStatus = document.querySelector('[data-platform="steam"]')
 // if (steamStatus) {
