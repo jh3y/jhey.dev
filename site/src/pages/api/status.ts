@@ -1,6 +1,8 @@
 export const prerender = false; // Not needed in 'server' mode
 import { getSecret } from 'astro:env/server'
 import type { APIRoute } from 'astro'
+import fs from 'fs/promises'
+import path from 'path'
 
 const WEATHER_API_KEY = getSecret('WEATHER_API_KEY')
 const STEAM_API_KEY = getSecret('STEAM_API_KEY')
@@ -8,7 +10,6 @@ const STEAM_USER_ID = getSecret('STEAM_USER_ID') // Steam User ID (not vanity UR
 const SPOTIFY_CLIENT_ID = getSecret('SPOTIFY_CLIENT_ID')
 const SPOTIFY_CLIENT_SECRET = getSecret('SPOTIFY_CLIENT_SECRET')
 const SPOTIFY_REFRESH_TOKEN = getSecret('SPOTIFY_REFRESH_TOKEN')
-const BEDFORD_LOCATION = 'Bedford,UK'
 
 interface WeatherData {
   location: {
@@ -204,13 +205,27 @@ async function getAccurateTime(timezone: string): Promise<TimeApiResponse | null
   }
 }
 
+const getLocationFromStatus = async (): Promise<string> => {
+  try {
+    const statusPath = path.join(process.cwd(), 'src/data/status.json')
+    const file = await fs.readFile(statusPath, 'utf-8')
+    const data = JSON.parse(file)
+    return data.location || 'Bedford,UK'
+  } catch (e) {
+    console.error('Failed to read location from status.json:', e)
+    return 'Bedford,UK'
+  }
+}
+
 export const GET: APIRoute = async () => {
   try {
+    // Fetch location from status.json
+    const location = await getLocationFromStatus()
     // Fetch weather data
     let weatherData = null
     let accurateTime = null
     if (WEATHER_API_KEY) {
-      const weatherUrl = `http://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=${BEDFORD_LOCATION}&aqi=no&current_fields=localtime_epoch`
+      const weatherUrl = `http://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=${location}&aqi=no&current_fields=localtime_epoch`
       
       const weatherResponse = await fetch(weatherUrl, {
         method: 'GET',
