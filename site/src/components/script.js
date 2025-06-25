@@ -1,8 +1,8 @@
-// import { gsap } from 'gsap'
-// import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin'
+import { gsap } from 'gsap'
+import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin'
 
-// gsap.registerPlugin(ScrambleTextPlugin)
-// console.info('what', gsap, ScrambleTextPlugin)
+gsap.registerPlugin(ScrambleTextPlugin)
+console.info('what', gsap, ScrambleTextPlugin)
 
 // gsap.to('.scramble-text', {
 //   text: 'Hello, world!',
@@ -18,16 +18,18 @@ if (!response.ok) {
 const dataLoaded = await response.json()
 console.info({ dataLoaded })
 
-// const steamStatus = document.querySelector('[data-platform="steam"]')
-// if (steamStatus) {
-//   gsap.to(steamStatus, {
-//     scrambleText: dataLoaded.steam.last_game.name,
-//     duration: 1,
-//     ease: 'power2.inOut',
-//   })
-//   gsap.to('[data-platform="spotify"] marquee', {
-//     scrambleText: `${dataLoaded.spotify.track.name} – ${dataLoaded.spotify.track.artists}`,
-//     duration: 1,
-//     ease: 'power2.inOut',
-//   })
-// }
+
+
+const steamStatus = document.querySelector('[data-platform="steam"]')
+if (steamStatus) {
+  gsap.to(steamStatus, {
+    scrambleText: dataLoaded.steam.last_game.name,
+    duration: 1,
+    ease: 'power2.inOut',
+  })
+  gsap.to('[data-platform="spotify"]', {
+    scrambleText: `${dataLoaded.spotify.track.name} – ${dataLoaded.spotify.track.artists}`,
+    duration: 1,
+    ease: 'power2.inOut',
+  })
+}
