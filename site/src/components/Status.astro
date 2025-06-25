@@ -1,9 +1,9 @@
 ---
 // export const prerender = false;
-const baseUrl = import.meta.env.SITE || 'http://localhost:4321'; // fallback for dev
+const url = new URL(Astro.request.url);
+const baseUrl = `${url.protocol}//${url.host}`;
 const response = await fetch(`${baseUrl}/api/status`);
 const data = await response.json();
-console.info({ ssr: data });
 // import { gsap } from "gsap";
 // import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 
