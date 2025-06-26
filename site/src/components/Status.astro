@@ -61,13 +61,13 @@ const statuses = [
       statuses.map((status) => {
         const isLong = status.status.length > 30
         return (
-          <li class="flex items-center gap-2 w-[30ch] overflow-hidden whitespace-nowrap">
+          <li class="flex items-center gap-2 whitespace-nowrap">
             <span class="w-5 h-5 shrink-0 text-gray-700 grayscale">
               <PlatformIcon platform={status.platform} data={data} />
             </span>
             <a
               aria-label={status.status}
-              class="py-1 motion-safe:data-[marquee=true]:data-[unscrambled=true]:[&>span]:animate-marquee overflow-hidden"
+              class="py-1 motion-safe:data-[marquee=true]:data-[unscrambled=true]:[&>span]:animate-marquee overflow-hidden w-[30ch] text-left "
               href="#"
               data-marquee={isLong}
             >
