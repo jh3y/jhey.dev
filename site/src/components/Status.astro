@@ -1,16 +1,43 @@
 ---
-export const prerender = true;
+export const prerender = true
 import { getStatusData } from '../utils/getStatusData'
+import PlatformIcon from './PlatformIcon.astro'
 const data = await getStatusData()
 
-const scrambleChars = 'abcdefghijklmnopqrstuvwxyz'
+// const scrambleChars = 'abcdefghijklmnopqrstuvwxyz'
+const scrambleChars = '10'
 const scramble = (chars: string, len: number) =>
   Array.from(
     { length: len },
     () => chars[Math.floor(Math.random() * chars.length)],
   ).join('')
 
+const currentTime = new Date(data.time?.dateTime || '')
+
+const timeString = currentTime.toLocaleTimeString('en-GB', {
+  hour: '2-digit',
+  minute: '2-digit',
+  hour12: false,
+})
+
+// Format the current Bedford local date
+const dateString = currentTime.toLocaleDateString('en-GB', {
+  weekday: 'short',
+  day: 'numeric',
+  month: 'short',
+})
+
 const statuses = [
+  {
+    status: `${data.status?.status} in ${data.status?.location || 'Status unknown'}`,
+    platform: 'status',
+  },
+  {
+    status:
+      `${data.weather?.weather?.temperature?.fahrenheit}°F • ${timeString}` ||
+      'No location',
+    platform: 'weather',
+  },
   {
     status: data.demo ? data.demo.title : 'No recent demo',
     platform: 'demo',
@@ -29,15 +56,33 @@ const statuses = [
 ---
 
 <section>
-  <ul
-    class="font-mono text-sm uppercase w-[30ch] [&_li]:whitespace-nowrap text-left overflow-hidden"
-  >
+  <ul class="font-mono text-sm uppercase">
     {
-      statuses.map((status) => (
-        <li data-status={status.status} data-chars={scrambleChars}>
-          {scramble(scrambleChars, Math.min(status.status.length, 30))}
-        </li>
-      ))
+      statuses.map((status) => {
+        const isLong = status.status.length > 30
+        return (
+          <li class="flex items-center gap-2 w-[30ch] overflow-hidden whitespace-nowrap">
+            <span class="w-5 h-5 shrink-0 text-gray-700 grayscale">
+              <PlatformIcon platform={status.platform} data={data} />
+            </span>
+            <a
+              aria-label={status.status}
+              class="py-1 motion-safe:data-[marquee=true]:data-[unscrambled=true]:[&>span]:animate-marquee overflow-hidden"
+              href="#"
+              data-marquee={isLong}
+            >
+              <span class="inline-flex">
+                <span data-chars={scrambleChars} data-status={`${status.status}`}>
+                  {scramble(scrambleChars, Math.min(status.status.length, 30))}
+                </span>
+                {isLong ? <span class="mx-1">•</span> : null}
+                {isLong ? <span>{`${status.status}`}</span> : null}
+                {isLong ? <span class="mx-1">•</span> : null}
+              </span>
+            </a>
+          </li>
+        )
+      })
     }
   </ul>
 </section>

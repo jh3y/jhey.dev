@@ -1,5 +1,5 @@
 import { promises as fs } from 'fs';
-import path from 'path';
+import path, { format } from 'path';
 import { getSecret } from 'astro:env/server';
 import MOCKED_STATUS_DATA from './mockStatusData';
 
@@ -313,6 +313,7 @@ export async function getStatusData() {
     demo: demoData,
     status: statusData,
   };
+  console.info({ formattedData: JSON.stringify(formattedData, null, 2)})
 
   return formattedData;
 } 

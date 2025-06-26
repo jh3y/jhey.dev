@@ -16,6 +16,13 @@
   --font-width-max: 1500;
   --breakpoint-lg: 968px;
   --color-canvas: canvas;
+  --animate-marquee: marquee 8s linear infinite;
+}
+
+@keyframes marquee {
+  to {
+    translate: -50% 0;
+  }
 }
 
 @keyframes reveal {

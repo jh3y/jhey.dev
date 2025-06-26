@@ -7,14 +7,28 @@ gsap.registerPlugin(ScrambleTextPlugin)
 // const dataLoaded = await data.json()
 // console.info({ dataLoaded })
 
-gsap.to('[data-status]', {
+const reveals = gsap.utils.toArray('[data-status]')
+
+gsap.to(reveals, {
+  onComplete: function () {
+    document.querySelectorAll('[data-marquee]').forEach((el) => {
+      el.dataset.unscrambled = true
+    })
+  },
   scrambleText: {
     text: function (index) {
-      return this.targets()[index].dataset.status
+      const status = reveals[index].dataset.status
+      console.info({ status })
+      return reveals[index].dataset.status
     },
     chars: function (index) {
-      return this.targets()[index].dataset.chars
+      return reveals[index].dataset.chars
     },
   },
-  ease: 'power2.inOut',
+  delay: function(index) {
+    console.info({ index })
+    return 1 + index * 0.125
+  },
+  duration: 1,
+  ease: 'power2.out',
 })
