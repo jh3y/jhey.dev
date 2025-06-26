@@ -51,19 +51,9 @@ const MOCKED_STATUS_DATA = {
     }
   },
   "time": {
-    "year": 2025,
-    "month": 6,
-    "day": 26,
-    "hour": 17,
-    "minute": 23,
-    "seconds": 47,
-    "milliSeconds": 239,
-    "dateTime": "2025-06-26T17:23:47.2390094",
     "date": "06/26/2025",
     "time": "17:23",
     "timeZone": "Europe/Zagreb",
-    "dayOfWeek": "Thursday",
-    "dstActive": true
   },
   timestamp: "2024-06-01T12:00:00Z",
   demo: {

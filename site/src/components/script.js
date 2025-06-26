@@ -18,7 +18,6 @@ gsap.to(reveals, {
   scrambleText: {
     text: function (index) {
       const status = reveals[index].dataset.status
-      console.info({ status })
       return reveals[index].dataset.status
     },
     chars: function (index) {
@@ -26,7 +25,6 @@ gsap.to(reveals, {
     },
   },
   delay: function(index) {
-    console.info({ index })
     return 1 + index * 0.125
   },
   duration: 1,

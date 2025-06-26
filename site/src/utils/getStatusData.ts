@@ -174,33 +174,54 @@ async function getLastPlayedSong(): Promise<any> {
   return null;
 }
 
-async function getAccurateTime(timezone: string): Promise<TimeApiResponse | null> {
-  try {
-    const encodedTimezone = encodeURIComponent(timezone);
-    const timeUrl = `https://timeapi.io/api/time/current/zone?timeZone=${encodedTimezone}`;
-    const response = await fetch(timeUrl, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    if (response.ok) {
-      const timeData: TimeApiResponse = await response.json();
-      return timeData;
-    } else {
-      console.error('Time API error:', response.status);
-      return null;
-    }
-  } catch (error) {
-    console.error('Error fetching time data:', error);
-    return null;
+async function getAccurateTime(timeZone: string): Promise<{ timeZone: string, time: string, date: string } | null> {
+  
+  const date = new Date();
+  const timestamp = new Intl.DateTimeFormat('en-US', {
+    timeZone,
+    hour12: false,
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+  const datestamp = new Intl.DateTimeFormat('en-US', {
+    timeZone,
+    hour12: false,
+    year: '2-digit',
+    month: 'short',
+    day: '2-digit',
+  });
+  return {
+    timeZone,
+    time: timestamp.format(date),
+    date: datestamp.format(date),
   }
+  
+  // try {
+  //   const encodedTimezone = encodeURIComponent(timezone);
+  //   const timeUrl = `https://timeapi.io/api/time/current/zone?timeZone=${encodedTimezone}`;
+  //   const response = await fetch(timeUrl, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   });
+  //   if (response.ok) {
+  //     const timeData: TimeApiResponse = await response.json();
+  //     return timeData;
+  //   } else {
+  //     console.error('Time API error:', response.status);
+  //     return null;
+  //   }
+  // } catch (error) {
+  //   console.error('Error fetching time data:', error);
+  //   return null;
+  // }
 }
 
 export async function getStatusData() {
-  if (process.env.NODE_ENV === 'development') {
-    return MOCKED_STATUS_DATA;
-  }
+  // if (process.env.NODE_ENV === 'development') {
+  //   return MOCKED_STATUS_DATA;
+  // }
 
   // Read demo data from demo.json
   const demoFilePath = path.join(process.cwd(), 'src/data/demo.json');
@@ -234,8 +255,6 @@ export async function getStatusData() {
           name: rawWeatherData.location.name,
           region: rawWeatherData.location.region,
           country: rawWeatherData.location.country,
-          localtime: accurateTime?.dateTime || rawWeatherData.location.localtime,
-          timezone: rawWeatherData.location.tz_id || 'Europe/London'
         },
         weather: {
           temperature: {
@@ -304,6 +323,7 @@ export async function getStatusData() {
   const spotifyData = await getLastPlayedSong();
 
   // Format the response with all data
+  console.info({ accurateTime })
   const formattedData = {
     weather: weatherData,
     steam: steamData,

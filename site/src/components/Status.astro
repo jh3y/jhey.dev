@@ -12,20 +12,20 @@ const scramble = (chars: string, len: number) =>
     () => chars[Math.floor(Math.random() * chars.length)],
   ).join('')
 
-const currentTime = new Date(data.time?.dateTime || '')
+// const currentTime = new Date(data.time?.time || '')
 
-const timeString = currentTime.toLocaleTimeString('en-GB', {
-  hour: '2-digit',
-  minute: '2-digit',
-  hour12: false,
-})
+// const timeString = currentTime.toLocaleTimeString('en-GB', {
+//   hour: '2-digit',
+//   minute: '2-digit',
+//   hour12: false,
+// })
 
-// Format the current Bedford local date
-const dateString = currentTime.toLocaleDateString('en-GB', {
-  weekday: 'short',
-  day: 'numeric',
-  month: 'short',
-})
+// // Format the current Bedford local date
+// const dateString = currentTime.toLocaleDateString('en-GB', {
+//   weekday: 'short',
+//   day: 'numeric',
+//   month: 'short',
+// })
 
 const statuses = [
   {
@@ -34,7 +34,7 @@ const statuses = [
   },
   {
     status:
-      `${data.weather?.weather?.temperature?.fahrenheit}°F • ${timeString}` ||
+      `${data.weather?.weather?.temperature?.fahrenheit}°F • ${data.time?.time}` ||
       'No location',
     platform: 'weather',
   },
