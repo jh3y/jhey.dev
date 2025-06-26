@@ -1,3 +1,4 @@
+export const prerender = false
 import { promises as fs } from 'fs';
 import path, { format } from 'path';
 import { getSecret } from 'astro:env/server';
@@ -195,27 +196,6 @@ async function getAccurateTime(timeZone: string): Promise<{ timeZone: string, ti
     time: timestamp.format(date),
     date: datestamp.format(date),
   }
-  
-  // try {
-  //   const encodedTimezone = encodeURIComponent(timezone);
-  //   const timeUrl = `https://timeapi.io/api/time/current/zone?timeZone=${encodedTimezone}`;
-  //   const response = await fetch(timeUrl, {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   });
-  //   if (response.ok) {
-  //     const timeData: TimeApiResponse = await response.json();
-  //     return timeData;
-  //   } else {
-  //     console.error('Time API error:', response.status);
-  //     return null;
-  //   }
-  // } catch (error) {
-  //   console.error('Error fetching time data:', error);
-  //   return null;
-  // }
 }
 
 export async function getStatusData() {
