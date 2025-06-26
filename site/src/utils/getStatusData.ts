@@ -1,6 +1,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 import { getSecret } from 'astro:env/server';
+import MOCKED_STATUS_DATA from './mockStatusData';
 
 const WEATHER_API_KEY = getSecret('WEATHER_API_KEY');
 const STEAM_API_KEY = getSecret('STEAM_API_KEY');
@@ -197,11 +198,20 @@ async function getAccurateTime(timezone: string): Promise<TimeApiResponse | null
 }
 
 export async function getStatusData() {
+  if (process.env.NODE_ENV === 'development') {
+    return MOCKED_STATUS_DATA;
+  }
+
+  // Read demo data from demo.json
+  const demoFilePath = path.join(process.cwd(), 'src/data/demo.json');
+  const demoFile = await fs.readFile(demoFilePath, 'utf-8');
+  const demoData = JSON.parse(demoFile);
+
   // Read location from status.json
-  const filePath = path.join(process.cwd(), 'src/data/status.json');
-  const file = await fs.readFile(filePath, 'utf-8');
-  const locationData = JSON.parse(file);
-  const location = locationData.location || 'Bedford,UK';
+  const statusFilePath = path.join(process.cwd(), 'src/data/status.json');
+  const statusFile = await fs.readFile(statusFilePath, 'utf-8');
+  const statusData = JSON.parse(statusFile);
+  const location = statusData.location || 'Bedford,UK';
 
   // Fetch weather data
   let weatherData = null;
@@ -299,7 +309,9 @@ export async function getStatusData() {
     steam: steamData,
     spotify: spotifyData,
     time: accurateTime,
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
+    demo: demoData,
+    status: statusData,
   };
 
   return formattedData;

@@ -3,8 +3,6 @@ import Analytics from '@vercel/analytics/astro'
 import { injectSpeedInsights } from '@vercel/speed-insights'
 import { clsx } from 'clsx'
 import { Font } from 'astro:assets'
-import WeatherStatus from '../components/WeatherStatus'
-import SteamStatus from '../components/SteamStatus'
 import Status from '../components/Status.astro'
 import '../styles/global.css'
 const title = 'Jhey Tompkins'
@@ -50,6 +48,7 @@ injectSpeedInsights()
     <meta name="twitter:creator" content="@jh3yy" />
     <Font cssVariable="--font-sans" preload />
     <Font cssVariable="--font-serif" preload />
+    <Font cssVariable="--font-mono" preload />
     <Analytics />
   </head>
   <body class="font-sans min-h-screen">

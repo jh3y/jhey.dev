@@ -1,21 +1,43 @@
 ---
-// export const prerender = false;
-import { getStatusData } from '../utils/getStatusData';
-const data = await getStatusData();
-// import { gsap } from "gsap";
-// import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
+import { getStatusData } from '../utils/getStatusData'
+const data = await getStatusData()
 
-// gsap.registerPlugin(ScrambleTextPlugin);
-// console.info({ gsap })
+const scrambleChars = 'abcdefghijklmnopqrstuvwxyz'
+const scramble = (chars: string, len: number) =>
+  Array.from(
+    { length: len },
+    () => chars[Math.floor(Math.random() * chars.length)],
+  ).join('')
+
+const statuses = [
+  {
+    status: data.demo ? data.demo.title : 'No recent demo',
+    platform: 'demo',
+  },
+  {
+    status: data.steam?.last_game
+      ? data.steam.last_game.name
+      : 'No recent game',
+    platform: 'steam',
+  },
+  {
+    status: data.spotify?.track ? data.spotify.track.name : 'No recent track',
+    platform: 'spotify',
+  },
+]
 ---
+
 <section>
-  <ul>
-    <li data-platform="steam">
-      {data.steam?.last_game ? data.steam.last_game.name : 'No recent game'}
-    </li>
-    <li data-platform="spotify">
-      {data.spotify?.track ? data.spotify.track.name : 'No recent track'}
-    </li>
+  <ul
+    class="font-mono text-sm uppercase w-[30ch] [&_li]:whitespace-nowrap text-left overflow-hidden"
+  >
+    {
+      statuses.map((status) => (
+        <li data-status={status.status} data-chars={scrambleChars}>
+          {scramble(scrambleChars, Math.min(status.status.length, 30))}
+        </li>
+      ))
+    }
   </ul>
 </section>
 <script src="./script.js"></script>
