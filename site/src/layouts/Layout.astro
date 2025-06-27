@@ -9,7 +9,6 @@ const title = 'Jhey Tompkins'
 const ogImageUrl = 'https://jhey.vercel.app/api/og'
 // inject scripts
 injectSpeedInsights()
-export const prerender = false
 ---
 <!doctype html>
 <html lang="en">
@@ -191,7 +190,9 @@ export const prerender = false
         <!-- Weather Status Component -->
         <!-- Steam Status Component -->
         <div class="mt-4">
-          <Status />
+          <Status server:defer>
+            <h1 slot="fallback">Hello</h1>
+          </Status>
         </div>
       </section>
     </main>

@@ -1,5 +1,4 @@
 ---
-export const prerender = false
 // import { getStatusData } from '../utils/getStatusData'
 // import PlatformIcon from './PlatformIcon.astro'
 // const data = await getStatusData()
@@ -13,13 +12,14 @@ export const prerender = false
 //   ).join('')
 
 // const currentTime = new Date(data.time?.time || '')
-
-const now = new Date()
-const timeString = now.toLocaleTimeString('en-GB', {
-  hour: '2-digit',
-  minute: '2-digit',
-  hour12: false,
-})
+// console.info('great')
+// const now = new Date()
+// const timeString = now.toLocaleTimeString('en-GB', {
+//   hour: '2-digit',
+//   minute: '2-digit',
+//   hour12: false,
+// })
+await new Promise((resolve) => setTimeout(resolve, 10000))
 
 // // Format the current Bedford local date
 // const dateString = currentTime.toLocaleDateString('en-GB', {
@@ -55,9 +55,8 @@ const timeString = now.toLocaleTimeString('en-GB', {
 //   },
 // ]
 ---
-
 <section>
-  <h1 class="font-mono">The time is: {timeString}</h1>
+  <h1 class="font-mono">The time is: Server rendered</h1>
   <!-- <ul class="font-mono text-sm uppercase">
     {
       statuses.map((status) => {
@@ -88,4 +87,4 @@ const timeString = now.toLocaleTimeString('en-GB', {
     }
   </ul> -->
 </section>
-<script src="./script.js"></script>
+<!-- <script src="./script.js"></script> -->

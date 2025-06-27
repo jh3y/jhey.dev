@@ -1,7 +1,7 @@
 ---
 // This page handles Spotify OAuth callback and displays the refresh token
+export const prerender = false
 import { getSecret } from 'astro:env/server'
-
 const SPOTIFY_CLIENT_ID = getSecret('SPOTIFY_CLIENT_ID')
 const SPOTIFY_CLIENT_SECRET = getSecret('SPOTIFY_CLIENT_SECRET')
 
@@ -11,7 +11,6 @@ let debugInfo = {
   url: Astro.request.url
 }
 ---
-
 <html lang="en">
 <head>
   <meta charset="utf-8" />
