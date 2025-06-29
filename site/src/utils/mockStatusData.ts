@@ -43,7 +43,7 @@ const MOCKED_STATUS_DATA = {
   spotify: {
     track: {
       name: "Coma Cat - Purple Disco Machine Re-Work",
-      artists: "Tensnake, Purple Disco Machine",
+      artists: [{ name: "Tensnake" }, { name: "Purple Disco Machine" }],
       album: "Coma Cat (Purple Disco Machine Re-Work)",
       album_art: "https://i.scdn.co/image/ab67616d0000b27315f407e4cd6dd90ad6706762",
       spotify_url: "https://open.spotify.com/track/32Vuh7h0riEOWW4bNDiJVJ",

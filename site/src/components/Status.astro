@@ -50,7 +50,7 @@ const statuses = [
     platform: 'steam',
   },
   {
-    status: data.spotify?.track ? `${data.spotify.track.name}, ${data.spotify.track.artists}` : 'No recent track',
+    status: data.spotify?.track ? `${data.spotify.track.name}, ${data.spotify.track.artists.map((artist) => artist.name).join(' + ')}` : 'No recent track',
     platform: 'spotify',
   },
 ]
