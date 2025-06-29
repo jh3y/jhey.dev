@@ -28,6 +28,8 @@ const scramble = (chars: string, len: number) =>
 //   month: 'short',
 // })
 
+console.info(data.spotify?.track)
+
 const statuses = [
   {
     status: `${data.status?.status} in ${data.status?.location || 'Status unknown'}`,
@@ -50,7 +52,7 @@ const statuses = [
     platform: 'steam',
   },
   {
-    status: data.spotify?.track ? `${data.spotify.track.name}, ${data.spotify.track.artists.map((artist) => artist.name).join(' + ')}` : 'No recent track',
+    status: data.spotify?.track ? `${data.spotify.track.name}, ${Array.isArray(data.spotify.track.artists) ? data.spotify.track.artists.map((artist) => artist.name).join(' + ') : data.spotify.track.artists}` : 'No recent track',
     platform: 'spotify',
   },
 ]

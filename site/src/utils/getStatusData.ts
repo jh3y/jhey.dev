@@ -199,9 +199,9 @@ async function getAccurateTime(timeZone: string): Promise<{ timeZone: string, ti
 }
 
 export async function getStatusData() {
-  if (process.env.NODE_ENV === 'development') {
-    return MOCKED_STATUS_DATA;
-  }
+  // if (process.env.NODE_ENV === 'development') {
+  //   return MOCKED_STATUS_DATA;
+  // }
 
   // Read demo data from demo.json
   const demoFilePath = path.join(process.cwd(), 'src/data/demo.json');
