@@ -112,12 +112,12 @@ injectSpeedInsights()
             Jhey Tompkins
           </h1>
         </header> -->
-        <div class={clsx(
+        <!-- <div class={clsx(
           "motion-safe:animate-[reveal_0.35s_ease-out_0.5s_both]",
           "[--translate-from-y:1rem]",
         )}>
-          <!-- <slot /> -->
-        </div>
+          <slot />
+        </div> -->
 
         <!-- <svg
           class="sig text-current"
@@ -191,7 +191,6 @@ injectSpeedInsights()
         <!-- Steam Status Component -->
         <div class="mt-4">
           <Status server:defer>
-            <h1 slot="fallback">Hello</h1>
           </Status>
         </div>
       </section>

@@ -1,15 +1,15 @@
 ---
-// import { getStatusData } from '../utils/getStatusData'
-// import PlatformIcon from './PlatformIcon.astro'
-// const data = await getStatusData()
+import { getStatusData } from '../utils/getStatusData'
+import PlatformIcon from './PlatformIcon.astro'
+const data = await getStatusData()
 
 // const scrambleChars = 'abcdefghijklmnopqrstuvwxyz'
-// const scrambleChars = '10'
-// const scramble = (chars: string, len: number) =>
-//   Array.from(
-//     { length: len },
-//     () => chars[Math.floor(Math.random() * chars.length)],
-//   ).join('')
+const scrambleChars = '10'
+const scramble = (chars: string, len: number) =>
+  Array.from(
+    { length: len },
+    () => chars[Math.floor(Math.random() * chars.length)],
+  ).join('')
 
 // const currentTime = new Date(data.time?.time || '')
 // console.info('great')
@@ -19,7 +19,7 @@
 //   minute: '2-digit',
 //   hour12: false,
 // })
-await new Promise((resolve) => setTimeout(resolve, 10000))
+// // await new Promise((resolve) => setTimeout(resolve, 1000))
 
 // // Format the current Bedford local date
 // const dateString = currentTime.toLocaleDateString('en-GB', {
@@ -28,36 +28,35 @@ await new Promise((resolve) => setTimeout(resolve, 10000))
 //   month: 'short',
 // })
 
-// const statuses = [
-//   {
-//     status: `${data.status?.status} in ${data.status?.location || 'Status unknown'}`,
-//     platform: 'status',
-//   },
-//   {
-//     status:
-//       `${data.weather?.weather?.temperature?.fahrenheit}°F • ${data.time?.time}` ||
-//       'No location',
-//     platform: 'weather',
-//   },
-//   {
-//     status: data.demo ? data.demo.title : 'No recent demo',
-//     platform: 'demo',
-//   },
-//   {
-//     status: data.steam?.last_game
-//       ? data.steam.last_game.name
-//       : 'No recent game',
-//     platform: 'steam',
-//   },
-//   {
-//     status: data.spotify?.track ? data.spotify.track.name : 'No recent track',
-//     platform: 'spotify',
-//   },
-// ]
+const statuses = [
+  {
+    status: `${data.status?.status} in ${data.status?.location || 'Status unknown'}`,
+    platform: 'status',
+  },
+  {
+    status:
+      `${data.weather?.weather?.temperature?.fahrenheit}°F • ${data.time?.time}` ||
+      'No location',
+    platform: 'weather',
+  },
+  {
+    status: data.demo ? data.demo.title : 'No recent demo',
+    platform: 'demo',
+  },
+  {
+    status: data.steam?.last_game
+      ? data.steam.last_game.name
+      : 'No recent game',
+    platform: 'steam',
+  },
+  {
+    status: data.spotify?.track ? data.spotify.track.name : 'No recent track',
+    platform: 'spotify',
+  },
+]
 ---
 <section>
-  <h1 class="font-mono">The time is: Server rendered</h1>
-  <!-- <ul class="font-mono text-sm uppercase">
+  <ul class="font-mono text-sm uppercase">
     {
       statuses.map((status) => {
         const isLong = status.status.length > 30
@@ -85,6 +84,6 @@ await new Promise((resolve) => setTimeout(resolve, 10000))
         )
       })
     }
-  </ul> -->
+  </ul>
 </section>
-<!-- <script src="./script.js"></script> -->
+<script src="./script.js"></script>
