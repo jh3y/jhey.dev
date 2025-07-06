@@ -271,12 +271,12 @@ export async function getStatusData() {
   let steamData = null;
   if (STEAM_API_KEY && STEAM_USER_ID) {
     try {
-      const gamesUrl = `http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${STEAM_API_KEY}&steamid=${STEAM_USER_ID}&count=1`;
+      const gamesUrl = `http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${STEAM_API_KEY}&steamid=${STEAM_USER_ID}&count=5`;
       const gamesResponse = await fetch(gamesUrl);
       if (gamesResponse.ok) {
         const gamesData: SteamGameData = await gamesResponse.json();
         if (gamesData.response.games && gamesData.response.games.length > 0) {
-          const game = gamesData.response.games[0];
+          const game = gamesData.response.games[Math.floor(Math.random() * gamesData.response.games.length)];
           steamData = {
             last_game: {
               name: game.name,
@@ -303,7 +303,7 @@ export async function getStatusData() {
   const spotifyData = await getLastPlayedSong();
 
   // Format the response with all data
-  console.info({ accurateTime })
+  // console.info({ accurateTime })
   const formattedData = {
     weather: weatherData,
     steam: steamData,
@@ -313,7 +313,7 @@ export async function getStatusData() {
     demo: demoData,
     status: statusData,
   };
-  console.info({ formattedData: JSON.stringify(formattedData, null, 2)})
+  // console.info({ formattedData: JSON.stringify(formattedData, null, 2)})
 
   return formattedData;
 } 

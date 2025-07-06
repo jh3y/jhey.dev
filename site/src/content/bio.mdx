@@ -3,7 +3,7 @@
 export const components = {
   a: (props) => (
     <a
-      class="text-red-400 [:is(:hover,:focus-visible)]:underline underline-offset-2"
+      class="text-red-400 [:is(:hover,:focus-visible)]:bg-red-400 [:is(:hover,:focus-visible)]:text-white"
       href={props.href}
       {...(props.href.startsWith('http') ? { target: '_blank' } : null)}
     >
@@ -12,4 +12,8 @@ export const components = {
   ),
 }
 
-I make lots of UI demos.<br/>You can [follow along on X](https://twitter.com/intent/follow?screen_name=jh3yy).
+I craft [UI demos](https://codepen.io/jh3y) that explore the power of the web and help others sharpen their skills.
+People [know me for](https://x.com/jh3yy/status/1937200950567195036) turning complex UI challenges into approachable solutions —
+the kind that make you say, “Wait, how did you do that?”
+
+— Follow along on [the internet](https://x.com/intent/follow?screen_name=jh3yy).
