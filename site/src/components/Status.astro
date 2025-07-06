@@ -1,0 +1,140 @@
+---
+import { clsx } from 'clsx'
+import { getStatusData } from '../utils/getStatusData'
+import MOCKED_STATUS_DATA from '../utils/mockStatusData'
+import PlatformIcon from './PlatformIcon.astro'
+
+const { mock } = Astro.props
+let data
+
+if (mock) {
+  data = MOCKED_STATUS_DATA
+} else {
+  data = await getStatusData()
+}
+// const data = mockedData
+
+// const scrambleChars = 'abcdefghijklmnopqrstuvwxyz'
+// const scrambleChars = '10'
+const scrambleChars = 'X'
+const scramble = (chars: string, len: number) =>
+  Array.from(
+    { length: len },
+    () => chars[Math.floor(Math.random() * chars.length)],
+  ).join('')
+
+// const currentTime = new Date(data.time?.time || '')
+// console.info('great')
+// const now = new Date()
+// const timeString = now.toLocaleTimeString('en-GB', {
+//   hour: '2-digit',
+//   minute: '2-digit',
+//   hour12: false,
+// })
+// // await new Promise((resolve) => setTimeout(resolve, 1000))
+
+// // Format the current Bedford local date
+// const dateString = currentTime.toLocaleDateString('en-GB', {
+//   weekday: 'short',
+//   day: 'numeric',
+//   month: 'short',
+// })
+console.info({
+  data: data.steam,
+})
+const statuses = [
+  {
+    status: `${data.status?.status} in ${data.weather?.location.name || 'Status unknown'}`,
+    platform: 'status',
+  },
+  {
+    status:
+      `${data.weather?.weather?.temperature?.fahrenheit}°F • ${data.time?.time}` ||
+      'No location',
+    platform: 'weather',
+  },
+  {
+    status: data.demo ? data.demo.title : 'No recent demo',
+    platform: 'demo',
+    href: data.demo?.url,
+  },
+  {
+    status: data.steam?.last_game
+      ? data.steam.last_game.name
+      : 'No recent game',
+    platform: 'steam',
+    href: data.steam?.last_game
+      ? `https://store.steampowered.com/app/${data.steam.last_game.app_id}/`
+      : undefined,
+  },
+  {
+    status: data.spotify?.track
+      ? `${data.spotify.track.name}, ${Array.isArray(data.spotify.track.artists) ? data.spotify.track.artists.map((artist) => artist.name).join(' + ') : data.spotify.track.artists}`
+      : 'No recent track',
+    platform: 'spotify',
+    href: data.spotify?.track.spotify_url,
+  },
+]
+---
+
+<section data-mock={mock}>
+  <ul class="font-mono font-[600] text-sm uppercase">
+    {
+      statuses.map((status) => {
+        const isLong = status.status.length > 30
+        return (
+          <li class="flex items-center gap-2 whitespace-nowrap">
+            <span class="w-5 h-5 shrink-0 grayscale grid place-items-center">
+              <PlatformIcon platform={status.platform} data={data} />
+            </span>
+            {status.href ? (
+              <a
+                aria-label={status.status}
+                class={clsx(
+                  "text-red-400 [:is(:hover,:focus-visible)]:[&_span]:bg-red-400 [:is(:hover,:focus-visible)]:[&_span]:text-white overflow-hidden",
+                  "py-1 motion-safe:data-[marquee=true]:data-[unscrambled=true]:[&>span]:animate-marquee  w-[30ch] text-left"
+                )}
+                href={status.href}
+                target="_blank"
+                data-marquee={isLong}
+              >
+                <span class="inline-flex">
+                  <span
+                    data-chars={scrambleChars}
+                    data-status={`${status.status}`}
+                  >
+                    {/* {scramble(scrambleChars, Math.min(status.status.length, 30))} */}
+                    {scramble(scrambleChars, 30)}
+                  </span>
+                  {isLong ? <span class="mx-1">•</span> : null}
+                  {isLong ? <span>{`${status.status}`}</span> : null}
+                  {isLong ? <span class="mx-1">•</span> : null}
+                </span>
+              </a>
+            ) : (
+              <span
+                aria-label={status.status}
+                class="py-1 motion-safe:data-[marquee=true]:data-[unscrambled=true]:[&>span]:animate-marquee overflow-hidden w-[30ch] text-left "
+                data-marquee={isLong}
+              >
+                <span class="inline-flex">
+                  <span
+                    data-chars={scrambleChars}
+                    data-status={`${status.status}`}
+                  >
+                    {/* {scramble(scrambleChars, Math.min(status.status.length, 30))} */}
+                    {scramble(scrambleChars, 30)}
+                  </span>
+                  {isLong ? <span class="mx-1">•</span> : null}
+                  {isLong ? <span>{`${status.status}`}</span> : null}
+                  {isLong ? <span class="mx-1">•</span> : null}
+                </span>
+              </span>
+            )}
+          </li>
+        )
+      })
+    }
+  </ul>
+</section>
+{!mock ? <script src="./script.js" /> : null}

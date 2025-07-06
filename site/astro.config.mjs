@@ -30,6 +30,11 @@ export default defineConfig({
         name: 'DM Serif Text',
         cssVariable: '--font-serif',
       },
+      {
+        provider: fontProviders.google(),
+        name: 'Doto',
+        cssVariable: '--font-mono',
+      },
     ],
   },
   integrations: [mdx(), react()],

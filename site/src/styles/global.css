@@ -5,7 +5,7 @@
   --color-bg: light-dark(#fff, #000);
   --header-height: 80px;
   --spacing-content: 600px;
-  --content: 600px;
+  --content: 56ch;
   --spacing-max-content: calc(100vw - (2 * var(--spacing-gutter)));
   --spacing-gutter: 1.5rem;
   --font-size-min: 14;
@@ -16,12 +16,19 @@
   --font-width-max: 1500;
   --breakpoint-lg: 968px;
   --color-canvas: canvas;
+  --animate-marquee: marquee 8s linear infinite;
+}
+
+@keyframes marquee {
+  to {
+    translate: -50% 0;
+  }
 }
 
 @keyframes reveal {
   0% {
     filter: blur(var(--blur-from, 4px));
-    scale: var(--scale-from, 0.9);
+    scale: var(--scale-from, 1);
     opacity: var(--opacity-from, 0);
     translate: var(--translate-from-x, 0) var(--translate-from-y, 0);
   }
@@ -57,7 +64,6 @@ html {
   color-scheme: dark only;
 }
 
-main p,
 .text-fluid {
   --fluid-min: calc(
     var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0))
@@ -87,7 +93,7 @@ main p,
 
 body {
   background: var(--color-bg);
-  color: color-mix(in hsl, canvasText, canvas 40%);
+  color: light-dark(color-mix(in hsl, canvasText, canvas 40%), color-mix(in hsl, canvasText, canvas 4%));
   display: flex;
   flex-direction: column;
   font-family: var(--font-sans);
@@ -97,7 +103,7 @@ body {
 
 body::before {
   --size: 40px;
-  --line: light-dark(color-mix(in hsl, canvasText, transparent 82%), color-mix(in hsl, canvasText, transparent 70%));
+  --line: light-dark(color-mix(in hsl, canvasText, #0000 90%), color-mix(in hsl, canvasText, #0000 80%));
   content: '';
   height: 100dvh;
   width: 100vw;
@@ -116,9 +122,8 @@ body::before {
 
 @layer signature {
   .sig {
-    width: clamp(180px, 50%, 240px);
     rotate: 12deg;
-    translate: 20% 0;
+    
 
     .eye {
       transform-box: fill-box;
