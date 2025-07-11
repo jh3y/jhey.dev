@@ -9,6 +9,7 @@ import {
   deleteThought as deleteThoughtOperation,
 } from "../utils/thoughtOperations";
 import { handleGitOperations } from "../utils/gitOperations";
+import { updateJsonFileWithGitSync } from "../utils/gitOperations";
 import { v4 as uuidv4 } from "uuid";
 
 interface UseLocalStorageProps {
@@ -69,110 +70,15 @@ export function useLocalStorage({
   const updateThoughts = async (newThoughts: ThoughtItem[]) => {
     try {
       setIsLoading(true);
-      console.log("useLocalStorage - Starting updateThoughts operation");
-      console.log("useLocalStorage - Updating thoughts in:", fullPath);
-      console.log("useLocalStorage - Local repo path:", localRepoPath);
-      console.log("useLocalStorage - File path:", filePath);
-
-      // Ensure the directory exists
-      const dir = path.dirname(fullPath);
-      if (!fs.existsSync(dir)) {
-        console.log("useLocalStorage - Creating directory:", dir);
-        fs.mkdirSync(dir, { recursive: true });
-      }
-
-      // Handle git operations first - pull latest changes
-      console.log(
-        "useLocalStorage - ABOUT TO CALL handleGitOperations for pull",
+      // Use shared utility for local file + git sync
+      const success = await updateJsonFileWithGitSync(
+        localRepoPath,
+        filePath,
+        newThoughts,
+        "Thoughts updated"
       );
-      console.log("useLocalStorage - localRepoPath:", localRepoPath);
-      console.log("useLocalStorage - filePath:", filePath);
-
-      try {
-        const gitSuccess = await handleGitOperations(
-          localRepoPath,
-          filePath,
-          "pull",
-        );
-        console.log(
-          "useLocalStorage - AFTER handleGitOperations call, result:",
-          gitSuccess,
-        );
-
-        if (!gitSuccess) {
-          console.log("useLocalStorage - Git operations failed");
-          await showToast({
-            style: Toast.Style.Failure,
-            title: "Git sync failed",
-            message:
-              "Failed to sync with git. Your changes may not be up to date.",
-          });
-          return false; // Don't proceed with local changes if git sync failed
-        }
-      } catch (error) {
-        console.error("useLocalStorage - Error during git operations:", error);
-        await showToast({
-          style: Toast.Style.Failure,
-          title: "Git sync failed",
-          message:
-            "Failed to sync with git. Your changes may not be up to date.",
-        });
-        return false; // Don't proceed with local changes if git sync failed
-      }
-
-      // Write the updated data
-      console.log("useLocalStorage - Writing to file");
-      fs.writeFileSync(fullPath, JSON.stringify(newThoughts, null, 2));
-      setThoughts(newThoughts);
-      console.log("useLocalStorage - Successfully updated thoughts locally");
-
-      // Show success for local update
-      await showToast({
-        style: Toast.Style.Success,
-        title: "Thought added",
-      });
-
-      // Now commit and push the changes
-      try {
-        const gitSuccess = await handleGitOperations(
-          localRepoPath,
-          filePath,
-          "push",
-        );
-        console.log(
-          "useLocalStorage - AFTER handleGitOperations call for push, result:",
-          gitSuccess,
-        );
-
-        if (!gitSuccess) {
-          console.log(
-            "useLocalStorage - Git push failed, but file was saved locally",
-          );
-          await showToast({
-            style: Toast.Style.Failure,
-            title: "Git push failed",
-            message:
-              "Thought was added but failed to push to git. You may need to manually commit and push changes.",
-          });
-        } else {
-          console.log("useLocalStorage - Git push completed successfully");
-          await showToast({
-            style: Toast.Style.Success,
-            title: "Thought pushed",
-            message: "Successfully synced with git repository",
-          });
-        }
-      } catch (error) {
-        console.error("useLocalStorage - Error during git push:", error);
-        await showToast({
-          style: Toast.Style.Failure,
-          title: "Git push failed",
-          message:
-            "Thought was added but failed to push to git. You may need to manually commit and push changes.",
-        });
-      }
-
-      return true;
+      if (success) setThoughts(newThoughts);
+      return success;
     } catch (error) {
       console.error("useLocalStorage - Failed to update thoughts:", error);
       await showToast({

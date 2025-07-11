@@ -90,6 +90,7 @@ async function pullChanges(directory: string): Promise<boolean> {
 async function commitAndPushChanges(
   directory: string,
   filePath: string,
+  commitMessage: string = "thought added",
 ): Promise<boolean> {
   console.log("Starting commit and push process...");
   try {
@@ -130,7 +131,7 @@ async function commitAndPushChanges(
     });
 
     const { stdout: commitOutput } = await execAsync(
-      'git commit -m "thought added"',
+      `git commit -m "${commitMessage}"`,
       { cwd: directory },
     );
     console.log("Commit result:", commitOutput.trim());
@@ -173,6 +174,7 @@ export async function handleGitOperations(
   directory: string,
   filePath: string,
   operation: "pull" | "push" = "push",
+  commitMessage?: string,
 ): Promise<boolean> {
   console.log("Starting git operations...");
   console.log("Directory:", directory);
@@ -196,6 +198,64 @@ export async function handleGitOperations(
   if (operation === "pull") {
     return await pullChanges(directory);
   } else {
-    return await commitAndPushChanges(directory, filePath);
+    return await commitAndPushChanges(directory, filePath, commitMessage);
+  }
+}
+
+/**
+ * Update a JSON file locally and sync with git (pull, write, add, commit, push).
+ * Returns true if all steps succeed, false otherwise.
+ */
+export async function updateJsonFileWithGitSync(
+  localRepoPath: string,
+  filePath: string,
+  data: any,
+  commitMessage: string
+): Promise<boolean> {
+  try {
+    // 1. Pull latest changes
+    const pulled = await handleGitOperations(localRepoPath, filePath, "pull");
+    if (!pulled) {
+      await showToast({
+        style: Toast.Style.Failure,
+        title: "Git pull failed",
+        message: "Could not pull latest changes before updating file.",
+      });
+      return false;
+    }
+    // 2. Ensure directory exists
+    const fs = await import("fs");
+    const path = await import("path");
+    const fullPath = path.join(localRepoPath, filePath);
+    const dir = path.dirname(fullPath);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    // 3. Write the JSON file
+    fs.writeFileSync(fullPath, JSON.stringify(data, null, 2));
+    // 4. Commit and push
+    const pushed = await handleGitOperations(localRepoPath, filePath, "push", commitMessage);
+    if (!pushed) {
+      await showToast({
+        style: Toast.Style.Failure,
+        title: "Git push failed",
+        message: "File was updated but failed to push to git.",
+      });
+      return false;
+    }
+    // 5. Success
+    await showToast({
+      style: Toast.Style.Success,
+      title: "File updated and pushed",
+      message: `Successfully updated and pushed ${filePath}`,
+    });
+    return true;
+  } catch (error) {
+    await showToast({
+      style: Toast.Style.Failure,
+      title: "Update failed",
+      message: error instanceof Error ? error.message : String(error),
+    });
+    return false;
   }
 }

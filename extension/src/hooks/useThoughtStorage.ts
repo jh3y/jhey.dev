@@ -4,6 +4,7 @@ import { useLocalStorage } from "./useLocalStorage";
 import { CONFIG } from "../config";
 import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
+import { handleGitOperations, updateJsonFileWithGitSync } from "../utils/gitOperations";
 
 export interface ThoughtItem {
   id: string;
@@ -150,12 +151,15 @@ export function useDemoStorage(props: UseThoughtStorageProps) {
   const addDemo = async (demo: DemoItem) => {
     setIsLoading(true);
     try {
-      const content = JSON.stringify(demo, null, 2);
       if (hasLocalConfig) {
-        const fs = await import("fs");
-        const path = await import("path");
-        const fullPath = path.join(props.localRepoPath!, filePath);
-        fs.writeFileSync(fullPath, content);
+        // Use shared utility for local file + git sync
+        const success = await updateJsonFileWithGitSync(
+          props.localRepoPath!,
+          filePath,
+          demo,
+          "Update demo"
+        );
+        if (!success) return false;
       } else if (hasGithubConfig) {
         const { Octokit } = await import("octokit");
         const octokit = new Octokit({ auth: props.githubToken });
@@ -174,7 +178,7 @@ export function useDemoStorage(props: UseThoughtStorageProps) {
           repo: props.repoName!,
           path: filePath,
           message: "Update demo",
-          content: Buffer.from(content).toString("base64"),
+          content: Buffer.from(JSON.stringify(demo, null, 2)).toString("base64"),
           branch: props.branch || "main",
           ...(sha ? { sha } : {}),
         });
@@ -241,12 +245,15 @@ export function useStatusStorage(props: UseThoughtStorageProps) {
   const updateStatus = async (statusObj: StatusItem) => {
     setIsLoading(true);
     try {
-      const content = JSON.stringify(statusObj, null, 2);
       if (hasLocalConfig) {
-        const fs = await import("fs");
-        const path = await import("path");
-        const fullPath = path.join(props.localRepoPath!, filePath);
-        fs.writeFileSync(fullPath, content);
+        // Use shared utility for local file + git sync
+        const success = await updateJsonFileWithGitSync(
+          props.localRepoPath!,
+          filePath,
+          statusObj,
+          "Update status"
+        );
+        if (!success) return false;
       } else if (hasGithubConfig) {
         const { Octokit } = await import("octokit");
         const octokit = new Octokit({ auth: props.githubToken });
@@ -265,7 +272,7 @@ export function useStatusStorage(props: UseThoughtStorageProps) {
           repo: props.repoName!,
           path: filePath,
           message: "Update status",
-          content: Buffer.from(content).toString("base64"),
+          content: Buffer.from(JSON.stringify(statusObj, null, 2)).toString("base64"),
           branch: props.branch || "main",
           ...(sha ? { sha } : {}),
         });
